@@ -1,0 +1,415 @@
+#pc-wrap {
+  .home-page {
+    position: relative;
+    width: 100%;
+    height: auto;
+    .info-box {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .left {
+        display: flex;
+        flex-direction: column;
+        span {
+          color: #181a20;
+          font-family: $font;
+          font-size: 34px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 150%;
+          letter-spacing: -0.646px;
+          text-transform: capitalize;
+          &.white {
+            color: #ffffff;
+          }
+        }
+        p {
+          color: #181a20;
+          font-family: $font;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 26px;
+          &.white {
+            color: #ffffff;
+          }
+        }
+      }
+      .right {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        .pagination-box {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          .swiper-pagination-bullet.swiper-pagination-bullet-active {
+            background: #000000;
+          }
+          .swiper-trend-next {
+            margin-left: 20px;
+            cursor: pointer;
+          }
+          .swiper-trend-prev {
+            margin-right: 20px;
+            cursor: pointer;
+          }
+          .swiper-top-next {
+            margin-left: 20px;
+            cursor: pointer;
+          }
+          .swiper-top-prev {
+            margin-right: 20px;
+            cursor: pointer;
+          }
+        }
+        .more-box {
+          display: flex;
+          flex-direction: row;
+          cursor: pointer;
+          align-items: center;
+          span {
+            color: #181a20;
+            font-family: $font;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-transform: capitalize;
+          }
+          img {
+            margin-left: 10px;
+            width: 16px;
+            height: 16px;
+          }
+        }
+        .btn-box {
+          display: flex;
+          flex-direction: row;
+          button {
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.07);
+            color: #ffffff;
+            font-family: $font;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 28px;
+            text-transform: capitalize;
+            &:first-child {
+              margin-right: 20px;
+            }
+            &.active {
+              border: 1px solid #181a20;
+              background: #fff;
+              color: #181a20;
+              font-family: $font;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 28px;
+            }
+          }
+        }
+      }
+    }
+
+    .trend-perfumes {
+      width: 100%;
+      padding: 80px 0 60px;
+      background: var(--black-secondary);
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .info-box {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        .left {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          span {
+            font-family: "Nunito", sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+
+            position: relative;
+            &::after {
+              content: "";
+              position: absolute;
+              bottom: -6px;
+              left: 0;
+              width: 48px;
+              height: 3px;
+              border-radius: 2px;
+              background: linear-gradient(
+                90deg,
+                var(--gold-primary),
+                var(--gold-light)
+              );
+            }
+          }
+
+          p {
+            font-family: "Nunito", sans-serif;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin: 0;
+          }
+        }
+
+        .right {
+          .pagination-box {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 14px;
+
+            .swiper-trend-prev,
+            .swiper-trend-next {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              border: 1px solid rgba(212, 175, 55, 0.25);
+              background: rgba(212, 175, 55, 0.05);
+              color: var(--text-secondary);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              font-size: 18px;
+              transition: color 0.3s ease, border-color 0.3s ease,
+                background 0.3s ease;
+
+              &:hover {
+                color: var(--gold-primary);
+                border-color: var(--gold-primary);
+                background: rgba(212, 175, 55, 0.1);
+              }
+            }
+
+            .swiper-trend-pagination {
+              display: flex;
+              gap: 6px;
+
+              .swiper-pagination-bullet {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(212, 175, 55, 0.25);
+                opacity: 1;
+                transition: background 0.3s ease, transform 0.3s ease;
+
+                &.swiper-pagination-bullet-active {
+                  background: var(--gold-primary);
+                  transform: scale(1.2);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .card-box {
+        width: 100%;
+
+        .empty-list {
+          width: 100%;
+          height: 300px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Nunito", sans-serif;
+          font-size: 16px;
+          color: var(--text-secondary);
+        }
+
+        .trend-perfume-swiper {
+          width: 100%;
+          padding-bottom: 8px;
+        }
+
+        .trend-property-slide {
+          height: auto;
+        }
+      }
+
+      .trend-card-box {
+        width: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+        background: var(--black-soft);
+        border: 1px solid rgba(212, 175, 55, 0.1);
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          border-color 0.35s ease;
+
+        &:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5),
+            0 0 0 1px rgba(212, 175, 55, 0.2);
+          border-color: rgba(212, 175, 55, 0.25);
+        }
+
+        .card-img {
+          position: relative;
+          width: 100%;
+          height: 280px;
+          background-size: cover;
+          background-position: center;
+          background-color: var(--black-primary);
+
+          div {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(11, 11, 11, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            font-family: "Nunito", sans-serif;
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--gold-primary);
+            letter-spacing: 0.3px;
+          }
+
+          .discount-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: linear-gradient(
+              135deg,
+              var(--gold-primary),
+              var(--gold-dark)
+            );
+            font-family: "Nunito", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--black-primary);
+          }
+        }
+
+        .info {
+          padding: 22px 22px 18px;
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+
+          .title {
+            font-family: "Nunito", sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+          }
+
+          .desc {
+            margin-top: 6px;
+            font-family: "Nunito", sans-serif;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            overflow: hidden;
+            display: -webkit-box;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+
+          .options {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            flex-wrap: wrap;
+
+            div {
+              display: flex;
+              align-items: center;
+
+              span {
+                padding: 3px 10px;
+                border-radius: 20px;
+                border: 1px solid rgba(212, 175, 55, 0.2);
+                background: rgba(212, 175, 55, 0.05);
+                font-family: "Nunito", sans-serif;
+                font-size: 13px;
+                font-weight: 600;
+                color: var(--text-secondary);
+                text-transform: capitalize;
+                white-space: nowrap;
+              }
+            }
+          }
+
+          .MuiDivider-root {
+            border-color: rgba(212, 175, 55, 0.1);
+          }
+
+          .bott {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            p {
+              font-family: "Nunito", sans-serif;
+              font-size: 13px;
+              color: var(--text-secondary);
+              text-transform: capitalize;
+              opacity: 0.7;
+              margin: 0;
+            }
+
+            .view-like-box {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              gap: 2px;
+
+              .MuiIconButton-root {
+                padding: 4px;
+                color: var(--text-secondary);
+                transition: color 0.25s ease;
+
+                &:hover {
+                  color: var(--gold-primary);
+                  background: transparent;
+                }
+
+                svg {
+                  font-size: 16px;
+                }
+              }
+
+              .view-cnt {
+                font-family: "Nunito", sans-serif;
+                font-size: 13px;
+                color: var(--text-secondary);
+                line-height: 1;
+                margin-right: 6px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
