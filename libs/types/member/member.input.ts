@@ -22,7 +22,7 @@ interface AISearch {
   text?: string;
 }
 
-export interface AgentsInquiry {
+export interface ExpertsInquiry {
   page: number;
   limit: number;
   sort?: string;

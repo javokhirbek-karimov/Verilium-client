@@ -63,3 +63,97 @@ export const GET_PERFUMES = gql`
     }
   }
 `;
+
+export const GET_EXPERTS = gql`
+  query GetExperts($input: ExpertsInquiry!) {
+    getExperts(input: $input) {
+      list {
+        _id
+        memberType
+        memberStatus
+        memberAuthType
+        memberPhone
+        memberNick
+        memberFullName
+        memberImage
+        memberAddress
+        memberDesc
+        memberPerfumes
+        memberArticles
+        memberFollowers
+        memberFollowings
+        memberPoints
+        memberLikes
+        memberViews
+        memberComments
+        memberRank
+        memberWarnings
+        memberBlocks
+        deletedAt
+        createdAt
+        updatedAt
+        accessToken
+        expertRequest
+        firstLoginAt
+        lastLoginAt
+        loginCount
+        meLiked {
+          memberId
+          likeRefId
+          myFavorite
+        }
+        meFollowed {
+          followingId
+          followerId
+          myFollowing
+        }
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
+export const GET_COMMENTS = gql`
+  query GetComments($input: CommentsInquiry!) {
+    getComments(input: $input) {
+      list {
+        _id
+        commentStatus
+        commentGroup
+        commentContent
+        commentRefId
+        memberId
+        createdAt
+        updatedAt
+        memberData {
+          _id
+          memberType
+          memberStatus
+          memberAuthType
+          memberPhone
+          memberNick
+          memberFullName
+          memberImage
+          memberAddress
+          memberDesc
+          memberWarnings
+          memberBlocks
+          memberProperties
+          memberRank
+          memberPoints
+          memberLikes
+          memberViews
+          deletedAt
+          createdAt
+          updatedAt
+          accessToken
+        }
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;

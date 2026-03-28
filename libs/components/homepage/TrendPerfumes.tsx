@@ -60,9 +60,6 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
     }
   };
 
-  if (trendPerfumes) console.log("trendPerfumes:", trendPerfumes);
-  if (!trendPerfumes) return null;
-
   if (device === "mobile") {
     return (
       <Stack className={"trend-perfumes"}>

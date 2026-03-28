@@ -14,8 +14,8 @@ import "swiper/css/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Intro from "../Intro";
 import Link from "next/link";
+import Cursor from "../Cursor";
 
-// Intro tugash vaqti: 3000ms
 const INTRO_DURATION = 3000;
 
 const withLayoutMain = (Component: any) => {
@@ -58,11 +58,12 @@ const withLayoutMain = (Component: any) => {
           <meta name={"title"} content={"Verilium"} />
         </Head>
         <Stack id="pc-wrap">
+          <Cursor />
           <Stack id={"top"}>
             <Top />
           </Stack>
 
-          <Stack className={"header-main"}>
+          <Stack className={"header-main"} >
             {/* Background video */}
             <video
               autoPlay
@@ -76,13 +77,13 @@ const withLayoutMain = (Component: any) => {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
+                objectPosition: "center 20%",
                 zIndex: 0,
               }}
             >
               <source src="/img/banner/header1.mp4" type="video/mp4" />
             </video>
 
-            {/* Dark overlay */}
             <div
               style={{
                 position: "absolute",
@@ -93,7 +94,6 @@ const withLayoutMain = (Component: any) => {
               }}
             />
 
-            {/* Hero content */}
             <Stack
               className={"container"}
               style={{
@@ -113,7 +113,7 @@ const withLayoutMain = (Component: any) => {
                 transition={{
                   duration: 1.0,
                   ease: [0.22, 1, 0.36, 1],
-                  delay: INTRO_DURATION / 1000 + 0.2,
+                  delay: INTRO_DURATION / 1000 + 0.4,
                 }}
                 style={{
                   fontFamily: '"Nunito", sans-serif',
@@ -147,7 +147,7 @@ const withLayoutMain = (Component: any) => {
                 transition={{
                   duration: 1.4,
                   ease: [0.22, 1, 0.36, 1],
-                  delay: INTRO_DURATION / 1000 + 0.5,
+                  delay: INTRO_DURATION / 1000 + 0.8,
                 }}
                 style={{
                   fontFamily: '"Nunito", sans-serif',
@@ -168,7 +168,7 @@ const withLayoutMain = (Component: any) => {
                 transition={{
                   duration: 0.9,
                   ease: [0.22, 1, 0.36, 1],
-                  delay: INTRO_DURATION / 1000 + 0.8,
+                  delay: INTRO_DURATION / 1000 + 1.0,
                 }}
               >
                 <Link href="/perfume">

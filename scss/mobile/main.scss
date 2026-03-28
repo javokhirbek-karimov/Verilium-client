@@ -597,153 +597,145 @@
     box-shadow: -3px 0px 20px 14px #34343480;
   }
 
-  .top-properties {
-    padding: 0px 10px;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
+  .top-perfumes {
+    padding: 40px 0 32px;
+    background: var(--black-primary);
+
     .container {
-      width: 100%;
-      display: flex;
       flex-direction: column;
-      .card-box {
+      gap: 24px;
+    }
+
+    .info-box {
+      span {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--text-primary);
+      }
+    }
+
+    .card-box {
+      .top-perfume-swiper {
+        width: 100%;
+      }
+
+      .top-perfume-slide {
+        width: 85vw !important;
+        height: auto;
+      }
+    }
+
+    .top-card-box {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--black-soft);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+
+      .card-img {
+        height: 220px;
+        background-size: cover;
+        background-position: center;
+        background-color: var(--black-primary);
         position: relative;
-        margin-top: 25px;
-        display: flex;
-        flex-direction: row;
-        .top-property-swiper {
-          width: 100%;
-          height: 400px;
+
+        .price-badge {
+          position: absolute;
+          bottom: 12px;
+          left: 12px;
+          padding: 6px 14px;
+          border-radius: 20px;
+          background: rgba(11, 11, 11, 0.8);
+          border: 1px solid rgba(212, 175, 55, 0.4);
+          font-family: "Nunito", sans-serif;
+          font-size: 15px;
+          font-weight: 800;
+          color: var(--gold-primary);
+        }
+
+        // reuse div for mobile price
+        div {
+          position: absolute;
+          bottom: 12px;
+          left: 12px;
+          padding: 6px 14px;
+          border-radius: 20px;
+          background: rgba(11, 11, 11, 0.8);
+          border: 1px solid rgba(212, 175, 55, 0.4);
+          font-family: "Nunito", sans-serif;
+          font-size: 15px;
+          font-weight: 800;
+          color: var(--gold-primary);
+        }
+      }
+
+      .info {
+        padding: 16px 16px 14px;
+
+        .title {
+          font-size: 16px;
+          font-weight: 700;
+          color: var(--text-primary);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: block;
+        }
+
+        .options {
+          margin-top: 10px;
           display: flex;
-          flex-direction: row;
-          .top-property-slide {
-            width: 98%;
-            height: auto;
+          flex-wrap: wrap;
+          gap: 6px;
+
+          div span {
+            padding: 3px 10px;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(212, 175, 55, 0.05);
+            font-family: "Nunito", sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: capitalize;
+          }
+        }
+
+        .MuiDivider-root {
+          border-color: rgba(212, 175, 55, 0.1);
+        }
+
+        .bott {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: capitalize;
+            opacity: 0.7;
+            margin: 0;
+          }
+
+          .view-like-box {
             display: flex;
-            .top-card-box {
-              position: relative;
-              width: 100%;
-              height: 375px;
-              display: flex;
-              flex-direction: column;
-              .card-img {
-                position: relative;
-                width: 100%;
-                height: 203px;
-                background-size: cover;
-                border-radius: 12px 12px 0px 0px;
-                cursor: pointer;
-                div {
-                  position: absolute;
-                  padding: 8px 12px;
-                  left: 12px;
-                  bottom: 12px;
-                  border-radius: 6px;
-                  background: #fff;
-                  color: #181a20;
-                  font-family: $font;
-                  font-size: 15px;
-                  font-style: normal;
-                  font-weight: 600;
-                  line-height: normal;
-                }
+            align-items: center;
+            gap: 2px;
+
+            .MuiIconButton-root {
+              padding: 4px;
+              color: var(--text-secondary);
+
+              svg {
+                font-size: 16px;
               }
-              .info {
-                padding: 20px 22px 17px;
-                display: flex;
-                flex-direction: column;
-                box-sizing: border-box;
-                border-radius: 0px 0px 12px 12px;
-                border: 1px solid rgba(196, 196, 196, 0.71);
-                border-top: none;
-                background: #fff;
-                box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
-                .title {
-                  overflow: hidden;
-                  color: #181a20;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                  font-family: $font;
-                  font-size: 15px;
-                  font-style: normal;
-                  font-weight: 600;
-                  line-height: normal;
-                  text-transform: capitalize;
-                  cursor: pointer;
-                }
-                .desc {
-                  margin-top: 5px;
-                  overflow: hidden;
-                  color: #717171;
-                  font-family: $font;
-                  font-size: 13px;
-                  font-style: normal;
-                  font-weight: 400;
-                  line-height: normal;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-                .options {
-                  margin-top: 15px;
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: space-between;
-                  div {
-                    display: flex;
-                    flex-direction: row;
-                    img {
-                      margin-right: 5px;
-                      width: 17px;
-                      height: 17px;
-                    }
-                    span {
-                      color: #181a20;
-                      font-family: $font;
-                      font-size: 13px;
-                      font-style: normal;
-                      font-weight: 400;
-                      line-height: normal;
-                    }
-                  }
-                }
-                .bott {
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: space-between;
-                  align-items: center;
-                  p {
-                    color: #181a20;
-                    font-family: $font;
-                    font-size: 13px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-                    text-transform: capitalize;
-                  }
-                  button {
-                    margin-left: 7px;
-                    width: 16px;
-                    height: 16px;
-                    box-sizing: border-box;
-                  }
-                  .view-like-box {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 7px;
-                    align-items: center;
-                    .view-cnt {
-                      color: #717171;
-                      font-family: $font;
-                      font-size: 13px;
-                      font-style: normal;
-                      font-weight: 400;
-                      line-height: normal;
-                      text-overflow: ellipsis;
-                    }
-                  }
-                }
-              }
+            }
+
+            .view-cnt {
+              font-size: 12px;
+              color: var(--text-secondary);
+              margin-right: 4px;
             }
           }
         }
@@ -1333,6 +1325,86 @@
         font-size: 12px;
         color: var(--text-secondary);
         opacity: 0.7;
+      }
+    }
+  }
+
+  .top-experts {
+    padding: 40px 0 32px;
+    background: var(--black-secondary);
+
+    .container {
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .info-box {
+      span {
+        font-family: "Nunito", sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--text-primary);
+      }
+    }
+
+    .wrapper {
+      width: 100%;
+
+      .top-experts-swiper {
+        width: 100%;
+      }
+
+      .top-experts-slide {
+        width: auto !important;
+      }
+    }
+
+    .top-expert-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 24px 18px;
+      width: 150px;
+      border-radius: 16px;
+      background: var(--black-soft);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      -webkit-tap-highlight-color: transparent;
+
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(212, 175, 55, 0.3);
+      }
+
+      strong {
+        font-family: "Nunito", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-primary);
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+      }
+
+      span {
+        font-family: "Nunito", sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--gold-primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.8;
+        text-align: center;
+      }
+
+      &:active {
+        border-color: rgba(212, 175, 55, 0.3);
+        background: rgba(212, 175, 55, 0.04);
       }
     }
   }
