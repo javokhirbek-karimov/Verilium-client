@@ -20,28 +20,27 @@ import { useReactiveVar } from "@apollo/client";
 import { userVar } from "../../apollo/store";
 import { REACT_APP_API_URL } from "../config";
 
-// Intro tugashi: 2500ms → navbar elementlari shu vaqtdan keyin animatsiya boshlanadi
 const INTRO_DURATION = 2500;
-
-// Yuqoridan tushib kelish animatsiyasi
-const slideDown = {
-  hidden: { opacity: 0, y: -24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.55,
-      ease: [0.22, 1, 0.36, 1],
-      delay: INTRO_DURATION / 1000 + i * 0.08,
-    },
-  }),
-};
 
 const Top = () => {
   const device = useDeviceDetect();
   const user = useReactiveVar(userVar);
-  const { t, i18n } = useTranslation("common");
+  const { t } = useTranslation("common");
   const router = useRouter();
+  const isHome = router.pathname === "/";
+
+  const slideDown = {
+    hidden: { opacity: 0, y: -24 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.55,
+        ease: [0.22, 1, 0.36, 1],
+        delay: isHome ? INTRO_DURATION / 1000 + i * 0.08 : i * 0.06,
+      },
+    }),
+  };
 
   const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
   const [lang, setLang] = useState<string | null>("en");
@@ -61,14 +60,7 @@ const Top = () => {
   }, [router]);
 
   useEffect(() => {
-    switch (router.pathname) {
-      case "/perfume/detail":
-        setBgColor(true);
-        break;
-      default:
-        setBgColor(false);
-        break;
-    }
+    setBgColor(router.pathname !== "/");
   }, [router]);
 
   useEffect(() => {

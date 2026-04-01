@@ -213,3 +213,63 @@ export const GET_BOARD_ARTICLES = gql`
     }
   }
 `;
+
+export const GET_PERFUME = gql`
+  query GetPerfume($input: String!) {
+    getPerfume(perfumeId: $input) {
+      _id
+      perfumeType
+      perfumeStatus
+      perfumeScent
+      perfumeLongevity
+      perfumeSize
+      perfumeBrand
+      perfumeSeason
+      perfumeDiscount
+      perfumeTitle
+      perfumePrice
+      perfumeViews
+      perfumeLikes
+      perfumeComments
+      perfumeRank
+      perfumeImages
+      perfumeDesc
+      memberId
+      deletedAt
+      releasedAt
+      memberData {
+        _id
+        memberType
+        memberStatus
+        memberAuthType
+        memberPhone
+        memberNick
+        memberFullName
+        memberImage
+        memberAddress
+        memberDesc
+        memberPerfumes
+        memberArticles
+        memberFollowers
+        memberFollowings
+        memberPoints
+        memberLikes
+        memberViews
+        memberComments
+        memberRank
+        memberWarnings
+        memberBlocks
+        deletedAt
+        createdAt
+        updatedAt
+        accessToken
+        expertRequest
+      }
+      meLiked {
+        memberId
+        likeRefId
+        myFavorite
+      }
+    }
+  }
+`;
