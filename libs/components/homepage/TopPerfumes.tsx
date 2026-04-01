@@ -98,19 +98,12 @@ const TopPerfumes = (props: TopPerfumesProps) => {
               <span>Top perfumes</span>
               <p>Check out our Top Perfumes</p>
             </Box>
-            <Box component={"div"} className={"right"}>
-              <div className={"pagination-box"}>
-                <WestIcon className={"swiper-top-prev"} />
-                <div className={"swiper-top-pagination"}></div>
-                <EastIcon className={"swiper-top-next"} />
-              </div>
-            </Box>
           </Stack>
           <Stack className={"card-box"}>
             <Swiper
               className={"top-perfume-swiper"}
-              slidesPerView={"auto"}
-              spaceBetween={15}
+              slidesPerView={4}
+              spaceBetween={24}
               modules={[Autoplay, Navigation, Pagination]}
               navigation={{
                 nextEl: ".swiper-top-next",

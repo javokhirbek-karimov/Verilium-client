@@ -320,7 +320,9 @@
 
         .trend-perfume-swiper {
           width: 100%;
+          padding-top: 12px;
           padding-bottom: 8px;
+          overflow: visible !important;
         }
 
         .trend-property-slide {
@@ -412,8 +414,10 @@
             line-height: 1.5;
             overflow: hidden;
             display: -webkit-box;
+            -webkit-line-clamp: 2;
             line-clamp: 2;
             -webkit-box-orient: vertical;
+            overflow: hidden;
           }
 
           .options {
@@ -549,59 +553,8 @@
             margin: 0;
           }
         }
-
-        .right {
-          .pagination-box {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-
-            .swiper-top-prev,
-            .swiper-top-next {
-              width: 40px;
-              height: 40px;
-              border-radius: 50%;
-              border: 1px solid rgba(212, 175, 55, 0.25);
-              background: rgba(212, 175, 55, 0.05);
-              color: var(--text-secondary);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              cursor: pointer;
-              font-size: 18px;
-              transition: color 0.3s ease, border-color 0.3s ease,
-                background 0.3s ease;
-
-              &:hover {
-                color: var(--gold-primary);
-                border-color: var(--gold-primary);
-                background: rgba(212, 175, 55, 0.1);
-              }
-            }
-
-            .swiper-top-pagination {
-              display: flex;
-              gap: 6px;
-
-              .swiper-pagination-bullet {
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: rgba(212, 175, 55, 0.25);
-                opacity: 1;
-                transition: background 0.3s ease, transform 0.3s ease;
-
-                &.swiper-pagination-bullet-active {
-                  background: var(--gold-primary);
-                  transform: scale(1.25);
-                }
-              }
-            }
-          }
-        }
       }
 
-      // ── Card area ─────────────────────────────────────────────────────────────────
       .card-box {
         width: 100%;
 
@@ -618,7 +571,9 @@
 
         .top-perfume-swiper {
           width: 100%;
+          padding-top: 12px;
           padding-bottom: 8px;
+          overflow: visible !important;
         }
 
         .top-perfume-slide {
@@ -626,7 +581,6 @@
         }
       }
 
-      // ── Card ──────────────────────────────────────────────────────────────────────
       .top-card-box {
         width: 100%;
         border-radius: 20px;
@@ -644,7 +598,6 @@
           border-color: rgba(212, 175, 55, 0.28);
         }
 
-        // Image
         .card-img {
           position: relative;
           width: 100%;
@@ -687,7 +640,6 @@
           }
         }
 
-        // Info
         .info {
           padding: 22px 22px 18px;
           display: flex;
@@ -811,7 +763,6 @@
         gap: 48px;
       }
 
-      // ── Info header ───────────────────────────────────────────────────────────────
       .info-box {
         display: flex;
         flex-direction: row;
@@ -899,7 +850,6 @@
         }
       }
 
-      // ── Wrapper with nav arrows ───────────────────────────────────────────────────
       .wrapper {
         display: flex;
         flex-direction: row;
@@ -943,6 +893,8 @@
 
         .top-experts-swiper {
           width: 100%;
+          padding-top: 12px;
+          overflow: visible !important;
         }
 
         .top-experts-slide {
@@ -1006,6 +958,322 @@
           letter-spacing: 1.5px;
           opacity: 0.85;
           text-align: center;
+        }
+      }
+    }
+
+    .top-articles {
+      width: 100%;
+      padding: 80px 0 60px;
+      background: var(--black-secondary);
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+      }
+
+      .info-box {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        .left {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          span {
+            font-family: "Nunito", sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            position: relative;
+
+            &::after {
+              content: "";
+              position: absolute;
+              bottom: -6px;
+              left: 0;
+              width: 48px;
+              height: 3px;
+              border-radius: 2px;
+              background: linear-gradient(
+                90deg,
+                var(--gold-primary),
+                var(--gold-light)
+              );
+            }
+          }
+
+          p {
+            font-family: "Nunito", sans-serif;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin: 0;
+          }
+        }
+
+        .right {
+          .pagination-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            .swiper-articles-prev,
+            .swiper-articles-next {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              border: 1px solid rgba(212, 175, 55, 0.25);
+              background: rgba(212, 175, 55, 0.05);
+              color: var(--text-secondary);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              font-size: 18px;
+              transition: color 0.3s ease, border-color 0.3s ease,
+                background 0.3s ease;
+
+              &:hover {
+                color: var(--gold-primary);
+                border-color: var(--gold-primary);
+                background: rgba(212, 175, 55, 0.1);
+              }
+            }
+
+            .swiper-articles-pagination {
+              display: flex;
+              gap: 6px;
+
+              .swiper-pagination-bullet {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(212, 175, 55, 0.25);
+                opacity: 1;
+                transition: background 0.3s ease, transform 0.3s ease;
+
+                &.swiper-pagination-bullet-active {
+                  background: var(--gold-primary);
+                  transform: scale(1.25);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // ── Card area ─────────────────────────────────────────────────────────────────
+      .card-box {
+        width: 100%;
+
+        .empty-list {
+          width: 100%;
+          height: 260px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Nunito", sans-serif;
+          font-size: 16px;
+          color: var(--text-secondary);
+        }
+
+        .top-articles-swiper {
+          width: 100%;
+          min-height: 320px;
+          padding-top: 12px;
+          padding-bottom: 8px;
+          overflow: visible !important;
+        }
+
+        .top-article-slide {
+          height: auto;
+          display: flex;
+        }
+      }
+
+      .article-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+        background: var(--black-soft);
+        border: 1px solid rgba(212, 175, 55, 0.1);
+        cursor: pointer;
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          border-color 0.35s ease;
+
+        &:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55),
+            0 0 0 1px rgba(212, 175, 55, 0.22);
+          border-color: rgba(212, 175, 55, 0.25);
+
+          .article-img {
+            &::after {
+              opacity: 0.5;
+            }
+
+            .category-badge {
+              background: var(--gold-primary);
+              color: var(--black-primary);
+            }
+          }
+
+          .article-title {
+            color: var(--gold-primary);
+          }
+        }
+
+        // Thumbnail
+        .article-img {
+          position: relative;
+          width: 100%;
+          height: 220px;
+          background-size: cover;
+          background-position: center;
+          background-color: var(--black-primary);
+          overflow: hidden;
+
+          // Hover overlay
+          &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+              to bottom,
+              transparent 40%,
+              rgba(11, 11, 11, 0.7) 100%
+            );
+            opacity: 0.3;
+            transition: opacity 0.35s ease;
+          }
+
+          .category-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 1;
+            height: 26px;
+            font-family: "Nunito", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            background: rgba(11, 11, 11, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            color: var(--gold-primary);
+            transition: background 0.3s ease, color 0.3s ease;
+
+            .MuiChip-label {
+              padding: 0 10px;
+            }
+          }
+        }
+
+        // Content
+        .article-content {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          padding: 22px 22px 18px;
+          flex: 1;
+
+          .article-title {
+            font-family: "Nunito", sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.45;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: color 0.3s ease;
+          }
+
+          .article-excerpt {
+            font-family: "Nunito", sans-serif;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+          }
+
+          // Meta row
+          .article-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+
+            .author {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+
+              img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 1.5px solid rgba(212, 175, 55, 0.3);
+              }
+
+              span {
+                font-family: "Nunito", sans-serif;
+                font-size: 13px;
+                font-weight: 600;
+                color: var(--text-secondary);
+              }
+            }
+
+            .stats {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+
+              .stat {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+
+                svg {
+                  font-size: 15px;
+                  color: var(--text-secondary);
+                  opacity: 0.6;
+                }
+
+                span {
+                  font-family: "Nunito", sans-serif;
+                  font-size: 12px;
+                  color: var(--text-secondary);
+                  opacity: 0.7;
+                }
+              }
+            }
+          }
+
+          .article-date {
+            font-family: "Nunito", sans-serif;
+            font-size: 12px;
+            color: var(--text-secondary);
+            opacity: 0.5;
+          }
         }
       }
     }

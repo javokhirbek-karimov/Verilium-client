@@ -1408,4 +1408,152 @@
       }
     }
   }
+
+  .top-articles {
+    padding: 40px 0 32px;
+    background: var(--black-secondary);
+
+    .container {
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .info-box {
+      span {
+        font-family: "Nunito", sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--text-primary);
+      }
+    }
+
+    .card-box {
+      .top-articles-swiper {
+        width: 100%;
+      }
+
+      .top-article-slide {
+        height: auto;
+      }
+    }
+
+    .article-card {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--black-soft);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      -webkit-tap-highlight-color: transparent;
+
+      .article-img {
+        height: 180px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+
+        .category-badge {
+          position: absolute;
+          top: 12px;
+          left: 12px;
+          height: 24px;
+          font-family: "Nunito", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.6px;
+          text-transform: uppercase;
+          background: rgba(11, 11, 11, 0.78);
+          border: 1px solid rgba(212, 175, 55, 0.35);
+          color: var(--gold-primary);
+
+          .MuiChip-label {
+            padding: 0 8px;
+          }
+        }
+      }
+
+      .article-content {
+        padding: 16px 16px 14px;
+        gap: 10px;
+
+        .article-title {
+          font-family: "Nunito", sans-serif;
+          font-size: 15px;
+          font-weight: 700;
+          color: var(--text-primary);
+          line-height: 1.4;
+          display: -webkit-box;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .article-excerpt {
+          font-family: "Nunito", sans-serif;
+          font-size: 13px;
+          color: var(--text-secondary);
+          line-height: 1.6;
+          display: -webkit-box;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .article-meta {
+          padding-top: 12px;
+          border-top: 1px solid rgba(212, 175, 55, 0.1);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .author {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            img {
+              width: 26px;
+              height: 26px;
+              border-radius: 50%;
+              object-fit: cover;
+              border: 1.5px solid rgba(212, 175, 55, 0.3);
+            }
+
+            span {
+              font-size: 12px;
+              font-weight: 600;
+              color: var(--text-secondary);
+            }
+          }
+
+          .stats {
+            display: flex;
+            gap: 10px;
+
+            .stat {
+              display: flex;
+              align-items: center;
+              gap: 3px;
+
+              svg {
+                font-size: 13px;
+                color: var(--text-secondary);
+                opacity: 0.6;
+              }
+
+              span {
+                font-size: 11px;
+                color: var(--text-secondary);
+                opacity: 0.7;
+              }
+            }
+          }
+        }
+
+        .article-date {
+          font-size: 11px;
+          color: var(--text-secondary);
+          opacity: 0.5;
+        }
+      }
+    }
+  }
 }

@@ -6,6 +6,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import TrendPerfumes from "../libs/components/homepage/TrendPerfumes";
 import TopPerfumes from "../libs/components/homepage/TopPerfumes";
 import TopExperts from "../libs/components/homepage/TopExperts";
+import TopArticles from "../libs/components/homepage/TopArticles";
 
 export const getStaticProps = async ({ locale }: any) => ({
   props: {
@@ -22,6 +23,7 @@ const Home: NextPage = () => {
         <TrendPerfumes />
         <TopPerfumes />
         <TopExperts />
+        <TopArticles />
       </Stack>
     );
   } else {
@@ -30,6 +32,7 @@ const Home: NextPage = () => {
         <TrendPerfumes />
         <TopPerfumes />
         <TopExperts />
+        <TopArticles />
       </Stack>
     );
   }
