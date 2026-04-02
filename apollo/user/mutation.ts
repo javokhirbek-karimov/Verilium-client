@@ -62,6 +62,19 @@ export const TELEGRAM_LOGIN = gql`
   }
 `;
 
+export const CREATE_COMMENT = gql`
+  mutation CreateComment($input: CommentInput!) {
+    createComment(input: $input) {
+      _id
+      commentGroup
+      commentContent
+      commentRefId
+      memberId
+      createdAt
+    }
+  }
+`;
+
 export const LIKE_TARGET_PERFUME = gql`
   mutation LikeTargetMember($input: String!) {
     likeTargetMember(memberId: $input) {

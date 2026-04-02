@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Stack,
   Box,
@@ -43,26 +43,37 @@ const PerfumePage: NextPage = () => {
   const router = useRouter();
   const [perfumes, setPerfumes] = useState<Perfume[]>([]);
   const [total, setTotal] = useState(0);
-  const [input, setInput] = useState<PerfumesInquiry>(DEFAULT_INPUT);
+  const [searchFilter, setSearchFilter] =
+    useState<PerfumesInquiry>(DEFAULT_INPUT);
+
+  useEffect(() => {
+    if (router.query.input) {
+      try {
+        const parsed = JSON.parse(router.query.input as string);
+        setSearchFilter(parsed);
+      } catch {
+        setSearchFilter(DEFAULT_INPUT);
+      }
+    }
+  }, [router.query.input]);
 
   /** APOLLO **/
   const [likeTargetPerfume] = useMutation(LIKE_TARGET_PERFUME);
 
-  const { loading } = useQuery(GET_PERFUMES, {
+  const { loading, data } = useQuery(GET_PERFUMES, {
     fetchPolicy: "cache-and-network",
-    variables: { input },
+    variables: { input: searchFilter },
     notifyOnNetworkStatusChange: true,
-    onCompleted: (data: T) => {
-      setPerfumes(data?.getPerfumes?.list ?? []);
-      setTotal(data?.getPerfumes?.metaCounter?.[0]?.total ?? 0);
-    },
   });
 
-  /** HANDLERS **/
-  const updateInput = (updates: Partial<PerfumesInquiry>) => {
-    setInput((prev) => ({ ...prev, ...updates, page: 1 }));
-  };
+  useEffect(() => {
+    if (data?.getPerfumes?.list) {
+      setPerfumes(data.getPerfumes.list);
+      setTotal(data.getPerfumes.metaCounter?.[0]?.total ?? 0);
+    }
+  }, [data]);
 
+  /** HANDLERS **/
   const goDetail = (id: string) => {
     router.push({ pathname: "/perfume/detail", query: { id } });
   };
@@ -72,13 +83,13 @@ const PerfumePage: NextPage = () => {
       if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
       await likeTargetPerfume({ variables: { input: id } });
       await sweetTopSmallSuccessAlert("success", 800);
-      setInput((prev) => ({ ...prev }));
+      setSearchFilter((prev) => ({ ...prev }));
     } catch (err: any) {
       sweetMixinErrorAlert(err.message).then();
     }
   };
 
-  const totalPages = Math.ceil(total / input.limit);
+  const totalPages = Math.ceil(total / searchFilter.limit);
 
   return (
     <Stack id={"perfume-list-page"}>
@@ -93,7 +104,11 @@ const PerfumePage: NextPage = () => {
 
         <Box className={"page-body"}>
           {/* Filter Sidebar */}
-          <Filter input={input} setInput={updateInput} />
+          <Filter
+            searchFilter={searchFilter}
+            setSearchFilter={setSearchFilter}
+            initialInput={DEFAULT_INPUT}
+          />
 
           {/* Main */}
           <Stack className={"main-content"}>
@@ -106,9 +121,9 @@ const PerfumePage: NextPage = () => {
                 <Typography className={"sort-label"}>Sort by</Typography>
                 <Select
                   className={"sort-select"}
-                  value={input.sort ?? "createdAt"}
+                  value={searchFilter.sort ?? "createdAt"}
                   onChange={(e) =>
-                    setInput((prev) => ({
+                    setSearchFilter((prev) => ({
                       ...prev,
                       sort: e.target.value,
                       page: 1,
@@ -147,9 +162,9 @@ const PerfumePage: NextPage = () => {
               <Box className={"pagination-wrap"}>
                 <Pagination
                   count={Math.max(totalPages, 1)}
-                  page={input.page}
+                  page={searchFilter.page}
                   onChange={(_, page) =>
-                    setInput((prev) => ({ ...prev, page }))
+                    setSearchFilter((prev) => ({ ...prev, page }))
                   }
                   shape="rounded"
                 />

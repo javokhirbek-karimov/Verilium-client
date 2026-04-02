@@ -131,6 +131,27 @@ body {
   scrollbar-color: #c9920a #0a0800;
 }
 
+/* Sonner Toast */
+.toast-success {
+  background: #1a1a1a !important;
+  color: #eaeaea !important;
+  border: 1px solid #d4af37 !important;
+
+  [data-icon] svg {
+    color: #d4af37 !important;
+  }
+}
+
+.toast-error {
+  background: #1a1a1a !important;
+  color: #eaeaea !important;
+  border: 1px solid #a00 !important;
+
+  [data-icon] svg {
+    color: #ff4444 !important;
+  }
+}
+
 hr {
   border-width: 0;
   border-bottom-width: thin;

@@ -21,7 +21,20 @@ const App = ({ Component, pageProps }: AppProps) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Component {...pageProps} />
-        <Toaster position="top-right" richColors />
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            style: {
+              background: "#1a1a1a",
+              color: "#eaeaea",
+              border: "1px solid #d4af37",
+            },
+            classNames: {
+              success: "toast-success",
+              error: "toast-error",
+            },
+          }}
+        />
       </ThemeProvider>
     </ApolloProvider>
   );

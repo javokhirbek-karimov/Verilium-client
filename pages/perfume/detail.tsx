@@ -1,20 +1,21 @@
 import { NextPage } from "next";
 import { useState } from "react";
-import { Stack, Box, Typography, Chip, Divider } from "@mui/material";
+import { Stack, Box, Typography, Chip, Divider, TextField, Button, Avatar } from "@mui/material";
 import { useRouter } from "next/router";
 import { useMutation, useQuery, useReactiveVar } from "@apollo/client";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper";
+import { Autoplay, Navigation } from "swiper/modules";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import WestIcon from "@mui/icons-material/West";
 import EastIcon from "@mui/icons-material/East";
+import SendIcon from "@mui/icons-material/Send";
 import withLayoutBasic from "../../libs/components/layout/layoutBasic";
 import TopPerfumeCard from "../../libs/components/homepage/TopPerfumesCard";
-import { GET_PERFUME, GET_PERFUMES } from "../../apollo/user/query";
-import { LIKE_TARGET_PERFUME } from "../../apollo/user/mutation";
+import { GET_PERFUME, GET_PERFUMES, GET_COMMENTS } from "../../apollo/user/query";
+import { LIKE_TARGET_PERFUME, CREATE_COMMENT } from "../../apollo/user/mutation";
 import { Perfume } from "../../libs/types/perfume/perfume";
 import { REACT_APP_API_URL } from "../../libs/config";
 import { userVar } from "../../apollo/store";
@@ -35,9 +36,13 @@ const PerfumeDetail: NextPage = () => {
   const [perfume, setPerfume] = useState<Perfume | null>(null);
   const [similarPerfumes, setSimilarPerfumes] = useState<Perfume[]>([]);
   const [activeImg, setActiveImg] = useState(0);
+  const [comments, setComments] = useState<T[]>([]);
+  const [commentTotal, setCommentTotal] = useState(0);
+  const [commentText, setCommentText] = useState("");
 
   /** APOLLO **/
   const [likeTargetPerfume] = useMutation(LIKE_TARGET_PERFUME);
+  const [createComment] = useMutation(CREATE_COMMENT);
 
   const { loading } = useQuery(GET_PERFUME, {
     fetchPolicy: "cache-and-network",
@@ -45,6 +50,24 @@ const PerfumeDetail: NextPage = () => {
     skip: !perfumeId,
     onCompleted: (data: T) => {
       setPerfume(data?.getPerfume ?? null);
+    },
+  });
+
+  const { refetch: refetchComments } = useQuery(GET_COMMENTS, {
+    fetchPolicy: "cache-and-network",
+    variables: {
+      input: {
+        page: 1,
+        limit: 20,
+        sort: "createdAt",
+        direction: "DESC",
+        search: { commentRefId: perfumeId },
+      },
+    },
+    skip: !perfumeId,
+    onCompleted: (data: T) => {
+      setComments(data?.getComments?.list ?? []);
+      setCommentTotal(data?.getComments?.metaCounter?.[0]?.total ?? 0);
     },
   });
 
@@ -72,6 +95,27 @@ const PerfumeDetail: NextPage = () => {
   });
 
   /** HANDLERS **/
+  const submitCommentHandler = async () => {
+    try {
+      if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
+      if (!commentText.trim()) return;
+      await createComment({
+        variables: {
+          input: {
+            commentGroup: "PERFUME",
+            commentContent: commentText.trim(),
+            commentRefId: perfumeId,
+          },
+        },
+      });
+      setCommentText("");
+      await refetchComments();
+      await sweetTopSmallSuccessAlert("Comment posted!", 800);
+    } catch (err: any) {
+      sweetMixinErrorAlert(err.message).then();
+    }
+  };
+
   const likeHandler = async () => {
     try {
       if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
@@ -244,6 +288,80 @@ const PerfumeDetail: NextPage = () => {
             <Typography className={"desc-text"}>{perfume.perfumeDesc}</Typography>
           </Box>
         )}
+
+        {/* ── Comments ─────────────────────────────────── */}
+        <Box className={"comments-section"}>
+          <Typography className={"section-title"}>
+            Reviews
+            {commentTotal > 0 && (
+              <span className={"comment-count"}>{commentTotal}</span>
+            )}
+          </Typography>
+
+          {/* Comment list */}
+          {comments.length > 0 ? (
+            <Stack className={"comment-list"}>
+              {comments.map((c: T) => {
+                const avatar = c.memberData?.memberImage
+                  ? `${REACT_APP_API_URL}/${c.memberData.memberImage}`
+                  : "/img/profile/defaultUser.svg";
+                return (
+                  <Box key={c._id} className={"comment-item"}>
+                    <Avatar className={"comment-avatar"} src={avatar} />
+                    <Box className={"comment-body"}>
+                      <Box className={"comment-header"}>
+                        <Typography className={"comment-nick"}>
+                          {c.memberData?.memberNick ?? "User"}
+                        </Typography>
+                        <Typography className={"comment-date"}>
+                          {new Date(c.createdAt).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </Typography>
+                      </Box>
+                      <Typography className={"comment-text"}>
+                        {c.commentContent}
+                      </Typography>
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Stack>
+          ) : (
+            <Typography className={"no-comments"}>
+              No reviews yet. Be the first to share your thoughts!
+            </Typography>
+          )}
+
+          {/* Write comment */}
+          <Box className={"comment-form"}>
+            <TextField
+              className={"comment-input"}
+              multiline
+              rows={3}
+              placeholder={
+                user._id
+                  ? "Share your experience with this perfume..."
+                  : "Please log in to leave a review"
+              }
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
+              disabled={!user._id}
+              fullWidth
+            />
+            <Button
+              className={"comment-submit"}
+              variant="contained"
+              endIcon={<SendIcon />}
+              onClick={submitCommentHandler}
+              disabled={!user._id || !commentText.trim()}
+            >
+              Post Review
+            </Button>
+          </Box>
+        </Box>
 
         {/* ── Similar Perfumes ─────────────────────────── */}
         {similarPerfumes.length > 0 && (

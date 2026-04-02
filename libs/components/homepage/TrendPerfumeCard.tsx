@@ -22,7 +22,7 @@ const TrendPerfumeCard = ({ perfume }: TrendPerfumeCardProps) => {
   const image = `${REACT_APP_API_URL}/${perfume?.perfumeImages?.[0]}`;
 
   const goDetail = () => {
-    router.push(`/perfume/${perfume._id}`);
+    router.push({ pathname: "/perfume/detail", query: { id: perfume._id } });
   };
 
   const isLiked = perfume?.meLiked?.[0]?.myFavorite;

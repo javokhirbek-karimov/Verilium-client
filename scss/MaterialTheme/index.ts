@@ -166,9 +166,58 @@ export const light = {
 		},
 		MuiSelect: {
 			styleOverrides: {
-				root: {},
+				root: {
+					color: '#eaeaea',
+				},
 				select: {
 					textAlign: 'left',
+				},
+				icon: {
+					color: '#a0a0a0',
+				},
+			},
+		},
+		MuiInputLabel: {
+			styleOverrides: {
+				root: {
+					color: '#a0a0a0',
+					'&.Mui-focused': {
+						color: '#d4af37',
+					},
+				},
+			},
+		},
+		MuiMenu: {
+			styleOverrides: {
+				paper: {
+					backgroundColor: '#1a1a1a',
+					border: '1px solid rgba(212, 175, 55, 0.15)',
+					borderRadius: '10px',
+					boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
+				},
+			},
+		},
+		MuiMenuItem: {
+			styleOverrides: {
+				root: {
+					padding: '8px 16px',
+					fontFamily: '"Nunito", sans-serif',
+					fontSize: '13px',
+					color: '#a0a0a0',
+					'&:hover': {
+						backgroundColor: 'rgba(212, 175, 55, 0.08)',
+						color: '#eaeaea',
+					},
+					'&.Mui-selected': {
+						backgroundColor: 'rgba(212, 175, 55, 0.12)',
+						color: '#d4af37',
+						'&:hover': {
+							backgroundColor: 'rgba(212, 175, 55, 0.16)',
+						},
+					},
+					'&.Mui-disabled': {
+						opacity: 0.35,
+					},
 				},
 			},
 		},
@@ -184,13 +233,32 @@ export const light = {
 				root: {
 					height: '48px',
 					width: '100%',
-					backgroundColor: '#fff',
-					input: {},
+					backgroundColor: 'rgba(255, 255, 255, 0.04)',
+					color: '#eaeaea',
+					borderRadius: '10px',
+					input: {
+						color: '#eaeaea',
+						'&::placeholder': {
+							color: '#a0a0a0',
+							opacity: 1,
+						},
+					},
+					'& .MuiSvgIcon-root': {
+						color: '#a0a0a0',
+					},
+					'&:hover .MuiOutlinedInput-notchedOutline': {
+						borderColor: 'rgba(212, 175, 55, 0.4)',
+					},
+					'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+						borderColor: '#d4af37',
+						borderWidth: '1px',
+					},
+					'&.Mui-disabled': {
+						backgroundColor: 'rgba(255, 255, 255, 0.02)',
+					},
 				},
 				notchedOutline: {
-					padding: '8px',
-					top: '-9px',
-					border: '1px solid #eee',
+					borderColor: 'rgba(212, 175, 55, 0.2)',
 				},
 			},
 		},
@@ -275,13 +343,6 @@ export const light = {
 					MuiMenu: {
 						boxShadow: 'rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) -20px 20px 40px -4px',
 					},
-				},
-			},
-		},
-		MuiMenuItem: {
-			styleOverrides: {
-				root: {
-					padding: '6px 8px',
 				},
 			},
 		},
