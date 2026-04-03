@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Stack, Box } from "@mui/material";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import WestIcon from "@mui/icons-material/West";
@@ -36,10 +36,13 @@ const TopPerfumes = (props: TopPerfumesProps) => {
     fetchPolicy: "cache-and-network",
     variables: { input: initialInput },
     notifyOnNetworkStatusChange: true,
-    onCompleted: (data: T) => {
-      setTopPerfumes(data?.getPerfumes?.list);
-    },
   });
+
+  useEffect(() => {
+    if (getPerfumesData?.getPerfumes?.list) {
+      setTopPerfumes(getPerfumesData.getPerfumes.list);
+    }
+  }, [getPerfumesData]);
 
   const likePerfumeHandler = async (user: T, id: string) => {
     try {

@@ -102,3 +102,31 @@ export const LIKE_TARGET_PERFUME = gql`
     }
   }
 `;
+
+export const LIKE_TARGET_MEMBER = gql`
+  mutation LikeTargetMember($input: String!) {
+    likeTargetMember(memberId: $input) {
+      _id
+      memberType
+      memberStatus
+      memberAuthType
+      memberPhone
+      memberNick
+      memberFullName
+      memberImage
+      memberAddress
+      memberDesc
+      memberWarnings
+      memberBlocks
+      memberProperties
+      memberRank
+      memberPoints
+      memberLikes
+      memberViews
+      deletedAt
+      createdAt
+      updatedAt
+      accessToken
+    }
+  }
+`;

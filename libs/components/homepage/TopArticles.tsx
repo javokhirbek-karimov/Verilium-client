@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Stack, Box } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
@@ -24,14 +24,20 @@ const TopArticles = (props: TopArticlesProps) => {
   const [articles, setArticles] = useState<BoardArticle[]>([]);
 
   /** APOLLO REQUESTS **/
-  const { loading: getArticlesLoading } = useQuery(GET_BOARD_ARTICLES, {
-    fetchPolicy: "cache-and-network",
-    variables: { input: initialInput },
-    notifyOnNetworkStatusChange: true,
-    onCompleted: (data: T) => {
-      setArticles(data?.getBoardArticles?.list ?? []);
+  const { loading: getArticlesLoading, data: getArticlesData } = useQuery(
+    GET_BOARD_ARTICLES,
+    {
+      fetchPolicy: "cache-and-network",
+      variables: { input: initialInput },
+      notifyOnNetworkStatusChange: true,
     },
-  });
+  );
+
+  useEffect(() => {
+    if (getArticlesData?.getBoardArticles?.list) {
+      setArticles(getArticlesData.getBoardArticles.list);
+    }
+  }, [getArticlesData]);
 
   /** HANDLERS **/
 

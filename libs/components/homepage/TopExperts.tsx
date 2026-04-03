@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Stack, Box } from "@mui/material";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
@@ -23,19 +23,21 @@ const TopExperts = (props: TopExpertsProps) => {
   const [topExperts, setTopExperts] = useState<Member[]>([]);
 
   /** APOLLO REQUESTS **/
-  const {
-    loading: getExpertsLoading,
-    data: getExpertsData,
-    error: getExpertsError,
-    refetch: getExpertsRefetch,
-  } = useQuery(GET_EXPERTS, {
-    fetchPolicy: "cache-and-network",
-    variables: { input: initialInput },
-    notifyOnNetworkStatusChange: true,
-    onCompleted: (data: T) => {
-      setTopExperts(data?.getExperts?.list);
+  const { data: getExpertsData, refetch: getExpertsRefetch } = useQuery(
+    GET_EXPERTS,
+    {
+      fetchPolicy: "cache-and-network",
+      variables: { input: initialInput },
+      notifyOnNetworkStatusChange: true,
     },
-  });
+  );
+
+  useEffect(() => {
+    if (getExpertsData?.getExperts?.list) {
+      setTopExperts(getExpertsData.getExperts.list);
+    }
+  }, [getExpertsData]);
+
   /** HANDLERS **/
 
   if (topExperts) console.log("topExperts:", topExperts);

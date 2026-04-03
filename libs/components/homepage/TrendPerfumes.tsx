@@ -27,19 +27,20 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
   /** APOLLO REQUESTS **/
   const [likeTargetPerfume] = useMutation(LIKE_TARGET_PERFUME);
 
-  const {
-    loading: getPerfumesLoading,
-    data: getPerfumessData,
-    error: getPerfumesError,
-    refetch: getPerfumesRefetch,
-  } = useQuery(GET_PERFUMES, {
-    fetchPolicy: "cache-and-network",
-    variables: { input: initialInput },
-    notifyOnNetworkStatusChange: true,
-    onCompleted: (data: T) => {
-      setTrendPerfumes(data?.getPerfumes?.list);
+  const { data: getPerfumesData, refetch: getPerfumesRefetch } = useQuery(
+    GET_PERFUMES,
+    {
+      fetchPolicy: "cache-and-network",
+      variables: { input: initialInput },
+      notifyOnNetworkStatusChange: true,
     },
-  });
+  );
+
+  useEffect(() => {
+    if (getPerfumesData?.getPerfumes?.list) {
+      setTrendPerfumes(getPerfumesData.getPerfumes.list);
+    }
+  }, [getPerfumesData]);
 
   /** HANDLERS **/
 
