@@ -95,7 +95,7 @@ const TopBasic = () => {
     { href: "/", label: t("Home") },
     { href: "/perfume", label: t("Perfumes") },
     { href: "/expert", label: t("Experts") },
-    { href: "/community?articleCategory=FREE", label: t("Community") },
+    { href: "/community", label: t("Community") },
     ...(user?._id ? [{ href: "/mypage", label: t("My Page") }] : []),
     { href: "/cs", label: t("CS") },
   ];

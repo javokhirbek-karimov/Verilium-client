@@ -1,5 +1,9 @@
 import { gql } from "@apollo/client";
 
+/**************************
+ *         MEMBER         *
+ *************************/
+
 export const SIGN_UP = gql`
   mutation Signup($input: MemberInput!) {
     signup(input: $input) {
@@ -62,6 +66,38 @@ export const TELEGRAM_LOGIN = gql`
   }
 `;
 
+export const LIKE_TARGET_MEMBER = gql`
+  mutation LikeTargetMember($input: String!) {
+    likeTargetMember(memberId: $input) {
+      _id
+      memberType
+      memberStatus
+      memberAuthType
+      memberPhone
+      memberNick
+      memberFullName
+      memberImage
+      memberAddress
+      memberDesc
+      memberWarnings
+      memberBlocks
+      memberProperties
+      memberRank
+      memberPoints
+      memberLikes
+      memberViews
+      deletedAt
+      createdAt
+      updatedAt
+      accessToken
+    }
+  }
+`;
+
+/**************************
+ *         COMMENT         *
+ *************************/
+
 export const CREATE_COMMENT = gql`
   mutation CreateComment($input: CommentInput!) {
     createComment(input: $input) {
@@ -74,6 +110,25 @@ export const CREATE_COMMENT = gql`
     }
   }
 `;
+
+export const UPDATE_COMMENT = gql`
+  mutation UpdateComment($input: CommentUpdate!) {
+    updateComment(input: $input) {
+      _id
+      commentStatus
+      commentGroup
+      commentContent
+      commentRefId
+      memberId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+/**************************
+ *         PERFUME         *
+ *************************/
 
 export const LIKE_TARGET_PERFUME = gql`
   mutation LikeTargetMember($input: String!) {
@@ -103,30 +158,71 @@ export const LIKE_TARGET_PERFUME = gql`
   }
 `;
 
-export const LIKE_TARGET_MEMBER = gql`
-  mutation LikeTargetMember($input: String!) {
-    likeTargetMember(memberId: $input) {
+/**************************
+ *      BOARD-ARTICLE     *
+ *************************/
+
+export const CREATE_BOARD_ARTICLE = gql`
+  mutation CreateBoardArticle($input: BoardArticleInput!) {
+    createBoardArticle(input: $input) {
       _id
-      memberType
-      memberStatus
-      memberAuthType
-      memberPhone
-      memberNick
-      memberFullName
-      memberImage
-      memberAddress
-      memberDesc
-      memberWarnings
-      memberBlocks
-      memberProperties
-      memberRank
-      memberPoints
-      memberLikes
-      memberViews
-      deletedAt
+      articleCategory
+      articleStatus
+      articleTitle
+      articleContent
+      articleImage
+      articleViews
+      articleLikes
+      articleComments
+      memberId
       createdAt
       updatedAt
-      accessToken
+      memberData {
+        _id
+        memberType
+        memberStatus
+        memberAuthType
+        memberPhone
+        memberNick
+        memberFullName
+        memberImage
+        memberAddress
+        memberDesc
+        memberPerfumes
+        memberArticles
+        memberFollowers
+        memberFollowings
+        memberPoints
+        memberLikes
+        memberViews
+        memberComments
+        memberRank
+        memberWarnings
+        memberBlocks
+        deletedAt
+        createdAt
+        updatedAt
+        accessToken
+        expertRequest
+      }
+    }
+  }
+`;
+
+export const LIKE_TARGET_BOARD_ARTICLE = gql`
+  mutation LikeTargetArticle($input: String!) {
+    likeTargetArticle(articleId: $input) {
+      _id
+      articleCategory
+      articleStatus
+      articleTitle
+      articleContent
+      articleImage
+      articleViews
+      articleLikes
+      memberId
+      createdAt
+      updatedAt
     }
   }
 `;

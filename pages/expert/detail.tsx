@@ -82,50 +82,60 @@ const ExpertDetail: NextPage = ({ initialPerfumes, initialComment }: any) => {
   const [likeTargetMember] = useMutation(LIKE_TARGET_PERFUME);
   const [likeTargetPerfume] = useMutation(LIKE_TARGET_PERFUME);
 
-  const { refetch: getMemberRefetch } = useQuery(GET_MEMBER, {
+  const { data: getMemberData, refetch: getMemberRefetch } = useQuery(GET_MEMBER, {
     fetchPolicy: "network-only",
     variables: { input: expertId },
     skip: !expertId,
-    onCompleted: (data: T) => {
-      setExpert(data?.getMember);
-      setPerfumesInquiry({
-        ...perfumesInquiry,
-        search: { memberId: data?.getMember?._id },
-      });
-      setCommentInquiry({
-        ...commentInquiry,
-        search: { commentRefId: data?.getMember?._id },
-      });
-      setInsertCommentData({
-        ...insertCommentData,
-        commentRefId: data?.getMember?._id,
-      });
-    },
   });
 
-  const { refetch: getPerfumesRefetch } = useQuery(GET_PERFUMES, {
+  const { data: getPerfumesData, refetch: getPerfumesRefetch } = useQuery(GET_PERFUMES, {
     fetchPolicy: "network-only",
     variables: { input: perfumesInquiry },
     skip: !perfumesInquiry.search.memberId,
     notifyOnNetworkStatusChange: true,
-    onCompleted: (data: T) => {
-      setExpertPerfumes(data?.getPerfumes?.list ?? []);
-      setPerfumeTotal(data?.getPerfumes?.metaCounter?.[0]?.total ?? 0);
-    },
   });
 
-  const { refetch: getCommentsRefetch } = useQuery(GET_COMMENTS, {
+  const { data: getCommentsData, refetch: getCommentsRefetch } = useQuery(GET_COMMENTS, {
     fetchPolicy: "network-only",
     variables: { input: commentInquiry },
     skip: !commentInquiry.search.commentRefId,
     notifyOnNetworkStatusChange: true,
-    onCompleted: (data: T) => {
-      setExpertComments(data?.getComments?.list ?? []);
-      setCommentTotal(data?.getComments?.metaCounter?.[0]?.total ?? 0);
-    },
   });
 
   /** LIFECYCLES **/
+  useEffect(() => {
+    if (getMemberData?.getMember) {
+      const member = getMemberData.getMember;
+      setExpert(member);
+      setPerfumesInquiry({
+        ...perfumesInquiry,
+        search: { memberId: member._id },
+      });
+      setCommentInquiry({
+        ...commentInquiry,
+        search: { commentRefId: member._id },
+      });
+      setInsertCommentData({
+        ...insertCommentData,
+        commentRefId: member._id,
+      });
+    }
+  }, [getMemberData]);
+
+  useEffect(() => {
+    if (getPerfumesData) {
+      setExpertPerfumes(getPerfumesData?.getPerfumes?.list ?? []);
+      setPerfumeTotal(getPerfumesData?.getPerfumes?.metaCounter?.[0]?.total ?? 0);
+    }
+  }, [getPerfumesData]);
+
+  useEffect(() => {
+    if (getCommentsData) {
+      setExpertComments(getCommentsData?.getComments?.list ?? []);
+      setCommentTotal(getCommentsData?.getComments?.metaCounter?.[0]?.total ?? 0);
+    }
+  }, [getCommentsData]);
+
   useEffect(() => {
     if (router.query.agentId) setExpertId(router.query.agentId as string);
   }, [router]);

@@ -18,6 +18,7 @@ export enum Message {
   PROVIDE_ALLOWED_FORMAT = "Please provide jpg, jpeg or png images!",
   SELF_SUBSCRIPTION_DENIED = "Self subscription is denied!",
   EXPERT_REQUEST_SENT = "Expert request has been already sent",
+  INSERT_ALL_INPUTS = "Please provide all inputs",
 }
 
 export enum Direction {

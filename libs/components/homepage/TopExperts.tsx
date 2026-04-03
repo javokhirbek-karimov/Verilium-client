@@ -4,7 +4,7 @@ import { Stack, Box } from "@mui/material";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper";
 import TopExpertCard from "./TopExpertCard";
 import { Member } from "../../types/member/member";
 import { ExpertsInquiry } from "../../types/member/member.input";

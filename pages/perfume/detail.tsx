@@ -1,11 +1,20 @@
 import { NextPage } from "next";
-import { useState } from "react";
-import { Stack, Box, Typography, Chip, Divider, TextField, Button, Avatar } from "@mui/material";
+import { useEffect, useState } from "react";
+import {
+  Stack,
+  Box,
+  Typography,
+  Chip,
+  Divider,
+  TextField,
+  Button,
+  Avatar,
+} from "@mui/material";
 import { useRouter } from "next/router";
 import { useMutation, useQuery, useReactiveVar } from "@apollo/client";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -14,14 +23,24 @@ import EastIcon from "@mui/icons-material/East";
 import SendIcon from "@mui/icons-material/Send";
 import withLayoutBasic from "../../libs/components/layout/layoutBasic";
 import TopPerfumeCard from "../../libs/components/homepage/TopPerfumesCard";
-import { GET_PERFUME, GET_PERFUMES, GET_COMMENTS } from "../../apollo/user/query";
-import { LIKE_TARGET_PERFUME, CREATE_COMMENT } from "../../apollo/user/mutation";
+import {
+  GET_PERFUME,
+  GET_PERFUMES,
+  GET_COMMENTS,
+} from "../../apollo/user/query";
+import {
+  LIKE_TARGET_PERFUME,
+  CREATE_COMMENT,
+} from "../../apollo/user/mutation";
 import { Perfume } from "../../libs/types/perfume/perfume";
 import { REACT_APP_API_URL } from "../../libs/config";
 import { userVar } from "../../apollo/store";
 import { T } from "../../libs/types/common";
 import { Message } from "../../libs/enums/common.enum";
-import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from "../../libs/sonner";
+import {
+  sweetMixinErrorAlert,
+  sweetTopSmallSuccessAlert,
+} from "../../libs/sonner";
 
 export const getServerSideProps = async ({ locale }: any) => ({
   props: {
@@ -44,16 +63,19 @@ const PerfumeDetail: NextPage = () => {
   const [likeTargetPerfume] = useMutation(LIKE_TARGET_PERFUME);
   const [createComment] = useMutation(CREATE_COMMENT);
 
-  const { loading } = useQuery(GET_PERFUME, {
+  const { loading, data: getPerfumeData } = useQuery(GET_PERFUME, {
     fetchPolicy: "cache-and-network",
     variables: { input: perfumeId },
     skip: !perfumeId,
-    onCompleted: (data: T) => {
-      setPerfume(data?.getPerfume ?? null);
-    },
   });
 
-  const { refetch: refetchComments } = useQuery(GET_COMMENTS, {
+  useEffect(() => {
+    if (getPerfumeData?.getPerfume) {
+      setPerfume(getPerfumeData.getPerfume);
+    }
+  }, [getPerfumeData]);
+
+  const { data: getCommentsData, refetch: refetchComments } = useQuery(GET_COMMENTS, {
     fetchPolicy: "cache-and-network",
     variables: {
       input: {
@@ -65,13 +87,9 @@ const PerfumeDetail: NextPage = () => {
       },
     },
     skip: !perfumeId,
-    onCompleted: (data: T) => {
-      setComments(data?.getComments?.list ?? []);
-      setCommentTotal(data?.getComments?.metaCounter?.[0]?.total ?? 0);
-    },
   });
 
-  useQuery(GET_PERFUMES, {
+  const { data: getSimilarPerfumesData } = useQuery(GET_PERFUMES, {
     fetchPolicy: "cache-and-network",
     variables: {
       input: {
@@ -85,14 +103,24 @@ const PerfumeDetail: NextPage = () => {
       },
     },
     skip: !perfume,
-    onCompleted: (data: T) => {
-      setSimilarPerfumes(
-        (data?.getPerfumes?.list ?? []).filter(
-          (p: Perfume) => p._id !== perfumeId
-        )
-      );
-    },
   });
+
+  useEffect(() => {
+    if (getCommentsData) {
+      setComments(getCommentsData?.getComments?.list ?? []);
+      setCommentTotal(getCommentsData?.getComments?.metaCounter?.[0]?.total ?? 0);
+    }
+  }, [getCommentsData]);
+
+  useEffect(() => {
+    if (getSimilarPerfumesData) {
+      setSimilarPerfumes(
+        (getSimilarPerfumesData?.getPerfumes?.list ?? []).filter(
+          (p: Perfume) => p._id !== perfumeId,
+        ),
+      );
+    }
+  }, [getSimilarPerfumesData]);
 
   /** HANDLERS **/
   const submitCommentHandler = async () => {
@@ -129,9 +157,8 @@ const PerfumeDetail: NextPage = () => {
   if (!perfume && !loading) return null;
   if (!perfume) return null;
 
-  const images = perfume.perfumeImages?.map(
-    (img) => `${REACT_APP_API_URL}/${img}`
-  ) ?? [];
+  const images =
+    perfume.perfumeImages?.map((img) => `${REACT_APP_API_URL}/${img}`) ?? [];
   const activeImage = images[activeImg] ?? "/img/banner/default-perfume.jpg";
   const isLiked = perfume.meLiked?.[0]?.myFavorite;
 
@@ -171,7 +198,9 @@ const PerfumeDetail: NextPage = () => {
           {/* Info Panel */}
           <Box className={"info-panel"}>
             <Box className={"brand-row"}>
-              <Typography className={"brand"}>{perfume.perfumeBrand}</Typography>
+              <Typography className={"brand"}>
+                {perfume.perfumeBrand}
+              </Typography>
               <Chip
                 label={perfume.perfumeType}
                 size="small"
@@ -285,7 +314,9 @@ const PerfumeDetail: NextPage = () => {
         {perfume.perfumeDesc && (
           <Box className={"desc-section"}>
             <Typography className={"section-title"}>Description</Typography>
-            <Typography className={"desc-text"}>{perfume.perfumeDesc}</Typography>
+            <Typography className={"desc-text"}>
+              {perfume.perfumeDesc}
+            </Typography>
           </Box>
         )}
 

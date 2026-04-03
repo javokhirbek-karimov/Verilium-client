@@ -1,5 +1,9 @@
 import { gql } from "@apollo/client";
 
+/**************************
+ *         MEMBER         *
+ *************************/
+
 export const GET_MEMBER = gql`
   query GetMember($input: String!) {
     getMember(memberId: $input) {
@@ -37,7 +41,60 @@ export const GET_MEMBER = gql`
   }
 `;
 
+export const GET_EXPERTS = gql`
+  query GetExperts($input: ExpertsInquiry!) {
+    getExperts(input: $input) {
+      list {
+        _id
+        memberType
+        memberStatus
+        memberAuthType
+        memberPhone
+        memberNick
+        memberFullName
+        memberImage
+        memberAddress
+        memberDesc
+        memberPerfumes
+        memberArticles
+        memberFollowers
+        memberFollowings
+        memberPoints
+        memberLikes
+        memberViews
+        memberComments
+        memberRank
+        memberWarnings
+        memberBlocks
+        deletedAt
+        createdAt
+        updatedAt
+        accessToken
+        expertRequest
+        firstLoginAt
+        lastLoginAt
+        loginCount
+        meLiked {
+          memberId
+          likeRefId
+          myFavorite
+        }
+        meFollowed {
+          followingId
+          followerId
+          myFollowing
+        }
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
 
+/**************************
+ *        PERFUMES        *
+ *************************/
 
 export const GET_PERFUMES = gql`
   query GetPerfumes($input: PerfumesInquiry!) {
@@ -163,99 +220,9 @@ export const GET_PERFUME = gql`
   }
 `;
 
-export const GET_EXPERTS = gql`
-  query GetExperts($input: ExpertsInquiry!) {
-    getExperts(input: $input) {
-      list {
-        _id
-        memberType
-        memberStatus
-        memberAuthType
-        memberPhone
-        memberNick
-        memberFullName
-        memberImage
-        memberAddress
-        memberDesc
-        memberPerfumes
-        memberArticles
-        memberFollowers
-        memberFollowings
-        memberPoints
-        memberLikes
-        memberViews
-        memberComments
-        memberRank
-        memberWarnings
-        memberBlocks
-        deletedAt
-        createdAt
-        updatedAt
-        accessToken
-        expertRequest
-        firstLoginAt
-        lastLoginAt
-        loginCount
-        meLiked {
-          memberId
-          likeRefId
-          myFavorite
-        }
-        meFollowed {
-          followingId
-          followerId
-          myFollowing
-        }
-      }
-      metaCounter {
-        total
-      }
-    }
-  }
-`;
-
-export const GET_COMMENTS = gql`
-  query GetComments($input: CommentsInquiry!) {
-    getComments(input: $input) {
-      list {
-        _id
-        commentStatus
-        commentGroup
-        commentContent
-        commentRefId
-        memberId
-        createdAt
-        updatedAt
-        memberData {
-          _id
-          memberType
-          memberStatus
-          memberAuthType
-          memberPhone
-          memberNick
-          memberFullName
-          memberImage
-          memberAddress
-          memberDesc
-          memberWarnings
-          memberBlocks
-          memberProperties
-          memberRank
-          memberPoints
-          memberLikes
-          memberViews
-          deletedAt
-          createdAt
-          updatedAt
-          accessToken
-        }
-      }
-      metaCounter {
-        total
-      }
-    }
-  }
-`;
+/**************************
+ *      BOARD-ARTICLE     *
+ *************************/
 
 export const GET_BOARD_ARTICLES = gql`
   query GetBoardArticles($input: BoardArticlesInquiry!) {
@@ -300,6 +267,99 @@ export const GET_BOARD_ARTICLES = gql`
           memberRank
           memberWarnings
           memberBlocks
+          deletedAt
+          createdAt
+          updatedAt
+          accessToken
+        }
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
+export const GET_BOARD_ARTICLE = gql`
+  query GetBoardArticle($input: String!) {
+    getBoardArticle(articleId: $input) {
+      _id
+      articleCategory
+      articleStatus
+      articleTitle
+      articleContent
+      articleImage
+      articleViews
+      articleLikes
+      articleComments
+      memberId
+      createdAt
+      updatedAt
+      memberData {
+        _id
+        memberType
+        memberStatus
+        memberAuthType
+        memberPhone
+        memberNick
+        memberFullName
+        memberImage
+        memberAddress
+        memberDesc
+        memberWarnings
+        memberBlocks
+        memberPerfumes
+        memberRank
+        memberPoints
+        memberLikes
+        memberViews
+        deletedAt
+        createdAt
+        updatedAt
+      }
+      meLiked {
+        memberId
+        likeRefId
+        myFavorite
+      }
+    }
+  }
+`;
+
+/**************************
+ *         COMMENT        *
+ *************************/
+
+export const GET_COMMENTS = gql`
+  query GetComments($input: CommentsInquiry!) {
+    getComments(input: $input) {
+      list {
+        _id
+        commentStatus
+        commentGroup
+        commentContent
+        commentRefId
+        memberId
+        createdAt
+        updatedAt
+        memberData {
+          _id
+          memberType
+          memberStatus
+          memberAuthType
+          memberPhone
+          memberNick
+          memberFullName
+          memberImage
+          memberAddress
+          memberDesc
+          memberWarnings
+          memberBlocks
+          memberPerfumes
+          memberRank
+          memberPoints
+          memberLikes
+          memberViews
           deletedAt
           createdAt
           updatedAt
