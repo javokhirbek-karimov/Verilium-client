@@ -93,6 +93,20 @@ const PerfumePage: NextPage = () => {
 
   return (
     <Stack id={"perfume-list-page"}>
+        {/* ── HERO ── full-width, outside container */}
+        <section className="hero-section">
+          <div className="hero-content">
+            <span className="hero-label">Collection</span>
+            <Typography component="h1" className="hero-title">
+              Explore Our <span>Perfumes</span>
+            </Typography>
+            <Typography className="hero-sub">
+              Find your signature scent from our curated selection of fine
+              fragrances crafted by world-class perfumers.
+            </Typography>
+          </div>
+        </section>
+
       <Stack className={"container"}>
         {/* Header */}
         <Box className={"page-header"}>

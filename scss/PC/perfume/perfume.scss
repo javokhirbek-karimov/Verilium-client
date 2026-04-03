@@ -2,10 +2,117 @@
   #perfume-list-page {
     min-height: 100vh;
     background: var(--black-primary);
-    padding-top: 88px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding-bottom: 80px;
 
+    // ── HERO ──────────────────────────────────────────────────────────────────
+    .hero-section {
+      width: 100%;
+      height: 560px;
+      position: relative;
+      overflow: hidden;
+      background-image: url("/img/fiber/perfumes5.jpg");
+      background-size: cover;
+      background-position: center 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          160deg,
+          rgba(8, 7, 4, 0.8) 0%,
+          rgba(8, 7, 4, 0.5) 50%,
+          rgba(8, 7, 4, 0.85) 100%
+        );
+        z-index: 1;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 120px;
+        background: linear-gradient(to top, var(--black-primary), transparent);
+        z-index: 2;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        width: 1200px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .hero-label {
+          font-family: "Nunito", sans-serif;
+          font-size: 11px;
+          font-weight: 800;
+          color: var(--gold-primary);
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          opacity: 0.9;
+        }
+
+        .hero-title {
+          font-family: "Nunito", sans-serif;
+          font-size: 48px;
+          font-weight: 900;
+          color: #fff;
+          line-height: 1.15;
+          letter-spacing: -1px;
+          max-width: 620px;
+          position: relative;
+          display: inline-block;
+
+          span {
+            background: linear-gradient(
+              90deg,
+              var(--gold-primary),
+              var(--gold-light)
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 52px;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(
+              90deg,
+              var(--gold-primary),
+              var(--gold-light)
+            );
+          }
+        }
+
+        .hero-sub {
+          font-family: "Nunito", sans-serif;
+          font-size: 15px;
+          color: rgba(255, 255, 255, 0.65);
+          line-height: 1.7;
+          max-width: 520px;
+          margin-top: 6px;
+        }
+      }
+    }
+
     .container {
+      width: 1200px;
       display: flex;
       flex-direction: column;
       gap: 0;
@@ -32,7 +139,11 @@
           width: 52px;
           height: 3px;
           border-radius: 2px;
-          background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+          background: linear-gradient(
+            90deg,
+            var(--gold-primary),
+            var(--gold-light)
+          );
         }
       }
 
@@ -269,7 +380,6 @@
       }
     }
 
-
     // ── Main Content ──────────────────────────────────────────────────────────
     .main-content {
       flex: 1;
@@ -341,11 +451,13 @@
       background: var(--black-soft);
       border: 1px solid rgba(212, 175, 55, 0.1);
       cursor: pointer;
-      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease,
+        border-color 0.35s ease;
 
       &:hover {
         transform: translateY(-6px);
-        box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(212, 175, 55, 0.22);
+        box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55),
+          0 0 0 1px rgba(212, 175, 55, 0.22);
         border-color: rgba(212, 175, 55, 0.25);
 
         .card-title {
@@ -367,7 +479,11 @@
           right: 14px;
           padding: 4px 10px;
           border-radius: 8px;
-          background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+          background: linear-gradient(
+            135deg,
+            var(--gold-primary),
+            var(--gold-dark)
+          );
           font-family: "Nunito", sans-serif;
           font-size: 11px;
           font-weight: 700;

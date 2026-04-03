@@ -123,8 +123,13 @@ const Community: NextPage = ({ initialInput }: T) => {
       {/* ── HERO ── */}
       <section className="hero-section">
         <div className="hero-content">
+          <span className="hero-label">Community</span>
           <Typography component="h1" className="hero-title">
-            Community
+            Share Your <span>Fragrance</span> Story
+          </Typography>
+          <Typography className="hero-sub">
+            Tips, reviews, and scent stories from fellow fragrance lovers.
+            Discover, discuss, and inspire.
           </Typography>
         </div>
       </section>

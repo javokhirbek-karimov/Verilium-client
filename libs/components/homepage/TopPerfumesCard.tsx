@@ -101,7 +101,7 @@ const TopPerfumeCard = (props: TopPerfumeCardProps) => {
         component={"div"}
         className={"card-img"}
         style={{
-          backgroundImage: `url(${REACT_APP_API_URL}/${perfume?.perfumeImages?.[0]})`,
+          backgroundImage: `url(${REACT_APP_API_URL}/${perfume?.perfumeImages?.[0]}), url(/img/fiber/img1.jpg)`,
         }}
         onClick={() => pushDetailHandler(perfume._id)}
       >

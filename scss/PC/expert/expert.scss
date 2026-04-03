@@ -9,14 +9,119 @@
     width: 100%;
     min-height: 100vh;
     background: var(--black-primary);
-    padding: 120px 0 80px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    // ── HERO ──────────────────────────────────────────────────────────────────
+    .hero-section {
+      width: 100%;
+      height: 560px;
+      position: relative;
+      overflow: hidden;
+      background-image: url("/img/fiber/experts5.jpg");
+      background-size: cover;
+      background-position: center 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          160deg,
+          rgba(8, 7, 4, 0.78) 0%,
+          rgba(8, 7, 4, 0.55) 50%,
+          rgba(8, 7, 4, 0.82) 100%
+        );
+        z-index: 1;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 120px;
+        background: linear-gradient(to top, var(--black-primary), transparent);
+        z-index: 2;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        width: 1200px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .hero-label {
+          font-family: "Nunito", sans-serif;
+          font-size: 11px;
+          font-weight: 800;
+          color: var(--gold-primary);
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          opacity: 0.9;
+        }
+
+        .hero-title {
+          font-family: "Nunito", sans-serif;
+          font-size: 48px;
+          font-weight: 900;
+          color: #fff;
+          line-height: 1.15;
+          letter-spacing: -1px;
+          max-width: 640px;
+          position: relative;
+          display: inline-block;
+
+          span {
+            background: linear-gradient(
+              90deg,
+              var(--gold-primary),
+              var(--gold-light)
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 52px;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(
+              90deg,
+              var(--gold-primary),
+              var(--gold-light)
+            );
+          }
+        }
+
+        .hero-sub {
+          font-family: "Nunito", sans-serif;
+          font-size: 15px;
+          color: rgba(255, 255, 255, 0.65);
+          line-height: 1.7;
+          max-width: 520px;
+          margin-top: 6px;
+        }
+      }
+    }
 
     .container {
       width: 1200px;
       display: flex;
       flex-direction: column;
+      padding: 48px 0 80px;
     }
 
     // ── Filter bar ────────────────────────────────────────────────────────────

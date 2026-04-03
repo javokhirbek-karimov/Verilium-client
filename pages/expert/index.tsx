@@ -2,7 +2,7 @@ import React, { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import { NextPage } from "next";
 import useDeviceDetect from "../../libs/hooks/useDeviceDetect";
 import withLayoutBasic from "../../libs/components/layout/layoutBasic";
-import { Stack, Box, Button, Pagination } from "@mui/material";
+import { Stack, Box, Button, Pagination, Typography } from "@mui/material";
 import { Menu, MenuItem } from "@mui/material";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import ExpertCard from "../../libs/components/expert/ExpertCard";
@@ -164,6 +164,20 @@ const ExpertList: NextPage = ({ initialInput, ...props }: any) => {
   } else {
     return (
       <Stack className={"expert-list-page"}>
+        {/* ── HERO ── full-width, outside container */}
+        <section className="hero-section">
+          <div className="hero-content">
+            <span className="hero-label">Our Specialists</span>
+            <Typography component="h1" className="hero-title">
+              Meet the <span>Fragrance</span> Experts
+            </Typography>
+            <Typography className="hero-sub">
+              Discover and connect with passionate perfumers and certified scent
+              specialists from around the world.
+            </Typography>
+          </div>
+        </section>
+
         <Stack className={"container"}>
           <Stack className={"filter"}>
             <Box component={"div"} className={"left"}>

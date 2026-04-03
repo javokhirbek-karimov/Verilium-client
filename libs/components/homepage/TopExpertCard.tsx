@@ -20,7 +20,7 @@ const TopExpertCard = (props: TopExpertProps) => {
   if (device === "mobile") {
     return (
       <Stack className="top-expert-card">
-        <img src={expertImage} alt="" />
+        <img src={expertImage} alt="" onError={(e) => { e.currentTarget.src = "/img/profile/defaultUser.svg"; }} />
 
         <strong>{expert?.memberNick}</strong>
         <span>{expert?.memberType}</span>
@@ -29,7 +29,7 @@ const TopExpertCard = (props: TopExpertProps) => {
   } else {
     return (
       <Stack className="top-expert-card">
-        <img src={expertImage} alt="" />
+        <img src={expertImage} alt="" onError={(e) => { e.currentTarget.src = "/img/profile/defaultUser.svg"; }} />
 
         <strong>{expert?.memberNick}</strong>
         <span>{expert?.memberType}</span>

@@ -14,7 +14,7 @@ interface TopArticlesCardProps {
 const TopArticlesCard = ({ article, onClick }: TopArticlesCardProps) => {
   const image = article?.articleImage
     ? `${REACT_APP_API_URL}/${article.articleImage}`
-    : "/img/banner/default-article.jpg";
+    : "/img/community/communityImg.png";
 
   const memberImage = article?.memberData?.memberImage
     ? `${REACT_APP_API_URL}/${article.memberData.memberImage}`
@@ -48,7 +48,13 @@ const TopArticlesCard = ({ article, onClick }: TopArticlesCardProps) => {
 
         <Box className={"article-meta"}>
           <Box className={"author"}>
-            <img src={memberImage} alt={article?.memberData?.memberNick} />
+            <img
+              src={memberImage}
+              alt={article?.memberData?.memberNick}
+              onError={(e) => {
+                e.currentTarget.src = "/img/profile/defaultUser.svg";
+              }}
+            />
             <span>{article?.memberData?.memberNick ?? "Anonymous"}</span>
           </Box>
           <Box className={"stats"}>
