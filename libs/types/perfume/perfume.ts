@@ -36,6 +36,7 @@ export interface Perfume {
   perfumeImages: string[];
   perfumeDesc?: string;
   memberId: string;
+  createdAt?: Date;
   deletedAt?: Date;
   releasedAt?: Date;
   /** aggregation fields */

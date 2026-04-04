@@ -220,6 +220,102 @@ export const GET_PERFUME = gql`
   }
 `;
 
+export const GET_EXPERT_PERFUMES = gql`
+  query GetExpertPerfumes($input: ExpertPerfumesInquiry!) {
+    getExpertPerfumes(input: $input) {
+      list {
+        _id
+        perfumeType
+        perfumeStatus
+        perfumeScent
+        perfumeLongevity
+        perfumeSize
+        perfumeBrand
+        perfumeSeason
+        perfumeDiscount
+        perfumeTitle
+        perfumePrice
+        perfumeViews
+        perfumeLikes
+        perfumeComments
+        perfumeRank
+        perfumeImages
+        perfumeDesc
+        memberId
+        deletedAt
+        releasedAt
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
+export const GET_FAVORITES = gql`
+  query GetFavourites($input: OrdinaryInquiry!) {
+    getFavourites(input: $input) {
+      list {
+        _id
+        perfumeType
+        perfumeStatus
+        perfumeScent
+        perfumeLongevity
+        perfumeSize
+        perfumeBrand
+        perfumeSeason
+        perfumeDiscount
+        perfumeTitle
+        perfumePrice
+        perfumeViews
+        perfumeLikes
+        perfumeComments
+        perfumeRank
+        perfumeImages
+        perfumeDesc
+        memberId
+        deletedAt
+        releasedAt
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
+export const GET_VISITED = gql`
+  query GetVisited($input: OrdinaryInquiry!) {
+    getVisited(input: $input) {
+      list {
+        _id
+        perfumeType
+        perfumeStatus
+        perfumeScent
+        perfumeLongevity
+        perfumeSize
+        perfumeBrand
+        perfumeSeason
+        perfumeDiscount
+        perfumeTitle
+        perfumePrice
+        perfumeViews
+        perfumeLikes
+        perfumeComments
+        perfumeRank
+        perfumeImages
+        perfumeDesc
+        memberId
+        deletedAt
+        releasedAt
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
 /**************************
  *      BOARD-ARTICLE     *
  *************************/

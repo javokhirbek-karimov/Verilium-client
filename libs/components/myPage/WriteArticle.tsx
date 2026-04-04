@@ -1,0 +1,29 @@
+import React from "react";
+import { NextPage } from "next";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
+import { Stack, Typography } from "@mui/material";
+import dynamic from "next/dynamic";
+
+const TuiEditor = dynamic(() => import("../community/Teditor"), { ssr: false });
+
+const WriteArticle: NextPage = () => {
+  const device = useDeviceDetect();
+
+  if (device === "mobile") return <>WRITE ARTICLE MOBILE</>;
+
+  return (
+    <div id="write-article-page">
+      <Stack className="main-title-box">
+        <Typography className="main-title">Write an Article</Typography>
+        <Typography className="sub-title">
+          Share your fragrance knowledge with the community
+        </Typography>
+      </Stack>
+      <Stack className="editor-wrap">
+        <TuiEditor />
+      </Stack>
+    </div>
+  );
+};
+
+export default WriteArticle;

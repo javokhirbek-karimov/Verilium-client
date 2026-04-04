@@ -94,6 +94,52 @@ export const LIKE_TARGET_MEMBER = gql`
   }
 `;
 
+export const UPDATE_MEMBER = gql`
+  mutation UpdateMember($input: MemberUpdate!) {
+    updateMember(input: $input) {
+      _id
+      memberType
+      memberStatus
+      memberAuthType
+      memberPhone
+      memberNick
+      memberFullName
+      memberImage
+      memberAddress
+      memberDesc
+      memberPerfumes
+      memberArticles
+      memberFollowers
+      memberFollowings
+      memberPoints
+      memberLikes
+      memberViews
+      memberComments
+      memberRank
+      memberWarnings
+      memberBlocks
+      deletedAt
+      createdAt
+      updatedAt
+      accessToken
+      expertRequest
+      firstLoginAt
+      lastLoginAt
+      loginCount
+      meFollowed {
+        followingId
+        followerId
+        myFollowing
+      }
+      meLiked {
+        memberId
+        likeRefId
+        myFavorite
+      }
+    }
+  }
+`;
+
 /**************************
  *         COMMENT         *
  *************************/
@@ -129,6 +175,54 @@ export const UPDATE_COMMENT = gql`
 /**************************
  *         PERFUME         *
  *************************/
+
+export const CREATE_PERFUME = gql`
+  mutation CreatePerfume($input: PerfumeInput!) {
+    createPerfume(input: $input) {
+      _id
+      perfumeType
+      perfumeStatus
+      perfumeScent
+      perfumeLongevity
+      perfumeSeason
+      perfumeSize
+      perfumeBrand
+      perfumeTitle
+      perfumePrice
+      perfumeViews
+      perfumeLikes
+      perfumeImages
+      perfumeDesc
+      memberId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const UPDATE_PERFUME = gql`
+  mutation UpdatePerfume($input: PerfumeUpdate!) {
+    updatePerfume(input: $input) {
+      _id
+      perfumeType
+      perfumeStatus
+      perfumeScent
+      perfumeLongevity
+      perfumeSeason
+      perfumeSize
+      perfumeBrand
+      perfumeTitle
+      perfumePrice
+      perfumeViews
+      perfumeLikes
+      perfumeImages
+      perfumeDesc
+      memberId
+      createdAt
+      updatedAt
+    }
+  }
+`;
 
 export const LIKE_TARGET_PERFUME = gql`
   mutation LikeTargetMember($input: String!) {
@@ -205,6 +299,30 @@ export const CREATE_BOARD_ARTICLE = gql`
         accessToken
         expertRequest
       }
+    }
+  }
+`;
+
+/**************************
+ *       FOLLOW           *
+ *************************/
+
+export const SUBSCRIBE = gql`
+  mutation Subscribe($input: String!) {
+    subscribe(input: $input) {
+      followingId
+      followerId
+      myFollowing
+    }
+  }
+`;
+
+export const UNSUBSCRIBE = gql`
+  mutation Unsubscribe($input: String!) {
+    unsubscribe(input: $input) {
+      followingId
+      followerId
+      myFollowing
     }
   }
 `;

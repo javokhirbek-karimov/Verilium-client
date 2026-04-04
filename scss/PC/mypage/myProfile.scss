@@ -1,321 +1,255 @@
 #pc-wrap {
-	#my-page {
-		#my-profile-page {
-			width: 100%;
-			height: auto;
-			display: flex;
-			flex-direction: column;
-			gap: 20px;
-			.main-title-box {
-				width: auto;
-				height: auto;
-				flex-direction: row;
-				justify-content: space-between;
-				.right-box {
-					width: 315px;
-					.main-title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 30px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-						letter-spacing: 0.6px;
-						text-transform: capitalize;
-					}
-					.sub-title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 14px;
-						font-style: normal;
-						font-weight: 400;
-						line-height: 26px;
-					}
-				}
-			}
-			.top-box {
-				width: 100%;
-				padding: 30px;
-				margin-top: 35px;
-				gap: 25px;
-				border-radius: 12px;
-				border: 1px solid #c4c4c4;
-				background: #fff;
-				box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
-				.photo-box {
-					gap: 23px;
-					.title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 17px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-					}
-					.image-big-box {
-						flex-direction: row;
-						gap: 50px;
-						.image-box {
-							position: relative;
-							width: 194px;
-							height: 157px;
-							img {
-								width: 100%;
-								height: 100%;
-								object-fit: cover;
-								border-radius: 15px;
-								object-fit: cover;
-							}
-							.delete-box {
-								position: absolute;
-								top: 10px;
-								left: 10px;
-								width: 36px;
-								height: 32px;
-								background-color: #ffffff;
-								align-items: center;
-								justify-content: center;
-								border-radius: 12px;
-							}
-						}
-						.upload-big-box {
-							align-self: flex-end;
-							gap: 22px;
-							.labeler {
-								display: flex;
-								width: 210.023px;
-								height: 40.135px;
-								justify-content: center;
-								align-items: center;
-								cursor: pointer;
-								border-radius: 12px;
-								border: 1px solid #181a20;
-								p {
-									color: #181a20;
-									font-family: $font;
-									font-size: 13px;
-									font-style: normal;
-									font-weight: 600;
-									line-height: normal;
-								}
-							}
-							.upload-text {
-								color: #181a20;
-								font-family: $font;
-								font-size: 12px;
-								font-style: normal;
-								font-weight: 400;
-								line-height: 26px;
-							}
-						}
-					}
-				}
-				.small-input-box {
-					width: 100%;
-					height: auto;
-					flex-direction: row;
-					flex-wrap: wrap;
-					gap: 30px;
-					.input-box {
-						width: 48%;
-						gap: 10px;
-						.title {
-							color: #181a20;
-							font-family: $font;
-							font-size: 12px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
-						}
-						input {
-							height: 55px;
-							outline: none;
-							padding: 0px 15px;
-							border-radius: 8px;
-							border: 1px solid #ddd;
-							::placeholder {
-								color: #717171;
-								font-family: $font;
-								font-size: 12px;
-								font-style: normal;
-								font-weight: 400;
-								line-height: 26px;
-							}
-						}
-					}
-				}
-				.address-box {
-					gap: 10px;
-					.title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 12px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-					}
-					input {
-						height: 55px;
-						outline: none;
-						padding: 0px 15px;
-						border-radius: 8px;
-						border: 1px solid #ddd;
-						::placeholder {
-							color: #717171;
-							font-family: $font;
-							font-size: 12px;
-							font-style: normal;
-							font-weight: 400;
-							line-height: 26px;
-						}
-					}
-				}
-				.about-me-box {
-					gap: 10px;
-					.title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 12px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-					}
-					.about-textarea {
-						height: 170px;
-						padding: 20px 15px;
-						border-radius: 8px;
-						border: 1px solid #ddd;
-						color: #717171;
-						font-family: $font;
-						font-size: 12px;
-						font-style: normal;
-						font-weight: 400;
-						line-height: 26px;
-					}
-					.update-button {
-						display: flex;
-						width: 170px;
-						height: 38px;
-						justify-content: center;
-						align-items: center;
-						gap: 10px;
-						align-self: flex-end;
-						margin-top: 30px;
-						border-radius: 12px;
-						background-color: #000000;
-						p {
-							color: #fff;
-							font-family: $font;
-							font-size: 13px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
-						}
-					}
-					button:disabled {
-						background: #181a2045;
-					}
-				}
-			}
-			.bottom-box {
-				width: 100%;
-				padding: 30px;
-				gap: 25px;
-				border-radius: 12px;
-				border: 1px solid #c4c4c4;
-				background: #fff;
-				box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
-				.top-inner-box {
-					gap: 20px;
-					.title {
-						color: #181a20;
-						font-family: $font;
-						font-size: 15px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-					}
-					.old-password-box {
-						gap: 10px;
-						.title {
-							color: #181a20;
-							font-family: $font;
-							font-size: 12px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
-						}
-						input {
-							width: 50%;
-							height: 55px;
-							outline: none;
-							padding: 0px 15px;
-							border-radius: 8px;
-							border: 1px solid #ddd;
-							::placeholder {
-								color: #717171;
-								font-family: $font;
-								font-size: 12px;
-								font-style: normal;
-								font-weight: 400;
-								line-height: 26px;
-							}
-						}
-					}
-				}
-				.bottom-inner-box {
-					width: 100%;
-					flex-direction: row;
-					gap: 45px;
-					.new-password-box {
-						width: 100%;
-						gap: 10px;
-						.title {
-							color: #181a20;
-							font-family: $font;
-							font-size: 12px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
-						}
-						input {
-							height: 55px;
-							outline: none;
-							padding: 0px 15px;
-							border-radius: 8px;
-							border: 1px solid #ddd;
-							::placeholder {
-								color: #717171;
-								font-family: $font;
-								font-size: 12px;
-								font-style: normal;
-								font-weight: 400;
-								line-height: 26px;
-							}
-						}
-					}
-				}
-				.change-password {
-					display: flex;
-					width: 170px;
-					height: 38px;
-					justify-content: center;
-					align-items: center;
-					gap: 10px;
-					align-self: flex-end;
-					margin-top: 18px;
-					border-radius: 12px;
-					background-color: #000000;
-					p {
-						color: #fff;
-						font-family: $font;
-						font-size: 13px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: normal;
-					}
-				}
-			}
-		}
-	}
+  #my-page {
+    #my-profile-page {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      // ── Header ─────────────────────────────────────────────────────
+      .main-title-box {
+        margin-bottom: 28px;
+
+        .main-title {
+          font-family: "Nunito", sans-serif;
+          font-size: 26px;
+          font-weight: 800;
+          color: var(--text-primary);
+          letter-spacing: 0.4px;
+          position: relative;
+          display: inline-block;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 44px;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+          }
+        }
+
+        .sub-title {
+          font-family: "Nunito", sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          color: var(--text-secondary);
+          margin-top: 16px;
+          opacity: 0.7;
+        }
+      }
+
+      // ── Profile card ────────────────────────────────────────────────
+      .profile-card {
+        width: 100%;
+        background: var(--black-soft);
+        border: 1px solid rgba(212, 175, 55, 0.1);
+        border-radius: 16px;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        // ── Section label ──────────────────────────────────────────
+        .section-label {
+          font-family: "Nunito", sans-serif;
+          font-size: 11px;
+          font-weight: 800;
+          color: var(--text-secondary);
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          opacity: 0.5;
+          margin-bottom: 14px;
+        }
+
+        // ── Photo section ──────────────────────────────────────────
+        .photo-section {
+          display: flex;
+          flex-direction: column;
+
+          .photo-row {
+            flex-direction: row;
+            align-items: center;
+            gap: 28px;
+          }
+
+          .avatar-wrap {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            flex-shrink: 0;
+
+            .avatar-img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .upload-col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .upload-btn {
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+              height: 38px;
+              padding: 0 20px;
+              border-radius: 10px;
+              border: 1px solid rgba(212, 175, 55, 0.35);
+              cursor: pointer;
+              transition: background 0.2s ease, border-color 0.2s ease;
+              width: fit-content;
+
+              svg {
+                color: var(--gold-primary);
+                font-size: 16px;
+              }
+
+              span {
+                font-family: "Nunito", sans-serif;
+                font-size: 13px;
+                font-weight: 700;
+                color: var(--gold-primary);
+              }
+
+              &:hover {
+                background: rgba(212, 175, 55, 0.08);
+                border-color: rgba(212, 175, 55, 0.6);
+              }
+            }
+
+            .upload-hint {
+              font-family: "Nunito", sans-serif;
+              font-size: 11px;
+              color: var(--text-secondary);
+              opacity: 0.45;
+            }
+          }
+        }
+
+        // ── Fields section ─────────────────────────────────────────
+        .fields-section {
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+
+          .fields-row {
+            flex-direction: row;
+            gap: 20px;
+          }
+
+          .field-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            &.full-width {
+              width: 100%;
+              flex: unset;
+            }
+
+            .field-label {
+              font-family: "Nunito", sans-serif;
+              font-size: 11px;
+              font-weight: 700;
+              color: var(--text-secondary);
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              opacity: 0.6;
+            }
+
+            .field-input {
+              width: 100%;
+              height: 46px;
+              background: rgba(255, 255, 255, 0.04);
+              border: 1px solid rgba(212, 175, 55, 0.15);
+              border-radius: 10px;
+              padding: 0 14px;
+              outline: none;
+              color: var(--text-primary);
+              font-family: "Nunito", sans-serif;
+              font-size: 14px;
+              transition: border-color 0.2s ease;
+
+              &::placeholder {
+                color: rgba(255, 255, 255, 0.2);
+              }
+
+              &:focus {
+                border-color: rgba(212, 175, 55, 0.45);
+              }
+            }
+
+            .field-textarea {
+              width: 100%;
+              height: 120px;
+              background: rgba(255, 255, 255, 0.04);
+              border: 1px solid rgba(212, 175, 55, 0.15);
+              border-radius: 10px;
+              padding: 12px 14px;
+              outline: none;
+              resize: none;
+              color: var(--text-primary);
+              font-family: "Nunito", sans-serif;
+              font-size: 14px;
+              line-height: 1.6;
+              transition: border-color 0.2s ease;
+
+              &::placeholder {
+                color: rgba(255, 255, 255, 0.2);
+              }
+
+              &:focus {
+                border-color: rgba(212, 175, 55, 0.45);
+              }
+            }
+          }
+        }
+
+        // ── Action row ─────────────────────────────────────────────
+        .action-row {
+          flex-direction: row;
+          justify-content: flex-end;
+          padding-top: 4px;
+          border-top: 1px solid rgba(212, 175, 55, 0.08);
+
+          .save-btn {
+            height: 44px;
+            padding: 0 36px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.2);
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+            p {
+              font-family: "Nunito", sans-serif;
+              font-size: 14px;
+              font-weight: 800;
+              color: var(--black-primary);
+              text-transform: none;
+            }
+
+            &:hover {
+              box-shadow: 0 6px 26px rgba(212, 175, 55, 0.35);
+              transform: translateY(-1px);
+            }
+
+            &:disabled {
+              opacity: 0.35;
+              transform: none;
+              box-shadow: none;
+            }
+          }
+        }
+      }
+    }
+  }
 }

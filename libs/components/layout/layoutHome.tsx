@@ -81,7 +81,7 @@ const withLayoutMain = (Component: any) => {
                 zIndex: 0,
               }}
             >
-              <source src="/img/banner/header1.mp4" type="video/mp4" />
+              <source src="/img/banner/header1.MOV" type="video/mp4" />
             </video>
 
             <div

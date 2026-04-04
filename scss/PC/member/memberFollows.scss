@@ -1,172 +1,211 @@
 #pc-wrap {
-	#member-follows-page {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		.main-title-box {
-			width: 100%;
-			height: auto;
-			flex-direction: row;
-			justify-content: space-between;
-			.right-box {
-				width: 315px;
-				.main-title {
-					color: #181a20;
-					font-family: $font;
-					font-size: 30px;
-					font-style: normal;
-					font-weight: 600;
-					line-height: normal;
-					letter-spacing: 0.6px;
-					text-transform: capitalize;
-				}
-			}
-		}
-		.follows-list-box {
-			width: 100%;
-			margin-top: 85px;
-			gap: 15px;
-			.listing-title-box {
-				width: 100%;
-				height: auto;
-				flex-direction: row;
-				gap: 110px;
-				padding: 18px 34px 18px 33px;
-				border-radius: 12px;
-				background: #f6f6f6;
-				justify-content: space-between;
-				.title-text {
-					color: #181a20;
-					font-family: $font;
-					font-size: 15px;
-					font-style: normal;
-					font-weight: 600;
-					line-height: normal;
-				}
-			}
-			.follows-card-box {
-				padding-right: 30px;
-				padding-bottom: 5px;
-				width: 100%;
-				height: auto;
-				flex-direction: row;
-				align-items: center;
-				gap: 10px;
-				border-bottom: 1px solid #ddd;
-				.info {
-					width: 300px;
-					display: flex;
-					flex-direction: row;
-					align-items: center;
-					cursor: pointer;
-					.image-box {
-						width: 110px;
-						height: 110px;
-						overflow: hidden;
-						margin-right: 25px;
-						img {
-							width: 100%;
-							height: 100%;
-							object-fit: cover;
-							border-radius: 50%;
-						}
-					}
-					.information-box {
-						width: auto;
-						height: auto;
-						padding: 5px 0px;
-						.name {
-							color: #181a20;
-							font-family: $font;
-							font-size: 13px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
-						}
-					}
-				}
-				.details-box {
-					width: 300px;
-					display: flex;
-					flex-direction: row;
-					justify-content: space-between;
-					.info-box {
-						display: flex;
-						align-items: center;
-						img {
-							width: 24px;
-							height: 24px;
-						}
-						svg {
-							width: 24px;
-							height: 24px;
-							cursor: pointer;
-						}
-						p {
-							color: #181a20;
-							font-family: $font;
-							font-size: 15px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
-						}
-						span {
-							margin-left: 4px;
-							color: #181a20;
-							font-family: $font;
-							font-size: 13px;
-							font-style: normal;
-							font-weight: 600;
-							line-height: normal;
-						}
-					}
-				}
-				.action-box {
-					width: 300px;
-					height: 100%;
-					flex-direction: row;
-					align-items: center;
-					justify-content: flex-end;
-					gap: 20px;
-					button {
-						border: 1px solid #b9b9b9;
-						color: #181a20;
-						font-family: $font;
-						font-size: 14px;
-						font-style: normal;
-						font-weight: 400;
-						line-height: normal;
-					}
-					p {
-						color: #b9b9b9;
-						font-family: $font;
-						font-size: 14px;
-						font-style: italic;
-						font-weight: 400;
-						line-height: normal;
-					}
-				}
-			}
-		}
-		.pagination-config {
-			width: 100%;
-			height: auto;
-			justify-content: center;
-			align-items: center;
-			margin-top: 30px;
-			.total-result {
-				p {
-					color: #181a20;
-					text-align: center;
-					font-family: $font;
-					font-size: 14px;
-					font-style: normal;
-					font-weight: 400;
-					line-height: 26px;
-				}
-			}
-		}
-	}
+  #member-follows-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    .main-title-box {
+      margin-bottom: 28px;
+
+      .main-title {
+        font-family: "Nunito", sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--text-primary);
+        position: relative;
+        display: inline-block;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -8px;
+          left: 0;
+          width: 44px;
+          height: 3px;
+          border-radius: 2px;
+          background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+        }
+      }
+
+      .sub-title {
+        font-family: "Nunito", sans-serif;
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-top: 16px;
+        opacity: 0.7;
+      }
+    }
+
+    // Empty state
+    .follows-empty {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 80px 0;
+
+      .empty-icon {
+        font-size: 44px;
+        color: var(--text-secondary);
+        opacity: 0.2;
+      }
+
+      .empty-text {
+        font-family: "Nunito", sans-serif;
+        font-size: 14px;
+        color: var(--text-secondary);
+        opacity: 0.4;
+      }
+    }
+
+    // Table container
+    .follows-list-box {
+      width: 100%;
+      background: var(--black-soft);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      gap: 0;
+
+      .listing-title-box {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 12px 28px;
+        background: rgba(212, 175, 55, 0.03);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.07);
+
+        .title-text {
+          font-family: "Nunito", sans-serif;
+          font-size: 10px;
+          font-weight: 800;
+          color: var(--text-secondary);
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          opacity: 0.45;
+        }
+      }
+
+      .follows-card-box {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 28px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.06);
+        transition: background 0.2s ease;
+
+        &:last-child { border-bottom: none; }
+        &:hover { background: rgba(212, 175, 55, 0.03); }
+
+        .info {
+          width: 280px;
+          flex-direction: row;
+          align-items: center;
+          gap: 14px;
+          cursor: pointer;
+
+          .image-box {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            flex-shrink: 0;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .information-box {
+            .name {
+              font-family: "Nunito", sans-serif;
+              font-size: 13px;
+              font-weight: 700;
+              color: var(--text-primary);
+            }
+          }
+        }
+
+        .details-box {
+          width: 240px;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .info-box {
+            flex-direction: row;
+            align-items: center;
+            gap: 6px;
+
+            svg { color: var(--text-secondary); opacity: 0.5; }
+
+            p, span {
+              font-family: "Nunito", sans-serif;
+              font-size: 13px;
+              color: var(--text-secondary);
+            }
+          }
+        }
+
+        .action-box {
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+
+          button {
+            height: 34px;
+            padding: 0 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            font-family: "Nunito", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gold-primary);
+            transition: background 0.2s ease;
+
+            &:hover {
+              background: rgba(212, 175, 55, 0.1);
+            }
+          }
+
+          p {
+            font-family: "Nunito", sans-serif;
+            font-size: 12px;
+            color: var(--text-secondary);
+            opacity: 0.4;
+          }
+        }
+      }
+    }
+
+    .pagination-config {
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 24px;
+
+      .MuiPaginationItem-root {
+        font-family: "Nunito", sans-serif;
+        color: var(--text-secondary);
+        border-color: rgba(212, 175, 55, 0.15);
+
+        &:hover { background: rgba(212, 175, 55, 0.08); }
+
+        &.Mui-selected {
+          background: var(--gold-primary);
+          color: var(--black-primary);
+          font-weight: 800;
+        }
+      }
+
+      .total-result p {
+        font-family: "Nunito", sans-serif;
+        font-size: 12px;
+        color: var(--text-secondary);
+        opacity: 0.45;
+      }
+    }
+  }
 }
