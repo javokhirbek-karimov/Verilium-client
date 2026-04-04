@@ -60,7 +60,15 @@ const MyMenu = () => {
         />
         <Stack className="profile-info">
           <Typography className="nick">{user?.memberNick}</Typography>
-          <Typography className="type">{user?.memberType}</Typography>
+          {user?.memberType === "ADMIN" ? (
+            <a href="/_admin/users" target={"_blank"}>
+              <Typography className={"view-list"}>
+                {user?.memberType}
+              </Typography>
+            </a>
+          ) : (
+            <Typography className={"view-list"}>{user?.memberType}</Typography>
+          )}
         </Stack>
       </Stack>
 
@@ -143,10 +151,7 @@ const MyMenu = () => {
           icon={<ManageAccountsOutlinedIcon fontSize="small" />}
           label="My Profile"
         />
-        <Stack
-          className={`menu-item logout`}
-          onClick={logoutHandler}
-        >
+        <Stack className={`menu-item logout`} onClick={logoutHandler}>
           <LogoutIcon fontSize="small" className="item-icon" />
           <Typography className="item-label">Logout</Typography>
         </Stack>
@@ -164,7 +169,10 @@ interface MenuItemProps {
 }
 
 const MenuItem = ({ href, active, icon, label }: MenuItemProps) => (
-  <Link href={{ pathname: "/mypage", query: { category: href } }} scroll={false}>
+  <Link
+    href={{ pathname: "/mypage", query: { category: href } }}
+    scroll={false}
+  >
     <Stack className={`menu-item ${active ? "active" : ""}`}>
       <span className="item-icon">{icon}</span>
       <Typography className="item-label">{label}</Typography>

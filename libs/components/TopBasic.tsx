@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useRouter, withRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { getJwtToken, logOut, updateUserInfo } from "../auth";
-import { Stack, Box } from "@mui/material";
+import { Stack, Box, Popover, Typography } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import { alpha, styled } from "@mui/material/styles";
@@ -27,6 +27,8 @@ const TopBasic = () => {
   const drop = Boolean(anchorEl2);
   const [logoutAnchor, setLogoutAnchor] = useState<null | HTMLElement>(null);
   const logoutOpen = Boolean(logoutAnchor);
+  const [notifAnchor, setNotifAnchor] = useState<null | HTMLElement>(null);
+  const notifOpen = Boolean(notifAnchor);
 
   useEffect(() => {
     if (localStorage.getItem("locale") === null) {
@@ -141,10 +143,50 @@ const TopBasic = () => {
 
           <Box component={"div"} className={"user-box"}>
             {user?._id && (
-              <button className={"icon-btn"} aria-label="Notifications">
-                <NotificationsOutlinedIcon />
-                <span className={"notif-dot"} />
-              </button>
+              <>
+                <button
+                  className={"icon-btn"}
+                  aria-label="Notifications"
+                  onClick={(e) => setNotifAnchor(e.currentTarget)}
+                >
+                  <NotificationsOutlinedIcon />
+                  <span className={"notif-dot"} />
+                </button>
+
+                <Popover
+                  open={notifOpen}
+                  anchorEl={notifAnchor}
+                  onClose={() => setNotifAnchor(null)}
+                  anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                  transformOrigin={{ vertical: "top", horizontal: "right" }}
+                  PaperProps={{
+                    sx: {
+                      mt: "10px",
+                      width: 320,
+                      background: "#121212",
+                      border: "1px solid rgba(212,175,55,0.2)",
+                      borderRadius: "14px",
+                      boxShadow: "0 12px 40px rgba(0,0,0,0.6)",
+                      overflow: "hidden",
+                    },
+                  }}
+                >
+                  {/* Header */}
+                  <Box sx={{ px: 2.5, py: 2, borderBottom: "1px solid rgba(212,175,55,0.1)" }}>
+                    <Typography sx={{ fontFamily: "Nunito, sans-serif", fontSize: 14, fontWeight: 800, color: "#fff" }}>
+                      Notifications
+                    </Typography>
+                  </Box>
+
+                  {/* Empty state */}
+                  <Box sx={{ py: 5, display: "flex", flexDirection: "column", alignItems: "center", gap: 1 }}>
+                    <NotificationsOutlinedIcon sx={{ fontSize: 32, color: "rgba(212,175,55,0.3)" }} />
+                    <Typography sx={{ fontFamily: "Nunito, sans-serif", fontSize: 13, color: "rgba(255,255,255,0.3)" }}>
+                      No notifications yet
+                    </Typography>
+                  </Box>
+                </Popover>
+              </>
             )}
 
             <div className={"lan-box"}>

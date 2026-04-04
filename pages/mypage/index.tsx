@@ -12,8 +12,8 @@ import MyFavorites from "../../libs/components/myPage/MyFavourite";
 import RecentlyVisited from "../../libs/components/myPage/RecentlyVisited";
 import MyArticles from "../../libs/components/myPage/MyArticles";
 import WriteArticle from "../../libs/components/myPage/WriteArticle";
-import MemberFollowers from "../../libs/components/member/MemberFollowers";
-import MemberFollowings from "../../libs/components/member/MemberFollowings";
+import MemberFollowers from "../../libs/components/myPage/MemberFollowers";
+import MemberFollowings from "../../libs/components/myPage/MemberFollowings";
 import { useMutation, useReactiveVar } from "@apollo/client";
 import { userVar } from "../../apollo/store";
 import {

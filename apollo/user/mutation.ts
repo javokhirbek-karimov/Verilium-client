@@ -344,3 +344,49 @@ export const LIKE_TARGET_BOARD_ARTICLE = gql`
     }
   }
 `;
+
+/**************************
+ *            CS          *
+ *************************/
+
+export const CREATE_FAQ = gql`
+  mutation CreateFaq($input: FaqInput!) {
+    createFaq(input: $input) {
+      _id
+      faqCategory
+      faqStatus
+      faqQuestion
+      faqAnswer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const UPDATE_FAQ = gql`
+  mutation UpdateFaq($input: FaqUpdate!) {
+    updateFaq(input: $input) {
+      _id
+      faqCategory
+      faqStatus
+      faqQuestion
+      faqAnswer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const REMOVE_FAQ_FROM_DB = gql`
+  mutation RemoveFaqFromDB($input: String!) {
+    removeFaqFromDB(faqId: $input) {
+      _id
+      faqCategory
+      faqStatus
+      faqQuestion
+      faqAnswer
+      createdAt
+      updatedAt
+    }
+  }
+`;

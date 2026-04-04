@@ -468,3 +468,45 @@ export const GET_COMMENTS = gql`
     }
   }
 `;
+
+/**************************
+ *            CS          *
+ *************************/
+
+export const GET_ALL_FAQS_BY_ADMIN = gql`
+  query GetAllFaqsByAdmin($input: FaqInquiry!) {
+    getAllFaqsByAdmin(input: $input) {
+      list {
+        _id
+        faqCategory
+        faqStatus
+        faqQuestion
+        faqAnswer
+        createdAt
+        updatedAt
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
+export const GET_FAQS = gql`
+  query GetFaqs {
+    getFaqs(input: null) {
+      list {
+        _id
+        faqCategory
+        faqStatus
+        faqQuestion
+        faqAnswer
+        createdAt
+        updatedAt
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
