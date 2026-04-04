@@ -250,6 +250,97 @@
           }
         }
       }
+
+      // ── Become Expert card ──────────────────────────────────────────
+      .expert-request-card {
+        margin-top: 24px;
+        border-radius: 16px;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        background: linear-gradient(
+          135deg,
+          rgba(212, 175, 55, 0.06) 0%,
+          rgba(212, 175, 55, 0.02) 100%
+        );
+        overflow: hidden;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            var(--gold-primary),
+            transparent
+          );
+        }
+
+        .expert-request-inner {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
+          padding: 28px 32px;
+
+          .expert-request-text {
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+
+            .expert-request-title {
+              font-family: "Nunito", sans-serif;
+              font-size: 18px;
+              font-weight: 800;
+              color: var(--text-primary);
+              letter-spacing: 0.2px;
+            }
+
+            .expert-request-desc {
+              font-family: "Nunito", sans-serif;
+              font-size: 13px;
+              color: var(--text-secondary);
+              line-height: 1.6;
+              max-width: 480px;
+              opacity: 0.75;
+            }
+          }
+
+          .expert-request-btn {
+            flex-shrink: 0;
+            height: 44px;
+            padding: 0 24px;
+            border-radius: 10px;
+            background: linear-gradient(
+              135deg,
+              var(--gold-primary),
+              var(--gold-light)
+            );
+            border: none;
+            cursor: pointer;
+            transition: box-shadow 0.25s ease, transform 0.2s ease;
+            white-space: nowrap;
+
+            p {
+              font-family: "Nunito", sans-serif;
+              font-size: 13px;
+              font-weight: 700;
+              color: var(--black-primary);
+              text-transform: none;
+              letter-spacing: 0.2px;
+            }
+
+            &:hover {
+              box-shadow: 0 6px 24px rgba(212, 175, 55, 0.35);
+              transform: translateY(-1px);
+            }
+          }
+        }
+      }
     }
   }
 }
+

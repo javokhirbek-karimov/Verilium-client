@@ -39,14 +39,34 @@
           line-height: 1.2;
         }
 
-        .type {
+        .role-badge {
+          display: inline-block;
           font-family: "Nunito", sans-serif;
-          font-size: 10px;
-          font-weight: 700;
-          color: var(--gold-primary);
+          font-size: 9px;
+          font-weight: 800;
           text-transform: uppercase;
-          letter-spacing: 1px;
-          opacity: 0.8;
+          letter-spacing: 1.2px;
+          padding: 2px 8px;
+          border-radius: 20px;
+          width: fit-content;
+
+          &.user {
+            color: rgba(180, 180, 200, 0.9);
+            background: rgba(180, 180, 200, 0.1);
+            border: 1px solid rgba(180, 180, 200, 0.2);
+          }
+
+          &.expert {
+            color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+          }
+
+          &.admin {
+            color: #c084fc;
+            background: rgba(192, 132, 252, 0.12);
+            border: 1px solid rgba(192, 132, 252, 0.25);
+          }
         }
       }
     }

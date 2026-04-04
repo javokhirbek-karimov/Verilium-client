@@ -62,18 +62,20 @@ const MyMenu = () => {
           <Typography className="nick">{user?.memberNick}</Typography>
           {user?.memberType === "ADMIN" ? (
             <a href="/_admin/users" target={"_blank"}>
-              <Typography className={"view-list"}>
+              <Typography className={`role-badge admin`}>
                 {user?.memberType}
               </Typography>
             </a>
           ) : (
-            <Typography className={"view-list"}>{user?.memberType}</Typography>
+            <Typography className={`role-badge ${user?.memberType?.toLowerCase()}`}>
+              {user?.memberType}
+            </Typography>
           )}
         </Stack>
       </Stack>
 
-      {/* ── Collection (EXPERT only) ─────────────────────────────────── */}
-      {(user?.memberType === "EXPERT" || user?.memberType === "AGENT") && (
+      {/* ── Collection (EXPERT / ADMIN only) ────────────────────────── */}
+      {(user?.memberType === "EXPERT" || user?.memberType === "ADMIN") && (
         <Stack className="menu-section">
           <Typography className="section-label">Collection</Typography>
           <MenuItem
@@ -108,32 +110,36 @@ const MyMenu = () => {
         />
       </Stack>
 
-      {/* ── Community ───────────────────────────────────────────────── */}
-      <Stack className="menu-section">
-        <Typography className="section-label">Community</Typography>
-        <MenuItem
-          href="myArticles"
-          active={isActive("myArticles")}
-          icon={<ArticleOutlinedIcon fontSize="small" />}
-          label="My Articles"
-        />
-        <MenuItem
-          href="writeArticle"
-          active={isActive("writeArticle")}
-          icon={<EditNoteIcon fontSize="small" />}
-          label="Write Article"
-        />
-      </Stack>
+      {/* ── Community (EXPERT / ADMIN only) ─────────────────────────── */}
+      {(user?.memberType === "EXPERT" || user?.memberType === "ADMIN") && (
+        <Stack className="menu-section">
+          <Typography className="section-label">Community</Typography>
+          <MenuItem
+            href="myArticles"
+            active={isActive("myArticles")}
+            icon={<ArticleOutlinedIcon fontSize="small" />}
+            label="My Articles"
+          />
+          <MenuItem
+            href="writeArticle"
+            active={isActive("writeArticle")}
+            icon={<EditNoteIcon fontSize="small" />}
+            label="Write Article"
+          />
+        </Stack>
+      )}
 
       {/* ── Social ──────────────────────────────────────────────────── */}
       <Stack className="menu-section">
         <Typography className="section-label">Social</Typography>
-        <MenuItem
-          href="followers"
-          active={isActive("followers")}
-          icon={<PeopleAltOutlinedIcon fontSize="small" />}
-          label="My Followers"
-        />
+        {(user?.memberType === "EXPERT" || user?.memberType === "ADMIN") && (
+          <MenuItem
+            href="followers"
+            active={isActive("followers")}
+            icon={<PeopleAltOutlinedIcon fontSize="small" />}
+            label="My Followers"
+          />
+        )}
         <MenuItem
           href="followings"
           active={isActive("followings")}

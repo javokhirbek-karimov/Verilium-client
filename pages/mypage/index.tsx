@@ -50,6 +50,13 @@ const MyPage: NextPage = () => {
     if (!user._id) router.push("/").then();
   }, [user]);
 
+  useEffect(() => {
+    const expertOnlyRoutes = ["myArticles", "writeArticle", "followers", "addPerfume", "myPerfumes"];
+    if (user._id && user.memberType === "USER" && expertOnlyRoutes.includes(category)) {
+      router.replace({ pathname: "/mypage", query: { category: "myProfile" } }).then();
+    }
+  }, [user, category]);
+
   /** HANDLERS **/
   const subscribeHandler = async (id: string, refetch: any, query: any) => {
     try {

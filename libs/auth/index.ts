@@ -132,7 +132,6 @@ const requestSignUpJwtToken = async ({
           memberNick: nick,
           memberPassword: password,
           memberPhone: phone,
-          memberType: type,
         },
       },
       fetchPolicy: "network-only",

@@ -19,7 +19,7 @@ export const SIGN_UP = gql`
       memberDesc
       memberWarnings
       memberBlocks
-      memberPrerfumes
+      memberPerfumes
       memberRank
       memberArticles
       memberPoints

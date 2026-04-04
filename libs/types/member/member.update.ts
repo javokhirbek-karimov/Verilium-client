@@ -1,4 +1,4 @@
-import { MemberStatus, MemberType } from "../../enums/member.enum";
+import { MemberRequestExpert, MemberStatus, MemberType } from "../../enums/member.enum";
 
 export interface MemberUpdate {
   _id: string;
@@ -12,6 +12,7 @@ export interface MemberUpdate {
   memberAddress?: string;
   memberDesc?: string;
   deletedAt?: Date;
+  expertRequest?: MemberRequestExpert;
 }
 
 export interface AdminMemberUpdate {

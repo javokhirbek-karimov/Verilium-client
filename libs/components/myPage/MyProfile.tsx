@@ -8,6 +8,7 @@ import { getJwtToken, updateStorage, updateUserInfo } from "../../auth";
 import { useMutation, useReactiveVar } from "@apollo/client";
 import { userVar } from "../../../apollo/store";
 import { MemberUpdate } from "../../types/member/member.update";
+import { MemberRequestExpert } from "../../enums/member.enum";
 import { UPDATE_MEMBER } from "../../../apollo/user/mutation";
 import { sweetMixinErrorAlert, sweetMixinSuccessAlert } from "../../sonner";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
@@ -87,10 +88,7 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
     }
   }, [updateData]);
 
-  const isDisabled = () =>
-    !updateData.memberNick ||
-    !updateData.memberPhone ||
-    !updateData.memberAddress;
+  const isDisabled = () => !updateData.memberNick;
 
   if (device === "mobile") return <>MY PROFILE PAGE MOBILE</>;
 
@@ -225,6 +223,38 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
           </Button>
         </Stack>
       </Stack>
+
+      {/* ── Become Expert (USER only) ────────────────────────────────── */}
+      {user?.memberType === "USER" && (
+        <Stack className="expert-request-card">
+          <Stack className="expert-request-inner">
+            <Stack className="expert-request-text">
+              <Typography className="expert-request-title">
+                Become an Expert
+              </Typography>
+              <Typography className="expert-request-desc">
+                Share your fragrance knowledge, write articles, and build a following. Send a request to become a verified Expert.
+              </Typography>
+            </Stack>
+            <Button
+              className="expert-request-btn"
+              onClick={async () => {
+                try {
+                  if (!user._id) throw new Error(Messages.error2);
+                  await updateMember({
+                    variables: { input: { _id: user._id, expertRequest: MemberRequestExpert.REQUESTED } },
+                  });
+                  await sweetMixinSuccessAlert("Expert request sent successfully!");
+                } catch (err: any) {
+                  sweetMixinErrorAlert(err.message).then();
+                }
+              }}
+            >
+              <Typography>Request Expert Status</Typography>
+            </Button>
+          </Stack>
+        </Stack>
+      )}
     </div>
   );
 };
