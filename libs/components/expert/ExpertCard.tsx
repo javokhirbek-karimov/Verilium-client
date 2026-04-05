@@ -46,7 +46,7 @@ const ExpertCard = (props: ExpertCardProps) => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div>{expert?.memberProperties} properties</div>
+            <div>{expert?.memberPerfumes} perfumes</div>
           </Box>
         </Link>
 
@@ -55,7 +55,7 @@ const ExpertCard = (props: ExpertCardProps) => {
             <Link
               href={{
                 pathname: "/expert/detail",
-                query: { expertId: "id" },
+                query: { expertId: expert?._id },
               }}
             >
               <strong>{expert?.memberFullName ?? expert?.memberNick}</strong>

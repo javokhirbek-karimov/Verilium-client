@@ -33,7 +33,7 @@
 
         .nick {
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           font-weight: 800;
           color: var(--text-primary);
           line-height: 1.2;
@@ -42,7 +42,7 @@
         .role-badge {
           display: inline-block;
           font-family: "Nunito", sans-serif;
-          font-size: 9px;
+          font-size: 11px;
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 1.2px;
@@ -79,7 +79,7 @@
 
       .section-label {
         font-family: "Nunito", sans-serif;
-        font-size: 9px;
+        font-size: 11px;
         font-weight: 800;
         color: var(--text-secondary);
         text-transform: uppercase;
@@ -109,13 +109,13 @@
         flex-shrink: 0;
 
         svg {
-          font-size: 17px;
+          font-size: 20px;
         }
       }
 
       .item-label {
         font-family: "Nunito", sans-serif;
-        font-size: 13px;
+        font-size: 16px;
         font-weight: 600;
         color: var(--text-secondary);
         line-height: 1;
@@ -229,7 +229,7 @@
 
         .hero-label {
           font-family: "Nunito", sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 800;
           color: var(--gold-primary);
           text-transform: uppercase;
@@ -239,7 +239,7 @@
 
         .hero-title {
           font-family: "Nunito", sans-serif;
-          font-size: 44px;
+          font-size: 53px;
           font-weight: 900;
           color: #fff;
           line-height: 1.15;
@@ -276,7 +276,7 @@
 
         .hero-sub {
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           color: rgba(255, 255, 255, 0.6);
           line-height: 1.7;
           max-width: 480px;

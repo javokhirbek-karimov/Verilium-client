@@ -45,17 +45,17 @@ $radius       : 12px;
 
     &-icon {
       color: $sidebar-active !important;
-      font-size: 22px !important;
+      font-size: 26px !important;
       filter: drop-shadow(0 0 6px rgba(233,44,40,0.4));
     }
     &-text {
-      font-size: 17px;
+      font-size: 20px;
       font-weight: 800;
       color: $text-white;
       letter-spacing: -0.5px;
     }
     &-badge {
-      font-size: 9px;
+      font-size: 11px;
       font-weight: 700;
       background: linear-gradient(135deg, $sidebar-active, #c0392b);
       color: #fff;
@@ -85,13 +85,13 @@ $radius       : 12px;
     background: rgba(0,0,0,0.2);
 
     &-name {
-      font-size: 13px !important;
+      font-size: 16px !important;
       font-weight: 600 !important;
       color: $text-white !important;
       line-height: 1.3 !important;
     }
     &-role {
-      font-size: 11px !important;
+      font-size: 13px !important;
       color: $text-muted !important;
       line-height: 1.3 !important;
     }
@@ -163,7 +163,7 @@ $radius       : 12px;
     }
     &-label {
       flex: 1;
-      font-size: 13.5px;
+      font-size: 16px;
       font-weight: 500;
       color: inherit;
       letter-spacing: 0.1px;
@@ -186,7 +186,7 @@ $radius       : 12px;
   &__sub {
     display: block;
     padding: 8px 12px 8px 20px;
-    font-size: 13px;
+    font-size: 16px;
     color: $text-muted;
     border-radius: 8px;
     cursor: pointer;
@@ -247,7 +247,7 @@ $radius       : 12px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 
   &__page {
-    font-size: 14px !important;
+    font-size: 17px !important;
     font-weight: 600 !important;
     color: #64748b !important;
     text-transform: capitalize;
@@ -255,7 +255,7 @@ $radius       : 12px;
   }
 
   &__back {
-    font-size: 13px;
+    font-size: 16px;
     color: #64748b;
     cursor: pointer;
     padding: 6px 14px;
@@ -278,7 +278,7 @@ $radius       : 12px;
 // ─── Reusable content blocks ─────────────────────────────────────────────────
 .content {
   .tit {
-    font-size: 22px !important;
+    font-size: 26px !important;
     font-weight: 700 !important;
     color: #0f172a !important;
   }
@@ -300,7 +300,7 @@ $radius       : 12px;
     .MuiOutlinedInput-root {
       height: 40px;
       background: #fff;
-      font-size: 13px;
+      font-size: 16px;
       border-radius: 8px;
       color: #1e293b;
 
@@ -340,7 +340,7 @@ $radius       : 12px;
         display: flex;
         align-items: center;
         padding: 0 16px;
-        font-size: 13px;
+        font-size: 16px;
         color: #94a3b8;
         cursor: pointer;
         border-bottom: 2px solid transparent;
@@ -357,7 +357,7 @@ $radius       : 12px;
     thead tr { background: #f8fafc; }
 
     thead th {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       color: #64748b;
       text-transform: uppercase;
@@ -367,7 +367,7 @@ $radius       : 12px;
     }
 
     tbody td {
-      font-size: 13.5px;
+      font-size: 16px;
       color: #475569;
       padding: 12px 16px;
       border-bottom: 1px solid #f8fafc;
@@ -389,13 +389,13 @@ $radius       : 12px;
     }
 
     .no-data {
-      font-size: 14px;
+      font-size: 17px;
       color: #94a3b8;
     }
 
     .MuiTablePagination-root {
       border-top: 1px solid #f1f5f9;
-      font-size: 13px;
+      font-size: 16px;
       color: #64748b;
     }
   }
@@ -404,7 +404,7 @@ $radius       : 12px;
 // ─── Status badges ────────────────────────────────────────────────────────────
 .badge {
   padding: 3px 10px !important;
-  font-size: 11px !important;
+  font-size: 13px !important;
   font-weight: 600 !important;
   border-radius: 20px !important;
   text-transform: uppercase;
@@ -451,7 +451,7 @@ $radius       : 12px;
 
   .MuiMenuItem-root {
     color: #1e293b;
-    font-size: 13.5px;
+    font-size: 16px;
   }
 }
 
@@ -463,7 +463,7 @@ $radius       : 12px;
   }
 
   .MuiDialogTitle-root {
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 700;
     color: #0f172a;
     padding: 20px 24px 12px;
@@ -528,7 +528,7 @@ $radius       : 12px;
 
   .MuiMenuItem-root {
     color: #1e293b;
-    font-size: 13.5px;
+    font-size: 16px;
     &:hover { background: #f8fafc; }
   }
 
@@ -560,7 +560,7 @@ $radius       : 12px;
     min-width: 140px;
   }
   .MuiMenuItem-root {
-    font-size: 13px;
+    font-size: 16px;
     padding: 8px 16px;
     &:hover { background: #f8fafc; }
   }

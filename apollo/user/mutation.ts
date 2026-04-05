@@ -81,7 +81,7 @@ export const LIKE_TARGET_MEMBER = gql`
       memberDesc
       memberWarnings
       memberBlocks
-      memberProperties
+      memberPerfumes
       memberRank
       memberPoints
       memberLikes
@@ -273,8 +273,8 @@ export const CREATE_PERFUME = gql`
       perfumeImages
       perfumeDesc
       memberId
-      createdAt
-      updatedAt
+      deletedAt
+      releasedAt
     }
   }
 `;
@@ -297,36 +297,32 @@ export const UPDATE_PERFUME = gql`
       perfumeImages
       perfumeDesc
       memberId
-      createdAt
-      updatedAt
+      deletedAt
+      releasedAt
     }
   }
 `;
 
 export const LIKE_TARGET_PERFUME = gql`
-  mutation LikeTargetMember($input: String!) {
-    likeTargetMember(memberId: $input) {
+  mutation LikeTargetPerfume($input: String!) {
+    likeTargetPerfume(perfumeId: $input) {
       _id
-      memberType
-      memberStatus
-      memberAuthType
-      memberPhone
-      memberNick
-      memberFullName
-      memberImage
-      memberAddress
-      memberDesc
-      memberWarnings
-      memberBlocks
-      memberProperties
-      memberRank
-      memberPoints
-      memberLikes
-      memberViews
+      perfumeType
+      perfumeStatus
+      perfumeScent
+      perfumeLongevity
+      perfumeSeason
+      perfumeSize
+      perfumeBrand
+      perfumeTitle
+      perfumePrice
+      perfumeViews
+      perfumeLikes
+      perfumeImages
+      perfumeDesc
+      memberId
       deletedAt
-      createdAt
-      updatedAt
-      accessToken
+      releasedAt
     }
   }
 `;

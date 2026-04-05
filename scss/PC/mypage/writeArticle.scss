@@ -11,7 +11,7 @@
 
       .main-title {
         font-family: "Nunito", sans-serif;
-        font-size: 26px;
+        font-size: 31px;
         font-weight: 800;
         color: var(--text-primary);
         letter-spacing: 0.4px;
@@ -32,7 +32,7 @@
 
       .sub-title {
         font-family: "Nunito", sans-serif;
-        font-size: 13px;
+        font-size: 16px;
         color: var(--text-secondary);
         margin-top: 16px;
         opacity: 0.7;
@@ -75,7 +75,7 @@
 
         .meta-label {
           font-family: "Nunito", sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 700;
           color: var(--text-secondary);
           text-transform: uppercase;
@@ -89,7 +89,7 @@
           border-radius: 10px;
           color: #eaeaea !important;
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
 
           .MuiSelect-select {
             color: #eaeaea !important;
@@ -118,7 +118,7 @@
           color: #eaeaea;
           -webkit-text-fill-color: #eaeaea;
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           transition: border-color 0.2s ease;
 
           &::placeholder {
@@ -152,7 +152,7 @@
 
         p {
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           font-weight: 800;
           color: var(--black-primary);
           text-transform: none;
@@ -174,7 +174,7 @@
   .MuiMenuItem-root {
     color: rgba(255, 255, 255, 0.75);
     font-family: "Nunito", sans-serif;
-    font-size: 14px;
+    font-size: 17px;
     &:hover { background: rgba(212, 175, 55, 0.1); color: #d4af37; }
     &.Mui-selected {
       background: rgba(212, 175, 55, 0.12);

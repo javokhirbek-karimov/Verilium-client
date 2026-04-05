@@ -54,7 +54,7 @@ const TopPerfumes = (props: TopPerfumesProps) => {
         variables: { input: id },
       });
       await getPerfumesRefetch({ input: initialInput });
-      await sweetTopSmallSuccessAlert("success", 800);
+      await sweetTopSmallSuccessAlert("Liked!", 800);
     } catch (err: any) {
       console.log("ERROR likePerfumeHandler", err.message);
       sweetMixinErrorAlert(err.message).then();

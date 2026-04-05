@@ -54,7 +54,7 @@
 
         .hero-label {
           font-family: "Nunito", sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 800;
           color: var(--gold-primary);
           text-transform: uppercase;
@@ -64,7 +64,7 @@
 
         .hero-title {
           font-family: "Nunito", sans-serif;
-          font-size: 48px;
+          font-size: 58px;
           font-weight: 900;
           color: #fff;
           line-height: 1.15;
@@ -102,7 +102,7 @@
 
         .hero-sub {
           font-family: "Nunito", sans-serif;
-          font-size: 15px;
+          font-size: 18px;
           color: rgba(255, 255, 255, 0.65);
           line-height: 1.7;
           max-width: 520px;
@@ -124,7 +124,7 @@
 
       .page-title {
         font-family: "Nunito", sans-serif;
-        font-size: 36px;
+        font-size: 43px;
         font-weight: 800;
         color: var(--text-primary);
         letter-spacing: -0.5px;
@@ -149,7 +149,7 @@
 
       .page-subtitle {
         font-family: "Nunito", sans-serif;
-        font-size: 15px;
+        font-size: 18px;
         color: var(--text-secondary);
         margin-top: 16px;
       }
@@ -193,7 +193,7 @@
 
         .title-main {
           font-family: "Nunito", sans-serif;
-          font-size: 15px;
+          font-size: 18px;
           font-weight: 800;
           color: var(--text-primary);
           letter-spacing: -0.3px;
@@ -202,7 +202,7 @@
 
         .title {
           font-family: "Nunito", sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 700;
           letter-spacing: 1px;
           text-transform: uppercase;
@@ -240,7 +240,7 @@
             }
 
             svg {
-              font-size: 18px;
+              font-size: 22px;
             }
           }
         }
@@ -253,7 +253,7 @@
             background: rgba(255, 255, 255, 0.04);
             border-radius: 10px;
             font-family: "Nunito", sans-serif;
-            font-size: 13px;
+            font-size: 16px;
             color: var(--text-primary);
             height: 40px;
 
@@ -282,7 +282,7 @@
             // Cancel icon
             svg {
               color: var(--text-secondary);
-              font-size: 18px;
+              font-size: 22px;
               cursor: pointer;
               transition: color 0.2s;
 
@@ -303,14 +303,14 @@
           }
 
           svg {
-            font-size: 18px;
+            font-size: 22px;
           }
         }
 
         // Checkbox label
         .property-type {
           font-family: "Nunito", sans-serif;
-          font-size: 13px;
+          font-size: 16px;
           color: var(--text-secondary);
           text-transform: capitalize;
           cursor: pointer;
@@ -341,7 +341,7 @@
 
             .MuiInputLabel-root {
               font-family: "Nunito", sans-serif;
-              font-size: 12px;
+              font-size: 14px;
               color: var(--text-secondary);
 
               &.Mui-focused {
@@ -353,7 +353,7 @@
               background: rgba(255, 255, 255, 0.03);
               border-radius: 10px;
               font-family: "Nunito", sans-serif;
-              font-size: 13px;
+              font-size: 16px;
               color: var(--text-primary);
               height: 40px;
 
@@ -372,7 +372,7 @@
 
               svg {
                 color: var(--text-secondary);
-                font-size: 18px;
+                font-size: 22px;
               }
             }
           }
@@ -396,7 +396,7 @@
 
       .result-count {
         font-family: "Nunito", sans-serif;
-        font-size: 14px;
+        font-size: 17px;
         color: var(--text-secondary);
       }
 
@@ -408,7 +408,7 @@
 
       .sort-label {
         font-family: "Nunito", sans-serif;
-        font-size: 13px;
+        font-size: 16px;
         color: var(--text-secondary);
       }
 
@@ -418,7 +418,7 @@
           background: var(--black-soft);
           border-radius: 10px;
           font-family: "Nunito", sans-serif;
-          font-size: 13px;
+          font-size: 16px;
           color: var(--text-primary);
           min-width: 140px;
 
@@ -485,7 +485,7 @@
             var(--gold-dark)
           );
           font-family: "Nunito", sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 700;
           color: var(--black-primary);
         }
@@ -500,7 +500,7 @@
           backdrop-filter: blur(10px);
           border: 1px solid rgba(212, 175, 55, 0.4);
           font-family: "Nunito", sans-serif;
-          font-size: 15px;
+          font-size: 18px;
           font-weight: 800;
           color: var(--gold-primary);
         }
@@ -514,7 +514,7 @@
 
         .card-brand {
           font-family: "Nunito", sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 700;
           letter-spacing: 1.2px;
           text-transform: uppercase;
@@ -524,7 +524,7 @@
 
         .card-title {
           font-family: "Nunito", sans-serif;
-          font-size: 15px;
+          font-size: 18px;
           font-weight: 700;
           color: var(--text-primary);
           line-height: 1.4;
@@ -545,7 +545,7 @@
           .scent-chip,
           .size-chip {
             font-family: "Nunito", sans-serif;
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 600;
             height: 22px;
             background: rgba(212, 175, 55, 0.08);
@@ -569,7 +569,7 @@
 
         .card-type {
           font-family: "Nunito", sans-serif;
-          font-size: 12px;
+          font-size: 14px;
           color: var(--text-secondary);
           opacity: 0.6;
           text-transform: capitalize;
@@ -586,14 +586,14 @@
             gap: 4px;
 
             svg {
-              font-size: 15px;
+              font-size: 18px;
               color: var(--text-secondary);
               opacity: 0.6;
             }
 
             span {
               font-family: "Nunito", sans-serif;
-              font-size: 12px;
+              font-size: 14px;
               color: var(--text-secondary);
               opacity: 0.7;
             }
@@ -626,7 +626,7 @@
 
       p {
         font-family: "Nunito", sans-serif;
-        font-size: 16px;
+        font-size: 19px;
         color: var(--text-secondary);
       }
     }
@@ -640,7 +640,7 @@
       .MuiPagination-root {
         .MuiPaginationItem-root {
           font-family: "Nunito", sans-serif;
-          font-size: 13px;
+          font-size: 16px;
           color: var(--text-secondary);
           border-color: rgba(212, 175, 55, 0.2);
 

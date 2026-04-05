@@ -12,9 +12,10 @@ import { userVar } from "../../../apollo/store";
 
 interface TrendPerfumeCardProps {
   perfume: Perfume;
+  likePerfumeHandler: any;
 }
 
-const TrendPerfumeCard = ({ perfume }: TrendPerfumeCardProps) => {
+const TrendPerfumeCard = ({ perfume, likePerfumeHandler }: TrendPerfumeCardProps) => {
   const device = useDeviceDetect();
   const router = useRouter();
   const user = useReactiveVar(userVar);
@@ -31,11 +32,11 @@ const TrendPerfumeCard = ({ perfume }: TrendPerfumeCardProps) => {
     <Stack
       className="trend-card-box"
       key={perfume._id}
-      onClick={goDetail}
       sx={{ cursor: "pointer" }}
     >
       <Box
         className="card-img"
+        onClick={goDetail}
         sx={{
           backgroundImage: `url(${image})`,
         }}
@@ -44,7 +45,7 @@ const TrendPerfumeCard = ({ perfume }: TrendPerfumeCardProps) => {
       </Box>
 
       <Box className="info">
-        <strong className="title">{perfume.perfumeTitle}</strong>
+        <strong className="title" onClick={goDetail}>{perfume.perfumeTitle}</strong>
 
         <p className="desc">{perfume.perfumeDesc ?? "No description"}</p>
 
@@ -74,7 +75,13 @@ const TrendPerfumeCard = ({ perfume }: TrendPerfumeCardProps) => {
 
             <Typography className="view-cnt">{perfume.perfumeViews}</Typography>
 
-            <IconButton size="small">
+            <IconButton
+              size="small"
+              onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                e.stopPropagation();
+                likePerfumeHandler(user, perfume._id);
+              }}
+            >
               <FavoriteIcon
                 fontSize="small"
                 sx={{ color: isLiked ? "red" : "inherit" }}

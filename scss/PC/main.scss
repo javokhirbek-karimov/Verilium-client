@@ -160,7 +160,7 @@ body::-webkit-scrollbar {
             position: relative;
             padding: 10px 20px;
             font-family: "Bodoni", serif;
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 600;
             color: var(--text-secondary);
             border-radius: 8px;
@@ -234,7 +234,7 @@ body::-webkit-scrollbar {
               background 0.3s ease;
 
             svg {
-              font-size: 21px;
+              font-size: 25px;
             }
 
             &:hover {
@@ -324,13 +324,13 @@ body::-webkit-scrollbar {
               box-shadow 0.35s ease;
 
             svg {
-              font-size: 22px;
+              font-size: 26px;
               color: var(--gold-primary);
             }
 
             span {
               font-family: "Nunito", sans-serif;
-              font-size: 16px;
+              font-size: 19px;
               font-weight: 700;
               color: var(--text-primary);
               white-space: nowrap;
@@ -427,7 +427,7 @@ body::-webkit-scrollbar {
             span {
               color: #181a20;
               font-family: $font;
-              font-size: 14px;
+              font-size: 17px;
               font-style: normal;
               font-weight: 400;
               line-height: 26px;
@@ -451,7 +451,7 @@ body::-webkit-scrollbar {
             span {
               color: #fff;
               font-family: $font;
-              font-size: 20px;
+              font-size: 24px;
               font-style: normal;
               font-weight: 600;
               line-height: normal;
@@ -513,7 +513,7 @@ body::-webkit-scrollbar {
               margin-left: 22px;
               color: #181a20;
               font-family: $font;
-              font-size: 20px;
+              font-size: 24px;
               font-style: normal;
               font-weight: 400;
               line-height: 26px;
@@ -561,7 +561,7 @@ body::-webkit-scrollbar {
               padding: 1px 5px 5px 5px;
               border-radius: 2px 2px 0px 0px;
               font-family: $font;
-              font-size: 20px;
+              font-size: 24px;
               font-style: normal;
               font-weight: 700;
               line-height: 26px;
@@ -606,7 +606,7 @@ body::-webkit-scrollbar {
             border: 1px solid #fffdfd;
             color: #181a20;
             font-family: $font;
-            font-size: 20px;
+            font-size: 24px;
             font-style: normal;
             font-weight: 400;
             line-height: 26px;
@@ -638,7 +638,7 @@ body::-webkit-scrollbar {
       strong {
         color: #fff;
         font-family: $font;
-        font-size: 48px;
+        font-size: 58px;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
@@ -648,7 +648,7 @@ body::-webkit-scrollbar {
       span {
         color: #fff;
         font-family: $font;
-        font-size: 24px;
+        font-size: 29px;
         font-style: normal;
         font-weight: 400;
         line-height: 26px;
@@ -679,7 +679,7 @@ body::-webkit-scrollbar {
           strong {
             color: #181a20;
             font-family: $font;
-            font-size: 15px;
+            font-size: 18px;
             font-style: normal;
             font-weight: 600;
             line-height: normal;
@@ -688,7 +688,7 @@ body::-webkit-scrollbar {
             margin-top: 4px;
             color: #181a20;
             font-family: $font;
-            font-size: 13px;
+            font-size: 16px;
             font-style: normal;
             font-weight: 400;
             line-height: normal;
@@ -707,7 +707,7 @@ body::-webkit-scrollbar {
       margin-top: 10px;
       color: #181a20;
       font-family: $font;
-      font-size: 14px;
+      font-size: 17px;
       font-style: normal;
       font-weight: 400;
       line-height: 26px;
@@ -723,7 +723,7 @@ body::-webkit-scrollbar {
         padding-bottom: 10px;
         color: #181a20;
         font-family: $font;
-        font-size: 14px;
+        font-size: 17px;
         font-style: normal;
         font-weight: 400;
         line-height: 26px;
@@ -764,7 +764,7 @@ body::-webkit-scrollbar {
       }
 
       svg {
-        font-size: 26px;
+        font-size: 31px;
       }
     }
 
@@ -805,7 +805,7 @@ body::-webkit-scrollbar {
 
       .chat-top-title {
         font-weight: 700;
-        font-size: 16px;
+        font-size: 19px;
         color: var(--gold-primary);
         letter-spacing: 0.4px;
       }
@@ -825,7 +825,7 @@ body::-webkit-scrollbar {
         }
 
         .online-count {
-          font-size: 15px;
+          font-size: 18px;
           font-family: "Nunito", sans-serif;
           font-weight: 600;
           color: var(--text-secondary);
@@ -836,7 +836,7 @@ body::-webkit-scrollbar {
         background: var(--gold-primary);
         color: var(--black-primary);
         font-weight: 800;
-        font-size: 12px;
+        font-size: 14px;
       }
     }
 
@@ -854,7 +854,7 @@ body::-webkit-scrollbar {
       justify-content: center;
       gap: 5px;
       padding: 9px 0;
-      font-size: 15px;
+      font-size: 18px;
       font-family: "Nunito", sans-serif;
       font-weight: 600;
       color: var(--text-secondary);
@@ -865,7 +865,7 @@ body::-webkit-scrollbar {
       transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 
       svg {
-        font-size: 17px;
+        font-size: 20px;
       }
 
       &:hover {
@@ -925,7 +925,7 @@ body::-webkit-scrollbar {
       border-radius: 12px;
       border-bottom-right-radius: 3px;
       font-family: "Nunito", sans-serif;
-      font-size: 15px;
+      font-size: 18px;
       line-height: 1.5;
       word-break: break-word;
       background: linear-gradient(
@@ -945,7 +945,7 @@ body::-webkit-scrollbar {
       border-radius: 12px;
       border-bottom-left-radius: 3px;
       font-family: "Nunito", sans-serif;
-      font-size: 15px;
+      font-size: 18px;
       line-height: 1.5;
       word-break: break-word;
       background: var(--black-soft);
@@ -992,7 +992,7 @@ body::-webkit-scrollbar {
     }
 
     .msg-sender {
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 700;
       color: var(--gold-dark);
       margin-bottom: 2px;
@@ -1001,7 +1001,7 @@ body::-webkit-scrollbar {
     }
 
     .msg-time {
-      font-size: 11px;
+      font-size: 13px;
       color: var(--text-secondary);
       margin-top: 2px;
       padding: 0 4px;
@@ -1035,7 +1035,7 @@ body::-webkit-scrollbar {
       display: flex;
       align-items: center;
       gap: 4px;
-      font-size: 12px;
+      font-size: 14px;
       color: var(--gold-primary);
       font-family: "Nunito", sans-serif;
       font-weight: 600;
@@ -1044,7 +1044,7 @@ body::-webkit-scrollbar {
       animation: hintFadeIn 0.4s ease both;
 
       svg {
-        font-size: 15px;
+        font-size: 18px;
       }
     }
 
@@ -1061,7 +1061,7 @@ body::-webkit-scrollbar {
       border-radius: 20px;
       padding: 8px 14px;
       font-family: "Nunito", sans-serif;
-      font-size: 15px;
+      font-size: 18px;
       color: var(--text-primary);
       background: var(--black-soft);
       outline: none;
@@ -1102,7 +1102,7 @@ body::-webkit-scrollbar {
       transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
 
       svg {
-        font-size: 19px;
+        font-size: 23px;
         color: var(--black-primary);
       }
 
@@ -1155,7 +1155,7 @@ body::-webkit-scrollbar {
       }
 
       .brand-tagline {
-        font-size: 13px;
+        font-size: 16px;
         font-style: italic;
         color: var(--gold-primary);
         letter-spacing: 2px;
@@ -1165,7 +1165,7 @@ body::-webkit-scrollbar {
       }
 
       span {
-        font-size: 11px;
+        font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 1.5px;
         color: var(--text-secondary);
@@ -1173,14 +1173,14 @@ body::-webkit-scrollbar {
       }
 
       p {
-        font-size: 15px;
+        font-size: 18px;
         font-weight: 700;
         color: var(--text-primary);
         margin: 0;
       }
 
       .support-note {
-        font-size: 11px;
+        font-size: 13px;
         color: var(--gold-primary);
         letter-spacing: 0.5px;
         text-transform: none;
@@ -1207,7 +1207,7 @@ body::-webkit-scrollbar {
           text-decoration: none;
 
           svg {
-            font-size: 18px;
+            font-size: 22px;
           }
 
           &:hover {
@@ -1237,14 +1237,14 @@ body::-webkit-scrollbar {
       border: 1px solid rgba(212, 175, 55, 0.12);
 
       strong {
-        font-size: 17px;
+        font-size: 20px;
         font-weight: 800;
         color: var(--gold-primary);
         letter-spacing: 0.3px;
       }
 
       p {
-        font-size: 13px;
+        font-size: 16px;
         color: var(--text-secondary);
         margin: 0;
       }
@@ -1263,7 +1263,7 @@ body::-webkit-scrollbar {
           border-radius: 8px;
           padding: 10px 16px;
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           color: var(--text-primary);
           outline: none;
           transition: border-color 0.3s ease;
@@ -1288,7 +1288,7 @@ body::-webkit-scrollbar {
           border-radius: 8px;
           padding: 10px 24px;
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           font-weight: 700;
           color: var(--black-primary);
           cursor: pointer;
@@ -1316,7 +1316,7 @@ body::-webkit-scrollbar {
         flex: 1;
 
         strong {
-          font-size: 13px;
+          font-size: 16px;
           font-weight: 800;
           color: var(--gold-primary);
           text-transform: uppercase;
@@ -1325,7 +1325,7 @@ body::-webkit-scrollbar {
         }
 
         span {
-          font-size: 14px;
+          font-size: 17px;
           color: var(--text-secondary);
           cursor: pointer;
           transition: color 0.3s ease, padding-left 0.3s ease;
@@ -1348,7 +1348,7 @@ body::-webkit-scrollbar {
       background: var(--black-primary);
 
       span {
-        font-size: 13px;
+        font-size: 16px;
         color: var(--text-secondary);
         opacity: 0.7;
 
@@ -1394,7 +1394,7 @@ body::-webkit-scrollbar {
     span {
       color: #181a20;
       font-family: $font;
-      font-size: 15px;
+      font-size: 18px;
       font-style: normal;
       font-weight: 600;
       line-height: normal;
@@ -1418,7 +1418,7 @@ body::-webkit-scrollbar {
         height: 25px;
         color: #717171;
         font-family: $font;
-        font-size: 14px;
+        font-size: 17px;
         font-style: normal;
         font-weight: 400;
         line-height: 26px;
@@ -1453,7 +1453,7 @@ body::-webkit-scrollbar {
           margin-bottom: 10px;
           color: #181a20;
           font-family: $font;
-          font-size: 14px;
+          font-size: 17px;
           font-style: normal;
           font-weight: 600;
           line-height: normal;
@@ -1480,7 +1480,7 @@ body::-webkit-scrollbar {
             border: 1px solid #ddd;
             color: #181a20;
             font-family: $font;
-            font-size: 13px;
+            font-size: 16px;
             font-style: normal;
             font-weight: 600;
             line-height: normal;
@@ -1503,7 +1503,7 @@ body::-webkit-scrollbar {
             border: 1px solid #ddd;
             color: #717171;
             font-family: $font;
-            font-size: 14px;
+            font-size: 17px;
             font-style: normal;
             font-weight: 400;
             line-height: 26px;
@@ -1526,7 +1526,7 @@ body::-webkit-scrollbar {
             color: #717171;
 
             font-family: $font;
-            font-size: 14px;
+            font-size: 17px;
             font-style: normal;
             font-weight: 400;
             line-height: 26px;
@@ -1554,7 +1554,7 @@ body::-webkit-scrollbar {
       span {
         color: #181a20;
         font-family: $font;
-        font-size: 14px;
+        font-size: 17px;
         font-style: normal;
         font-weight: 400;
         line-height: 26px;
@@ -1569,7 +1569,7 @@ body::-webkit-scrollbar {
       background: linear-gradient(90deg, #e8543e 0%, #ec6b57 100%);
       color: #fff;
       font-family: $font;
-      font-size: 14px;
+      font-size: 17px;
       font-style: normal;
       font-weight: 600;
       line-height: normal;

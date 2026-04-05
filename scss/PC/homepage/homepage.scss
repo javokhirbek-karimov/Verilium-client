@@ -14,7 +14,7 @@
         span {
           color: #181a20;
           font-family: $font;
-          font-size: 34px;
+          font-size: 41px;
           font-style: normal;
           font-weight: 500;
           line-height: 150%;
@@ -27,7 +27,7 @@
         p {
           color: #181a20;
           font-family: $font;
-          font-size: 14px;
+          font-size: 17px;
           font-style: normal;
           font-weight: 400;
           line-height: 26px;
@@ -72,7 +72,7 @@
           span {
             color: #181a20;
             font-family: $font;
-            font-size: 15px;
+            font-size: 18px;
             font-style: normal;
             font-weight: 600;
             line-height: normal;
@@ -92,7 +92,7 @@
             background: rgba(255, 255, 255, 0.07);
             color: #ffffff;
             font-family: $font;
-            font-size: 14px;
+            font-size: 17px;
             font-style: normal;
             font-weight: 500;
             line-height: 28px;
@@ -105,7 +105,7 @@
               background: #fff;
               color: #181a20;
               font-family: $font;
-              font-size: 14px;
+              font-size: 17px;
               font-style: normal;
               font-weight: 500;
               line-height: 28px;
@@ -123,7 +123,7 @@
       padding: 14px 36px;
       border-radius: 50px;
       font-family: "Nunito", sans-serif;
-      font-size: 15px;
+      font-size: 18px;
       font-weight: 700;
       letter-spacing: 0.5px;
       cursor: pointer;
@@ -222,7 +222,7 @@
 
           span {
             font-family: "Nunito", sans-serif;
-            font-size: 32px;
+            font-size: 38px;
             font-weight: 800;
             color: var(--text-primary);
             letter-spacing: -0.5px;
@@ -246,7 +246,7 @@
 
           p {
             font-family: "Nunito", sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             color: var(--text-secondary);
             margin: 0;
           }
@@ -271,7 +271,7 @@
               align-items: center;
               justify-content: center;
               cursor: pointer;
-              font-size: 18px;
+              font-size: 22px;
               transition: color 0.3s ease, border-color 0.3s ease,
                 background 0.3s ease;
 
@@ -314,7 +314,7 @@
           align-items: center;
           justify-content: center;
           font-family: "Nunito", sans-serif;
-          font-size: 16px;
+          font-size: 19px;
           color: var(--text-secondary);
         }
 
@@ -365,7 +365,7 @@
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(212, 175, 55, 0.35);
             font-family: "Nunito", sans-serif;
-            font-size: 17px;
+            font-size: 20px;
             font-weight: 800;
             color: var(--gold-primary);
             letter-spacing: 0.3px;
@@ -383,7 +383,7 @@
               var(--gold-dark)
             );
             font-family: "Nunito", sans-serif;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 700;
             color: var(--black-primary);
           }
@@ -397,7 +397,7 @@
 
           .title {
             font-family: "Nunito", sans-serif;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--text-primary);
             white-space: nowrap;
@@ -409,7 +409,7 @@
           .desc {
             margin-top: 6px;
             font-family: "Nunito", sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             color: var(--text-secondary);
             line-height: 1.5;
             overflow: hidden;
@@ -437,7 +437,7 @@
                 border: 1px solid rgba(212, 175, 55, 0.2);
                 background: rgba(212, 175, 55, 0.05);
                 font-family: "Nunito", sans-serif;
-                font-size: 13px;
+                font-size: 16px;
                 font-weight: 600;
                 color: var(--text-secondary);
                 text-transform: capitalize;
@@ -458,7 +458,7 @@
 
             p {
               font-family: "Nunito", sans-serif;
-              font-size: 13px;
+              font-size: 16px;
               color: var(--text-secondary);
               text-transform: capitalize;
               opacity: 0.7;
@@ -482,13 +482,13 @@
                 }
 
                 svg {
-                  font-size: 16px;
+                  font-size: 19px;
                 }
               }
 
               .view-cnt {
                 font-family: "Nunito", sans-serif;
-                font-size: 13px;
+                font-size: 16px;
                 color: var(--text-secondary);
                 line-height: 1;
                 margin-right: 6px;
@@ -524,7 +524,7 @@
 
           span {
             font-family: "Nunito", sans-serif;
-            font-size: 32px;
+            font-size: 38px;
             font-weight: 800;
             color: var(--text-primary);
             letter-spacing: -0.5px;
@@ -548,7 +548,7 @@
 
           p {
             font-family: "Nunito", sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             color: var(--text-secondary);
             margin: 0;
           }
@@ -565,7 +565,7 @@
           align-items: center;
           justify-content: center;
           font-family: "Nunito", sans-serif;
-          font-size: 16px;
+          font-size: 19px;
           color: var(--text-secondary);
         }
 
@@ -617,7 +617,7 @@
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(212, 175, 55, 0.4);
             font-family: "Nunito", sans-serif;
-            font-size: 17px;
+            font-size: 20px;
             font-weight: 800;
             color: var(--gold-primary);
           }
@@ -634,7 +634,7 @@
               var(--gold-dark)
             );
             font-family: "Nunito", sans-serif;
-            font-size: 13px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--black-primary);
           }
@@ -647,7 +647,7 @@
 
           .title {
             font-family: "Nunito", sans-serif;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--text-primary);
             white-space: nowrap;
@@ -665,7 +665,7 @@
           .desc {
             margin-top: 8px;
             font-family: "Nunito", sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             color: var(--text-secondary);
             line-height: 1.5;
             overflow: hidden;
@@ -691,7 +691,7 @@
                 border: 1px solid rgba(212, 175, 55, 0.2);
                 background: rgba(212, 175, 55, 0.05);
                 font-family: "Nunito", sans-serif;
-                font-size: 12px;
+                font-size: 14px;
                 font-weight: 600;
                 color: var(--text-secondary);
                 text-transform: capitalize;
@@ -712,7 +712,7 @@
 
             p {
               font-family: "Nunito", sans-serif;
-              font-size: 13px;
+              font-size: 16px;
               color: var(--text-secondary);
               text-transform: capitalize;
               opacity: 0.7;
@@ -735,13 +735,13 @@
                 }
 
                 svg {
-                  font-size: 18px;
+                  font-size: 22px;
                 }
               }
 
               .view-cnt {
                 font-family: "Nunito", sans-serif;
-                font-size: 13px;
+                font-size: 16px;
                 color: var(--text-secondary);
                 line-height: 1;
                 margin-right: 6px;
@@ -776,7 +776,7 @@
 
           span {
             font-family: "Nunito", sans-serif;
-            font-size: 32px;
+            font-size: 38px;
             font-weight: 800;
             color: var(--text-primary);
             letter-spacing: -0.5px;
@@ -800,7 +800,7 @@
 
           p {
             font-family: "Nunito", sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             color: var(--text-secondary);
             margin: 0;
           }
@@ -820,7 +820,7 @@
 
             span {
               font-family: "Nunito", sans-serif;
-              font-size: 14px;
+              font-size: 17px;
               font-weight: 600;
               color: var(--text-secondary);
               transition: color 0.3s ease;
@@ -872,7 +872,7 @@
             background 0.3s ease;
 
           svg {
-            font-size: 18px;
+            font-size: 22px;
           }
 
           &.swiper-experts-next {
@@ -939,7 +939,7 @@
 
         strong {
           font-family: "Nunito", sans-serif;
-          font-size: 16px;
+          font-size: 19px;
           font-weight: 700;
           color: var(--text-primary);
           text-align: center;
@@ -951,7 +951,7 @@
 
         span {
           font-family: "Nunito", sans-serif;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 600;
           color: var(--gold-primary);
           text-transform: uppercase;
@@ -986,7 +986,7 @@
 
           span {
             font-family: "Nunito", sans-serif;
-            font-size: 32px;
+            font-size: 38px;
             font-weight: 800;
             color: var(--text-primary);
             letter-spacing: -0.5px;
@@ -1010,7 +1010,7 @@
 
           p {
             font-family: "Nunito", sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             color: var(--text-secondary);
             margin: 0;
           }
@@ -1034,7 +1034,7 @@
               align-items: center;
               justify-content: center;
               cursor: pointer;
-              font-size: 18px;
+              font-size: 22px;
               transition: color 0.3s ease, border-color 0.3s ease,
                 background 0.3s ease;
 
@@ -1078,7 +1078,7 @@
           align-items: center;
           justify-content: center;
           font-family: "Nunito", sans-serif;
-          font-size: 16px;
+          font-size: 19px;
           color: var(--text-secondary);
         }
 
@@ -1161,7 +1161,7 @@
             z-index: 1;
             height: 26px;
             font-family: "Nunito", sans-serif;
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 700;
             letter-spacing: 0.8px;
             text-transform: uppercase;
@@ -1187,7 +1187,7 @@
 
           .article-title {
             font-family: "Nunito", sans-serif;
-            font-size: 17px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--text-primary);
             line-height: 1.45;
@@ -1201,7 +1201,7 @@
 
           .article-excerpt {
             font-family: "Nunito", sans-serif;
-            font-size: 13px;
+            font-size: 16px;
             color: var(--text-secondary);
             line-height: 1.65;
             display: -webkit-box;
@@ -1236,7 +1236,7 @@
 
               span {
                 font-family: "Nunito", sans-serif;
-                font-size: 13px;
+                font-size: 16px;
                 font-weight: 600;
                 color: var(--text-secondary);
               }
@@ -1253,14 +1253,14 @@
                 gap: 4px;
 
                 svg {
-                  font-size: 15px;
+                  font-size: 18px;
                   color: var(--text-secondary);
                   opacity: 0.6;
                 }
 
                 span {
                   font-family: "Nunito", sans-serif;
-                  font-size: 12px;
+                  font-size: 14px;
                   color: var(--text-secondary);
                   opacity: 0.7;
                 }
@@ -1270,7 +1270,7 @@
 
           .article-date {
             font-family: "Nunito", sans-serif;
-            font-size: 12px;
+            font-size: 14px;
             color: var(--text-secondary);
             opacity: 0.5;
           }

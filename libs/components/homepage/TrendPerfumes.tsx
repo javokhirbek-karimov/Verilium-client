@@ -56,7 +56,7 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
       });
       await getPerfumesRefetch({ input: initialInput });
       //execute get property refetch
-      await sweetTopSmallSuccessAlert("success", 800);
+      await sweetTopSmallSuccessAlert("Liked!", 800);
     } catch (err: any) {
       console.log("ERROR likePropertyHandler", err.message);
       sweetMixinErrorAlert(err.message).then();
@@ -89,7 +89,7 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
                       key={perfume._id}
                       className={"trend-perfume-slide"}
                     >
-                      <TrendPerfumeCard perfume={perfume} />
+                      <TrendPerfumeCard perfume={perfume} likePerfumeHandler={likePerfumeHandler} />
                     </SwiperSlide>
                   );
                 })}
@@ -141,7 +141,7 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
                       key={perfume._id}
                       className={"trend-perfume-slide"}
                     >
-                      <TrendPerfumeCard key={perfume._id} perfume={perfume} />
+                      <TrendPerfumeCard key={perfume._id} perfume={perfume} likePerfumeHandler={likePerfumeHandler} />
                     </SwiperSlide>
                   );
                 })}

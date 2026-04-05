@@ -31,7 +31,7 @@
 				margin-left: 5px;
 				color: #fff;
 				font-family: $font;
-				font-size: 12px;
+				font-size: 14px;
 				font-style: normal;
 				font-weight: 600;
 				line-height: normal;
@@ -47,7 +47,7 @@
 			background: #fff;
 			color: #181a20;
 			font-family: $font;
-			font-size: 15px;
+			font-size: 18px;
 			font-style: normal;
 			font-weight: 600;
 			line-height: normal;
@@ -68,7 +68,7 @@
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			font-family: $font;
-			font-size: 15px;
+			font-size: 18px;
 			font-style: normal;
 			font-weight: 600;
 			line-height: normal;
@@ -80,7 +80,7 @@
 			overflow: hidden;
 			color: #717171;
 			font-family: $font;
-			font-size: 13px;
+			font-size: 16px;
 			font-style: normal;
 			font-weight: 400;
 			line-height: normal;
@@ -103,7 +103,7 @@
 				span {
 					color: #181a20;
 					font-family: $font;
-					font-size: 13px;
+					font-size: 16px;
 					font-style: normal;
 					font-weight: 400;
 					line-height: normal;
@@ -125,7 +125,7 @@
 			p {
 				color: #181a20;
 				font-family: $font;
-				font-size: 13px;
+				font-size: 16px;
 				font-style: normal;
 				font-weight: 500;
 				line-height: normal;
@@ -135,7 +135,7 @@
 				margin-left: 6px;
 				color: rgba(143, 143, 143, 0.54);
 				font-family: $font;
-				font-size: 15px;
+				font-size: 18px;
 				font-style: normal;
 				font-weight: 500;
 				line-height: normal;
@@ -179,7 +179,7 @@
 			background: #eb6753;
 			color: #fff;
 			font-family: $font;
-			font-size: 12px;
+			font-size: 14px;
 			font-style: normal;
 			font-weight: 600;
 			line-height: normal;
@@ -197,7 +197,7 @@
 			strong {
 				color: #181a20;
 				font-family: $font;
-				font-size: 15px;
+				font-size: 18px;
 				font-style: normal;
 				font-weight: 600;
 				line-height: normal;
@@ -206,7 +206,7 @@
 			span {
 				color: #181a20;
 				font-family: $font;
-				font-size: 15px;
+				font-size: 18px;
 				font-style: normal;
 				font-weight: 400;
 				line-height: 28px;
@@ -224,11 +224,179 @@
 				cursor: pointer;
 			}
 			.view-cnt {
-				font-size: 13px;
+				font-size: 16px;
 			}
 		}
 	}
 }
+// ── Shared Perfume Card (used across multiple pages) ─────────────────────────
+#pc-wrap {
+  .perfume-card {
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--black-soft);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(212, 175, 55, 0.22);
+      border-color: rgba(212, 175, 55, 0.25);
+
+      .card-title {
+        color: var(--gold-primary);
+      }
+    }
+
+    .card-img {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--black-primary);
+
+      .discount-badge {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        padding: 4px 10px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+        font-family: "Nunito", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--black-primary);
+      }
+
+      .price-badge {
+        position: absolute;
+        bottom: 14px;
+        left: 14px;
+        padding: 6px 16px;
+        border-radius: 20px;
+        background: rgba(11, 11, 11, 0.78);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        font-family: "Nunito", sans-serif;
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--gold-primary);
+      }
+    }
+
+    .card-info {
+      padding: 18px 20px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      .card-brand {
+        font-family: "Nunito", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: var(--gold-primary);
+        opacity: 0.8;
+      }
+
+      .card-title {
+        font-family: "Nunito", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.4;
+        transition: color 0.3s ease;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .card-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 4px;
+
+        .scent-chip,
+        .size-chip {
+          font-family: "Nunito", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          height: 22px;
+          background: rgba(212, 175, 55, 0.08);
+          border: 1px solid rgba(212, 175, 55, 0.2);
+          color: var(--text-secondary);
+
+          .MuiChip-label {
+            padding: 0 8px;
+          }
+        }
+      }
+    }
+
+    .card-footer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px 16px;
+      border-top: 1px solid rgba(212, 175, 55, 0.08);
+
+      .card-type {
+        font-family: "Nunito", sans-serif;
+        font-size: 14px;
+        color: var(--text-secondary);
+        opacity: 0.6;
+        text-transform: capitalize;
+      }
+
+      .card-stats {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .stat {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+
+          svg {
+            font-size: 18px;
+            color: var(--text-secondary);
+            opacity: 0.6;
+          }
+
+          span {
+            font-family: "Nunito", sans-serif;
+            font-size: 14px;
+            color: var(--text-secondary);
+            opacity: 0.7;
+          }
+
+          &.like-btn {
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+
+            &:hover {
+              opacity: 1;
+
+              svg {
+                opacity: 1;
+                color: var(--gold-primary);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .community-general-card-config {
 	position: relative;
 	height: auto;
@@ -254,7 +422,7 @@
 		.title {
 			color: #717171;
 			font-family: $font;
-			font-size: 13px;
+			font-size: 16px;
 			font-style: normal;
 			font-weight: 400;
 			line-height: normal;
@@ -262,7 +430,7 @@
 		.desc {
 			color: #181a20;
 			font-family: $font;
-			font-size: 15px;
+			font-size: 18px;
 			font-style: normal;
 			font-weight: 600;
 			line-height: 26px;
@@ -280,7 +448,7 @@
 				cursor: pointer;
 			}
 			.view-cnt {
-				font-size: 13px;
+				font-size: 16px;
 			}
 		}
 	}
@@ -299,7 +467,7 @@
 			color: #181a20;
 			text-align: center;
 			font-family: $font;
-			font-size: 13px;
+			font-size: 16px;
 			font-style: normal;
 			font-weight: 400;
 			line-height: normal;
@@ -307,7 +475,7 @@
 		.day {
 			color: #181a20;
 			font-family: $font;
-			font-size: 20px;
+			font-size: 24px;
 			font-style: normal;
 			font-weight: 600;
 			line-height: normal;

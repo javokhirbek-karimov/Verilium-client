@@ -139,7 +139,7 @@ const ExpertDetail: NextPage = ({ initialPerfumes, initialComment }: any) => {
   }, [getCommentsData]);
 
   useEffect(() => {
-    if (router.query.agentId) setExpertId(router.query.agentId as string);
+    if (router.query.expertId) setExpertId(router.query.expertId as string);
   }, [router]);
 
   useEffect(() => {

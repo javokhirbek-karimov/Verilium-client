@@ -60,7 +60,7 @@
 
         .hero-label {
           font-family: "Nunito", sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 800;
           color: var(--gold-primary);
           text-transform: uppercase;
@@ -70,7 +70,7 @@
 
         .hero-title {
           font-family: "Nunito", sans-serif;
-          font-size: 48px;
+          font-size: 58px;
           font-weight: 900;
           color: #fff;
           line-height: 1.15;
@@ -108,7 +108,7 @@
 
         .hero-sub {
           font-family: "Nunito", sans-serif;
-          font-size: 15px;
+          font-size: 18px;
           color: rgba(255, 255, 255, 0.65);
           line-height: 1.7;
           max-width: 520px;
@@ -146,7 +146,7 @@
           background: rgba(255, 255, 255, 0.03);
           color: var(--text-primary);
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           outline: none;
           box-sizing: border-box;
           transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -170,13 +170,13 @@
 
         span {
           font-family: "Nunito", sans-serif;
-          font-size: 13px;
+          font-size: 16px;
           color: var(--text-secondary);
         }
 
         .MuiButton-root {
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           font-weight: 600;
           text-transform: none;
           color: var(--text-primary);
@@ -209,7 +209,7 @@
 
       .MuiMenuItem-root {
         font-family: "Nunito", sans-serif;
-        font-size: 14px;
+        font-size: 17px;
         color: var(--text-secondary);
         padding: 10px 18px;
         transition: color 0.2s ease, background 0.2s ease;
@@ -247,7 +247,7 @@
 
         p {
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           color: var(--text-secondary);
           opacity: 0.55;
         }
@@ -264,7 +264,7 @@
 
       span {
         font-family: "Nunito", sans-serif;
-        font-size: 13px;
+        font-size: 16px;
         color: var(--text-secondary);
         opacity: 0.6;
       }
@@ -350,7 +350,7 @@
         -webkit-backdrop-filter: blur(12px);
         color: var(--gold-light);
         font-family: "Nunito", sans-serif;
-        font-size: 11px;
+        font-size: 13px;
         font-weight: 700;
         padding: 4px 12px;
         border-radius: 20px;
@@ -394,7 +394,7 @@
         strong {
           display: block;
           font-family: "Nunito", sans-serif;
-          font-size: 16px;
+          font-size: 19px;
           font-weight: 800;
           color: #fff;
           line-height: 1.25;
@@ -408,7 +408,7 @@
 
         span {
           font-family: "Nunito", sans-serif;
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 700;
           color: var(--gold-primary);
           text-transform: uppercase;
@@ -438,13 +438,13 @@
           }
 
           svg {
-            font-size: 15px;
+            font-size: 18px;
           }
         }
 
         .view-cnt {
           font-family: "Nunito", sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 600;
           color: rgba(255, 255, 255, 0.55);
           min-width: 14px;
@@ -476,7 +476,7 @@
 
     .section-title {
       font-family: "Nunito", sans-serif;
-      font-size: 22px;
+      font-size: 26px;
       font-weight: 800;
       color: var(--text-primary);
       display: inline-flex;
@@ -501,7 +501,7 @@
       }
 
       .review-count {
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 700;
         background: var(--gold-primary);
         color: var(--black-primary);
@@ -547,7 +547,7 @@
 
         .expert-name {
           font-family: "Nunito", sans-serif;
-          font-size: 28px;
+          font-size: 34px;
           font-weight: 800;
           color: var(--text-primary);
           cursor: pointer;
@@ -562,7 +562,7 @@
 
         .expert-desc {
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           color: var(--text-secondary);
           line-height: 1.7;
           max-width: 560px;
@@ -582,13 +582,13 @@
             gap: 7px;
 
             svg {
-              font-size: 17px;
+              font-size: 20px;
               color: var(--text-secondary);
             }
 
             span {
               font-family: "Nunito", sans-serif;
-              font-size: 13px;
+              font-size: 16px;
               color: var(--text-secondary);
             }
 
@@ -621,7 +621,7 @@
 
           span {
             font-family: "Nunito", sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             color: var(--text-secondary);
           }
         }
@@ -655,7 +655,7 @@
         p,
         .MuiTypography-root {
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           color: var(--text-secondary);
           opacity: 0.5;
         }
@@ -670,7 +670,7 @@
 
         .total-label {
           font-family: "Nunito", sans-serif;
-          font-size: 13px;
+          font-size: 16px;
           color: var(--text-secondary);
           opacity: 0.6;
         }
@@ -707,7 +707,7 @@
 
       .no-reviews {
         font-family: "Nunito", sans-serif;
-        font-size: 14px;
+        font-size: 17px;
         color: var(--text-secondary);
         opacity: 0.5;
         text-align: center;
@@ -747,7 +747,7 @@
 
         .form-title {
           font-family: "Nunito", sans-serif;
-          font-size: 16px;
+          font-size: 19px;
           font-weight: 700;
           color: var(--text-primary);
           margin: 0;
@@ -764,7 +764,7 @@
               padding: 14px 16px;
               color: var(--text-primary);
               font-family: "Nunito", sans-serif;
-              font-size: 14px;
+              font-size: 17px;
               line-height: 1.6;
               resize: none;
 
@@ -799,7 +799,7 @@
         .comment-submit {
           align-self: flex-end;
           font-family: "Nunito", sans-serif;
-          font-size: 13px;
+          font-size: 16px;
           font-weight: 700;
           text-transform: none;
           padding: 10px 26px;
@@ -829,7 +829,7 @@
           }
 
           svg {
-            font-size: 16px;
+            font-size: 19px;
           }
         }
       }
@@ -879,14 +879,14 @@
 
           strong {
             font-family: "Nunito", sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 700;
             color: var(--text-primary);
           }
 
           span {
             font-family: "Nunito", sans-serif;
-            font-size: 12px;
+            font-size: 14px;
             color: var(--text-secondary);
             opacity: 0.6;
           }
@@ -896,7 +896,7 @@
 
     p {
       font-family: "Nunito", sans-serif;
-      font-size: 14px;
+      font-size: 17px;
       color: var(--text-secondary);
       line-height: 1.7;
       margin: 0;
@@ -926,7 +926,7 @@
 
       .reply-text {
         font-family: "Nunito", sans-serif;
-        font-size: 13px;
+        font-size: 16px;
         font-weight: 600;
         color: var(--gold-primary);
         margin: 0;

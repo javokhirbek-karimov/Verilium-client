@@ -88,7 +88,7 @@
 
         .brand {
           font-family: "Nunito", sans-serif;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 700;
           letter-spacing: 1.5px;
           text-transform: uppercase;
@@ -97,7 +97,7 @@
 
         .type-chip {
           font-family: "Nunito", sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 600;
           height: 22px;
           background: rgba(212, 175, 55, 0.08);
@@ -112,7 +112,7 @@
 
       .perfume-title {
         font-family: "Nunito", sans-serif;
-        font-size: 30px;
+        font-size: 36px;
         font-weight: 800;
         color: var(--text-primary);
         line-height: 1.25;
@@ -126,12 +126,12 @@
 
         .price {
           font-family: "Nunito", sans-serif;
-          font-size: 28px;
+          font-size: 34px;
           font-weight: 800;
           color: var(--gold-primary);
 
           &.original {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 500;
             color: var(--text-secondary);
             text-decoration: line-through;
@@ -139,13 +139,13 @@
           }
 
           &.discounted {
-            font-size: 28px;
+            font-size: 34px;
           }
         }
 
         .discount-chip {
           font-family: "Nunito", sans-serif;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 700;
           height: 24px;
           background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
@@ -168,13 +168,13 @@
           gap: 6px;
 
           svg {
-            font-size: 18px;
+            font-size: 22px;
             color: var(--text-secondary);
           }
 
           span {
             font-family: "Nunito", sans-serif;
-            font-size: 13px;
+            font-size: 16px;
             color: var(--text-secondary);
           }
 
@@ -212,7 +212,7 @@
 
           .attr-label {
             font-family: "Nunito", sans-serif;
-            font-size: 13px;
+            font-size: 16px;
             font-weight: 600;
             color: var(--text-secondary);
             min-width: 80px;
@@ -221,7 +221,7 @@
 
           .attr-value {
             font-family: "Nunito", sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             color: var(--text-primary);
           }
 
@@ -233,7 +233,7 @@
 
           .attr-chip {
             font-family: "Nunito", sans-serif;
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 600;
             height: 24px;
             background: rgba(212, 175, 55, 0.08);
@@ -262,14 +262,14 @@
 
         .seller-label {
           font-family: "Nunito", sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           color: var(--text-secondary);
           opacity: 0.6;
         }
 
         .seller-nick {
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           font-weight: 700;
           color: var(--text-primary);
         }
@@ -315,7 +315,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 22px;
             transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 
             &:hover {
@@ -342,7 +342,7 @@
     // ── Section Titles ────────────────────────────────────────────────────────
     .section-title {
       font-family: "Nunito", sans-serif;
-      font-size: 22px;
+      font-size: 26px;
       font-weight: 800;
       color: var(--text-primary);
       position: relative;
@@ -362,14 +362,14 @@
 
     .section-sub {
       font-family: "Nunito", sans-serif;
-      font-size: 13px;
+      font-size: 16px;
       color: var(--text-secondary);
       margin-top: 10px;
     }
 
     .desc-text {
       font-family: "Nunito", sans-serif;
-      font-size: 15px;
+      font-size: 18px;
       color: var(--text-secondary);
       line-height: 1.75;
     }
@@ -387,7 +387,7 @@
 
         .comment-count {
           font-family: "Nunito", sans-serif;
-          font-size: 13px;
+          font-size: 16px;
           font-weight: 700;
           color: var(--black-primary);
           background: var(--gold-primary);
@@ -445,28 +445,28 @@
 
       .comment-nick {
         font-family: "Nunito", sans-serif;
-        font-size: 14px;
+        font-size: 17px;
         font-weight: 700;
         color: var(--text-primary);
       }
 
       .comment-date {
         font-family: "Nunito", sans-serif;
-        font-size: 12px;
+        font-size: 14px;
         color: var(--text-secondary);
         opacity: 0.55;
       }
 
       .comment-text {
         font-family: "Nunito", sans-serif;
-        font-size: 14px;
+        font-size: 17px;
         color: var(--text-secondary);
         line-height: 1.65;
       }
 
       .no-comments {
         font-family: "Nunito", sans-serif;
-        font-size: 14px;
+        font-size: 17px;
         color: var(--text-secondary);
         opacity: 0.5;
         text-align: center;
@@ -490,7 +490,7 @@
           background: rgba(255, 255, 255, 0.03);
           border-radius: 12px;
           font-family: "Nunito", sans-serif;
-          font-size: 14px;
+          font-size: 17px;
           color: var(--text-primary);
           padding: 0;
           align-items: flex-start;
@@ -499,7 +499,7 @@
             padding: 14px 16px;
             color: var(--text-primary);
             font-family: "Nunito", sans-serif;
-            font-size: 14px;
+            font-size: 17px;
             line-height: 1.6;
             resize: none;
 
@@ -535,7 +535,7 @@
       .comment-submit {
         align-self: flex-end;
         font-family: "Nunito", sans-serif;
-        font-size: 13px;
+        font-size: 16px;
         font-weight: 700;
         text-transform: none;
         padding: 10px 24px;
@@ -556,7 +556,7 @@
         }
 
         svg {
-          font-size: 16px;
+          font-size: 19px;
         }
       }
     }
