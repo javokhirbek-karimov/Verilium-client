@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { Stack, Typography, Button, Pagination } from "@mui/material";
@@ -26,14 +27,15 @@ export const getStaticProps = async ({ locale }: any) => ({
   },
 });
 
-const TABS: { value: BoardArticleCategory; label: string }[] = [
-  { value: BoardArticleCategory.FREE, label: "Free Board" },
-  { value: BoardArticleCategory.RECOMMEND, label: "Recommend" },
-  { value: BoardArticleCategory.NEWS, label: "News" },
-  { value: BoardArticleCategory.HUMOR, label: "Humor" },
+const TABS: { value: BoardArticleCategory; labelKey: string }[] = [
+  { value: BoardArticleCategory.FREE, labelKey: "Free Board" },
+  { value: BoardArticleCategory.RECOMMEND, labelKey: "Recommend" },
+  { value: BoardArticleCategory.NEWS, labelKey: "News" },
+  { value: BoardArticleCategory.HUMOR, labelKey: "Humor" },
 ];
 
 const Community: NextPage = ({ initialInput }: T) => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
   const router = useRouter();
   const { query } = router;
@@ -123,13 +125,12 @@ const Community: NextPage = ({ initialInput }: T) => {
       {/* ── HERO ── */}
       <section className="hero-section">
         <div className="hero-content">
-          <span className="hero-label">Community</span>
+          <span className="hero-label">{t("Community")}</span>
           <Typography component="h1" className="hero-title">
-            Share Your <span>Fragrance</span> Story
+            {t("Share Your")} <span>{t("Fragrance")}</span> {t("Story")}
           </Typography>
           <Typography className="hero-sub">
-            Tips, reviews, and scent stories from fellow fragrance lovers.
-            Discover, discuss, and inspire.
+            {t("Tips, reviews, and scent stories from fellow fragrance lovers. Discover, discuss, and inspire.")}
           </Typography>
         </div>
       </section>
@@ -146,13 +147,13 @@ const Community: NextPage = ({ initialInput }: T) => {
               onClick={() => tabChangeHandler(tab.value)}
               disableRipple
             >
-              {tab.label}
+              {t(tab.labelKey)}
             </Button>
           ))}
         </div>
         {totalCount > 0 && (
           <Typography className="result-count">
-            {totalCount} article{totalCount !== 1 ? "s" : ""}
+            {totalCount} {totalCount !== 1 ? t("articles") : t("article")}
           </Typography>
         )}
       </div>
@@ -171,7 +172,7 @@ const Community: NextPage = ({ initialInput }: T) => {
           ) : (
             <Stack className="no-data">
               <img src="/img/icons/icoAlert.svg" alt="" />
-              <Typography>No articles found</Typography>
+              <Typography>{t("No articles found")}</Typography>
             </Stack>
           )}
         </Stack>
@@ -186,7 +187,7 @@ const Community: NextPage = ({ initialInput }: T) => {
               onChange={paginationHandler}
             />
             <Typography className="total-label">
-              Total {totalCount} article{totalCount > 1 ? "s" : ""} available
+              {t("Total")} {totalCount} {totalCount > 1 ? t("articles") : t("article")} {t("available")}
             </Typography>
           </Stack>
         )}

@@ -12,7 +12,7 @@ export interface MemberUpdate {
   memberAddress?: string;
   memberDesc?: string;
   deletedAt?: Date;
-  expertRequest?: MemberRequestExpert;
+  memberExpertRequest?: MemberRequestExpert;
 }
 
 export interface AdminMemberUpdate {

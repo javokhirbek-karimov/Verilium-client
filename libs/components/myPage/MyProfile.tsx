@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 import { NextPage } from "next";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import { Button, Stack, Typography } from "@mui/material";
@@ -14,6 +15,7 @@ import { sweetMixinErrorAlert, sweetMixinSuccessAlert } from "../../sonner";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 
 const MyProfile: NextPage = ({ initialValues }: any) => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
   const token = getJwtToken();
   const user = useReactiveVar(userVar);
@@ -96,9 +98,9 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
     <div id="my-profile-page">
       {/* ── Header ──────────────────────────────────────────────────── */}
       <Stack className="main-title-box">
-        <Typography className="main-title">My Profile</Typography>
+        <Typography className="main-title">{t("My Profile")}</Typography>
         <Typography className="sub-title">
-          Update your personal information
+          {t("Update your personal information")}
         </Typography>
       </Stack>
 
@@ -106,7 +108,7 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
       <Stack className="profile-card">
         {/* Avatar upload */}
         <Stack className="photo-section">
-          <Typography className="section-label">Profile Photo</Typography>
+          <Typography className="section-label">{t("Profile Photo")}</Typography>
           <Stack className="photo-row">
             <Stack className="avatar-wrap">
               <img
@@ -132,10 +134,10 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
               />
               <label htmlFor="avatar-input" className="upload-btn">
                 <CameraAltOutlinedIcon fontSize="small" />
-                <span>Upload Photo</span>
+                <span>{t("Upload Photo")}</span>
               </label>
               <Typography className="upload-hint">
-                JPG, JPEG or PNG · recommended 200×200
+                {t("JPG, JPEG or PNG · recommended 200×200")}
               </Typography>
             </Stack>
           </Stack>
@@ -143,15 +145,15 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
 
         {/* Fields */}
         <Stack className="fields-section">
-          <Typography className="section-label">Basic Info</Typography>
+          <Typography className="section-label">{t("Basic Info")}</Typography>
 
           <Stack className="fields-row">
             <Stack className="field-box">
-              <Typography className="field-label">Username</Typography>
+              <Typography className="field-label">{t("Username")}</Typography>
               <input
                 type="text"
                 className="field-input"
-                placeholder="Your username"
+                placeholder={t("Your username")}
                 value={updateData.memberNick ?? ""}
                 onChange={({ target: { value } }) =>
                   setUpdateData({ ...updateData, memberNick: value })
@@ -159,11 +161,11 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
               />
             </Stack>
             <Stack className="field-box">
-              <Typography className="field-label">Full Name</Typography>
+              <Typography className="field-label">{t("Full Name")}</Typography>
               <input
                 type="text"
                 className="field-input"
-                placeholder="Your full name"
+                placeholder={t("Your full name")}
                 value={updateData.memberFullName ?? ""}
                 onChange={({ target: { value } }) =>
                   setUpdateData({ ...updateData, memberFullName: value })
@@ -174,11 +176,11 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
 
           <Stack className="fields-row">
             <Stack className="field-box">
-              <Typography className="field-label">Phone</Typography>
+              <Typography className="field-label">{t("Phone")}</Typography>
               <input
                 type="text"
                 className="field-input"
-                placeholder="+1 000 000 0000"
+                placeholder={t("+1 000 000 0000")}
                 value={updateData.memberPhone ?? ""}
                 onChange={({ target: { value } }) =>
                   setUpdateData({ ...updateData, memberPhone: value })
@@ -186,11 +188,11 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
               />
             </Stack>
             <Stack className="field-box">
-              <Typography className="field-label">Address</Typography>
+              <Typography className="field-label">{t("Address")}</Typography>
               <input
                 type="text"
                 className="field-input"
-                placeholder="City, Country"
+                placeholder={t("City, Country")}
                 value={updateData.memberAddress ?? ""}
                 onChange={({ target: { value } }) =>
                   setUpdateData({ ...updateData, memberAddress: value })
@@ -200,10 +202,10 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
           </Stack>
 
           <Stack className="field-box full-width">
-            <Typography className="field-label">Bio</Typography>
+            <Typography className="field-label">{t("Bio")}</Typography>
             <textarea
               className="field-textarea"
-              placeholder="Tell us about your fragrance journey..."
+              placeholder={t("Tell us about your fragrance journey...")}
               value={updateData.memberDesc ?? ""}
               onChange={({ target: { value } }) =>
                 setUpdateData({ ...updateData, memberDesc: value })
@@ -219,7 +221,7 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
             onClick={updateProfileHandler}
             disabled={isDisabled()}
           >
-            <Typography>Save Changes</Typography>
+            <Typography>{t("Save Changes")}</Typography>
           </Button>
         </Stack>
       </Stack>
@@ -230,10 +232,10 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
           <Stack className="expert-request-inner">
             <Stack className="expert-request-text">
               <Typography className="expert-request-title">
-                Become an Expert
+                {t("Become an Expert")}
               </Typography>
               <Typography className="expert-request-desc">
-                Share your fragrance knowledge, write articles, and build a following. Send a request to become a verified Expert.
+                {t("Share your fragrance knowledge, write articles, and build a following. Send a request to become a verified Expert.")}
               </Typography>
             </Stack>
             <Button
@@ -242,15 +244,15 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
                 try {
                   if (!user._id) throw new Error(Messages.error2);
                   await updateMember({
-                    variables: { input: { _id: user._id, expertRequest: MemberRequestExpert.REQUESTED } },
+                    variables: { input: { _id: user._id, memberExpertRequest: MemberRequestExpert.REQUESTED } },
                   });
-                  await sweetMixinSuccessAlert("Expert request sent successfully!");
+                  await sweetMixinSuccessAlert(t("Expert request sent successfully!"));
                 } catch (err: any) {
                   sweetMixinErrorAlert(err.message).then();
                 }
               }}
             >
-              <Typography>Request Expert Status</Typography>
+              <Typography>{t("Request Expert Status")}</Typography>
             </Button>
           </Stack>
         </Stack>

@@ -11,11 +11,9 @@
 @import "/scss/pc/expert/expert.scss";
 
 @import "/scss/pc/mypage/mypage.scss";
-@import "/scss/pc/mypage/addNewProperty.scss";
 @import "/scss/pc/mypage/addNewPerfume.scss";
 @import "/scss/pc/mypage/myProperties.scss";
 @import "/scss/pc/mypage/myFavorites.scss";
-@import "/scss/pc/mypage/mySaved.scss";
 @import "/scss/pc/mypage/myProfile.scss";
 @import "/scss/pc/mypage/myArticles.scss";
 @import "/scss/pc/mypage/writeArticle.scss";
@@ -33,7 +31,6 @@
 @import "/scss/pc/member/memberPage.scss";
 @import "/scss/pc/member/memberFollows.scss";
 @import "/scss/pc/member/memberArticles.scss";
-@import "/scss/pc/member/memberProperties.scss";
 
 body {
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
@@ -112,19 +109,19 @@ body::-webkit-scrollbar {
     .navbar-main {
       width: 100%;
       height: 88px;
-      background: rgba(11, 11, 11, 0.35);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.06);
+      background: rgba(18, 15, 8, 0.15);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.04);
       transition: background 0.4s ease, border-color 0.4s ease,
-        box-shadow 0.4s ease;
+        box-shadow 0.4s ease, backdrop-filter 0.4s ease;
 
       &.scrolled {
-        background: rgba(11, 11, 11, 0.88);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+        background: rgba(18, 15, 8, 0.62);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
       }
 
       .container {

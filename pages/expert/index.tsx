@@ -1,4 +1,5 @@
 import React, { ChangeEvent, MouseEvent, useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 import { NextPage } from "next";
 import useDeviceDetect from "../../libs/hooks/useDeviceDetect";
 import withLayoutBasic from "../../libs/components/layout/layoutBasic";
@@ -26,6 +27,7 @@ export const getStaticProps = async ({ locale }: any) => ({
 });
 
 const ExpertList: NextPage = ({ initialInput, ...props }: any) => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
   const router = useRouter();
   const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
@@ -167,13 +169,12 @@ const ExpertList: NextPage = ({ initialInput, ...props }: any) => {
         {/* ── HERO ── full-width, outside container */}
         <section className="hero-section">
           <div className="hero-content">
-            <span className="hero-label">Our Specialists</span>
+            <span className="hero-label">{t("Our Specialists")}</span>
             <Typography component="h1" className="hero-title">
-              Meet the <span>Fragrance</span> Experts
+              {t("Meet the")} <span>{t("Fragrance")}</span> {t("Experts")}
             </Typography>
             <Typography className="hero-sub">
-              Discover and connect with passionate perfumers and certified scent
-              specialists from around the world.
+              {t("Discover and connect with passionate perfumers and certified scent specialists from around the world.")}
             </Typography>
           </div>
         </section>
@@ -183,7 +184,7 @@ const ExpertList: NextPage = ({ initialInput, ...props }: any) => {
             <Box component={"div"} className={"left"}>
               <input
                 type="text"
-                placeholder={"Search for an expert"}
+                placeholder={t("Search for an expert")}
                 value={searchText}
                 onChange={(e: any) => setSearchText(e.target.value)}
                 onKeyDown={(event: any) => {
@@ -197,7 +198,7 @@ const ExpertList: NextPage = ({ initialInput, ...props }: any) => {
               />
             </Box>
             <Box component={"div"} className={"right"}>
-              <span>Sort by</span>
+              <span>{t("Sort by")}</span>
               <div>
                 <Button
                   onClick={sortingClickHandler}
@@ -216,16 +217,16 @@ const ExpertList: NextPage = ({ initialInput, ...props }: any) => {
                     id={"recent"}
                     disableRipple
                   >
-                    Recent
+                    {t("Recent")}
                   </MenuItem>
                   <MenuItem onClick={sortingHandler} id={"old"} disableRipple>
-                    Oldest
+                    {t("Oldest")}
                   </MenuItem>
                   <MenuItem onClick={sortingHandler} id={"likes"} disableRipple>
-                    Likes
+                    {t("Likes")}
                   </MenuItem>
                   <MenuItem onClick={sortingHandler} id={"views"} disableRipple>
-                    Views
+                    {t("Views")}
                   </MenuItem>
                 </Menu>
               </div>
@@ -235,7 +236,7 @@ const ExpertList: NextPage = ({ initialInput, ...props }: any) => {
             {experts?.length === 0 ? (
               <div className={"no-data"}>
                 <img src="/img/icons/icoAlert.svg" alt="" />
-                <p>No Experts found!</p>
+                <p>{t("No Experts found!")}</p>
               </div>
             ) : (
               experts.map((expert: Member) => {
@@ -267,7 +268,7 @@ const ExpertList: NextPage = ({ initialInput, ...props }: any) => {
 
             {experts.length !== 0 && (
               <span>
-                Total {total} expert{total > 1 ? "s" : ""} available
+                {t("Total")} {total} {total > 1 ? t("experts") : t("expert")} {t("available")}
               </span>
             )}
           </Stack>

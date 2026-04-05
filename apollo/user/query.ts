@@ -70,7 +70,7 @@ export const GET_EXPERTS = gql`
         createdAt
         updatedAt
         accessToken
-        expertRequest
+        memberExpertRequest
         firstLoginAt
         lastLoginAt
         loginCount
@@ -209,7 +209,7 @@ export const GET_PERFUME = gql`
         createdAt
         updatedAt
         accessToken
-        expertRequest
+        memberExpertRequest
       }
       meLiked {
         memberId

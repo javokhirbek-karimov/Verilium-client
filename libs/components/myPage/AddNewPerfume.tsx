@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { Button, Stack, Typography } from "@mui/material";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
@@ -23,6 +24,7 @@ import { CREATE_PERFUME, UPDATE_PERFUME } from "../../../apollo/user/mutation";
 import { GET_PERFUME } from "../../../apollo/user/query";
 
 const AddNewPerfume = ({ initialValues }: any) => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
   const router = useRouter();
   const inputRef = useRef<any>(null);
@@ -139,7 +141,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
   const createHandler = useCallback(async () => {
     try {
       await createPerfume({ variables: { input: perfumeData } });
-      await sweetMixinSuccessAlert("Perfume created successfully!");
+      await sweetMixinSuccessAlert(t("Perfume created successfully!"));
       await router.push({
         pathname: "/mypage",
         query: { category: "myPerfumes" },
@@ -156,7 +158,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
         ...perfumeData,
       };
       await updatePerfume({ variables: { input } });
-      await sweetMixinSuccessAlert("Perfume updated successfully!");
+      await sweetMixinSuccessAlert(t("Perfume updated successfully!"));
       await router.push({
         pathname: "/mypage",
         query: { category: "myPerfumes" },
@@ -172,10 +174,10 @@ const AddNewPerfume = ({ initialValues }: any) => {
     <div id="add-perfume-page">
       <Stack className="main-title-box">
         <Typography className="main-title">
-          {router.query.perfumeId ? "Edit Perfume" : "Add New Perfume"}
+          {router.query.perfumeId ? t("Edit Perfume") : t("Add New Perfume")}
         </Typography>
         <Typography className="sub-title">
-          Fill in the details below to list your perfume
+          {t("Fill in the details below to list your perfume")}
         </Typography>
       </Stack>
 
@@ -183,11 +185,11 @@ const AddNewPerfume = ({ initialValues }: any) => {
         <Stack className="description-box">
           {/* ── Title ── */}
           <Stack className="config-column">
-            <Typography className="title">Title</Typography>
+            <Typography className="title">{t("Title")}</Typography>
             <input
               type="text"
               className="description-input"
-              placeholder="e.g. Chanel No. 5"
+              placeholder={t("e.g. Chanel No. 5")}
               value={perfumeData.perfumeTitle}
               onChange={({ target: { value } }) =>
                 setPerfumeData({ ...perfumeData, perfumeTitle: value })
@@ -198,11 +200,11 @@ const AddNewPerfume = ({ initialValues }: any) => {
           {/* ── Brand & Price ── */}
           <Stack className="config-row">
             <Stack className="price-year-after-price">
-              <Typography className="title">Brand</Typography>
+              <Typography className="title">{t("Brand")}</Typography>
               <input
                 type="text"
                 className="description-input"
-                placeholder="e.g. Chanel"
+                placeholder={t("e.g. Chanel")}
                 value={perfumeData.perfumeBrand}
                 onChange={({ target: { value } }) =>
                   setPerfumeData({ ...perfumeData, perfumeBrand: value })
@@ -210,7 +212,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
               />
             </Stack>
             <Stack className="price-year-after-price">
-              <Typography className="title">Price ($)</Typography>
+              <Typography className="title">{t("Price ($)")}</Typography>
               <input
                 type="number"
                 className="description-input"
@@ -229,7 +231,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
           {/* ── Type & Scent ── */}
           <Stack className="config-row">
             <Stack className="price-year-after-price">
-              <Typography className="title">Type</Typography>
+              <Typography className="title">{t("Type")}</Typography>
               <select
                 className="select-description"
                 value={perfumeData.perfumeType || ""}
@@ -241,7 +243,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
                 }
               >
                 <option value="" disabled>
-                  Select type
+                  {t("Select type")}
                 </option>
                 {Object.values(PerfumeType).map((v) => (
                   <option key={v} value={v}>
@@ -253,7 +255,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
               <img src="/img/icons/Vector.svg" className="arrow-down" />
             </Stack>
             <Stack className="price-year-after-price">
-              <Typography className="title">Scent</Typography>
+              <Typography className="title">{t("Scent")}</Typography>
               <select
                 className="select-description"
                 value={perfumeData.perfumeScent || ""}
@@ -265,7 +267,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
                 }
               >
                 <option value="" disabled>
-                  Select scent
+                  {t("Select scent")}
                 </option>
                 {Object.values(PerfumeScent).map((v) => (
                   <option key={v} value={v}>
@@ -281,11 +283,11 @@ const AddNewPerfume = ({ initialValues }: any) => {
           {/* ── Size & Longevity ── */}
           <Stack className="config-row">
             <Stack className="price-year-after-price">
-              <Typography className="title">Size (ml)</Typography>
+              <Typography className="title">{t("Size (ml)")}</Typography>
               <input
                 type="number"
                 className="description-input"
-                placeholder="e.g. 100"
+                placeholder={t("e.g. 100")}
                 value={perfumeData.perfumeSize || ""}
                 onChange={({ target: { value } }) =>
                   setPerfumeData({
@@ -296,7 +298,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
               />
             </Stack>
             <Stack className="price-year-after-price">
-              <Typography className="title">Longevity</Typography>
+              <Typography className="title">{t("Longevity")}</Typography>
               <select
                 className="select-description"
                 value={perfumeData.perfumeLongevity || ""}
@@ -307,7 +309,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
                   })
                 }
               >
-                <option value="">Select (optional)</option>
+                <option value="">{t("Select (optional)")}</option>
                 {Object.values(PerfumeLongevity).map((v) => (
                   <option key={v} value={v}>
                     {v}
@@ -318,7 +320,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
               <img src="/img/icons/Vector.svg" className="arrow-down" />
             </Stack>
             <Stack className="price-year-after-price">
-              <Typography className="title">Discount (%)</Typography>
+              <Typography className="title">{t("Discount (%)")}</Typography>
               <input
                 type="number"
                 className="description-input"
@@ -336,7 +338,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
 
           {/* ── Season ── */}
           <Stack className="config-column">
-            <Typography className="title">Season</Typography>
+            <Typography className="title">{t("Season")}</Typography>
             <Stack className="season-box">
               {Object.values(PerfumeSeason).map((season) => (
                 <button
@@ -356,12 +358,12 @@ const AddNewPerfume = ({ initialValues }: any) => {
           </Stack>
 
           {/* ── Description ── */}
-          <Typography className="perfume-title">Description</Typography>
+          <Typography className="perfume-title">{t("Description")}</Typography>
           <Stack className="config-column">
-            <Typography className="title">About this perfume</Typography>
+            <Typography className="title">{t("About this perfume")}</Typography>
             <textarea
               className="description-text"
-              placeholder="Describe the fragrance, notes, occasion..."
+              placeholder={t("Describe the fragrance, notes, occasion...")}
               value={perfumeData.perfumeDesc ?? ""}
               onChange={({ target: { value } }) =>
                 setPerfumeData({ ...perfumeData, perfumeDesc: value })
@@ -371,7 +373,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
         </Stack>
 
         {/* ── Image upload ── */}
-        <Typography className="upload-title">Upload Perfume Photos</Typography>
+        <Typography className="upload-title">{t("Upload Perfume Photos")}</Typography>
         <Stack className="images-box">
           <Stack className="upload-box">
             <svg
@@ -412,10 +414,10 @@ const AddNewPerfume = ({ initialValues }: any) => {
             </svg>
             <Stack className="text-box">
               <Typography className="drag-title">
-                Drag and drop images here
+                {t("Drag and drop images here")}
               </Typography>
               <Typography className="format-title">
-                JPEG or PNG · max 5 photos
+                {t("JPEG or PNG · max 5 photos")}
               </Typography>
             </Stack>
             <Button
@@ -423,7 +425,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
               onClick={() => inputRef.current.click()}
             >
               <Typography className="browse-button-text">
-                Browse Files
+                {t("Browse Files")}
               </Typography>
               <input
                 ref={inputRef}
@@ -459,7 +461,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
             onClick={router.query.perfumeId ? updateHandler : createHandler}
           >
             <Typography className="next-button-text">
-              {router.query.perfumeId ? "Update Perfume" : "Save Perfume"}
+              {router.query.perfumeId ? t("Update Perfume") : t("Save Perfume")}
             </Typography>
           </Button>
         </Stack>

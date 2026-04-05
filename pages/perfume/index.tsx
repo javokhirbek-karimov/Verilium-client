@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { useState, useEffect } from "react";
+import { Trans, useTranslation } from "next-i18next";
 import {
   Stack,
   Box,
@@ -40,6 +41,7 @@ const DEFAULT_INPUT: PerfumesInquiry = {
 };
 
 const PerfumePage: NextPage = () => {
+  const { t } = useTranslation("common");
   const router = useRouter();
   const [perfumes, setPerfumes] = useState<Perfume[]>([]);
   const [total, setTotal] = useState(0);
@@ -93,26 +95,29 @@ const PerfumePage: NextPage = () => {
 
   return (
     <Stack id={"perfume-list-page"}>
-        {/* ── HERO ── full-width, outside container */}
-        <section className="hero-section">
-          <div className="hero-content">
-            <span className="hero-label">Collection</span>
-            <Typography component="h1" className="hero-title">
-              Explore Our <span>Perfumes</span>
-            </Typography>
-            <Typography className="hero-sub">
-              Find your signature scent from our curated selection of fine
-              fragrances crafted by world-class perfumers.
-            </Typography>
-          </div>
-        </section>
+      {/* ── HERO ── full-width, outside container */}
+      <section className="hero-section">
+        <div className="hero-content">
+          <span className="hero-label">{t("Collection")}</span>
+          <Typography component="h1" className="hero-title">
+            {t("Explore Our Perfumes")}
+          </Typography>
+          <Typography className="hero-sub">
+            {t(
+              "Find your signature scent from our curated selection of fine fragrances crafted by world-class perfumers.",
+            )}
+          </Typography>
+        </div>
+      </section>
 
       <Stack className={"container"}>
         {/* Header */}
         <Box className={"page-header"}>
-          <Typography className={"page-title"}>Our Collection</Typography>
+          <Typography className={"page-title"}>
+            {t("Our Collection")}
+          </Typography>
           <Typography className={"page-subtitle"}>
-            Discover your signature scent from our curated selection
+            {t("Discover your signature scent from our curated selection")}
           </Typography>
         </Box>
 
@@ -129,10 +134,11 @@ const PerfumePage: NextPage = () => {
             {/* Sort bar */}
             <Box className={"sort-bar"}>
               <Typography className={"result-count"}>
-                {total} {total === 1 ? "perfume" : "perfumes"} found
+                {total} {total === 1 ? t("perfume") : t("perfumes")}{" "}
+                {t("found")}
               </Typography>
               <Box className={"sort-right"}>
-                <Typography className={"sort-label"}>Sort by</Typography>
+                <Typography className={"sort-label"}>{t("Sort by")}</Typography>
                 <Select
                   className={"sort-select"}
                   value={searchFilter.sort ?? "createdAt"}
@@ -145,11 +151,11 @@ const PerfumePage: NextPage = () => {
                   }
                   size="small"
                 >
-                  <MenuItem value="createdAt">Newest</MenuItem>
-                  <MenuItem value="perfumePrice">Price</MenuItem>
-                  <MenuItem value="perfumeViews">Most Viewed</MenuItem>
-                  <MenuItem value="perfumeLikes">Most Liked</MenuItem>
-                  <MenuItem value="perfumeRank">Top Ranked</MenuItem>
+                  <MenuItem value="createdAt">{t("Newest")}</MenuItem>
+                  <MenuItem value="perfumePrice">{t("Price")}</MenuItem>
+                  <MenuItem value="perfumeViews">{t("Most Viewed")}</MenuItem>
+                  <MenuItem value="perfumeLikes">{t("Most Liked")}</MenuItem>
+                  <MenuItem value="perfumeRank">{t("Top Ranked")}</MenuItem>
                 </Select>
               </Box>
             </Box>
@@ -157,7 +163,7 @@ const PerfumePage: NextPage = () => {
             {/* Cards */}
             {perfumes.length === 0 && !loading ? (
               <Box className={"empty-state"}>
-                <Typography>No perfumes found</Typography>
+                <Typography>{t("No perfumes found")}</Typography>
               </Box>
             ) : (
               <Box className={"cards-grid"}>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "next-i18next";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import { Stack, Box, Typography } from "@mui/material";
 import Link from "next/link";
@@ -16,6 +17,7 @@ interface ExpertCardProps {
 }
 
 const ExpertCard = (props: ExpertCardProps) => {
+  const { t } = useTranslation("common");
   const { expert, likeMemberHandler } = props;
   const device = useDeviceDetect();
   const user = useReactiveVar(userVar);
@@ -58,7 +60,7 @@ const ExpertCard = (props: ExpertCardProps) => {
             >
               <strong>{expert?.memberFullName ?? expert?.memberNick}</strong>
             </Link>
-            <span>Expert</span>
+            <span>{t("Expert")}</span>
           </Box>
           <Box component={"div"} className={"buttons"}>
             <IconButton color={"default"}>

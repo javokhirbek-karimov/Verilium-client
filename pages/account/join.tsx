@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "next-i18next";
 import { NextPage } from "next";
 import useDeviceDetect from "../../libs/hooks/useDeviceDetect";
 import withLayoutBasic from "../../libs/components/layout/layoutBasic";
@@ -26,6 +27,7 @@ export const getStaticProps = async ({ locale }: any) => ({
 });
 
 const Join: NextPage = () => {
+  const { t } = useTranslation("common");
   const router = useRouter();
   const device = useDeviceDetect();
   const telegramRef = useRef<HTMLDivElement>(null);
@@ -55,20 +57,31 @@ const Join: NextPage = () => {
       await logIn(input.nick, input.password);
       await router.push(`${router.query.referrer ?? "/"}`);
     } catch (err: any) {
-      await sweetMixinErrorAlert(err.message ?? "Login failed. Please try again");
+      const msg = err?.graphQLErrors?.[0]?.message;
+      if (msg === "Definer: login and password do not match") {
+        await sweetMixinErrorAlert("Nick yoki parol noto'g'ri!");
+      } else if (msg === "Definer: user has been blocked!") {
+        await sweetMixinErrorAlert("Foydalanuvchi bloklangan!");
+      } else {
+        await sweetMixinErrorAlert(err.message ?? "Login failed. Please try again.");
+      }
     } finally {
       setIsLoading(false);
     }
   }, [input, router]);
 
   const doSignUp = useCallback(async () => {
-    // memberType always "USER" — Expert requires admin approval
     try {
       setIsLoading(true);
       await signUp(input.nick, input.password, input.phone, "USER");
       await router.push(`${router.query.referrer ?? "/"}`);
     } catch (err: any) {
-      await sweetMixinErrorAlert(err.message ?? "Sign up failed. Please try again");
+      const msg = err?.graphQLErrors?.[0]?.message;
+      if (msg?.includes("already exists")) {
+        await sweetMixinErrorAlert("Bu nick allaqachon band!");
+      } else {
+        await sweetMixinErrorAlert(err.message ?? "Sign up failed. Please try again.");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -143,22 +156,22 @@ const Join: NextPage = () => {
           {/* Heading */}
           <Stack className="join-heading">
             <Typography className="join-title">
-              {loginView ? "Welcome back" : "Create account"}
+              {loginView ? t("Welcome back") : t("Create account")}
             </Typography>
             <Typography className="join-sub">
               {loginView
-                ? "Sign in to your Verilium account"
-                : "Join the fragrance community"}
+                ? t("Sign in to your Verilium account")
+                : t("Join the fragrance community")}
             </Typography>
           </Stack>
 
           {/* Inputs */}
           <Stack className="join-inputs">
             <Stack className="input-field">
-              <label>Nickname</label>
+              <label>{t("Nickname")}</label>
               <input
                 type="text"
-                placeholder="Enter your nickname"
+                placeholder={t("Enter your nickname")}
                 value={input.nick}
                 onChange={(e) => handleInput("nick", e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -167,11 +180,11 @@ const Join: NextPage = () => {
             </Stack>
 
             <Stack className="input-field">
-              <label>Password</label>
+              <label>{t("Password")}</label>
               <div className="password-wrap">
                 <input
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
+                  placeholder={t("Enter your password")}
                   value={input.password}
                   onChange={(e) => handleInput("password", e.target.value)}
                   onKeyDown={handleKeyDown}
@@ -194,10 +207,10 @@ const Join: NextPage = () => {
 
             {!loginView && (
               <Stack className="input-field">
-                <label>Phone</label>
+                <label>{t("Phone")}</label>
                 <input
                   type="tel"
-                  placeholder="Enter your phone number"
+                  placeholder={t("Enter your phone number")}
                   value={input.phone}
                   onChange={(e) => handleInput("phone", e.target.value)}
                   onKeyDown={handleKeyDown}
@@ -219,16 +232,16 @@ const Join: NextPage = () => {
                 sx={{ color: "var(--black-primary)" }}
               />
             ) : loginView ? (
-              "Sign In"
+              t("Sign In")
             ) : (
-              "Sign Up"
+              t("Sign Up")
             )}
           </Button>
 
           {/* Divider */}
           <Stack className="join-divider">
             <span />
-            <Typography>or continue with</Typography>
+            <Typography>{t("or continue with")}</Typography>
             <span />
           </Stack>
 
@@ -237,7 +250,7 @@ const Join: NextPage = () => {
             {/* Custom styled button (visible) */}
             <div className="tg-custom-btn">
               <img src="/img/icons/telegram.svg" alt="Telegram" className="tg-icon" />
-              <span>Continue with Telegram</span>
+              <span>{t("Continue with Telegram")}</span>
             </div>
             {/* Real widget — invisible, overlaid on top to capture click */}
             <div ref={telegramRef} className="telegram-widget" />
@@ -247,11 +260,11 @@ const Join: NextPage = () => {
           <Stack className="join-toggle">
             <Typography>
               {loginView
-                ? "Don't have an account?"
-                : "Already have an account?"}
+                ? t("Don't have an account?")
+                : t("Already have an account?")}
             </Typography>
             <button onClick={() => switchView(!loginView)}>
-              {loginView ? "Sign Up" : "Sign In"}
+              {loginView ? t("Sign Up") : t("Sign In")}
             </button>
           </Stack>
         </Stack>

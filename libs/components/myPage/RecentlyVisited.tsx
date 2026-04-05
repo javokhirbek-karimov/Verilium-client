@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "next-i18next";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
@@ -10,6 +11,7 @@ import { GET_VISITED } from "../../../apollo/user/query";
 import { useQuery } from "@apollo/client";
 
 const RecentlyVisited: NextPage = () => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
   const router = useRouter();
   const [recentlyVisited, setRecentlyVisited] = useState<Perfume[]>([]);
@@ -42,9 +44,9 @@ const RecentlyVisited: NextPage = () => {
     <div id="recently-visited-page">
       <Stack className="main-title-box">
         <Stack className="right-box">
-          <Typography className="main-title">Recently Visited</Typography>
+          <Typography className="main-title">{t("Recently Visited")}</Typography>
           <Typography className="sub-title">
-            Perfumes you've viewed recently
+            {t("Perfumes you've viewed recently")}
           </Typography>
         </Stack>
       </Stack>
@@ -62,7 +64,7 @@ const RecentlyVisited: NextPage = () => {
         ) : (
           <div className="no-data">
             <img src="/img/icons/icoAlert.svg" alt="" />
-            <p>No recently visited perfumes found!</p>
+            <p>{t("No recently visited perfumes found!")}</p>
           </div>
         )}
       </Stack>
@@ -80,7 +82,7 @@ const RecentlyVisited: NextPage = () => {
           </Stack>
           <Stack className="total-result">
             <Typography>
-              Total {total} recently visited perfume{total !== 1 ? "s" : ""}
+              {t("Total recently visited perfume(s)")}: {total}
             </Typography>
           </Stack>
         </Stack>

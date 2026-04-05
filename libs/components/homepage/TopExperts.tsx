@@ -11,6 +11,7 @@ import { ExpertsInquiry } from "../../types/member/member.input";
 import { useQuery } from "@apollo/client";
 import { GET_EXPERTS } from "../../../apollo/user/query";
 import { T } from "../../types/common";
+import { useTranslation } from "next-i18next";
 
 interface TopExpertsProps {
   initialInput: ExpertsInquiry;
@@ -19,6 +20,7 @@ interface TopExpertsProps {
 const TopExperts = (props: TopExpertsProps) => {
   const { initialInput } = props;
   const device = useDeviceDetect();
+  const { t } = useTranslation("common");
   const router = useRouter();
   const [topExperts, setTopExperts] = useState<Member[]>([]);
 
@@ -48,7 +50,7 @@ const TopExperts = (props: TopExpertsProps) => {
       <Stack className={"top-experts"}>
         <Stack className={"container"}>
           <Stack className={"info-box"}>
-            <span>Top Experts</span>
+            <span>{t("Top Experts")}</span>
           </Stack>
           <Stack className={"wrapper"}>
             <Swiper
@@ -82,12 +84,12 @@ const TopExperts = (props: TopExpertsProps) => {
         <Stack className={"container"}>
           <Stack className={"info-box"}>
             <Box component={"div"} className={"left"}>
-              <span>Top Experts</span>
-              <p>Our Top Experts always ready to serve you</p>
+              <span>{t("Top Experts")}</span>
+              <p>{t("Our Top Experts always ready to serve you")}</p>
             </Box>
             <Box component={"div"} className={"right"}>
               <div className={"more-box"}>
-                <span>See All Experts</span>
+                <span>{t("See All Experts")}</span>
                 <img src="/img/icons/rightup.svg" alt="" />
               </div>
             </Box>

@@ -48,11 +48,11 @@ const TopBasic = () => {
   const langClose = () => setAnchorEl2(null);
 
   const langChoice = useCallback(
-    async (e: any) => {
-      setLang(e.target.id);
-      localStorage.setItem("locale", e.target.id);
+    (locale: string) => {
+      setLang(locale);
+      localStorage.setItem("locale", locale);
       setAnchorEl2(null);
-      await router.push(router.asPath, router.asPath, { locale: e.target.id });
+      router.push(router.asPath, router.asPath, { locale, scroll: false });
     },
     [router],
   );
@@ -207,16 +207,16 @@ const TopBasic = () => {
                 onClose={langClose}
                 sx={{ position: "absolute" }}
               >
-                <MenuItem disableRipple onClick={langChoice} id="en">
-                  <img className="img-flag" src={"/img/flag/langen.png"} id="en" alt="EN" />
+                <MenuItem disableRipple onClick={() => langChoice("en")}>
+                  <img className="img-flag" src={"/img/flag/langen.png"} alt="EN" />
                   {t("English")}
                 </MenuItem>
-                <MenuItem disableRipple onClick={langChoice} id="kr">
-                  <img className="img-flag" src={"/img/flag/langkr.png"} id="kr" alt="KR" />
+                <MenuItem disableRipple onClick={() => langChoice("kr")}>
+                  <img className="img-flag" src={"/img/flag/langkr.png"} alt="KR" />
                   {t("Korean")}
                 </MenuItem>
-                <MenuItem disableRipple onClick={langChoice} id="ru">
-                  <img className="img-flag" src={"/img/flag/langru.png"} id="ru" alt="RU" />
+                <MenuItem disableRipple onClick={() => langChoice("ru")}>
+                  <img className="img-flag" src={"/img/flag/langru.png"} alt="RU" />
                   {t("Russian")}
                 </MenuItem>
               </StyledMenu>

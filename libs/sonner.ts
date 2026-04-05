@@ -68,6 +68,10 @@ export const sweetMixinSuccessAlert = async (
   toast.success(msg, { duration });
 };
 
+export const sweetErrorAlert = async (msg: string, duration: number = 3000) => {
+  toast.error(msg, { duration });
+};
+
 export const sweetBasicAlert = async (text: string) => {
   toast(text);
 };

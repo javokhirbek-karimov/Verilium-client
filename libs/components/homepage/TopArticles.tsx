@@ -12,6 +12,7 @@ import { GET_BOARD_ARTICLES } from "../../../apollo/user/query";
 import { BoardArticle } from "../../types/board-article/board-article";
 import { BoardArticlesInquiry } from "../../types/board-article/board-articles.input";
 import { T } from "../../types/common";
+import { useTranslation } from "next-i18next";
 
 interface TopArticlesProps {
   initialInput: BoardArticlesInquiry;
@@ -20,6 +21,7 @@ interface TopArticlesProps {
 const TopArticles = (props: TopArticlesProps) => {
   const { initialInput } = props;
   const device = useDeviceDetect();
+  const { t } = useTranslation("common");
   const router = useRouter();
   const [articles, setArticles] = useState<BoardArticle[]>([]);
 
@@ -53,7 +55,7 @@ const TopArticles = (props: TopArticlesProps) => {
       <Stack className={"top-articles"}>
         <Stack className={"container"}>
           <Stack className={"info-box"}>
-            <span>Latest Articles</span>
+            <span>{t("Latest Articles")}</span>
           </Stack>
           <Stack className={"card-box"}>
             <Swiper
@@ -84,8 +86,8 @@ const TopArticles = (props: TopArticlesProps) => {
       <Stack className={"container"}>
         <Stack className={"info-box"}>
           <Box component={"div"} className={"left"}>
-            <span>Latest Articles</span>
-            <p>Tips, stories & fragrance guides from our community</p>
+            <span>{t("Latest Articles")}</span>
+            <p>{t("Tips, stories & fragrance guides from our community")}</p>
           </Box>
           <Box component={"div"} className={"right"}>
             <div className={"pagination-box"}>
@@ -98,7 +100,7 @@ const TopArticles = (props: TopArticlesProps) => {
 
         <Stack className={"card-box"}>
           {articles.length === 0 && !getArticlesLoading ? (
-            <Box className={"empty-list"}>No articles yet</Box>
+            <Box className={"empty-list"}>{t("No articles yet")}</Box>
           ) : (
             <Swiper
               className={"top-articles-swiper"}

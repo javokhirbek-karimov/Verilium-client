@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { Stack, Typography } from "@mui/material";
 import Link from "next/link";
@@ -22,6 +23,7 @@ import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlin
 import LogoutIcon from "@mui/icons-material/Logout";
 
 const MyMenu = () => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
   const router = useRouter();
   const category: string = (router.query?.category as string) ?? "myProfile";
@@ -32,7 +34,7 @@ const MyMenu = () => {
   /** HANDLERS **/
   const logoutHandler = async () => {
     try {
-      if (await sweetConfirmAlert("Do you want to logout?")) logOut();
+      if (await sweetConfirmAlert(t("Do you want to logout?"))) logOut();
     } catch (err: any) {
       console.log("ERROR, logoutHandler:", err.message);
     }
@@ -77,89 +79,89 @@ const MyMenu = () => {
       {/* ── Collection (EXPERT / ADMIN only) ────────────────────────── */}
       {(user?.memberType === "EXPERT" || user?.memberType === "ADMIN") && (
         <Stack className="menu-section">
-          <Typography className="section-label">Collection</Typography>
+          <Typography className="section-label">{t("Collection")}</Typography>
           <MenuItem
             href="addPerfume"
             active={isActive("addPerfume")}
             icon={<AddCircleOutlineIcon fontSize="small" />}
-            label="Add Perfume"
+            label={t("Add Perfume")}
           />
           <MenuItem
             href="myPerfumes"
             active={isActive("myPerfumes")}
             icon={<LocalFloristIcon fontSize="small" />}
-            label="My Perfumes"
+            label={t("My Perfumes")}
           />
         </Stack>
       )}
 
       {/* ── Explore ─────────────────────────────────────────────────── */}
       <Stack className="menu-section">
-        <Typography className="section-label">Explore</Typography>
+        <Typography className="section-label">{t("Explore")}</Typography>
         <MenuItem
           href="myFavorites"
           active={isActive("myFavorites")}
           icon={<FavoriteBorderIcon fontSize="small" />}
-          label="My Favorites"
+          label={t("My Favorites")}
         />
         <MenuItem
           href="recentlyVisited"
           active={isActive("recentlyVisited")}
           icon={<VisibilityOutlinedIcon fontSize="small" />}
-          label="Recently Visited"
+          label={t("Recently Visited")}
         />
       </Stack>
 
       {/* ── Community (EXPERT / ADMIN only) ─────────────────────────── */}
       {(user?.memberType === "EXPERT" || user?.memberType === "ADMIN") && (
         <Stack className="menu-section">
-          <Typography className="section-label">Community</Typography>
+          <Typography className="section-label">{t("Community")}</Typography>
           <MenuItem
             href="myArticles"
             active={isActive("myArticles")}
             icon={<ArticleOutlinedIcon fontSize="small" />}
-            label="My Articles"
+            label={t("My Articles")}
           />
           <MenuItem
             href="writeArticle"
             active={isActive("writeArticle")}
             icon={<EditNoteIcon fontSize="small" />}
-            label="Write Article"
+            label={t("Write Article")}
           />
         </Stack>
       )}
 
       {/* ── Social ──────────────────────────────────────────────────── */}
       <Stack className="menu-section">
-        <Typography className="section-label">Social</Typography>
+        <Typography className="section-label">{t("Social")}</Typography>
         {(user?.memberType === "EXPERT" || user?.memberType === "ADMIN") && (
           <MenuItem
             href="followers"
             active={isActive("followers")}
             icon={<PeopleAltOutlinedIcon fontSize="small" />}
-            label="My Followers"
+            label={t("My Followers")}
           />
         )}
         <MenuItem
           href="followings"
           active={isActive("followings")}
           icon={<PersonAddAltIcon fontSize="small" />}
-          label="My Followings"
+          label={t("My Followings")}
         />
       </Stack>
 
       {/* ── Account ─────────────────────────────────────────────────── */}
       <Stack className="menu-section">
-        <Typography className="section-label">Account</Typography>
+        <Typography className="section-label">{t("Account")}</Typography>
         <MenuItem
           href="myProfile"
           active={isActive("myProfile")}
           icon={<ManageAccountsOutlinedIcon fontSize="small" />}
-          label="My Profile"
+          label={t("My Profile")}
         />
         <Stack className={`menu-item logout`} onClick={logoutHandler}>
           <LogoutIcon fontSize="small" className="item-icon" />
-          <Typography className="item-label">Logout</Typography>
+          <Typography className="item-label">{t("Logout")}</Typography>
         </Stack>
       </Stack>
     </Stack>

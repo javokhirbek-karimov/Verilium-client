@@ -14,6 +14,7 @@ import { T } from "../../types/common";
 import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from "../../sonner";
 import { Message } from "../../enums/common.enum";
 import { LIKE_TARGET_PERFUME } from "../../../apollo/user/mutation";
+import { useTranslation } from "next-i18next";
 
 interface TopPerfumesProps {
   initialInput: PerfumesInquiry;
@@ -22,6 +23,7 @@ interface TopPerfumesProps {
 const TopPerfumes = (props: TopPerfumesProps) => {
   const { initialInput } = props;
   const device = useDeviceDetect();
+  const { t } = useTranslation("common");
   const [topPerfumes, setTopPerfumes] = useState<Perfume[]>([]);
 
   /** APOLLO REQUESTS **/
@@ -64,7 +66,7 @@ const TopPerfumes = (props: TopPerfumesProps) => {
       <Stack className={"top-perfumes"}>
         <Stack className={"container"}>
           <Stack className={"info-box"}>
-            <span>Top perfumes</span>
+            <span>{t("Top perfumes")}</span>
           </Stack>
           <Stack className={"card-box"}>
             <Swiper
@@ -98,8 +100,8 @@ const TopPerfumes = (props: TopPerfumesProps) => {
         <Stack className={"container"}>
           <Stack className={"info-box"}>
             <Box component={"div"} className={"left"}>
-              <span>Top perfumes</span>
-              <p>Check out our Top Perfumes</p>
+              <span>{t("Top perfumes")}</span>
+              <p>{t("Check out our Top Perfumes")}</p>
             </Box>
           </Stack>
           <Stack className={"card-box"}>

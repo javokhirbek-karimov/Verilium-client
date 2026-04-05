@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { NextPage } from "next";
 import { Stack, Typography } from "@mui/material";
@@ -35,6 +36,7 @@ export const getStaticProps = async ({ locale }: any) => ({
 });
 
 const MyPage: NextPage = () => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
   const user = useReactiveVar(userVar);
   const router = useRouter();
@@ -110,12 +112,12 @@ const MyPage: NextPage = () => {
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <div className="hero-section">
         <div className="hero-content">
-          <Typography className="hero-label">Dashboard</Typography>
+          <Typography className="hero-label">{t("Dashboard")}</Typography>
           <Typography className="hero-title">
-            My <span>Account</span>
+            {t("My")} <span>{t("Account")}</span>
           </Typography>
           <Typography className="hero-sub">
-            Manage your profile, perfumes, favorites and articles
+            {t("Manage your profile, perfumes, favorites and articles")}
           </Typography>
         </div>
       </div>

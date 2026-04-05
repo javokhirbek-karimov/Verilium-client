@@ -14,6 +14,7 @@ import { LIKE_TARGET_PERFUME } from "../../../apollo/user/mutation";
 import { GET_PERFUMES } from "../../../apollo/user/query";
 import { T } from "../../types/common";
 import { sweetMixinErrorAlert, sweetTopSmallSuccessAlert } from "../../sonner";
+import { useTranslation } from "next-i18next";
 
 interface TrendPerfumesProps {
   initialInput: PerfumesInquiry;
@@ -22,6 +23,7 @@ interface TrendPerfumesProps {
 const TrendPerfumes = (props: TrendPerfumesProps) => {
   const { initialInput } = props;
   const device = useDeviceDetect();
+  const { t } = useTranslation("common");
   const [trendPerfumes, setTrendPerfumes] = useState<Perfume[]>([]);
 
   /** APOLLO REQUESTS **/
@@ -66,12 +68,12 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
       <Stack className={"trend-perfumes"}>
         <Stack className={"container"}>
           <Stack className={"info-box"}>
-            <span>Trend Perfumes</span>
+            <span>{t("Trend Perfumes")}</span>
           </Stack>
           <Stack className={"card-box"}>
             {trendPerfumes.length === 0 ? (
               <Box component={"div"} className={"empty-list"}>
-                Trends Empty
+                {t("Trends Empty")}
               </Box>
             ) : (
               <Swiper
@@ -103,8 +105,8 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
         <Stack className={"container"}>
           <Stack className={"info-box"}>
             <Box component={"div"} className={"left"}>
-              <span>Trend Perfumes</span>
-              <p>Trend is based on likes</p>
+              <span>{t("Trend Perfumes")}</span>
+              <p>{t("Trend is based on likes")}</p>
             </Box>
             <Box component={"div"} className={"right"}>
               <div className={"pagination-box"}>
@@ -117,7 +119,7 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
           <Stack className={"card-box"}>
             {trendPerfumes.length === 0 ? (
               <Box component={"div"} className={"empty-list"}>
-                Trends Empty
+                {t("Trends Empty")}
               </Box>
             ) : (
               <Swiper

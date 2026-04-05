@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "next-i18next";
 import { NextPage } from "next";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import { Pagination, Stack, Typography } from "@mui/material";
@@ -16,6 +17,7 @@ import {
 } from "../../sonner";
 
 const MyArticles: NextPage = ({ initialInput }: T) => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
   const user = useReactiveVar(userVar);
   const [searchCommunity, setSearchCommunity] = useState({
@@ -77,9 +79,9 @@ const MyArticles: NextPage = ({ initialInput }: T) => {
     <div id="my-articles-page">
       <Stack className="main-title-box">
         <Stack className="right-box">
-          <Typography className="main-title">My Articles</Typography>
+          <Typography className="main-title">{t("My Articles")}</Typography>
           <Typography className="sub-title">
-            Manage your published articles
+            {t("Manage your published articles")}
           </Typography>
         </Stack>
       </Stack>
@@ -97,7 +99,7 @@ const MyArticles: NextPage = ({ initialInput }: T) => {
         ) : (
           <div className="no-data">
             <img src="/img/icons/icoAlert.svg" alt="" />
-            <p>No Articles found!</p>
+            <p>{t("No Articles found!")}</p>
           </div>
         )}
       </Stack>
@@ -115,7 +117,7 @@ const MyArticles: NextPage = ({ initialInput }: T) => {
           </Stack>
           <Stack className="total">
             <Typography>
-              Total {totalCount ?? 0} article(s) available
+              {t("Total article(s) available")}: {totalCount ?? 0}
             </Typography>
           </Stack>
         </Stack>

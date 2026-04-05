@@ -122,7 +122,7 @@ export const UPDATE_MEMBER = gql`
       createdAt
       updatedAt
       accessToken
-      expertRequest
+      memberExpertRequest
       firstLoginAt
       lastLoginAt
       loginCount
@@ -297,7 +297,7 @@ export const CREATE_BOARD_ARTICLE = gql`
         createdAt
         updatedAt
         accessToken
-        expertRequest
+        memberExpertRequest
       }
     }
   }

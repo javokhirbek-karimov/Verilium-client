@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 import { NextPage } from "next";
 import useDeviceDetect from "../../libs/hooks/useDeviceDetect";
 import withLayoutBasic from "../../libs/components/layout/layoutBasic";
@@ -58,6 +59,7 @@ export const getStaticProps = async ({ locale }: any) => ({
 });
 
 const ExpertDetail: NextPage = ({ initialPerfumes, initialComment }: any) => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
   const router = useRouter();
   const user = useReactiveVar(userVar);
@@ -250,7 +252,7 @@ const ExpertDetail: NextPage = ({ initialPerfumes, initialComment }: any) => {
             <Box className={"stats-row"}>
               <Box className={"stat"}>
                 <RemoveRedEyeIcon fontSize="small" />
-                <span>{expert?.memberViews ?? 0} views</span>
+                <span>{expert?.memberViews ?? 0} {t("views")}</span>
               </Box>
               <Box
                 className={`stat like-stat${isLiked ? " liked" : ""}`}
@@ -261,15 +263,15 @@ const ExpertDetail: NextPage = ({ initialPerfumes, initialComment }: any) => {
                 ) : (
                   <FavoriteBorderIcon fontSize="small" />
                 )}
-                <span>{expert?.memberLikes ?? 0} likes</span>
+                <span>{expert?.memberLikes ?? 0} {t("likes")}</span>
               </Box>
               <Box className={"stat"}>
                 <LocalFloristIcon fontSize="small" />
-                <span>{(expert as any)?.memberPerfumes ?? 0} perfumes</span>
+                <span>{(expert as any)?.memberPerfumes ?? 0} {t("perfumes")}</span>
               </Box>
               <Box className={"stat"}>
                 <PeopleAltIcon fontSize="small" />
-                <span>{expert?.memberFollowers ?? 0} followers</span>
+                <span>{expert?.memberFollowers ?? 0} {t("followers")}</span>
               </Box>
             </Box>
             {expert?.memberPhone && (
@@ -285,7 +287,7 @@ const ExpertDetail: NextPage = ({ initialPerfumes, initialComment }: any) => {
 
         {/* ── Expert's Perfumes ────────────────────────── */}
         <Box className={"listings-section"}>
-          <Typography className={"section-title"}>Perfumes</Typography>
+          <Typography className={"section-title"}>{t("Perfumes")}</Typography>
           {perfumeTotal > 0 ? (
             <>
               <Box className={"card-grid"}>
@@ -309,14 +311,14 @@ const ExpertDetail: NextPage = ({ initialPerfumes, initialComment }: any) => {
                   color="primary"
                 />
                 <Typography className={"total-label"}>
-                  {perfumeTotal} perfume{perfumeTotal > 1 ? "s" : ""} available
+                  {perfumeTotal} {perfumeTotal > 1 ? t("perfumes") : t("perfume")} {t("available")}
                 </Typography>
               </Stack>
             </>
           ) : (
             <Box className={"empty-state"}>
               <img src="/img/icons/icoAlert.svg" alt="" />
-              <Typography>No perfumes found</Typography>
+              <Typography>{t("No perfumes found")}</Typography>
             </Box>
           )}
         </Box>
@@ -324,7 +326,7 @@ const ExpertDetail: NextPage = ({ initialPerfumes, initialComment }: any) => {
         {/* ── Reviews Section ──────────────────────────── */}
         <Box className={"reviews-section"}>
           <Typography className={"section-title"}>
-            Reviews
+            {t("Reviews")}
             {commentTotal > 0 && (
               <span className={"review-count"}>{commentTotal}</span>
             )}
@@ -349,21 +351,21 @@ const ExpertDetail: NextPage = ({ initialPerfumes, initialComment }: any) => {
             </>
           ) : (
             <Typography className={"no-reviews"}>
-              No reviews yet. Be the first to share your experience!
+              {t("No reviews yet. Be the first to share your experience!")}
             </Typography>
           )}
 
           {/* Write review */}
           <Box className={"comment-form"}>
-            <Typography className={"form-title"}>Leave a Review</Typography>
+            <Typography className={"form-title"}>{t("Leave a Review")}</Typography>
             <TextField
               className={"comment-input"}
               multiline
               rows={3}
               placeholder={
                 user._id
-                  ? "Share your experience with this expert..."
-                  : "Please log in to leave a review"
+                  ? t("Share your experience with this expert...")
+                  : t("Please log in to leave a review")
               }
               value={insertCommentData.commentContent}
               onChange={({ target: { value } }) =>
@@ -382,7 +384,7 @@ const ExpertDetail: NextPage = ({ initialPerfumes, initialComment }: any) => {
               disabled={!insertCommentData.commentContent.trim() || !user._id}
               onClick={createCommentHandler}
             >
-              Post Review
+              {t("Post Review")}
             </Button>
           </Box>
         </Box>

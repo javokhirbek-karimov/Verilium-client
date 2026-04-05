@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "next-i18next";
 import { Stack, Typography, Button, Pagination } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { useReactiveVar } from "@apollo/client";
@@ -19,6 +20,7 @@ interface MemberFollowersProps {
 const MemberFollowers = ({
   redirectToMemberPageHandler,
 }: MemberFollowersProps) => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
 
   if (device === "mobile") return <div>FOLLOWERS MOBILE</div>;
@@ -26,14 +28,12 @@ const MemberFollowers = ({
   return (
     <div id="member-follows-page">
       <Stack className="main-title-box">
-        <Typography className="main-title">My Followers</Typography>
-        <Typography className="sub-title">
-          People who follow you
-        </Typography>
+        <Typography className="main-title">{t("My Followers")}</Typography>
+        <Typography className="sub-title">{t("People who follow you")}</Typography>
       </Stack>
       <Stack className="follows-empty">
         <PeopleAltOutlinedIcon className="empty-icon" />
-        <Typography className="empty-text">Followers list coming soon</Typography>
+        <Typography className="empty-text">{t("Followers list coming soon")}</Typography>
       </Stack>
     </div>
   );

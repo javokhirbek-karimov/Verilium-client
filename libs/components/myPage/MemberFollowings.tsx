@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "next-i18next";
 import { Stack, Typography } from "@mui/material";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
@@ -13,6 +14,7 @@ interface MemberFollowingsProps {
 const MemberFollowings = ({
   redirectToMemberPageHandler,
 }: MemberFollowingsProps) => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
 
   if (device === "mobile") return <div>FOLLOWINGS MOBILE</div>;
@@ -20,14 +22,12 @@ const MemberFollowings = ({
   return (
     <div id="member-follows-page">
       <Stack className="main-title-box">
-        <Typography className="main-title">My Followings</Typography>
-        <Typography className="sub-title">
-          People you follow
-        </Typography>
+        <Typography className="main-title">{t("My Followings")}</Typography>
+        <Typography className="sub-title">{t("People you follow")}</Typography>
       </Stack>
       <Stack className="follows-empty">
         <PersonAddAltIcon className="empty-icon" />
-        <Typography className="empty-text">Followings list coming soon</Typography>
+        <Typography className="empty-text">{t("Followings list coming soon")}</Typography>
       </Stack>
     </div>
   );

@@ -13,6 +13,8 @@ import { getMainDefinition } from "@apollo/client/utilities";
 import { onError } from "@apollo/client/link/error";
 import { getJwtToken } from "../libs/auth";
 import { TokenRefreshLink } from "apollo-link-token-refresh";
+import { sweetErrorAlert } from "../libs/sonner";
+import { socketVar } from "./store";
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 function getHeaders() {
@@ -34,62 +36,96 @@ const tokenRefreshLink = new TokenRefreshLink({
   },
 });
 
-function createIsomorphicLink() {
-  const authLink = new ApolloLink((operation, forward) => {
-    operation.setContext(({ headers = {} }) => ({
-      headers: {
-        ...headers,
-        ...getHeaders(),
-      },
-    }));
-    return forward(operation);
-  });
+// Custom WebSocket client
+class LoggingWebSocket {
+  private socket: WebSocket;
 
-  const httpLink = createUploadLink({
-    uri:
-      process.env.REACT_APP_API_GRAPHQL_URL || "http://localhost:3007/graphql",
-  });
+  constructor(url: string) {
+    this.socket = new WebSocket(`${url}?token=${getJwtToken()}`);
+    socketVar(this.socket);
 
-  if (typeof window === "undefined") {
-    // ✅ SSR uchun
-    return from([authLink.concat(httpLink)]);
+    this.socket.onopen = () => {
+      console.log("WebSocket connection!");
+    };
+
+    this.socket.onmessage = (msg) => {
+      console.log("WebSocket message:", msg.data);
+    };
+
+    this.socket.onerror = (error) => {
+      console.log("WebSocket error:", error);
+    };
   }
 
-  // ✅ CLIENT uchun
-  const wsLink = new WebSocketLink({
-    uri: process.env.REACT_APP_API_WS ?? "ws://127.0.0.1:3007",
-    options: {
-      reconnect: true, // ⚠️ false emas!
-      connectionParams: () => ({
-        headers: getHeaders(),
-      }),
-    },
-  });
+  send(data: string | ArrayBuffer | Blob | ArrayBufferView) {
+    this.socket.send(data as string | Blob | BufferSource);
+  }
 
-  const errorLink = onError(({ graphQLErrors, networkError }) => {
-    if (graphQLErrors) {
-      graphQLErrors.forEach(({ message }) =>
-        console.log("[GraphQL error]:", message),
-      );
-    }
-    if (networkError) {
-      console.log("[Network error]:", networkError);
-    }
-  });
+  close() {
+    this.socket.close();
+  }
+}
 
-  const splitLink = split(
-    ({ query }) => {
-      const definition = getMainDefinition(query);
-      return (
-        definition.kind === "OperationDefinition" &&
-        definition.operation === "subscription"
-      );
-    },
-    wsLink,
-    authLink.concat(httpLink),
-  );
+function createIsomorphicLink() {
+  if (typeof window !== "undefined") {
+    const authLink = new ApolloLink((operation, forward) => {
+      operation.setContext(({ headers = {} }) => ({
+        headers: {
+          ...headers,
+          ...getHeaders(),
+        },
+      }));
+      console.warn("requesting.. ", operation);
+      return forward(operation);
+    });
 
-  return from([errorLink, tokenRefreshLink, splitLink]);
+    // @ts-ignore
+    const link = new createUploadLink({
+      uri: process.env.REACT_APP_API_GRAPHQL_URL,
+    });
+
+    /* WEBSOCKET SUBSCRIPTION LINK */
+    const wsLink = new WebSocketLink({
+      uri: process.env.REACT_APP_API_WS ?? "ws://127.0.0.1:3007",
+      options: {
+        reconnect: false,
+        timeout: 30000,
+        connectionParams: () => {
+          return { headers: getHeaders() };
+        },
+      },
+      webSocketImpl: LoggingWebSocket,
+    });
+
+    const errorLink = onError(({ graphQLErrors, networkError, response }) => {
+      if (graphQLErrors) {
+        graphQLErrors.map(({ message, locations, path, extensions }) => {
+          console.log(
+            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+          );
+          if (!message.includes("input")) sweetErrorAlert(message);
+        });
+      }
+      if (networkError) console.log(`[Network error]: ${networkError}`);
+      // @ts-ignore
+      if (networkError?.statusCode === 401) {
+      }
+    });
+
+    const splitLink = split(
+      ({ query }) => {
+        const definition = getMainDefinition(query);
+        return (
+          definition.kind === "OperationDefinition" &&
+          definition.operation === "subscription"
+        );
+      },
+      wsLink,
+      authLink.concat(link),
+    );
+
+    return from([errorLink, tokenRefreshLink, splitLink]);
+  }
 }
 
 function createApolloClient() {

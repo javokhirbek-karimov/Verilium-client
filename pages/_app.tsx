@@ -6,6 +6,7 @@ import { light } from "../scss/MaterialTheme";
 import { ApolloProvider } from "@apollo/client";
 import { useApollo } from "../apollo/client";
 import { appWithTranslation } from "next-i18next";
+import nextI18NextConfig from "../next-i18next.config";
 import { Toaster } from "sonner";
 import "../scss/app.scss";
 import "../scss/pc/main.scss";
@@ -28,6 +29,9 @@ const App = ({ Component, pageProps }: AppProps) => {
               background: "#1a1a1a",
               color: "#eaeaea",
               border: "1px solid #d4af37",
+              fontSize: "16px",
+              padding: "16px 20px",
+              minWidth: "320px",
             },
             classNames: {
               success: "toast-success",
@@ -40,4 +44,4 @@ const App = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default appWithTranslation(App);
+export default appWithTranslation(App, nextI18NextConfig as any);

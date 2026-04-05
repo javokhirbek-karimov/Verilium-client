@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "next-i18next";
 import { NextPage } from "next";
 import { Pagination, Stack, Typography } from "@mui/material";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
@@ -15,6 +16,7 @@ import { GET_EXPERT_PERFUMES } from "../../../apollo/user/query";
 import { sweetConfirmAlert, sweetErrorHandling } from "../../sonner";
 
 const MyPerfumes: NextPage = ({ initialInput }: any) => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
   const router = useRouter();
   const user = useReactiveVar(userVar);
@@ -50,7 +52,7 @@ const MyPerfumes: NextPage = ({ initialInput }: any) => {
 
   const deletePerfumeHandler = async (id: string) => {
     try {
-      if (await sweetConfirmAlert("Are you sure you want to delete this perfume?")) {
+      if (await sweetConfirmAlert(t("Are you sure you want to delete this perfume?"))) {
         await updatePerfume({
           variables: { input: { _id: id, perfumeStatus: PerfumeStatus.DELETED } },
         });
@@ -63,7 +65,7 @@ const MyPerfumes: NextPage = ({ initialInput }: any) => {
 
   const updatePerfumeHandler = async (status: string, id: string) => {
     try {
-      if (await sweetConfirmAlert(`Change status to ${status}?`)) {
+      if (await sweetConfirmAlert(`${t("Change status to")} ${status}?`)) {
         await updatePerfume({
           variables: { input: { _id: id, perfumeStatus: status } },
         });
@@ -90,9 +92,9 @@ const MyPerfumes: NextPage = ({ initialInput }: any) => {
     <div id="my-perfumes-page">
       {/* ── Header ──────────────────────────────────────────────────── */}
       <Stack className="main-title-box">
-        <Typography className="main-title">My Perfumes</Typography>
+        <Typography className="main-title">{t("My Perfumes")}</Typography>
         <Typography className="sub-title">
-          Manage your listed fragrances
+          {t("Manage your listed fragrances")}
         </Typography>
       </Stack>
 
@@ -101,8 +103,8 @@ const MyPerfumes: NextPage = ({ initialInput }: any) => {
         {/* Status tabs */}
         <Stack className="tab-bar">
           {[
-            { label: "Active", value: PerfumeStatus.ACTIVE },
-            { label: "Sold Out", value: PerfumeStatus.SOLDOUT },
+            { label: t("Active"), value: PerfumeStatus.ACTIVE },
+            { label: t("Sold Out"), value: PerfumeStatus.SOLDOUT },
           ].map(({ label, value }) => (
             <Typography
               key={value}
@@ -116,12 +118,12 @@ const MyPerfumes: NextPage = ({ initialInput }: any) => {
 
         {/* Table header */}
         <Stack className="table-head">
-          <Typography className="col-title wide">Perfume</Typography>
-          <Typography className="col-title">Published</Typography>
-          <Typography className="col-title">Status</Typography>
-          <Typography className="col-title">Views</Typography>
+          <Typography className="col-title wide">{t("Perfume")}</Typography>
+          <Typography className="col-title">{t("Published")}</Typography>
+          <Typography className="col-title">{t("Status")}</Typography>
+          <Typography className="col-title">{t("Views")}</Typography>
           {activeStatus === PerfumeStatus.ACTIVE && (
-            <Typography className="col-title">Actions</Typography>
+            <Typography className="col-title">{t("Actions")}</Typography>
           )}
         </Stack>
 
@@ -130,7 +132,7 @@ const MyPerfumes: NextPage = ({ initialInput }: any) => {
           {perfumes?.length === 0 ? (
             <Stack className="no-data">
               <img src="/img/icons/icoAlert.svg" alt="" />
-              <Typography>No perfumes found</Typography>
+              <Typography>{t("No perfumes found")}</Typography>
             </Stack>
           ) : (
             perfumes.map((perfume: Perfume) => (
@@ -155,7 +157,7 @@ const MyPerfumes: NextPage = ({ initialInput }: any) => {
               onChange={paginationHandler}
             />
             <Typography className="total-label">
-              {total} perfume{total !== 1 ? "s" : ""} total
+              {total} {t("perfumes total")}
             </Typography>
           </Stack>
         )}

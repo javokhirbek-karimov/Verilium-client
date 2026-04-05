@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "next-i18next";
 import { Stack, Typography, Button, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useQuery } from "@apollo/client";
@@ -7,15 +8,16 @@ import { Faq as FaqType } from "../../types/cs/faq";
 import { FaqCategory } from "../../enums/faq.enum";
 
 const CATEGORIES = [
-  { label: "All", value: "ALL" },
-  { label: "Perfume", value: FaqCategory.PERFUME },
-  { label: "Payment", value: FaqCategory.PAYMENT },
-  { label: "Delivery", value: FaqCategory.DELIVERY },
-  { label: "Membership", value: FaqCategory.MEMBERSHIP },
-  { label: "Other", value: FaqCategory.OTHER },
+  { labelKey: "All", value: "ALL" },
+  { labelKey: "Perfume", value: FaqCategory.PERFUME },
+  { labelKey: "Payment", value: FaqCategory.PAYMENT },
+  { labelKey: "Delivery", value: FaqCategory.DELIVERY },
+  { labelKey: "Membership", value: FaqCategory.MEMBERSHIP },
+  { labelKey: "Other", value: FaqCategory.OTHER },
 ];
 
 const FaqComponent = () => {
+  const { t } = useTranslation("common");
   const [activeCategory, setActiveCategory] = useState<string>("ALL");
   const [expanded, setExpanded] = useState<string | false>(false);
 
@@ -45,7 +47,7 @@ const FaqComponent = () => {
               onClick={() => setActiveCategory(cat.value)}
               disableRipple
             >
-              {cat.label}
+              {t(cat.labelKey)}
             </Button>
           ))}
         </div>
@@ -55,7 +57,7 @@ const FaqComponent = () => {
       <Stack className="faq-list">
         {filtered.length === 0 ? (
           <Stack className="no-data">
-            <Typography>No FAQs found.</Typography>
+            <Typography>{t("No FAQs found.")}</Typography>
           </Stack>
         ) : (
           filtered.map((faq) => (

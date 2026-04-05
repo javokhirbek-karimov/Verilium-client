@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "next-i18next";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
@@ -13,6 +14,7 @@ import { sweetMixinErrorAlert } from "../../sonner";
 import { Messages } from "../../config";
 
 const MyFavorites: NextPage = () => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
   const router = useRouter();
   const [myFavorites, setMyFavorites] = useState<Perfume[]>([]);
@@ -65,9 +67,9 @@ const MyFavorites: NextPage = () => {
     <div id="my-favorites-page">
       <Stack className="main-title-box">
         <Stack className="right-box">
-          <Typography className="main-title">My Favorites</Typography>
+          <Typography className="main-title">{t("My Favorites")}</Typography>
           <Typography className="sub-title">
-            Perfumes you've saved to your wishlist
+            {t("Perfumes you've saved to your wishlist")}
           </Typography>
         </Stack>
       </Stack>
@@ -85,7 +87,7 @@ const MyFavorites: NextPage = () => {
         ) : (
           <div className="no-data">
             <img src="/img/icons/icoAlert.svg" alt="" />
-            <p>No favorites found!</p>
+            <p>{t("No favorites found!")}</p>
           </div>
         )}
       </Stack>
@@ -103,7 +105,7 @@ const MyFavorites: NextPage = () => {
           </Stack>
           <Stack className="total-result">
             <Typography>
-              Total {total} favorite perfume{total !== 1 ? "s" : ""}
+              {t("Total favorite perfume(s)")}: {total}
             </Typography>
           </Stack>
         </Stack>

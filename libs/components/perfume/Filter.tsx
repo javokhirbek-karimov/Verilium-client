@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 import {
   Stack,
   Typography,
@@ -42,6 +43,7 @@ interface FilterType {
 }
 
 const Filter = (props: FilterType) => {
+  const { t } = useTranslation("common");
   const { searchFilter, setSearchFilter, initialInput } = props;
   const device = useDeviceDetect();
   const router = useRouter();
@@ -215,13 +217,13 @@ const Filter = (props: FilterType) => {
     <Stack className={"filter-main"}>
       {/* Search */}
       <Stack className={"find-your-home"} mb={"40px"}>
-        <Typography className={"title-main"}>Find Your Perfume</Typography>
+        <Typography className={"title-main"}>{t("Find Your Perfume")}</Typography>
         <Stack className={"input-box"}>
           <OutlinedInput
             value={searchText}
             type={"text"}
             className={"search-input"}
-            placeholder={"Search by name or brand..."}
+            placeholder={t("Search by name or brand...")}
             onChange={(e: any) => setSearchText(e.target.value)}
             onKeyDown={(event: any) => {
               if (event.key === "Enter") {
@@ -248,7 +250,7 @@ const Filter = (props: FilterType) => {
 
       {/* Type */}
       <Stack className={"find-your-home"} mb={"30px"}>
-        <Typography className={"title"}>Perfume Type</Typography>
+        <Typography className={"title"}>{t("Perfume Type")}</Typography>
         {perfumeTypes.map((type) => (
           <Stack className={"input-box"} key={type}>
             <Checkbox
@@ -269,7 +271,7 @@ const Filter = (props: FilterType) => {
 
       {/* Scent */}
       <Stack className={"find-your-home"} mb={"30px"}>
-        <Typography className={"title"}>Scent</Typography>
+        <Typography className={"title"}>{t("Scent")}</Typography>
         {perfumeScents.map((scent) => (
           <Stack className={"input-box"} key={scent}>
             <Checkbox
@@ -290,7 +292,7 @@ const Filter = (props: FilterType) => {
 
       {/* Longevity */}
       <Stack className={"find-your-home"} mb={"30px"}>
-        <Typography className={"title"}>Longevity</Typography>
+        <Typography className={"title"}>{t("Longevity")}</Typography>
         {perfumeLongevities.map((lon) => (
           <Stack className={"input-box"} key={lon}>
             <Checkbox
@@ -313,7 +315,7 @@ const Filter = (props: FilterType) => {
 
       {/* Season */}
       <Stack className={"find-your-home"} mb={"30px"}>
-        <Typography className={"title"}>Season</Typography>
+        <Typography className={"title"}>{t("Season")}</Typography>
         {perfumeSeasons.map((season) => (
           <Stack className={"input-box"} key={season}>
             <Checkbox
@@ -336,7 +338,7 @@ const Filter = (props: FilterType) => {
 
       {/* Price Range */}
       <Stack className={"find-your-home"} mb={"30px"}>
-        <Typography className={"title"}>Price Range ($)</Typography>
+        <Typography className={"title"}>{t("Price Range ($)")}</Typography>
         <Stack className="square-year-input">
           <FormControl>
             <InputLabel id="price-min-label">Min</InputLabel>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import useDeviceDetect from "../../libs/hooks/useDeviceDetect";
@@ -59,6 +60,7 @@ export const getStaticProps = async ({ locale }: any) => ({
 });
 
 const CommunityDetail: NextPage = ({ initialInput }: T) => {
+  const { t } = useTranslation("common");
   const device = useDeviceDetect();
   const router = useRouter();
   const { query } = router;
@@ -307,14 +309,14 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
             }
             disabled={likeLoading}
           >
-            {boardArticle?.articleLikes} Likes
+            {boardArticle?.articleLikes} {t("Likes")}
           </Button>
         </div>
 
         {/* ── COMMENTS ── */}
         <div className="comments-section">
           <Typography className="comments-heading">
-            Comments
+            {t("Comments")}
             <span className="count">{total}</span>
           </Typography>
 
@@ -322,7 +324,7 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
           <div className="comment-input-box">
             <input
               type="text"
-              placeholder="Share your thoughts…"
+              placeholder={t("Share your thoughts…")}
               value={comment}
               onChange={(e) => {
                 if (e.target.value.length > 100) return;
@@ -334,7 +336,7 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
             <div className="input-footer">
               <span className="word-count">{wordsCnt}/100</span>
               <Button className="submit-btn" onClick={createCommentHandler}>
-                Post
+                {t("Post")}
               </Button>
             </div>
           </div>
@@ -429,7 +431,7 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
           className="edit-comment-modal"
           onClick={(e) => e.stopPropagation()}
         >
-          <Typography className="modal-title">Edit Comment</Typography>
+          <Typography className="modal-title">{t("Edit Comment")}</Typography>
           <input
             autoFocus
             value={updatedComment}
@@ -441,13 +443,13 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
             <span className="modal-count">{updatedCommentWordsCnt}/100</span>
             <div className="modal-btns">
               <Button className="cancel-btn" onClick={cancelButtonHandler}>
-                Cancel
+                {t("Cancel")}
               </Button>
               <Button
                 className="update-btn"
                 onClick={() => updateButtonHandler(updatedCommentId, undefined)}
               >
-                Update
+                {t("Update")}
               </Button>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 import {
   Stack,
   Box,
@@ -49,6 +50,7 @@ export const getServerSideProps = async ({ locale }: any) => ({
 });
 
 const PerfumeDetail: NextPage = () => {
+  const { t } = useTranslation("common");
   const router = useRouter();
   const perfumeId = router.query.id as string;
   const user = useReactiveVar(userVar);
@@ -237,7 +239,7 @@ const PerfumeDetail: NextPage = () => {
             <Box className={"stats-row"}>
               <Box className={"stat"}>
                 <RemoveRedEyeIcon fontSize="small" />
-                <span>{perfume.perfumeViews} views</span>
+                <span>{perfume.perfumeViews} {t("views")}</span>
               </Box>
               <Box
                 className={`stat like-stat${isLiked ? " liked" : ""}`}
@@ -248,7 +250,7 @@ const PerfumeDetail: NextPage = () => {
                 ) : (
                   <FavoriteBorderIcon fontSize="small" />
                 )}
-                <span>{perfume.perfumeLikes} likes</span>
+                <span>{perfume.perfumeLikes} {t("likes")}</span>
               </Box>
             </Box>
 
@@ -256,7 +258,7 @@ const PerfumeDetail: NextPage = () => {
 
             <Box className={"attributes"}>
               <Box className={"attr-row"}>
-                <Typography className={"attr-label"}>Scent</Typography>
+                <Typography className={"attr-label"}>{t("Scent")}</Typography>
                 <Chip
                   label={perfume.perfumeScent}
                   size="small"
@@ -264,14 +266,14 @@ const PerfumeDetail: NextPage = () => {
                 />
               </Box>
               <Box className={"attr-row"}>
-                <Typography className={"attr-label"}>Size</Typography>
+                <Typography className={"attr-label"}>{t("Size")}</Typography>
                 <Typography className={"attr-value"}>
                   {perfume.perfumeSize} ml
                 </Typography>
               </Box>
               {perfume.perfumeLongevity && (
                 <Box className={"attr-row"}>
-                  <Typography className={"attr-label"}>Longevity</Typography>
+                  <Typography className={"attr-label"}>{t("Longevity")}</Typography>
                   <Chip
                     label={perfume.perfumeLongevity}
                     size="small"
@@ -281,7 +283,7 @@ const PerfumeDetail: NextPage = () => {
               )}
               {perfume.perfumeSeason && perfume.perfumeSeason.length > 0 && (
                 <Box className={"attr-row"}>
-                  <Typography className={"attr-label"}>Season</Typography>
+                  <Typography className={"attr-label"}>{t("Season")}</Typography>
                   <Box className={"chip-row"}>
                     {perfume.perfumeSeason.map((s) => (
                       <Chip
@@ -301,7 +303,7 @@ const PerfumeDetail: NextPage = () => {
             <Box className={"seller-row"}>
               <img src={memberImage} alt={perfume.memberData?.memberNick} />
               <Box>
-                <Typography className={"seller-label"}>Sold by</Typography>
+                <Typography className={"seller-label"}>{t("Sold by")}</Typography>
                 <Typography className={"seller-nick"}>
                   {perfume.memberData?.memberNick ?? "Expert"}
                 </Typography>
@@ -313,7 +315,7 @@ const PerfumeDetail: NextPage = () => {
         {/* ── Description ──────────────────────────────── */}
         {perfume.perfumeDesc && (
           <Box className={"desc-section"}>
-            <Typography className={"section-title"}>Description</Typography>
+            <Typography className={"section-title"}>{t("Description")}</Typography>
             <Typography className={"desc-text"}>
               {perfume.perfumeDesc}
             </Typography>
@@ -323,7 +325,7 @@ const PerfumeDetail: NextPage = () => {
         {/* ── Comments ─────────────────────────────────── */}
         <Box className={"comments-section"}>
           <Typography className={"section-title"}>
-            Reviews
+            {t("Reviews")}
             {commentTotal > 0 && (
               <span className={"comment-count"}>{commentTotal}</span>
             )}
@@ -362,7 +364,7 @@ const PerfumeDetail: NextPage = () => {
             </Stack>
           ) : (
             <Typography className={"no-comments"}>
-              No reviews yet. Be the first to share your thoughts!
+              {t("No reviews yet. Be the first to share your thoughts!")}
             </Typography>
           )}
 
@@ -374,8 +376,8 @@ const PerfumeDetail: NextPage = () => {
               rows={3}
               placeholder={
                 user._id
-                  ? "Share your experience with this perfume..."
-                  : "Please log in to leave a review"
+                  ? t("Share your experience with this perfume...")
+                  : t("Please log in to leave a review")
               }
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
@@ -389,7 +391,7 @@ const PerfumeDetail: NextPage = () => {
               onClick={submitCommentHandler}
               disabled={!user._id || !commentText.trim()}
             >
-              Post Review
+              {t("Post Review")}
             </Button>
           </Box>
         </Box>
@@ -400,10 +402,10 @@ const PerfumeDetail: NextPage = () => {
             <Box className={"similar-header"}>
               <Box>
                 <Typography className={"section-title"}>
-                  Similar Perfumes
+                  {t("Similar Perfumes")}
                 </Typography>
                 <Typography className={"section-sub"}>
-                  You might also like these
+                  {t("You might also like these")}
                 </Typography>
               </Box>
               <Box className={"nav-btns"}>
