@@ -1,7 +1,12 @@
 import { makeVar } from "@apollo/client";
 
 import { CustomJwtPayload } from "../libs/types/customJWTPayload";
+import { Notification } from "../libs/types/cs/notification";
+import { Notice } from "../libs/types/cs/notice";
+
 export const themeVar = makeVar({});
+export const notificationsVar = makeVar<Notification[]>([]);
+export const noticesVar = makeVar<Notice[]>([]);
 
 export const userVar = makeVar<CustomJwtPayload>({
   _id: "",

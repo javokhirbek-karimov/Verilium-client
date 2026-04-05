@@ -38,3 +38,9 @@ export interface AllBoardArticlesInquiry {
   direction?: Direction;
   search: ABAISearch;
 }
+
+export interface BoardArticleUpdate {
+  _id: string;
+  articleStatus?: BoardArticleStatus;
+  articleCategory?: BoardArticleCategory;
+}

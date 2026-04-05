@@ -1,5 +1,6 @@
 import {
   MemberAuthType,
+  MemberRequestExpert,
   MemberStatus,
   MemberType,
 } from "../../enums/member.enum";
@@ -29,6 +30,7 @@ export interface Member {
   memberComments: number;
   memberWarnings: number;
   memberBlocks: number;
+  memberExpertRequest?: MemberRequestExpert;
   deletedAt?: Date;
   createdAt: Date;
   updatedAt: Date;

@@ -1,10 +1,12 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 import { NextPage } from "next";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, Button } from "@mui/material";
+import { useRouter } from "next/router";
 import useDeviceDetect from "../../libs/hooks/useDeviceDetect";
 import withLayoutBasic from "../../libs/components/layout/layoutBasic";
 import Faq from "../../libs/components/cs/Faq";
+import Notices from "../../libs/components/cs/Notices";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export const getStaticProps = async ({ locale }: any) => ({
@@ -16,6 +18,12 @@ export const getStaticProps = async ({ locale }: any) => ({
 const CS: NextPage = () => {
   const { t } = useTranslation("common");
   const device = useDeviceDetect();
+  const router = useRouter();
+  const tab = (router.query?.tab as string) ?? "faq";
+
+  const setTab = (value: string) => {
+    router.push({ pathname: "/cs", query: { tab: value } }, undefined, { shallow: true });
+  };
 
   if (device === "mobile") return <h1>CS PAGE MOBILE</h1>;
 
@@ -34,9 +42,27 @@ const CS: NextPage = () => {
         </Stack>
       </Stack>
 
-      {/* ── FAQ Content ──────────────────────────────────────── */}
+      {/* ── Tabs ─────────────────────────────────────────────── */}
       <Stack className="cs-content">
-        <Faq />
+        <Stack direction={"row"} className={"cs-tabs"} gap={1} mb={3}>
+          <Button
+            className={`cs-tab-btn${tab === "faq" ? " active" : ""}`}
+            onClick={() => setTab("faq")}
+            disableRipple
+          >
+            {t("FAQ")}
+          </Button>
+          <Button
+            className={`cs-tab-btn${tab === "notices" ? " active" : ""}`}
+            onClick={() => setTab("notices")}
+            disableRipple
+          >
+            {t("Notices")}
+          </Button>
+        </Stack>
+
+        {tab === "faq" && <Faq />}
+        {tab === "notices" && <Notices />}
       </Stack>
     </Stack>
   );

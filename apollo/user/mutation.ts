@@ -140,6 +140,39 @@ export const UPDATE_MEMBER = gql`
   }
 `;
 
+export const UPDATE_MEMBER_BY_ADMIN = gql`
+  mutation UpdateMemberByAdmin($input: MemberUpdateByAdmin!) {
+    updateMemberByAdmin(input: $input) {
+      _id
+      memberType
+      memberStatus
+      memberAuthType
+      memberPhone
+      memberNick
+      memberFullName
+      memberImage
+      memberAddress
+      memberDesc
+      memberPerfumes
+      memberArticles
+      memberFollowers
+      memberFollowings
+      memberPoints
+      memberLikes
+      memberViews
+      memberComments
+      memberRank
+      memberWarnings
+      memberBlocks
+      memberExpertRequest
+      deletedAt
+      createdAt
+      updatedAt
+      accessToken
+    }
+  }
+`;
+
 /**************************
  *         COMMENT         *
  *************************/
@@ -168,6 +201,52 @@ export const UPDATE_COMMENT = gql`
       memberId
       createdAt
       updatedAt
+    }
+  }
+`;
+
+export const REMOVE_COMMENT_BY_ADMIN = gql`
+  mutation RemoveCommentByAdmin($input: String!) {
+    removeCommentByAdmin(commentId: $input) {
+      _id
+      commentStatus
+      commentGroup
+      commentContent
+      commentRefId
+      memberId
+      createdAt
+      updatedAt
+      memberData {
+        _id
+        memberType
+        memberStatus
+        memberAuthType
+        memberPhone
+        memberNick
+        memberFullName
+        memberImage
+        memberAddress
+        memberDesc
+        memberPerfumes
+        memberArticles
+        memberFollowers
+        memberFollowings
+        memberPoints
+        memberLikes
+        memberViews
+        memberComments
+        memberRank
+        memberWarnings
+        memberBlocks
+        deletedAt
+        createdAt
+        updatedAt
+        accessToken
+        memberExpertRequest
+        firstLoginAt
+        lastLoginAt
+        loginCount
+      }
     }
   }
 `;
@@ -252,6 +331,88 @@ export const LIKE_TARGET_PERFUME = gql`
   }
 `;
 
+export const UPDATE_PERFUME_BY_ADMIN = gql`
+  mutation UpdatePerfumeByAdmin($input: PerfumeUpdate!) {
+    updatePerfumeByAdmin(input: $input) {
+      _id
+      perfumeType
+      perfumeStatus
+      perfumeScent
+      perfumeLongevity
+      perfumeSize
+      perfumeBrand
+      perfumeSeason
+      perfumeDiscount
+      perfumeTitle
+      perfumePrice
+      perfumeViews
+      perfumeLikes
+      perfumeComments
+      perfumeRank
+      perfumeImages
+      perfumeDesc
+      memberId
+      deletedAt
+      releasedAt
+      memberData {
+        _id
+        memberType
+        memberStatus
+        memberAuthType
+        memberPhone
+        memberNick
+        memberFullName
+        memberImage
+        memberAddress
+        memberDesc
+        memberPerfumes
+        memberArticles
+        memberFollowers
+        memberFollowings
+        memberPoints
+        memberLikes
+        memberViews
+        memberComments
+        memberRank
+        memberWarnings
+        memberBlocks
+        deletedAt
+        createdAt
+        updatedAt
+        accessToken
+        memberExpertRequest
+      }
+    }
+  }
+`;
+
+export const REMOVE_PERFUME_BY_ADMIN = gql`
+  mutation RemovePerfumeByAdmin($perfumeId: String!) {
+    removePerfumeByAdmin(perfumeId: $perfumeId) {
+      _id
+      perfumeType
+      perfumeStatus
+      perfumeScent
+      perfumeLongevity
+      perfumeSize
+      perfumeBrand
+      perfumeSeason
+      perfumeDiscount
+      perfumeTitle
+      perfumePrice
+      perfumeViews
+      perfumeLikes
+      perfumeComments
+      perfumeRank
+      perfumeImages
+      perfumeDesc
+      memberId
+      deletedAt
+      releasedAt
+    }
+  }
+`;
+
 /**************************
  *      BOARD-ARTICLE     *
  *************************/
@@ -298,6 +459,135 @@ export const CREATE_BOARD_ARTICLE = gql`
         updatedAt
         accessToken
         memberExpertRequest
+      }
+    }
+  }
+`;
+
+export const UPDATE_BOARD_ARTICLE = gql`
+  mutation UpdateBoardArticle($input: BoardArticleUpdate!) {
+    updateBoardArticle(input: $input) {
+      _id
+      articleCategory
+      articleStatus
+      articleTitle
+      articleContent
+      articleImage
+      articleViews
+      articleLikes
+      articleComments
+      memberId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const UPDATE_BOARD_ARTICLE_BY_ADMIN = gql`
+  mutation UpdateBoardArticleByAdmin($input: BoardArticleUpdate!) {
+    updateBoardArticleByAdmin(input: $input) {
+      _id
+      articleCategory
+      articleStatus
+      articleTitle
+      articleContent
+      articleImage
+      articleViews
+      articleLikes
+      articleComments
+      memberId
+      createdAt
+      updatedAt
+      meLiked {
+        memberId
+        likeRefId
+        myFavorite
+      }
+      memberData {
+        _id
+        memberType
+        memberStatus
+        memberAuthType
+        memberPhone
+        memberNick
+        memberFullName
+        memberImage
+        memberAddress
+        memberDesc
+        memberPerfumes
+        memberArticles
+        memberFollowers
+        memberFollowings
+        memberPoints
+        memberLikes
+        memberViews
+        memberComments
+        memberRank
+        memberWarnings
+        memberBlocks
+        deletedAt
+        createdAt
+        updatedAt
+        accessToken
+        memberExpertRequest
+        firstLoginAt
+        lastLoginAt
+        loginCount
+      }
+    }
+  }
+`;
+
+export const REMOVE_BOARD_ARTICLE_BY_ADMIN = gql`
+  mutation RemoveBoardArticleByAdmin($input: String!) {
+    removeBoardArticleByAdmin(input: $input) {
+      _id
+      articleCategory
+      articleStatus
+      articleTitle
+      articleContent
+      articleImage
+      articleViews
+      articleLikes
+      articleComments
+      memberId
+      createdAt
+      updatedAt
+      meLiked {
+        memberId
+        likeRefId
+        myFavorite
+      }
+      memberData {
+        _id
+        memberType
+        memberStatus
+        memberAuthType
+        memberPhone
+        memberNick
+        memberFullName
+        memberImage
+        memberAddress
+        memberDesc
+        memberPerfumes
+        memberArticles
+        memberFollowers
+        memberFollowings
+        memberPoints
+        memberLikes
+        memberViews
+        memberComments
+        memberRank
+        memberWarnings
+        memberBlocks
+        deletedAt
+        createdAt
+        updatedAt
+        accessToken
+        memberExpertRequest
+        firstLoginAt
+        lastLoginAt
+        loginCount
       }
     }
   }
@@ -387,6 +677,49 @@ export const REMOVE_FAQ_FROM_DB = gql`
       faqAnswer
       createdAt
       updatedAt
+    }
+  }
+`;
+
+export const SEND_NOTICE_TO_ALL_BY_ADMIN = gql`
+  mutation SendNoticeToAllByAdmin($input: BroadcastNotificationInput!) {
+    sendNoticeToAllByAdmin(input: $input) {
+      _id
+      notificationType
+      notificationStatus
+      notificationGroup
+      notificationTitle
+      notificationDesc
+      authorId
+      receiverId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const SEND_NOTIFICATION_BY_ADMIN = gql`
+  mutation SendNotificationByAdmin($input: AdminNotificationInput!) {
+    sendNotificationByAdmin(input: $input) {
+      _id
+      notificationType
+      notificationStatus
+      notificationGroup
+      notificationTitle
+      notificationDesc
+      authorId
+      receiverId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const MARK_NOTIFICATION_AS_READ = gql`
+  mutation MarkNotificationAsRead($notificationId: String!) {
+    markNotificationAsRead(notificationId: $notificationId) {
+      _id
+      notificationStatus
     }
   }
 `;

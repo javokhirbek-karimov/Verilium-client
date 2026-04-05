@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Button, MenuItem, Select, Stack, Typography } from "@mui/material";
 import { BoardArticleCategory } from "../../enums/board-article.enum";
 import "@toast-ui/editor/dist/toastui-editor.css";
@@ -22,6 +22,14 @@ const TuiEditor = () => {
 
   /** APOLLO REQUESTS **/
   const [createBoardArticle] = useMutation(CREATE_BOARD_ARTICLE);
+
+  // Force WYSIWYG mode after mount (editor sometimes defaults to markdown)
+  useEffect(() => {
+    const instance = editorRef.current?.getInstance();
+    if (instance && instance.isMarkdownMode()) {
+      instance.changeMode("wysiwyg");
+    }
+  }, []);
 
   const memoizedValues = useMemo(() => {
     return { articleTitle: "", articleContent: "", articleImage: "" };
@@ -127,10 +135,9 @@ const TuiEditor = () => {
         <Editor
           initialValue={""}
           placeholder={"Share your fragrance story..."}
-          previewStyle={"vertical"}
-          height={"520px"}
-          // @ts-ignore
-          initialEditType={"WYSIWYG"}
+          previewStyle={"tab"}
+          height={"520px"}  
+          initialEditType={"wysiwyg"}
           toolbarItems={[
             ["heading", "bold", "italic", "strike"],
             ["image", "table", "link"],

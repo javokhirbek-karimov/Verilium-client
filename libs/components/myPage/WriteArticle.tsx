@@ -18,7 +18,7 @@ const WriteArticle: NextPage = () => {
       <Stack className="main-title-box">
         <Typography className="main-title">{t("Write an Article")}</Typography>
         <Typography className="sub-title">
-          {t("Share your fragrance knowledge with the community")}
+          Share your fragrance knowledge with the community
         </Typography>
       </Stack>
       <Stack className="editor-wrap">

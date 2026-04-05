@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useRouter, withRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { getJwtToken, logOut, updateUserInfo } from "../auth";
-import { Stack, Box, Popover, Typography } from "@mui/material";
+import { Stack, Box, Popover, Typography, Badge } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import { alpha, styled } from "@mui/material/styles";
@@ -14,13 +14,16 @@ import { Logout } from "@mui/icons-material";
 import useDeviceDetect from "../hooks/useDeviceDetect";
 import Link from "next/link";
 import { useReactiveVar } from "@apollo/client";
-import { userVar } from "../../apollo/store";
+import { userVar, notificationsVar } from "../../apollo/store";
 
 const TopBasic = () => {
   const device = useDeviceDetect();
   const user = useReactiveVar(userVar);
   const { t } = useTranslation("common");
   const router = useRouter();
+
+  const notices = useReactiveVar(notificationsVar);
+  const [unreadCount, setUnreadCount] = useState(0);
 
   const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
   const [lang, setLang] = useState<string | null>("en");
@@ -29,6 +32,10 @@ const TopBasic = () => {
   const logoutOpen = Boolean(logoutAnchor);
   const [notifAnchor, setNotifAnchor] = useState<null | HTMLElement>(null);
   const notifOpen = Boolean(notifAnchor);
+
+  useEffect(() => {
+    setUnreadCount((prev) => (notices.length > prev ? notices.length : prev));
+  }, [notices]);
 
   useEffect(() => {
     if (localStorage.getItem("locale") === null) {
@@ -147,10 +154,14 @@ const TopBasic = () => {
                 <button
                   className={"icon-btn"}
                   aria-label="Notifications"
-                  onClick={(e) => setNotifAnchor(e.currentTarget)}
+                  onClick={(e) => {
+                    setNotifAnchor(e.currentTarget);
+                    setUnreadCount(0);
+                  }}
                 >
-                  <NotificationsOutlinedIcon />
-                  <span className={"notif-dot"} />
+                  <Badge badgeContent={unreadCount || null} color="error" overlap="circular">
+                    <NotificationsOutlinedIcon />
+                  </Badge>
                 </button>
 
                 <Popover
@@ -162,7 +173,7 @@ const TopBasic = () => {
                   PaperProps={{
                     sx: {
                       mt: "10px",
-                      width: 320,
+                      width: 340,
                       background: "#121212",
                       border: "1px solid rgba(212,175,55,0.2)",
                       borderRadius: "14px",
@@ -172,19 +183,50 @@ const TopBasic = () => {
                   }}
                 >
                   {/* Header */}
-                  <Box sx={{ px: 2.5, py: 2, borderBottom: "1px solid rgba(212,175,55,0.1)" }}>
+                  <Box sx={{ px: 2.5, py: 1.5, borderBottom: "1px solid rgba(212,175,55,0.1)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <Typography sx={{ fontFamily: "Nunito, sans-serif", fontSize: 14, fontWeight: 800, color: "#fff" }}>
-                      Notifications
+                      Notices
                     </Typography>
+                    <Link href={"/cs?tab=notices"} onClick={() => setNotifAnchor(null)}>
+                      <Typography sx={{ fontSize: 12, color: "#D4AF37", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}>
+                        View all
+                      </Typography>
+                    </Link>
                   </Box>
 
-                  {/* Empty state */}
-                  <Box sx={{ py: 5, display: "flex", flexDirection: "column", alignItems: "center", gap: 1 }}>
-                    <NotificationsOutlinedIcon sx={{ fontSize: 32, color: "rgba(212,175,55,0.3)" }} />
-                    <Typography sx={{ fontFamily: "Nunito, sans-serif", fontSize: 13, color: "rgba(255,255,255,0.3)" }}>
-                      No notifications yet
-                    </Typography>
-                  </Box>
+                  {notices.length === 0 ? (
+                    <Box sx={{ py: 5, display: "flex", flexDirection: "column", alignItems: "center", gap: 1 }}>
+                      <NotificationsOutlinedIcon sx={{ fontSize: 32, color: "rgba(212,175,55,0.3)" }} />
+                      <Typography sx={{ fontFamily: "Nunito, sans-serif", fontSize: 13, color: "rgba(255,255,255,0.3)" }}>
+                        No notices yet
+                      </Typography>
+                    </Box>
+                  ) : (
+                    <Box sx={{ maxHeight: 340, overflowY: "auto" }}>
+                      {notices.slice(0, 5).map((notice) => (
+                        <Link key={notice._id} href={"/cs?tab=notices"} onClick={() => setNotifAnchor(null)}>
+                          <Box sx={{ px: 2.5, py: 1.5, borderBottom: "1px solid rgba(255,255,255,0.05)", cursor: "pointer", "&:hover": { background: "rgba(212,175,55,0.05)" } }}>
+                            <Typography sx={{ fontSize: 13, fontWeight: 700, color: "#eaeaea", mb: 0.3 }}>
+                              {notice.notificationTitle}
+                            </Typography>
+                            <Typography sx={{ fontSize: 12, color: "rgba(255,255,255,0.45)", overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>
+                              {notice.notificationDesc}
+                            </Typography>
+                            <Typography sx={{ fontSize: 11, color: "rgba(212,175,55,0.5)", mt: 0.5 }}>
+                              {new Date(notice.createdAt).toLocaleDateString()}
+                            </Typography>
+                          </Box>
+                        </Link>
+                      ))}
+                      <Box sx={{ px: 2.5, py: 1.5, textAlign: "center" }}>
+                        <Link href={"/cs?tab=notices"} onClick={() => setNotifAnchor(null)}>
+                          <Typography sx={{ fontSize: 12, color: "#D4AF37", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}>
+                            See all notices →
+                          </Typography>
+                        </Link>
+                      </Box>
+                    </Box>
+                  )}
                 </Popover>
               </>
             )}

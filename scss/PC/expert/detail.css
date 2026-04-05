@@ -1,0 +1,324 @@
+#pc-wrap #expert-detail-page {
+  min-height: 100vh;
+  background: var(--black-primary);
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+#pc-wrap #expert-detail-page .container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+#pc-wrap #expert-detail-page .hero-divider {
+  border-color: rgba(212, 175, 55, 0.1);
+}
+#pc-wrap #expert-detail-page .section-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  margin-bottom: 28px;
+}
+#pc-wrap #expert-detail-page .section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 36px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+}
+#pc-wrap #expert-detail-page .section-title .review-count {
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--gold-primary);
+  color: var(--black-primary);
+  padding: 2px 10px;
+  border-radius: 20px;
+  position: static;
+}
+#pc-wrap #expert-detail-page .section-title .review-count::after {
+  display: none;
+}
+#pc-wrap #expert-detail-page .expert-hero {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  padding-top: 40px;
+}
+#pc-wrap #expert-detail-page .expert-hero .avatar-wrap {
+  flex-shrink: 0;
+}
+#pc-wrap #expert-detail-page .expert-hero .avatar-wrap .expert-avatar {
+  width: 140px;
+  height: 140px;
+  border: 2.5px solid rgba(212, 175, 55, 0.45);
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+#pc-wrap #expert-detail-page .expert-hero .avatar-wrap .expert-avatar:hover {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .expert-name {
+  font-family: "Nunito", sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  cursor: pointer;
+  letter-spacing: -0.3px;
+  transition: color 0.2s ease;
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .expert-name:hover {
+  color: var(--gold-primary);
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .expert-desc {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 560px;
+  opacity: 0.8;
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .stats-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .stats-row .stat {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .stats-row .stat svg {
+  font-size: 17px;
+  color: var(--text-secondary);
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .stats-row .stat span {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .stats-row .stat.like-stat {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .stats-row .stat.like-stat:hover svg, #pc-wrap #expert-detail-page .expert-hero .hero-info .stats-row .stat.like-stat.liked svg {
+  color: var(--gold-primary);
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .stats-row .stat.like-stat:hover span, #pc-wrap #expert-detail-page .expert-hero .hero-info .stats-row .stat.like-stat.liked span {
+  color: var(--gold-primary);
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .contact-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .contact-row img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .contact-row span {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+#pc-wrap #expert-detail-page .listings-section {
+  display: flex;
+  flex-direction: column;
+}
+#pc-wrap #expert-detail-page .listings-section .card-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+#pc-wrap #expert-detail-page .listings-section .pagination-wrap {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+#pc-wrap #expert-detail-page .listings-section .pagination-wrap .total-label {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+#pc-wrap #expert-detail-page .listings-section .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 56px 0;
+}
+#pc-wrap #expert-detail-page .listings-section .empty-state img {
+  width: 40px;
+  height: 40px;
+  opacity: 0.4;
+}
+#pc-wrap #expert-detail-page .listings-section .empty-state p,
+#pc-wrap #expert-detail-page .listings-section .empty-state .MuiTypography-root {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+#pc-wrap #expert-detail-page .reviews-section {
+  display: flex;
+  flex-direction: column;
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+#pc-wrap #expert-detail-page .reviews-section .review-card {
+  padding: 20px 24px;
+  background: var(--black-soft);
+  border: 1px solid rgba(212, 175, 55, 0.08);
+  border-radius: 14px;
+  transition: border-color 0.3s ease;
+  border-bottom: none;
+}
+#pc-wrap #expert-detail-page .reviews-section .review-card:hover {
+  border-color: rgba(212, 175, 55, 0.2);
+}
+#pc-wrap #expert-detail-page .reviews-section .review-card .info .left img {
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid rgba(212, 175, 55, 0.25);
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#pc-wrap #expert-detail-page .reviews-section .review-card .info .left div strong {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+#pc-wrap #expert-detail-page .reviews-section .review-card .info .left div span {
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+#pc-wrap #expert-detail-page .reviews-section .review-card p {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+#pc-wrap #expert-detail-page .reviews-section .pagination-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+#pc-wrap #expert-detail-page .reviews-section .no-reviews {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  text-align: center;
+  padding: 36px 0 16px;
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px;
+  background: var(--black-soft);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 16px;
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .form-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-input .MuiOutlinedInput-root {
+  height: auto !important;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  padding: 0;
+  align-items: flex-start;
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-input .MuiOutlinedInput-root textarea {
+  padding: 14px 16px;
+  color: var(--text-primary);
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: none;
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-input .MuiOutlinedInput-root textarea::-moz-placeholder {
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-input .MuiOutlinedInput-root textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-input .MuiOutlinedInput-root fieldset {
+  border-color: rgba(212, 175, 55, 0.2);
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-input .MuiOutlinedInput-root:hover fieldset {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-input .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: var(--gold-primary);
+  border-width: 1px;
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-input .MuiOutlinedInput-root.Mui-disabled {
+  opacity: 0.5;
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-input .MuiOutlinedInput-root.Mui-disabled fieldset {
+  border-color: rgba(212, 175, 55, 0.08);
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-submit {
+  align-self: flex-end;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: none;
+  padding: 10px 24px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+  color: var(--black-primary);
+  box-shadow: none;
+  letter-spacing: 0.3px;
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-submit:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.25);
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-submit.Mui-disabled {
+  background: rgba(212, 175, 55, 0.15);
+  color: rgba(234, 234, 234, 0.3);
+}
+#pc-wrap #expert-detail-page .reviews-section .comment-form .comment-submit svg {
+  font-size: 16px;
+}/*# sourceMappingURL=detail.css.map */

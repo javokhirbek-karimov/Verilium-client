@@ -12,11 +12,14 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Cursor from "../Cursor";
+import { useNotificationSubscription } from "../../hooks/useNotificationSubscription";
 
 const withLayoutBasic = (Component: any) => {
   return (props: any) => {
     const device = useDeviceDetect();
     const user = useReactiveVar(userVar);
+
+    useNotificationSubscription();
 
     useEffect(() => {
       const jwt = getJwtToken();

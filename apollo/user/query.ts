@@ -92,6 +92,54 @@ export const GET_EXPERTS = gql`
   }
 `;
 
+export const GET_ALL_MEMBERS_BY_ADMIN = gql`
+  query GetAllMembersByAdmin($input: MembersInquiry!) {
+    getAllMembersByAdmin(input: $input) {
+      list {
+        _id
+        memberType
+        memberStatus
+        memberAuthType
+        memberPhone
+        memberNick
+        memberFullName
+        memberImage
+        memberAddress
+        memberDesc
+        memberPerfumes
+        memberArticles
+        memberFollowers
+        memberFollowings
+        memberPoints
+        memberLikes
+        memberViews
+        memberComments
+        memberRank
+        memberWarnings
+        memberBlocks
+        memberExpertRequest
+        deletedAt
+        createdAt
+        updatedAt
+        accessToken
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
+export const GET_RETENTION_STATS = gql`
+  query GetRetentionStats {
+    getRetentionStats {
+      totalMembers
+      returnedMembers
+      retentionRate
+    }
+  }
+`;
+
 /**************************
  *        PERFUMES        *
  *************************/
@@ -316,6 +364,38 @@ export const GET_VISITED = gql`
   }
 `;
 
+export const GET_ALL_PERFUMES_BY_ADMIN = gql`
+  query GetAllPerfumesByAdmin($input: AllPerfumesInquiry!) {
+    getAllPerfumesByAdmin(input: $input) {
+      list {
+        _id
+        perfumeType
+        perfumeStatus
+        perfumeScent
+        perfumeLongevity
+        perfumeSize
+        perfumeBrand
+        perfumeSeason
+        perfumeDiscount
+        perfumeTitle
+        perfumePrice
+        perfumeViews
+        perfumeLikes
+        perfumeComments
+        perfumeRank
+        perfumeImages
+        perfumeDesc
+        memberId
+        deletedAt
+        releasedAt
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
 /**************************
  *      BOARD-ARTICLE     *
  *************************/
@@ -422,6 +502,66 @@ export const GET_BOARD_ARTICLE = gql`
   }
 `;
 
+export const GET_ALL_BOARD_ARTICLES_BY_ADMIN = gql`
+  query GetAllBoardArticlesByAdmin($input: AllBoardArticlesInquiry!) {
+    getAllBoardArticlesByAdmin(input: $input) {
+      list {
+        _id
+        articleCategory
+        articleStatus
+        articleTitle
+        articleContent
+        articleImage
+        articleViews
+        articleLikes
+        articleComments
+        memberId
+        createdAt
+        updatedAt
+        meLiked {
+          memberId
+          likeRefId
+          myFavorite
+        }
+        memberData {
+          _id
+          memberType
+          memberStatus
+          memberAuthType
+          memberPhone
+          memberNick
+          memberFullName
+          memberImage
+          memberAddress
+          memberDesc
+          memberPerfumes
+          memberArticles
+          memberFollowers
+          memberFollowings
+          memberPoints
+          memberLikes
+          memberViews
+          memberComments
+          memberRank
+          memberWarnings
+          memberBlocks
+          deletedAt
+          createdAt
+          updatedAt
+          accessToken
+          memberExpertRequest
+          firstLoginAt
+          lastLoginAt
+          loginCount
+        }
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
 /**************************
  *         COMMENT        *
  *************************/
@@ -473,6 +613,25 @@ export const GET_COMMENTS = gql`
  *            CS          *
  *************************/
 
+export const GET_FAQS = gql`
+  query GetFaqs {
+    getFaqs(input: null) {
+      list {
+        _id
+        faqCategory
+        faqStatus
+        faqQuestion
+        faqAnswer
+        createdAt
+        updatedAt
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
 export const GET_ALL_FAQS_BY_ADMIN = gql`
   query GetAllFaqsByAdmin($input: FaqInquiry!) {
     getAllFaqsByAdmin(input: $input) {
@@ -492,15 +651,70 @@ export const GET_ALL_FAQS_BY_ADMIN = gql`
   }
 `;
 
-export const GET_FAQS = gql`
-  query GetFaqs {
-    getFaqs(input: null) {
+export const GET_NOTIFICATIONS = gql`
+  query GetNotifications($input: NotificationInquiry!) {
+    getNotifications(input: $input) {
       list {
         _id
-        faqCategory
-        faqStatus
-        faqQuestion
-        faqAnswer
+        notificationType
+        notificationStatus
+        notificationGroup
+        notificationTitle
+        notificationDesc
+        authorId
+        receiverId
+        createdAt
+        updatedAt
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
+export const NOTIFICATION_CREATED = gql`
+  subscription NotificationCreated($receiverId: String!) {
+    notificationCreated(receiverId: $receiverId) {
+      _id
+      notificationType
+      notificationStatus
+      notificationGroup
+      notificationTitle
+      notificationDesc
+      authorId
+      receiverId
+      createdAt
+    }
+  }
+`;
+
+export const NOTICE_RECEIVED = gql`
+  subscription NoticeReceived {
+    noticeReceived {
+      _id
+      noticeCategory
+      noticeStatus
+      noticeTitle
+      noticeContent
+      memberId
+      createdAt
+    }
+  }
+`;
+
+export const GET_ALL_NOTIFICATIONS_BY_ADMIN = gql`
+  query GetAllNotificationsByAdmin($input: AdminNotificationsInquiry!) {
+    getAllNotificationsByAdmin(input: $input) {
+      list {
+        _id
+        notificationType
+        notificationStatus
+        notificationGroup
+        notificationTitle
+        notificationDesc
+        authorId
+        receiverId
         createdAt
         updatedAt
       }
