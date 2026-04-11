@@ -955,7 +955,7 @@
         }
 
         .top-experts-slide {
-          width: 100% !important;
+          height: auto;
         }
       }
 
@@ -963,10 +963,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 14px;
-        padding: 32px 24px;
-        width: 24%;
         border-radius: 20px;
+        overflow: hidden;
         background: var(--black-soft);
         border: 1px solid rgba(212, 175, 55, 0.1);
         cursor: pointer;
@@ -979,42 +977,137 @@
             0 0 0 1px rgba(212, 175, 55, 0.2);
           border-color: rgba(212, 175, 55, 0.25);
 
-          img {
+          .avatar-wrap img {
             border-color: var(--gold-primary);
             box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
           }
+
+          .card-cover {
+            opacity: 0.85;
+          }
         }
 
-        img {
-          width: 100px;
-          height: 100px;
-          border-radius: 50%;
-          object-fit: cover;
-          border: 2px solid rgba(212, 175, 55, 0.3);
-          transition: border-color 0.35s ease, box-shadow 0.35s ease;
+        .card-cover {
+          width: 100%;
+          height: 80px;
+          flex-shrink: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(212, 175, 55, 0.18) 0%,
+            rgba(180, 140, 20, 0.08) 50%,
+            rgba(11, 11, 11, 0.3) 100%
+          );
+          transition: opacity 0.35s ease;
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 8px,
+              rgba(212, 175, 55, 0.03) 8px,
+              rgba(212, 175, 55, 0.03) 16px
+            );
+          }
         }
 
-        strong {
-          font-family: "Nunito", sans-serif;
-          font-size: 19px;
-          font-weight: 700;
-          color: var(--text-primary);
-          text-align: center;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          max-width: 100%;
+        .avatar-wrap {
+          margin-top: -40px;
+          z-index: 1;
+
+          img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--black-soft);
+            outline: 2px solid rgba(212, 175, 55, 0.35);
+            transition: outline-color 0.35s ease, box-shadow 0.35s ease;
+            display: block;
+          }
         }
 
-        span {
-          font-family: "Nunito", sans-serif;
-          font-size: 14px;
-          font-weight: 600;
-          color: var(--gold-primary);
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
-          opacity: 0.85;
-          text-align: center;
+        .card-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4px;
+          padding: 12px 20px 0;
+          width: 100%;
+
+          .nick {
+            font-family: "Nunito", sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+          }
+
+          .type {
+            font-family: "Nunito", sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            opacity: 0.85;
+          }
+
+          .desc {
+            margin-top: 6px;
+            font-family: "Nunito", sans-serif;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        }
+
+        .card-stats {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: 16px;
+          padding: 14px 20px 20px;
+          width: 100%;
+          margin-top: auto;
+
+          .stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            svg {
+              font-size: 15px;
+              color: var(--gold-primary);
+              opacity: 0.75;
+            }
+
+            span {
+              font-family: "Nunito", sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              color: var(--text-secondary);
+            }
+          }
+
+          .stat-divider {
+            width: 1px;
+            height: 16px;
+            background: rgba(212, 175, 55, 0.2);
+          }
         }
       }
     }

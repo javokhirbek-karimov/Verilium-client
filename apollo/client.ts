@@ -39,6 +39,7 @@ const tokenRefreshLink = new TokenRefreshLink({
 // Custom WebSocket client
 class LoggingWebSocket {
   private socket: WebSocket;
+  private queue: Parameters<WebSocket["send"]>[0][] = [];
 
   constructor(url: string) {
     this.socket = new WebSocket(`${url}?token=${getJwtToken()}`);
@@ -46,6 +47,8 @@ class LoggingWebSocket {
 
     this.socket.onopen = () => {
       console.log("WebSocket connection!");
+      this.queue.forEach((msg) => this.socket.send(msg));
+      this.queue = [];
     };
 
     this.socket.onmessage = (msg) => {
@@ -58,7 +61,11 @@ class LoggingWebSocket {
   }
 
   send(data: string | Blob | BufferSource) {
-    this.socket.send(data as Parameters<WebSocket["send"]>[0]);
+    if (this.socket.readyState === WebSocket.OPEN) {
+      this.socket.send(data as Parameters<WebSocket["send"]>[0]);
+    } else {
+      this.queue.push(data as Parameters<WebSocket["send"]>[0]);
+    }
   }
 
   close() {
