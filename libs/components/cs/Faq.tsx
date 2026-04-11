@@ -22,7 +22,10 @@ const FaqComponent = () => {
   const [expanded, setExpanded] = useState<string | false>(false);
 
   /** APOLLO REQUESTS **/
-  const { data } = useQuery(GET_FAQS);
+  const { data } = useQuery(GET_FAQS, {
+    variables: { input: { page: 1, limit: 100 } },
+    fetchPolicy: "cache-and-network",
+  });
   const faqs: FaqType[] = data?.getFaqs?.list ?? [];
 
   const filtered =

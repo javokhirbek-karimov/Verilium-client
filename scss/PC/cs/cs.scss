@@ -83,19 +83,11 @@
             width: 52px;
             height: 3px;
             border-radius: 2px;
-            background: linear-gradient(
-              90deg,
-              var(--gold-primary),
-              var(--gold-light)
-            );
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
           }
 
           span {
-            background: linear-gradient(
-              90deg,
-              var(--gold-primary),
-              var(--gold-light)
-            );
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -118,9 +110,289 @@
     // ══════════════════════════════════════════════════════════════════════
     .cs-content {
       width: 1200px;
-      padding: 36px 0 100px;
+      padding: 40px 0 100px;
 
-      // ── NOTICE ──────────────────────────────────────────────────────────
+      // ── Page-level tab switcher (FAQ / Notices) ──────────────────────────
+      .cs-tabs {
+        display: flex;
+        flex-direction: row;
+        background: var(--black-soft);
+        border: 1px solid rgba(212, 175, 55, 0.12);
+        border-radius: 14px;
+        padding: 6px;
+        width: fit-content;
+        margin-bottom: 32px;
+
+        .cs-tab-btn {
+          height: 40px;
+          padding: 0 28px;
+          border-radius: 10px;
+          background: transparent;
+          color: var(--text-secondary);
+          font-family: "Nunito", sans-serif;
+          font-size: 15px;
+          font-weight: 600;
+          text-transform: none;
+          border: none;
+          transition: color 0.2s ease, background 0.2s ease;
+
+          &:hover {
+            color: var(--text-primary);
+            background: rgba(212, 175, 55, 0.06);
+          }
+
+          &.active {
+            background: var(--gold-primary);
+            color: var(--black-primary);
+            font-weight: 800;
+            box-shadow: 0 2px 14px rgba(212, 175, 55, 0.35);
+          }
+        }
+      }
+
+      // ══════════════════════════════════════════════════════════════════
+      //  FAQ
+      // ══════════════════════════════════════════════════════════════════
+      .faq-content {
+        width: 100%;
+        gap: 28px;
+
+        .tabs-section {
+          .tabs-wrap {
+            display: flex;
+            flex-direction: row;
+            gap: 4px;
+            background: var(--black-soft);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 14px;
+            padding: 6px;
+
+            .tab-pill {
+              height: 38px;
+              padding: 0 22px;
+              border-radius: 10px;
+              background: transparent;
+              color: var(--text-secondary);
+              font-family: "Nunito", sans-serif;
+              font-size: 15px;
+              font-weight: 600;
+              text-transform: none;
+              min-width: 80px;
+              transition: color 0.2s ease, background 0.2s ease;
+
+              &:hover {
+                color: var(--text-primary);
+                background: rgba(212, 175, 55, 0.06);
+              }
+
+              &.active {
+                background: var(--gold-primary);
+                color: var(--black-primary);
+                font-weight: 800;
+                box-shadow: 0 2px 12px rgba(212, 175, 55, 0.32);
+              }
+            }
+          }
+        }
+
+        .faq-list {
+          gap: 12px;
+
+          .no-data {
+            align-items: center;
+            padding: 80px 0;
+
+            .MuiTypography-root {
+              font-family: "Nunito", sans-serif;
+              font-size: 17px;
+              color: var(--text-secondary);
+              opacity: 0.4;
+            }
+          }
+
+          .faq-accordion {
+            background: var(--black-soft) !important;
+            border: 1px solid rgba(212, 175, 55, 0.1) !important;
+            border-radius: 16px !important;
+            overflow: hidden;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease,
+              background 0.25s ease;
+
+            &::before {
+              display: none;
+            }
+
+            &:hover {
+              border-color: rgba(212, 175, 55, 0.22) !important;
+            }
+
+            &.Mui-expanded {
+              border-color: rgba(212, 175, 55, 0.35) !important;
+              box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35),
+                0 0 0 1px rgba(212, 175, 55, 0.12) !important;
+              background: rgba(212, 175, 55, 0.02) !important;
+            }
+
+            .faq-summary {
+              padding: 0 24px;
+              min-height: 68px !important;
+
+              .MuiAccordionSummary-content {
+                margin: 16px 0 !important;
+              }
+
+              .summary-inner {
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+                flex: 1;
+
+                .faq-badge {
+                  display: inline-flex;
+                  align-items: center;
+                  padding: 4px 12px;
+                  border-radius: 20px;
+                  background: rgba(212, 175, 55, 0.08);
+                  border: 1px solid rgba(212, 175, 55, 0.2);
+                  color: var(--gold-primary);
+                  font-family: "Nunito", sans-serif;
+                  font-size: 11px;
+                  font-weight: 800;
+                  text-transform: uppercase;
+                  letter-spacing: 0.8px;
+                  flex-shrink: 0;
+                  white-space: nowrap;
+                }
+
+                .faq-question {
+                  font-family: "Nunito", sans-serif;
+                  font-size: 17px;
+                  font-weight: 600;
+                  color: var(--text-primary);
+                  line-height: 1.5;
+                }
+              }
+
+              .expand-icon {
+                color: var(--text-secondary);
+                opacity: 0.45;
+                font-size: 22px;
+                transition: color 0.25s ease, opacity 0.25s ease,
+                  transform 0.3s ease;
+              }
+
+              &.Mui-expanded .expand-icon {
+                color: var(--gold-primary);
+                opacity: 1;
+              }
+            }
+
+            .faq-details {
+              padding: 0 24px 24px !important;
+              border-top: 1px solid rgba(212, 175, 55, 0.08);
+
+              .faq-answer {
+                font-family: "Nunito", sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                color: rgba(255, 255, 255, 0.58);
+                line-height: 1.85;
+                padding-top: 18px;
+              }
+            }
+          }
+        }
+      }
+
+      // ══════════════════════════════════════════════════════════════════
+      //  NOTICES
+      // ══════════════════════════════════════════════════════════════════
+      .notices-empty {
+        padding: 80px 0;
+        color: var(--text-secondary);
+        opacity: 0.45;
+      }
+
+      .notices-list {
+        gap: 14px;
+
+        .notice-card {
+          padding: 22px 28px;
+          border-radius: 16px;
+          background: var(--black-soft);
+          border: 1px solid rgba(212, 175, 55, 0.1);
+          cursor: pointer;
+          transition: border-color 0.25s ease, box-shadow 0.25s ease,
+            background 0.25s ease;
+
+          &:hover {
+            border-color: rgba(212, 175, 55, 0.28);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+            background: rgba(212, 175, 55, 0.02);
+          }
+
+          .notice-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-family: "Nunito", sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            flex-shrink: 0;
+
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--gold-primary);
+
+            &--like {
+              background: rgba(229, 57, 53, 0.08);
+              border-color: rgba(229, 57, 53, 0.25);
+              color: #e53935;
+            }
+
+            &--follow {
+              background: rgba(66, 165, 245, 0.08);
+              border-color: rgba(66, 165, 245, 0.25);
+              color: #42a5f5;
+            }
+
+            &--comment {
+              background: rgba(102, 187, 106, 0.08);
+              border-color: rgba(102, 187, 106, 0.25);
+              color: #66bb6a;
+            }
+          }
+
+          .notice-date {
+            font-family: "Nunito", sans-serif;
+            font-size: 13px;
+            color: var(--text-secondary);
+            opacity: 0.4;
+          }
+
+          .notice-title {
+            font-family: "Nunito", sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.5;
+            margin-top: 4px;
+          }
+
+          .notice-content {
+            font-family: "Nunito", sans-serif;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.7;
+            margin-top: 8px;
+          }
+        }
+      }
+
+      // ── Notice table (eski stil) ─────────────────────────────────────────
       .notice-content {
         width: 100%;
         gap: 0;
@@ -145,18 +417,9 @@
             opacity: 0.5;
           }
 
-          .col-no {
-            width: 80px;
-            flex-shrink: 0;
-          }
-          .col-title {
-            flex: 1;
-          }
-          .col-date {
-            width: 120px;
-            flex-shrink: 0;
-            text-align: right;
-          }
+          .col-no { width: 80px; flex-shrink: 0; }
+          .col-title { flex: 1; }
+          .col-date { width: 120px; flex-shrink: 0; text-align: right; }
         }
 
         .notice-list {
@@ -170,20 +433,12 @@
             cursor: pointer;
             transition: background 0.2s ease;
 
-            &:last-child {
-              border-bottom: none;
-            }
-
-            &:hover {
-              background: rgba(212, 175, 55, 0.04);
-            }
+            &:last-child { border-bottom: none; }
+            &:hover { background: rgba(212, 175, 55, 0.04); }
 
             &.event {
               background: rgba(212, 175, 55, 0.05);
-
-              &:hover {
-                background: rgba(212, 175, 55, 0.09);
-              }
+              &:hover { background: rgba(212, 175, 55, 0.09); }
             }
 
             .col-no {
@@ -226,155 +481,6 @@
               color: var(--text-secondary);
               opacity: 0.45;
               text-align: right;
-            }
-          }
-        }
-      }
-
-      // ── FAQ ─────────────────────────────────────────────────────────────
-      .faq-content {
-        width: 100%;
-        gap: 28px;
-
-        // Category tabs — Community bilan bir xil dizayn
-        .tabs-section {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-
-          .tabs-wrap {
-            display: flex;
-            flex-direction: row;
-            gap: 4px;
-            background: var(--black-soft);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            border-radius: 14px;
-            padding: 6px;
-
-            .tab-pill {
-              height: 36px;
-              padding: 0 20px;
-              border-radius: 10px;
-              border: none;
-              background: transparent;
-              color: var(--text-secondary);
-              font-family: "Nunito", sans-serif;
-              font-size: 16px;
-              font-weight: 600;
-              text-transform: none;
-              min-width: 80px;
-              transition: color 0.2s ease, background 0.2s ease;
-
-              &:hover {
-                color: var(--text-primary);
-                background: rgba(212, 175, 55, 0.06);
-              }
-
-              &.active {
-                background: var(--gold-primary);
-                color: var(--black-primary);
-                font-weight: 800;
-                box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
-              }
-            }
-          }
-        }
-
-        // Accordion list
-        .faq-list {
-          gap: 10px;
-
-          .no-data {
-            align-items: center;
-            padding: 60px 0;
-
-            .MuiTypography-root {
-              font-family: "Nunito", sans-serif;
-              font-size: 17px;
-              color: var(--text-secondary);
-              opacity: 0.4;
-            }
-          }
-
-          .faq-accordion {
-            background: var(--black-soft) !important;
-            border: 1px solid rgba(212, 175, 55, 0.1) !important;
-            border-radius: 12px !important;
-            overflow: hidden;
-            transition: border-color 0.25s ease, box-shadow 0.25s ease;
-
-            &::before {
-              display: none;
-            }
-
-            &.Mui-expanded {
-              border-color: rgba(212, 175, 55, 0.3) !important;
-              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-            }
-
-            .faq-summary {
-              padding: 0 20px;
-              min-height: 60px !important;
-
-              .MuiAccordionSummary-content {
-                margin: 14px 0 !important;
-              }
-
-              .summary-inner {
-                flex-direction: row;
-                align-items: center;
-                gap: 16px;
-                flex: 1;
-
-                .faq-badge {
-                  display: inline-block;
-                  padding: 3px 10px;
-                  border-radius: 20px;
-                  background: rgba(212, 175, 55, 0.08);
-                  border: 1px solid rgba(212, 175, 55, 0.22);
-                  color: var(--gold-primary);
-                  font-family: "Nunito", sans-serif;
-                  font-size: 12px;
-                  font-weight: 800;
-                  text-transform: uppercase;
-                  letter-spacing: 0.5px;
-                  flex-shrink: 0;
-                  white-space: nowrap;
-                }
-
-                .faq-question {
-                  font-family: "Nunito", sans-serif;
-                  font-size: 17px;
-                  font-weight: 600;
-                  color: var(--text-primary);
-                  line-height: 1.5;
-                }
-              }
-
-              .expand-icon {
-                color: var(--text-secondary);
-                opacity: 0.5;
-                transition: color 0.2s ease, opacity 0.2s ease;
-              }
-
-              &.Mui-expanded .expand-icon {
-                color: var(--gold-primary);
-                opacity: 1;
-              }
-            }
-
-            .faq-details {
-              padding: 0 20px 20px 20px !important;
-              border-top: 1px solid rgba(212, 175, 55, 0.08);
-
-              .faq-answer {
-                font-family: "Nunito", sans-serif;
-                font-size: 17px;
-                font-weight: 400;
-                color: rgba(255, 255, 255, 0.6);
-                line-height: 1.8;
-                padding-top: 16px;
-              }
             }
           }
         }

@@ -96,7 +96,6 @@ const Top = () => {
     />
   ))(({ theme }) => ({
     "& .MuiPaper-root": {
-      top: "109px",
       borderRadius: 8,
       marginTop: theme.spacing(1),
       minWidth: 160,
@@ -235,7 +234,8 @@ const Top = () => {
                 anchorEl={anchorEl2}
                 open={drop}
                 onClose={langClose}
-                sx={{ position: "absolute" }}
+                disableAutoFocusItem
+                disableScrollLock
               >
                 <MenuItem disableRipple onClick={() => langChoice("en")}>
                   <img
