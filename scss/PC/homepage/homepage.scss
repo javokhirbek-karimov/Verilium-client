@@ -332,6 +332,7 @@
 
       .trend-card-box {
         width: 100%;
+        height: 468px;
         border-radius: 20px;
         overflow: hidden;
         background: var(--black-soft);
@@ -394,6 +395,7 @@
           display: flex;
           flex-direction: column;
           gap: 0;
+          overflow: hidden;
 
           .title {
             font-family: "Nunito", sans-serif;
@@ -412,7 +414,6 @@
             font-size: 17px;
             color: var(--text-secondary);
             line-height: 1.5;
-            overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             line-clamp: 2;
@@ -425,7 +426,8 @@
             display: flex;
             flex-direction: row;
             gap: 8px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            overflow: hidden;
 
             div {
               display: flex;
@@ -634,6 +636,7 @@
 
       .top-card-box {
         width: 100%;
+        height: 468px;
         border-radius: 20px;
         overflow: hidden;
         background: var(--black-soft);
@@ -695,6 +698,7 @@
           padding: 22px 22px 18px;
           display: flex;
           flex-direction: column;
+          overflow: hidden;
 
           .title {
             font-family: "Nunito", sans-serif;
@@ -719,10 +723,11 @@
             font-size: 17px;
             color: var(--text-secondary);
             line-height: 1.5;
-            overflow: hidden;
             display: -webkit-box;
+            -webkit-line-clamp: 2;
             line-clamp: 2;
             -webkit-box-orient: vertical;
+            overflow: hidden;
           }
 
           .options {
@@ -730,7 +735,8 @@
             display: flex;
             flex-direction: row;
             gap: 8px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            overflow: hidden;
 
             div {
               display: flex;
