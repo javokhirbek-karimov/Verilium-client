@@ -602,13 +602,18 @@
               cursor: pointer;
               transition: opacity 0.2s ease;
 
-              &:hover {
-                opacity: 1;
+              svg {
+                transition: color 0.2s ease, opacity 0.2s ease;
+              }
 
-                svg {
-                  opacity: 1;
-                  color: var(--gold-primary);
-                }
+              &.liked svg {
+                color: #e53935 !important;
+                opacity: 1;
+              }
+
+              &:hover svg {
+                opacity: 1;
+                color: #e53935;
               }
             }
           }

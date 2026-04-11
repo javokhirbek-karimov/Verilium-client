@@ -60,17 +60,14 @@ const PerfumeCard = ({ perfume, onClick, onLike }: PerfumeCardProps) => {
             <span>{perfume.perfumeViews}</span>
           </Box>
           <Box
-            className={"stat like-btn"}
+            className={`stat like-btn${isLiked ? " liked" : ""}`}
             onClick={(e: React.MouseEvent<HTMLDivElement>) => {
               e.stopPropagation();
               onLike(user, perfume._id);
             }}
           >
             {isLiked ? (
-              <FavoriteIcon
-                fontSize="small"
-                style={{ color: "var(--gold-primary)" }}
-              />
+              <FavoriteIcon fontSize="small" />
             ) : (
               <FavoriteBorderIcon fontSize="small" />
             )}

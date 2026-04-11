@@ -85,7 +85,7 @@ const PerfumePage: NextPage = () => {
       if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
       await likeTargetPerfume({ variables: { input: id } });
       await refetch({ input: searchFilter });
-      await sweetTopSmallSuccessAlert("success", 800);
+      await sweetTopSmallSuccessAlert("Liked!", 800);
       setSearchFilter((prev) => ({ ...prev }));
     } catch (err: any) {
       sweetMixinErrorAlert(err.message).then();
