@@ -27,10 +27,7 @@ export const PerfumeCard = ({
   const device = useDeviceDetect();
   const router = useRouter();
 
-  const imageSrc = perfume?.perfumeImages?.[0]
-    ? `${REACT_APP_API_URL}/${perfume.perfumeImages[0]}`
-    : "/img/fiber/img1.jpg";
-
+  const imageSrc = `${REACT_APP_API_URL}/${perfume.perfumeImages[0]}`;
   const pushEditPerfume = () => {
     router.push({
       pathname: "/mypage",
@@ -72,17 +69,15 @@ export const PerfumeCard = ({
         sx={{ cursor: memberPage ? "pointer" : "default" }}
       >
         <Stack className="thumb">
-          <img
-            src={imageSrc}
-            alt=""
-            onError={(e) => {
-              e.currentTarget.src = "/img/fiber/img1.jpg";
-            }}
-          />
+          <img src={imageSrc} alt="" />
         </Stack>
         <Stack className="text-wrap">
-          <Typography className="perfume-title">{perfume.perfumeTitle}</Typography>
-          <Typography className="perfume-brand">{perfume.perfumeBrand}</Typography>
+          <Typography className="perfume-title">
+            {perfume.perfumeTitle}
+          </Typography>
+          <Typography className="perfume-brand">
+            {perfume.perfumeBrand}
+          </Typography>
           <Typography className="perfume-price">
             ${formatterStr(perfume.perfumePrice)}
           </Typography>
@@ -98,10 +93,7 @@ export const PerfumeCard = ({
 
       {/* Status */}
       <Stack className="status-col">
-        <Stack
-          className="status-badge"
-          sx={{ background: bg }}
-        >
+        <Stack className="status-badge" sx={{ background: bg }}>
           <Typography sx={{ color: text }}>{perfume.perfumeStatus}</Typography>
         </Stack>
       </Stack>

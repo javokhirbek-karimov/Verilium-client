@@ -13,8 +13,9 @@ import { CaretDown } from "phosphor-react";
 import { Logout } from "@mui/icons-material";
 import useDeviceDetect from "../hooks/useDeviceDetect";
 import Link from "next/link";
-import { useReactiveVar } from "@apollo/client";
+import { useReactiveVar } from "@apollo/client/react";
 import { userVar, notificationsVar } from "../../apollo/store";
+import { REACT_APP_API_URL } from "../config";
 
 const TopBasic = () => {
   const device = useDeviceDetect();
@@ -121,6 +122,13 @@ const TopBasic = () => {
     );
   }
 
+  const avatarSrc =
+    user?.memberImage && user.memberImage.trim() !== ""
+      ? user.memberImage.startsWith("http")
+        ? user.memberImage
+        : `${REACT_APP_API_URL}/${user.memberImage}`
+      : "/img/profile/defaultUser.svg";
+
   return (
     <Stack className={"navbar"}>
       <Stack className={"navbar-main scrolled"}>
@@ -159,7 +167,11 @@ const TopBasic = () => {
                     setUnreadCount(0);
                   }}
                 >
-                  <Badge badgeContent={unreadCount || null} color="error" overlap="circular">
+                  <Badge
+                    badgeContent={unreadCount || null}
+                    color="error"
+                    overlap="circular"
+                  >
                     <NotificationsOutlinedIcon />
                   </Badge>
                 </button>
@@ -183,44 +195,132 @@ const TopBasic = () => {
                   }}
                 >
                   {/* Header */}
-                  <Box sx={{ px: 2.5, py: 1.5, borderBottom: "1px solid rgba(212,175,55,0.1)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <Typography sx={{ fontFamily: "Nunito, sans-serif", fontSize: 14, fontWeight: 800, color: "#fff" }}>
+                  <Box
+                    sx={{
+                      px: 2.5,
+                      py: 1.5,
+                      borderBottom: "1px solid rgba(212,175,55,0.1)",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontFamily: "Nunito, sans-serif",
+                        fontSize: 14,
+                        fontWeight: 800,
+                        color: "#fff",
+                      }}
+                    >
                       Notices
                     </Typography>
-                    <Link href={"/cs?tab=notices"} onClick={() => setNotifAnchor(null)}>
-                      <Typography sx={{ fontSize: 12, color: "#D4AF37", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}>
+                    <Link
+                      href={"/cs?tab=notices"}
+                      onClick={() => setNotifAnchor(null)}
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: 12,
+                          color: "#D4AF37",
+                          cursor: "pointer",
+                          "&:hover": { textDecoration: "underline" },
+                        }}
+                      >
                         View all
                       </Typography>
                     </Link>
                   </Box>
 
                   {notices.length === 0 ? (
-                    <Box sx={{ py: 5, display: "flex", flexDirection: "column", alignItems: "center", gap: 1 }}>
-                      <NotificationsOutlinedIcon sx={{ fontSize: 32, color: "rgba(212,175,55,0.3)" }} />
-                      <Typography sx={{ fontFamily: "Nunito, sans-serif", fontSize: 13, color: "rgba(255,255,255,0.3)" }}>
+                    <Box
+                      sx={{
+                        py: 5,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: 1,
+                      }}
+                    >
+                      <NotificationsOutlinedIcon
+                        sx={{ fontSize: 32, color: "rgba(212,175,55,0.3)" }}
+                      />
+                      <Typography
+                        sx={{
+                          fontFamily: "Nunito, sans-serif",
+                          fontSize: 13,
+                          color: "rgba(255,255,255,0.3)",
+                        }}
+                      >
                         No notices yet
                       </Typography>
                     </Box>
                   ) : (
                     <Box sx={{ maxHeight: 340, overflowY: "auto" }}>
                       {notices.slice(0, 5).map((notice) => (
-                        <Link key={notice._id} href={"/cs?tab=notices"} onClick={() => setNotifAnchor(null)}>
-                          <Box sx={{ px: 2.5, py: 1.5, borderBottom: "1px solid rgba(255,255,255,0.05)", cursor: "pointer", "&:hover": { background: "rgba(212,175,55,0.05)" } }}>
-                            <Typography sx={{ fontSize: 13, fontWeight: 700, color: "#eaeaea", mb: 0.3 }}>
+                        <Link
+                          key={notice._id}
+                          href={"/cs?tab=notices"}
+                          onClick={() => setNotifAnchor(null)}
+                        >
+                          <Box
+                            sx={{
+                              px: 2.5,
+                              py: 1.5,
+                              borderBottom: "1px solid rgba(255,255,255,0.05)",
+                              cursor: "pointer",
+                              "&:hover": {
+                                background: "rgba(212,175,55,0.05)",
+                              },
+                            }}
+                          >
+                            <Typography
+                              sx={{
+                                fontSize: 13,
+                                fontWeight: 700,
+                                color: "#eaeaea",
+                                mb: 0.3,
+                              }}
+                            >
                               {notice.notificationTitle}
                             </Typography>
-                            <Typography sx={{ fontSize: 12, color: "rgba(255,255,255,0.45)", overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>
+                            <Typography
+                              sx={{
+                                fontSize: 12,
+                                color: "rgba(255,255,255,0.45)",
+                                overflow: "hidden",
+                                display: "-webkit-box",
+                                WebkitLineClamp: 2,
+                                WebkitBoxOrient: "vertical",
+                              }}
+                            >
                               {notice.notificationDesc}
                             </Typography>
-                            <Typography sx={{ fontSize: 11, color: "rgba(212,175,55,0.5)", mt: 0.5 }}>
+                            <Typography
+                              sx={{
+                                fontSize: 11,
+                                color: "rgba(212,175,55,0.5)",
+                                mt: 0.5,
+                              }}
+                            >
                               {new Date(notice.createdAt).toLocaleDateString()}
                             </Typography>
                           </Box>
                         </Link>
                       ))}
                       <Box sx={{ px: 2.5, py: 1.5, textAlign: "center" }}>
-                        <Link href={"/cs?tab=notices"} onClick={() => setNotifAnchor(null)}>
-                          <Typography sx={{ fontSize: 12, color: "#D4AF37", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}>
+                        <Link
+                          href={"/cs?tab=notices"}
+                          onClick={() => setNotifAnchor(null)}
+                        >
+                          <Typography
+                            sx={{
+                              fontSize: 12,
+                              color: "#D4AF37",
+                              cursor: "pointer",
+                              "&:hover": { textDecoration: "underline" },
+                            }}
+                          >
                             See all notices →
                           </Typography>
                         </Link>
@@ -250,15 +350,27 @@ const TopBasic = () => {
                 sx={{ position: "absolute" }}
               >
                 <MenuItem disableRipple onClick={() => langChoice("en")}>
-                  <img className="img-flag" src={"/img/flag/langen.png"} alt="EN" />
+                  <img
+                    className="img-flag"
+                    src={"/img/flag/langen.png"}
+                    alt="EN"
+                  />
                   {t("English")}
                 </MenuItem>
                 <MenuItem disableRipple onClick={() => langChoice("kr")}>
-                  <img className="img-flag" src={"/img/flag/langkr.png"} alt="KR" />
+                  <img
+                    className="img-flag"
+                    src={"/img/flag/langkr.png"}
+                    alt="KR"
+                  />
                   {t("Korean")}
                 </MenuItem>
                 <MenuItem disableRipple onClick={() => langChoice("ru")}>
-                  <img className="img-flag" src={"/img/flag/langru.png"} alt="RU" />
+                  <img
+                    className="img-flag"
+                    src={"/img/flag/langru.png"}
+                    alt="RU"
+                  />
                   {t("Russian")}
                 </MenuItem>
               </StyledMenu>
@@ -270,7 +382,7 @@ const TopBasic = () => {
                   className={"login-user"}
                   onClick={(e: any) => setLogoutAnchor(e.currentTarget)}
                 >
-                  <img src={"/img/profile/defaultUser.svg"} alt="avatar" />
+                  <img src={avatarSrc} alt="avatar" />
                 </div>
                 <Menu
                   id="logout-menu"

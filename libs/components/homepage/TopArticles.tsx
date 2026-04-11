@@ -43,9 +43,6 @@ const TopArticles = (props: TopArticlesProps) => {
 
   /** HANDLERS **/
 
-  if (articles) console.log("articles:", articles);
-  if (!articles.length && getArticlesLoading) return null;
-
   const goArticleDetail = (id: string) => {
     router.push({ pathname: "/community/detail", query: { id } });
   };

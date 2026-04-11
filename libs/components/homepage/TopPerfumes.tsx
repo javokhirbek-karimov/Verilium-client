@@ -103,11 +103,19 @@ const TopPerfumes = (props: TopPerfumesProps) => {
               <span>{t("Top perfumes")}</span>
               <p>{t("Check out our Top Perfumes")}</p>
             </Box>
+            <Box component={"div"} className={"right"}>
+              <div className={"pagination-box"}>
+                <WestIcon className={"swiper-top-prev"} />
+                <div className={"swiper-top-pagination"}></div>
+                <EastIcon className={"swiper-top-next"} />
+              </div>
+            </Box>
           </Stack>
           <Stack className={"card-box"}>
             <Swiper
               className={"top-perfume-swiper"}
               slidesPerView={4}
+              slidesPerGroup={1}
               spaceBetween={24}
               modules={[Autoplay, Navigation, Pagination]}
               navigation={{
@@ -150,6 +158,3 @@ TopPerfumes.defaultProps = {
 };
 
 export default TopPerfumes;
-function likeTargetPerfume(arg0: { variables: { input: string } }) {
-  throw new Error("Function not implemented.");
-}

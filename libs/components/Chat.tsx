@@ -8,20 +8,30 @@ import SmartToyIcon from "@mui/icons-material/SmartToy";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { useRouter } from "next/router";
 import ScrollableFeed from "react-scrollable-feed";
+import { useReactiveVar } from "@apollo/client";
+import {
+  socketVar,
+  userVar,
+  memberMessagesVar,
+  aiMessagesVar,
+  onlineUsersVar,
+  MemberMessage,
+  AiMessage,
+} from "../../apollo/store";
+import { REACT_APP_API_URL, Messages } from "../config";
+import { sweetErrorAlert } from "../sonner";
 
 type ChatMode = "ai" | "members";
 
-interface MessageItem {
-  id: string;
-  type: "left" | "right";
-  text: string;
-  senderName?: string;
-  senderAvatar?: string;
-  timestamp?: string;
-  isAI?: boolean;
-  isTyping?: boolean;
+function formatTime(date: Date) {
+  return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
 
+function uid() {
+  return Math.random().toString(36).slice(2, 9);
+}
+
+/* ─── Typing dots ─── */
 const TypingIndicator = () => (
   <Box
     flexDirection={"row"}
@@ -31,8 +41,7 @@ const TypingIndicator = () => (
   >
     <Avatar
       alt={"AI"}
-      src={"/img/profile/ai-agent.svg"}
-      sx={{ width: 28, height: 28, bgcolor: "#33c1c1" }}
+      sx={{ width: 28, height: 28, bgcolor: "#33c1c1", flexShrink: 0 }}
     >
       <SmartToyIcon sx={{ fontSize: 16 }} />
     </Avatar>
@@ -44,15 +53,9 @@ const TypingIndicator = () => (
   </Box>
 );
 
-interface MessageBubbleProps {
-  msg: MessageItem;
-  mode: ChatMode;
-}
-
-const MessageBubble = ({ msg, mode }: MessageBubbleProps) => {
-  if (msg.isTyping) return <TypingIndicator />;
-
-  if (msg.type === "right") {
+/* ─── AI bubble ─── */
+const AiBubble = ({ msg }: { msg: AiMessage }) => {
+  if (msg.type === "user") {
     return (
       <Box
         component={"div"}
@@ -63,7 +66,7 @@ const MessageBubble = ({ msg, mode }: MessageBubbleProps) => {
         sx={{ m: "6px 0px" }}
       >
         <div className={"msg-meta-right"}>
-          {msg.timestamp && <span className={"msg-time"}>{msg.timestamp}</span>}
+          <span className={"msg-time"}>{msg.timestamp}</span>
         </div>
         <div className={"msg-right"}>{msg.text}</div>
       </Box>
@@ -77,107 +80,186 @@ const MessageBubble = ({ msg, mode }: MessageBubbleProps) => {
       sx={{ m: "6px 0px" }}
       component={"div"}
     >
-      {mode === "ai" ? (
-        <Avatar
-          alt={"AI Agent"}
-          src={"/img/profile/ai-agent.svg"}
-          sx={{ width: 28, height: 28, bgcolor: "#33c1c1", flexShrink: 0 }}
-        >
-          <SmartToyIcon sx={{ fontSize: 16 }} />
-        </Avatar>
-      ) : (
-        <Avatar
-          alt={msg.senderName || "User"}
-          src={msg.senderAvatar || "/img/profile/defaultUser.svg"}
-          sx={{ width: 28, height: 28, flexShrink: 0 }}
-        />
-      )}
+      <Avatar
+        alt={"AI Agent"}
+        sx={{ width: 28, height: 28, bgcolor: "#33c1c1", flexShrink: 0 }}
+      >
+        <SmartToyIcon sx={{ fontSize: 16 }} />
+      </Avatar>
       <div className={"msg-bubble-left"}>
-        {mode === "members" && msg.senderName && (
-          <span className={"msg-sender"}>{msg.senderName}</span>
-        )}
-        <div className={`msg-left ${mode === "ai" ? "ai-msg" : ""}`}>
-          {msg.text}
-        </div>
-        {msg.timestamp && <span className={"msg-time"}>{msg.timestamp}</span>}
+        <div className={"msg-left ai-msg"}>{msg.text}</div>
+        <span className={"msg-time"}>{msg.timestamp}</span>
       </div>
     </Box>
   );
 };
 
-// ─── Main Chat Component ──────────────────────────────────────────────────────
+/* ─── Member bubble ─── */
+const MemberBubble = ({
+  msg,
+  isOwn,
+}: {
+  msg: MemberMessage;
+  isOwn: boolean;
+}) => {
+  const memberImage = msg.memberData?.memberImage
+    ? `${REACT_APP_API_URL}/${msg.memberData.memberImage}`
+    : "/img/profile/defaultUser.svg";
+
+  if (isOwn) {
+    return (
+      <Box
+        component={"div"}
+        flexDirection={"row"}
+        style={{ display: "flex" }}
+        alignItems={"flex-end"}
+        justifyContent={"flex-end"}
+        sx={{ m: "6px 0px" }}
+      >
+        <div className={"msg-right"}>{msg.text}</div>
+      </Box>
+    );
+  }
+
+  return (
+    <Box
+      flexDirection={"row"}
+      style={{ display: "flex", alignItems: "flex-end", gap: 6 }}
+      sx={{ m: "6px 0px" }}
+      component={"div"}
+    >
+      <Avatar
+        alt={msg.memberData?.memberNick || "User"}
+        src={memberImage}
+        sx={{ width: 28, height: 28, flexShrink: 0 }}
+      />
+      <div className={"msg-bubble-left"}>
+        <span className={"msg-sender"}>{msg.memberData?.memberNick}</span>
+        <div className={"msg-left"}>{msg.text}</div>
+      </div>
+    </Box>
+  );
+};
 
 const Chat = () => {
-  const chatContentRef = useRef<HTMLDivElement>(null);
-  const textInput = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const socket = useReactiveVar(socketVar);
+  const user = useReactiveVar(userVar);
 
   const [open, setOpen] = useState(false);
   const [openButton, setOpenButton] = useState(false);
   const [chatMode, setChatMode] = useState<ChatMode>("members");
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [message, setMessage] = useState<string>("");
-  const [onlineUsers, setOnlineUsers] = useState<number>(4);
+  const [message, setMessage] = useState("");
+  const onlineUsers = useReactiveVar(onlineUsersVar);
+  const [unreadCount, setUnreadCount] = useState(0);
   const [isAiTyping, setIsAiTyping] = useState(false);
-  const [unreadCount, setUnreadCount] = useState<number>(0);
+  const bottomRef = useRef<HTMLDivElement>(null);
+  const aiHistoryLoaded = useRef(false);
 
-  // Member chat messages (socket-based in real usage)
-  const [memberMessages, setMemberMessages] = useState<MessageItem[]>([
-    {
-      id: "m0",
-      type: "left",
-      text: "Welcome to Live chat!",
-      senderName: "System",
-      timestamp: "12:00",
-    },
-    {
-      id: "m1",
-      type: "right",
-      text: "hi",
-      timestamp: "12:01",
-    },
-    {
-      id: "m2",
-      type: "left",
-      text: "Hi",
-      senderName: "jonik",
-      senderAvatar: "/img/profile/defaultUser.svg",
-      timestamp: "12:01",
-    },
-  ]);
+  const scrollToBottom = () => {
+    bottomRef.current?.scrollIntoView({ behavior: "instant" });
+  };
 
-  const [aiMessages, setAiMessages] = useState<MessageItem[]>([
-    {
-      id: "ai0",
-      type: "left",
-      text: "Hello! I'm your AI assistant. Ask me anything about our perfumes",
-      isAI: true,
-      timestamp: formatTime(new Date()),
-    },
-  ]);
+  const memberMessages = useReactiveVar(memberMessagesVar);
+  const aiMessages = useReactiveVar(aiMessagesVar);
+
+  useEffect(() => {
+    if (!socket) return;
+
+    socket.onmessage = (msg: MessageEvent) => {
+      const data = JSON.parse(msg.data);
+
+      switch (data.event) {
+        case "info": {
+          onlineUsersVar(data.totalClients);
+          break;
+        }
+        case "getMessages": {
+          memberMessagesVar(data.list ?? []);
+          break;
+        }
+        case "message": {
+          memberMessagesVar([...memberMessagesVar(), data]);
+          if (!open || chatMode !== "members") {
+            setUnreadCount((prev) => prev + 1);
+          }
+          break;
+        }
+        case "ai-message": {
+          setIsAiTyping(false);
+          const aiReply: AiMessage = {
+            id: uid(),
+            type: "ai",
+            text: data.text ?? "Sorry, I could not process that.",
+            timestamp: formatTime(new Date()),
+          };
+          aiMessagesVar([...aiMessagesVar(), aiReply]);
+          if (!open || chatMode !== "ai") {
+            setUnreadCount((prev) => prev + 1);
+          }
+          break;
+        }
+        case "ai-history": {
+          const welcome = aiMessagesVar()[0];
+          const history: AiMessage[] = (data.list ?? []).map((item: any) => ({
+            id: uid(),
+            type: item.role === "user" ? "user" : "ai",
+            text: item.text,
+            timestamp: item.createdAt
+              ? formatTime(new Date(item.createdAt))
+              : "",
+          }));
+          aiMessagesVar([welcome, ...history]);
+          aiHistoryLoaded.current = true;
+          break;
+        }
+        case "ai-error": {
+          setIsAiTyping(false);
+          sweetErrorAlert(data.message ?? "AI error occurred.");
+          break;
+        }
+      }
+    };
+
+    return () => {
+      socket.onmessage = null;
+    };
+  }, [socket, chatMode, open, chatMode]);
 
   useEffect(() => {
     setOpenButton(false);
-    const timeoutId = setTimeout(() => setOpenButton(true), 100);
-    return () => clearTimeout(timeoutId);
+    const t = setTimeout(() => setOpenButton(true), 100);
+    return () => clearTimeout(t);
   }, [router.pathname]);
 
+  /* ── Scroll to bottom when chat opens (after CSS transition 500ms) ── */
   useEffect(() => {
-    if (!open) {
-      // In real usage, increment from socket events
-    } else {
+    if (open) {
       setUnreadCount(0);
+      const t = setTimeout(scrollToBottom, 520);
+      return () => clearTimeout(t);
     }
   }, [open]);
 
-  function formatTime(date: Date) {
-    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-  }
+  /* ── Scroll to bottom on new messages / AI typing ── */
+  useEffect(() => {
+    if (open && chatMode === "members") scrollToBottom();
+  }, [memberMessages]);
 
-  function generateId() {
-    return Math.random().toString(36).slice(2, 9);
-  }
+  useEffect(() => {
+    if (open && chatMode === "ai") scrollToBottom();
+  }, [aiMessages, isAiTyping]);
 
+  /* ── Scroll to bottom on mode switch (after transition 250ms) ── */
+  useEffect(() => {
+    if (open) {
+      const t = setTimeout(scrollToBottom, 260);
+      return () => clearTimeout(t);
+    }
+  }, [chatMode]);
+
+  /* ── Handlers ── */
   const handleOpenChat = () => setOpen((prev) => !prev);
 
   const getInputMessageHandler = useCallback(
@@ -188,93 +270,48 @@ const Chat = () => {
   );
 
   const getKeyHandler = (e: React.KeyboardEvent) => {
-    try {
-      if (e.key === "Enter") onClickHandler();
-    } catch (err: any) {
-      console.log(err);
-    }
+    if (e.key === "Enter") onClickHandler();
   };
 
   const sendMemberMessage = () => {
-    if (!message.trim()) return;
-
-    const newMsg: MessageItem = {
-      id: generateId(),
-      type: "right",
-      text: message.trim(),
-      timestamp: formatTime(new Date()),
-    };
-
-    setMemberMessages((prev) => [...prev, newMsg]);
+    if (!message.trim()) {
+      sweetErrorAlert(Messages.error4);
+      return;
+    }
+    if (!socket || socket.readyState !== WebSocket.OPEN) {
+      sweetErrorAlert("Connection lost. Please refresh.");
+      return;
+    }
+    socket.send(JSON.stringify({ event: "message", data: message.trim() }));
     setMessage("");
-    if (textInput.current) textInput.current.value = "";
   };
 
-  const sendAiMessage = async () => {
-    if (!message.trim()) return;
+  const sendAiMessage = () => {
+    if (!message.trim()) {
+      sweetErrorAlert(Messages.error4);
+      return;
+    }
+    if (!socket || socket.readyState !== WebSocket.OPEN) {
+      sweetErrorAlert("Connection lost. Please refresh.");
+      return;
+    }
 
-    const userMsg: MessageItem = {
-      id: generateId(),
-      type: "right",
+    const userMsg: AiMessage = {
+      id: uid(),
+      type: "user",
       text: message.trim(),
       timestamp: formatTime(new Date()),
     };
-
-    setAiMessages((prev) => [...prev, userMsg]);
-    setMessage("");
-    if (textInput.current) textInput.current.value = "";
-
-    // Show typing indicator
+    aiMessagesVar([...aiMessagesVar(), userMsg]);
     setIsAiTyping(true);
+    setMessage("");
 
-    try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          system:
-            "You are a helpful perfume store assistant. Answer questions about perfumes, scents, recommendations, and purchases concisely and warmly.",
-          messages: [
-            ...[...aiMessages, userMsg]
-              .filter((m) => !m.isTyping)
-              .map((m) => ({
-                role: m.type === "right" ? "user" : "assistant",
-                content: m.text,
-              })),
-          ],
-        }),
-      });
+    socket.send(JSON.stringify({ event: "ai-message", data: message.trim() }));
+  };
 
-      const data = await response.json();
-      const replyText =
-        data?.content?.[0]?.text ?? "Sorry, I couldn't process that.";
-
-      const aiReply: MessageItem = {
-        id: generateId(),
-        type: "left",
-        text: replyText,
-        isAI: true,
-        timestamp: formatTime(new Date()),
-      };
-
-      setAiMessages((prev) => [...prev, aiReply]);
-    } catch (err) {
-      console.error("AI chat error:", err);
-      setAiMessages((prev) => [
-        ...prev,
-        {
-          id: generateId(),
-          type: "left",
-          text: "Sorry, something went wrong. Please try again.",
-          isAI: true,
-          timestamp: formatTime(new Date()),
-        },
-      ]);
-    } finally {
-      setIsAiTyping(false);
-    }
+  const onClickHandler = () => {
+    if (chatMode === "ai") sendAiMessage();
+    else sendMemberMessage();
   };
 
   const switchMode = (mode: ChatMode) => {
@@ -283,18 +320,12 @@ const Chat = () => {
     setTimeout(() => {
       setChatMode(mode);
       setIsTransitioning(false);
-    }, 300);
+      // Load AI history once when switching to AI tab
+      if (mode === "ai" && !aiHistoryLoaded.current && socket?.readyState === WebSocket.OPEN) {
+        socket.send(JSON.stringify({ event: "ai-history" }));
+      }
+    }, 250);
   };
-
-  const onClickHandler = () => {
-    if (chatMode === "ai") {
-      sendAiMessage();
-    } else {
-      sendMemberMessage();
-    }
-  };
-
-  const currentMessages = chatMode === "ai" ? aiMessages : memberMessages;
 
   return (
     <Stack className="chatting">
@@ -315,7 +346,7 @@ const Chat = () => {
       )}
 
       <Stack className={`chat-frame ${open ? "open" : ""}`}>
-        {/* ── Header ── */}
+        {/* Header */}
         <Box className={"chat-top"} component={"div"}>
           <div className={"chat-top-title"} style={{ fontFamily: "Nunito" }}>
             {chatMode === "ai" ? "AI Assistant" : "Online Chat"}
@@ -328,7 +359,7 @@ const Chat = () => {
           )}
         </Box>
 
-        {/* ── Mode Tabs ── */}
+        {/* Mode Tabs */}
         <Box className={"chat-mode-tabs"} component={"div"}>
           <button
             className={`chat-tab ${chatMode === "members" ? "active" : ""}`}
@@ -346,38 +377,45 @@ const Chat = () => {
           </button>
         </Box>
 
-        {/* ── Messages ── */}
+        {/* Messages */}
         <Box
           className={`chat-content ${isTransitioning ? "transitioning" : ""}`}
           id="chat-content"
-          ref={chatContentRef}
           component={"div"}
         >
           <ScrollableFeed>
             <Stack className={"chat-main"}>
-              {currentMessages.map((msg) => (
-                <MessageBubble key={msg.id} msg={msg} mode={chatMode} />
-              ))}
-
-              {/* AI typing indicator */}
-              {chatMode === "ai" && isAiTyping && <TypingIndicator />}
+              {chatMode === "members" ? (
+                <>
+                  <div className={"welcome"}>— Welcome to Live chat! —</div>
+                  {memberMessages.map((msg, i) => (
+                    <MemberBubble
+                      key={`${msg.memberData?._id ?? "x"}-${i}`}
+                      msg={msg}
+                      isOwn={msg.memberData?._id === user?._id}
+                    />
+                  ))}
+                </>
+              ) : (
+                <>
+                  {aiMessages.map((msg) => (
+                    <AiBubble key={msg.id} msg={msg} />
+                  ))}
+                  {isAiTyping && <TypingIndicator />}
+                </>
+              )}
+              <div ref={bottomRef} />
             </Stack>
           </ScrollableFeed>
         </Box>
 
-        {/* ── Input ── */}
+        {/* Input */}
         <Box
           className={`chat-bott ${isTransitioning ? "transitioning" : ""}`}
           component={"div"}
         >
-          {chatMode === "ai" && (
-            <div className={"ai-hint"}>
-              <SmartToyIcon sx={{ fontSize: 12 }} /> Powered by Claude AI
-            </div>
-          )}
           <div className={"chat-input-row"}>
             <input
-              ref={textInput}
               type={"text"}
               name={"message"}
               className={"msg-input"}

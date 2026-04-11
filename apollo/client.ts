@@ -39,49 +39,26 @@ const tokenRefreshLink = new TokenRefreshLink({
 // Custom WebSocket client
 class LoggingWebSocket {
   private socket: WebSocket;
-  private queue: (string | ArrayBuffer | Blob | ArrayBufferView)[] = [];
-
-  // subscriptions-transport-ws sets these from outside
-  onopen: ((event: Event) => void) | null = null;
-  onclose: ((event: CloseEvent) => void) | null = null;
-  onmessage: ((event: MessageEvent) => void) | null = null;
-  onerror: ((event: Event) => void) | null = null;
 
   constructor(url: string) {
     this.socket = new WebSocket(`${url}?token=${getJwtToken()}`);
     socketVar(this.socket);
 
-    this.socket.onopen = (event) => {
-      // flush queued messages once connection is open
-      while (this.queue.length > 0) {
-        this.socket.send(this.queue.shift() as any);
-      }
-      if (this.onopen) this.onopen(event);
+    this.socket.onopen = () => {
+      console.log("WebSocket connection!");
     };
 
-    this.socket.onmessage = (event) => {
-      if (this.onmessage) this.onmessage(event);
+    this.socket.onmessage = (msg) => {
+      console.log("WebSocket message:", msg.data);
     };
 
-    this.socket.onclose = (event) => {
-      if (this.onclose) this.onclose(event);
-    };
-
-    this.socket.onerror = (event) => {
-      if (this.onerror) this.onerror(event);
+    this.socket.onerror = (error) => {
+      console.log("WebSocket error:", error);
     };
   }
 
-  get readyState() {
-    return this.socket.readyState;
-  }
-
-  send(data: string | ArrayBuffer | Blob | ArrayBufferView) {
-    if (this.socket.readyState === WebSocket.OPEN) {
-      this.socket.send(data as string | Blob | BufferSource);
-    } else {
-      this.queue.push(data);
-    }
+  send(data: string | Blob | BufferSource) {
+    this.socket.send(data as Parameters<WebSocket["send"]>[0]);
   }
 
   close() {
@@ -111,7 +88,7 @@ function createIsomorphicLink() {
     const wsLink = new WebSocketLink({
       uri: process.env.REACT_APP_API_WS ?? "ws://127.0.0.1:3007",
       options: {
-        reconnect: true,
+        reconnect: false,
         timeout: 30000,
         connectionParams: () => {
           return { headers: getHeaders() };

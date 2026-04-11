@@ -42,9 +42,6 @@ const TopExperts = (props: TopExpertsProps) => {
 
   /** HANDLERS **/
 
-  if (topExperts) console.log("topExperts:", topExperts);
-  if (!topExperts) return null;
-
   if (device === "mobile") {
     return (
       <Stack className={"top-experts"}>

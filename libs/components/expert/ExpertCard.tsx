@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { useReactiveVar } from "@apollo/client";
+import { useReactiveVar } from "@apollo/client/react";
 import { userVar } from "../../../apollo/store";
 
 interface ExpertCardProps {
@@ -21,10 +21,12 @@ const ExpertCard = (props: ExpertCardProps) => {
   const { expert, likeMemberHandler } = props;
   const device = useDeviceDetect();
   const user = useReactiveVar(userVar);
-  const imagePath: string = expert?.memberImage
-    ? `${REACT_APP_API_URL}/${expert?.memberImage}`
-    : "/img/profile/defaultUser.svg";
+  const imagePath =
+    expert?.memberImage && expert.memberImage.trim() !== ""
+      ? `${process.env.NEXT_PUBLIC_API_URL}/${expert.memberImage}`
+      : "/img/profile/defaultUser.jpg";
 
+  console.log("IMAGE:", imagePath);
   if (device === "mobile") {
     return <div>EXPERT CARD</div>;
   } else {

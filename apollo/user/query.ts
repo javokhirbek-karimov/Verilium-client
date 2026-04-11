@@ -614,8 +614,8 @@ export const GET_COMMENTS = gql`
  *************************/
 
 export const GET_FAQS = gql`
-  query GetFaqs {
-    getFaqs(input: null) {
+  query GetFaqs($input: FaqInquiry!) {
+    getFaqs(input: $input) {
       list {
         _id
         faqCategory

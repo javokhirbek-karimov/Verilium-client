@@ -34,7 +34,7 @@ export const getStaticProps = async ({ locale }: any) => ({
 
 const DEFAULT_INPUT: PerfumesInquiry = {
   page: 1,
-  limit: 12,
+  limit: 9,
   sort: "createdAt",
   direction: Direction.DESC,
   search: {},
@@ -62,7 +62,7 @@ const PerfumePage: NextPage = () => {
   /** APOLLO **/
   const [likeTargetPerfume] = useMutation(LIKE_TARGET_PERFUME);
 
-  const { loading, data } = useQuery(GET_PERFUMES, {
+  const { loading, data, refetch } = useQuery(GET_PERFUMES, {
     fetchPolicy: "cache-and-network",
     variables: { input: searchFilter },
     notifyOnNetworkStatusChange: true,
@@ -84,6 +84,7 @@ const PerfumePage: NextPage = () => {
     try {
       if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
       await likeTargetPerfume({ variables: { input: id } });
+      await refetch({ input: searchFilter });
       await sweetTopSmallSuccessAlert("success", 800);
       setSearchFilter((prev) => ({ ...prev }));
     } catch (err: any) {

@@ -373,7 +373,9 @@ const AddNewPerfume = ({ initialValues }: any) => {
         </Stack>
 
         {/* ── Image upload ── */}
-        <Typography className="upload-title">{t("Upload Perfume Photos")}</Typography>
+        <Typography className="upload-title">
+          {t("Upload Perfume Photos")}
+        </Typography>
         <Stack className="images-box">
           <Stack className="upload-box">
             <svg
@@ -441,13 +443,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
           <Stack className="gallery-box">
             {perfumeData.perfumeImages.map((image: string) => (
               <Stack className="image-box" key={image}>
-                <img
-                  src={`${REACT_APP_API_URL}/${image}`}
-                  alt=""
-                  onError={(e) => {
-                    e.currentTarget.src = "/img/fiber/img1.jpg";
-                  }}
-                />
+                <img src={`${REACT_APP_API_URL}/${image}`} alt="" />
               </Stack>
             ))}
           </Stack>

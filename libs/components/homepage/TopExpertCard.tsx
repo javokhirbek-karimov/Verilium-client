@@ -13,14 +13,20 @@ const TopExpertCard = (props: TopExpertProps) => {
   const router = useRouter();
   const expertImage = expert?.memberImage
     ? `${process.env.REACT_APP_API_URL}/${expert?.memberImage}`
-    : "/img/profile/defaultUser.svg";
+    : "/img/profile/defaultUser.jpg";
 
   /** HANDLERS **/
 
   if (device === "mobile") {
     return (
       <Stack className="top-expert-card">
-        <img src={expertImage} alt="" onError={(e) => { e.currentTarget.src = "/img/profile/defaultUser.svg"; }} />
+        <img
+          src={expertImage}
+          alt=""
+          onError={(e) => {
+            e.currentTarget.src = "/img/profile/defaultUser.svg";
+          }}
+        />
 
         <strong>{expert?.memberNick}</strong>
         <span>{expert?.memberType}</span>
@@ -29,7 +35,13 @@ const TopExpertCard = (props: TopExpertProps) => {
   } else {
     return (
       <Stack className="top-expert-card">
-        <img src={expertImage} alt="" onError={(e) => { e.currentTarget.src = "/img/profile/defaultUser.svg"; }} />
+        <img
+          src={expertImage}
+          alt=""
+          onError={(e) => {
+            e.currentTarget.src = "/img/profile/defaultUser.svg";
+          }}
+        />
 
         <strong>{expert?.memberNick}</strong>
         <span>{expert?.memberType}</span>

@@ -920,6 +920,18 @@ body::-webkit-scrollbar {
       }
     }
 
+    .welcome {
+      width: 100%;
+      text-align: center;
+      font-family: "Nunito", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      opacity: 0.55;
+      padding: 6px 12px;
+      letter-spacing: 0.3px;
+    }
+
     .msg-right {
       padding: 9px 13px;
       border-radius: 12px;

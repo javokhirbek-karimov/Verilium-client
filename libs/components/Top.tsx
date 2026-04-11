@@ -16,7 +16,7 @@ import { CaretDown } from "phosphor-react";
 import { Logout } from "@mui/icons-material";
 import useDeviceDetect from "../hooks/useDeviceDetect";
 import Link from "next/link";
-import { useReactiveVar } from "@apollo/client";
+import { useReactiveVar } from "@apollo/client/react";
 import { userVar } from "../../apollo/store";
 import { REACT_APP_API_URL } from "../config";
 
@@ -132,6 +132,15 @@ const Top = () => {
     { href: "/cs", label: t("CS") },
   ];
 
+  const avatarSrc =
+    user?.memberImage && user.memberImage.trim() !== ""
+      ? user.memberImage.startsWith("http")
+        ? user.memberImage
+        : `${REACT_APP_API_URL}/${user.memberImage}`
+      : "/img/profile/defaultUser.svg";
+
+  console.log(user?.memberImage);
+
   if (device === "mobile") {
     return (
       <Stack className={"top"}>
@@ -229,15 +238,27 @@ const Top = () => {
                 sx={{ position: "absolute" }}
               >
                 <MenuItem disableRipple onClick={() => langChoice("en")}>
-                  <img className="img-flag" src={"/img/flag/langen.png"} alt="EN" />
+                  <img
+                    className="img-flag"
+                    src={"/img/flag/langen.png"}
+                    alt="EN"
+                  />
                   {t("English")}
                 </MenuItem>
                 <MenuItem disableRipple onClick={() => langChoice("kr")}>
-                  <img className="img-flag" src={"/img/flag/langkr.png"} alt="KR" />
+                  <img
+                    className="img-flag"
+                    src={"/img/flag/langkr.png"}
+                    alt="KR"
+                  />
                   {t("Korean")}
                 </MenuItem>
                 <MenuItem disableRipple onClick={() => langChoice("ru")}>
-                  <img className="img-flag" src={"/img/flag/langru.png"} alt="RU" />
+                  <img
+                    className="img-flag"
+                    src={"/img/flag/langru.png"}
+                    alt="RU"
+                  />
                   {t("Russian")}
                 </MenuItem>
               </StyledMenu>
@@ -256,7 +277,7 @@ const Top = () => {
                     className={"login-user"}
                     onClick={(e: any) => setLogoutAnchor(e.currentTarget)}
                   >
-                    <img src={"/img/profile/defaultUser.svg"} alt="avatar" />
+                    <img src={avatarSrc} alt="avatar" />
                   </div>
                   <Menu
                     id="logout-menu"

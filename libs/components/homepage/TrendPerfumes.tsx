@@ -125,6 +125,7 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
               <Swiper
                 className={"trend-perfume-swiper"}
                 slidesPerView={4}
+                slidesPerGroup={1}
                 spaceBetween={15}
                 modules={[Autoplay, Navigation, Pagination]}
                 navigation={{
