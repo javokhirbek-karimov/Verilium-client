@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Stack, Box } from "@mui/material";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper";
@@ -23,6 +24,8 @@ const TopExperts = (props: TopExpertsProps) => {
   const { t } = useTranslation("common");
   const router = useRouter();
   const [topExperts, setTopExperts] = useState<Member[]>([]);
+  const refInfo = useScrollReveal();
+  const refWrapper = useScrollReveal();
 
   /** APOLLO REQUESTS **/
   const { data: getExpertsData, refetch: getExpertsRefetch } = useQuery(
@@ -79,7 +82,7 @@ const TopExperts = (props: TopExpertsProps) => {
     return (
       <Stack className={"top-experts"}>
         <Stack className={"container"}>
-          <Stack className={"info-box"}>
+          <Stack ref={refInfo} className={"info-box sr-hidden"}>
             <Box component={"div"} className={"left"}>
               <span>{t("Top Experts")}</span>
               <p>{t("Our Top Experts always ready to serve you")}</p>
@@ -91,7 +94,7 @@ const TopExperts = (props: TopExpertsProps) => {
               </div>
             </Box>
           </Stack>
-          <Stack className={"wrapper"}>
+          <Stack ref={refWrapper} className={"wrapper sr-hidden sr-delay-1"}>
             <Box component={"div"} className={"switch-btn swiper-experts-prev"}>
               <ArrowBackIosNewIcon />
             </Box>

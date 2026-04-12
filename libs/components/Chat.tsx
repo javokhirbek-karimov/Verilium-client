@@ -278,10 +278,6 @@ const Chat = () => {
       sweetErrorAlert(Messages.error4);
       return;
     }
-    if (!socket || socket.readyState !== WebSocket.OPEN) {
-      sweetErrorAlert("Connection lost. Please refresh.");
-      return;
-    }
     socket.send(JSON.stringify({ event: "message", data: message.trim() }));
     setMessage("");
   };
@@ -291,11 +287,6 @@ const Chat = () => {
       sweetErrorAlert(Messages.error4);
       return;
     }
-    if (!socket || socket.readyState !== WebSocket.OPEN) {
-      sweetErrorAlert("Connection lost. Please refresh.");
-      return;
-    }
-
     const userMsg: AiMessage = {
       id: uid(),
       type: "user",

@@ -6,8 +6,8 @@ import { Notice } from "../types/cs/notice";
 
 export const useNoticeSubscription = () => {
   useSubscription<{ noticeReceived: Notice }>(NOTICE_RECEIVED, {
-    onSubscriptionData: ({ subscriptionData }) => {
-      const notice = subscriptionData?.data?.noticeReceived;
+    onData: ({ data }) => {
+      const notice = data?.data?.noticeReceived;
       if (!notice) return;
 
       noticesVar([notice, ...noticesVar()]);

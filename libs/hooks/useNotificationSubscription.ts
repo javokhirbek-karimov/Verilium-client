@@ -12,8 +12,8 @@ export const useNotificationSubscription = () => {
   useSubscription<{ notificationCreated: Notification }>(NOTIFICATION_CREATED, {
     variables: { receiverId },
     skip: !user?._id,
-    onSubscriptionData: ({ subscriptionData }) => {
-      const notification = subscriptionData?.data?.notificationCreated;
+    onData: ({ data }) => {
+      const notification = data?.data?.notificationCreated;
       if (!notification) return;
 
       notificationsVar([notification, ...notificationsVar()]);

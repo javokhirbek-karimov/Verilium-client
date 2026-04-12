@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Stack, Box } from "@mui/material";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
 import WestIcon from "@mui/icons-material/West";
 import EastIcon from "@mui/icons-material/East";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -25,6 +26,8 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
   const device = useDeviceDetect();
   const { t } = useTranslation("common");
   const [trendPerfumes, setTrendPerfumes] = useState<Perfume[]>([]);
+  const refInfo = useScrollReveal();
+  const refCards = useScrollReveal();
 
   /** APOLLO REQUESTS **/
   const [likeTargetPerfume] = useMutation(LIKE_TARGET_PERFUME);
@@ -103,7 +106,7 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
     return (
       <Stack className={"trend-perfumes"}>
         <Stack className={"container"}>
-          <Stack className={"info-box"}>
+          <Stack ref={refInfo} className={"info-box sr-hidden"}>
             <Box component={"div"} className={"left"}>
               <span>{t("Trend Perfumes")}</span>
               <p>{t("Trend is based on likes")}</p>
@@ -116,7 +119,7 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
               </div>
             </Box>
           </Stack>
-          <Stack className={"card-box"}>
+          <Stack ref={refCards} className={"card-box sr-hidden sr-delay-1"}>
             {trendPerfumes.length === 0 ? (
               <Box component={"div"} className={"empty-list"}>
                 {t("Trends Empty")}

@@ -40,24 +40,31 @@ const tokenRefreshLink = new TokenRefreshLink({
 class LoggingWebSocket {
   private socket: WebSocket;
   private queue: Parameters<WebSocket["send"]>[0][] = [];
+  private url: string;
+  private shouldReconnect = true;
+  private reconnectDelay = 3000;
 
   constructor(url: string) {
-    this.socket = new WebSocket(`${url}?token=${getJwtToken()}`);
+    this.url = url;
+    this.connect();
+  }
+
+  private connect() {
+    this.socket = new WebSocket(`${this.url}?token=${getJwtToken()}`);
     socketVar(this.socket);
 
     this.socket.onopen = () => {
-      console.log("WebSocket connection!");
       this.queue.forEach((msg) => this.socket.send(msg));
       this.queue = [];
     };
 
-    this.socket.onmessage = (msg) => {
-      console.log("WebSocket message:", msg.data);
+    this.socket.onclose = () => {
+      if (this.shouldReconnect) {
+        setTimeout(() => this.connect(), this.reconnectDelay);
+      }
     };
 
-    this.socket.onerror = (error) => {
-      console.log("WebSocket error:", error);
-    };
+    this.socket.onerror = () => {};
   }
 
   send(data: string | Blob | BufferSource) {
@@ -69,11 +76,12 @@ class LoggingWebSocket {
   }
 
   close() {
+    this.shouldReconnect = false;
     this.socket.close();
   }
 }
 
-function createIsomorphicLink() {
+function createIsomorphicLink(): ApolloLink {
   if (typeof window !== "undefined") {
     const authLink = new ApolloLink((operation, forward) => {
       operation.setContext(({ headers = {} }) => ({
@@ -82,7 +90,6 @@ function createIsomorphicLink() {
           ...getHeaders(),
         },
       }));
-      console.warn("requesting.. ", operation);
       return forward(operation);
     });
 
@@ -133,6 +140,9 @@ function createIsomorphicLink() {
 
     return from([errorLink, tokenRefreshLink, splitLink]);
   }
+
+  // SSR fallback: no-op link (no real requests on server)
+  return new ApolloLink((operation, forward) => forward(operation));
 }
 
 function createApolloClient() {

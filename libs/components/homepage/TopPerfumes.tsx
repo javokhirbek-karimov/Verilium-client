@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Stack, Box } from "@mui/material";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import WestIcon from "@mui/icons-material/West";
 import EastIcon from "@mui/icons-material/East";
@@ -24,6 +25,8 @@ const TopPerfumes = (props: TopPerfumesProps) => {
   const { initialInput } = props;
   const device = useDeviceDetect();
   const { t } = useTranslation("common");
+  const refInfo = useScrollReveal();
+  const refCards = useScrollReveal();
   const [topPerfumes, setTopPerfumes] = useState<Perfume[]>([]);
 
   /** APOLLO REQUESTS **/
@@ -98,7 +101,7 @@ const TopPerfumes = (props: TopPerfumesProps) => {
     return (
       <Stack className={"top-perfumes"}>
         <Stack className={"container"}>
-          <Stack className={"info-box"}>
+          <Stack ref={refInfo} className={"info-box sr-hidden"}>
             <Box component={"div"} className={"left"}>
               <span>{t("Top perfumes")}</span>
               <p>{t("Check out our Top Perfumes")}</p>
@@ -111,7 +114,7 @@ const TopPerfumes = (props: TopPerfumesProps) => {
               </div>
             </Box>
           </Stack>
-          <Stack className={"card-box"}>
+          <Stack ref={refCards} className={"card-box sr-hidden sr-delay-1"}>
             <Swiper
               className={"top-perfume-swiper"}
               slidesPerView={4}

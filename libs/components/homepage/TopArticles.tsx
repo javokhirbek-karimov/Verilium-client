@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Stack, Box } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -24,6 +25,8 @@ const TopArticles = (props: TopArticlesProps) => {
   const { t } = useTranslation("common");
   const router = useRouter();
   const [articles, setArticles] = useState<BoardArticle[]>([]);
+  const refInfo = useScrollReveal();
+  const refCards = useScrollReveal();
 
   /** APOLLO REQUESTS **/
   const { loading: getArticlesLoading, data: getArticlesData } = useQuery(
@@ -81,7 +84,7 @@ const TopArticles = (props: TopArticlesProps) => {
   return (
     <Stack className={"top-articles"}>
       <Stack className={"container"}>
-        <Stack className={"info-box"}>
+        <Stack ref={refInfo} className={"info-box sr-hidden"}>
           <Box component={"div"} className={"left"}>
             <span>{t("Latest Articles")}</span>
             <p>{t("Tips, stories & fragrance guides from our community")}</p>
@@ -95,7 +98,7 @@ const TopArticles = (props: TopArticlesProps) => {
           </Box>
         </Stack>
 
-        <Stack className={"card-box"}>
+        <Stack ref={refCards} className={"card-box sr-hidden sr-delay-1"}>
           {articles.length === 0 && !getArticlesLoading ? (
             <Box className={"empty-list"}>{t("No articles yet")}</Box>
           ) : (

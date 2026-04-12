@@ -232,51 +232,55 @@ const AddNewPerfume = ({ initialValues }: any) => {
           <Stack className="config-row">
             <Stack className="price-year-after-price">
               <Typography className="title">{t("Type")}</Typography>
-              <select
-                className="select-description"
-                value={perfumeData.perfumeType || ""}
-                onChange={({ target: { value } }) =>
-                  setPerfumeData({
-                    ...perfumeData,
-                    perfumeType: value as PerfumeType,
-                  })
-                }
-              >
-                <option value="" disabled>
-                  {t("Select type")}
-                </option>
-                {Object.values(PerfumeType).map((v) => (
-                  <option key={v} value={v}>
-                    {v}
+              <div className="select-wrap">
+                <select
+                  className="select-description"
+                  value={perfumeData.perfumeType || ""}
+                  onChange={({ target: { value } }) =>
+                    setPerfumeData({
+                      ...perfumeData,
+                      perfumeType: value as PerfumeType,
+                    })
+                  }
+                >
+                  <option value="" disabled>
+                    {t("Select type")}
                   </option>
-                ))}
-              </select>
-              <div className="divider" />
-              <img src="/img/icons/Vector.svg" className="arrow-down" />
+                  {Object.values(PerfumeType).map((v) => (
+                    <option key={v} value={v}>
+                      {v}
+                    </option>
+                  ))}
+                </select>
+                <div className="divider" />
+                <img src="/img/icons/Vector.svg" className="arrow-down" />
+              </div>
             </Stack>
             <Stack className="price-year-after-price">
               <Typography className="title">{t("Scent")}</Typography>
-              <select
-                className="select-description"
-                value={perfumeData.perfumeScent || ""}
-                onChange={({ target: { value } }) =>
-                  setPerfumeData({
-                    ...perfumeData,
-                    perfumeScent: value as PerfumeScent,
-                  })
-                }
-              >
-                <option value="" disabled>
-                  {t("Select scent")}
-                </option>
-                {Object.values(PerfumeScent).map((v) => (
-                  <option key={v} value={v}>
-                    {v}
+              <div className="select-wrap">
+                <select
+                  className="select-description"
+                  value={perfumeData.perfumeScent || ""}
+                  onChange={({ target: { value } }) =>
+                    setPerfumeData({
+                      ...perfumeData,
+                      perfumeScent: value as PerfumeScent,
+                    })
+                  }
+                >
+                  <option value="" disabled>
+                    {t("Select scent")}
                   </option>
-                ))}
-              </select>
-              <div className="divider" />
-              <img src="/img/icons/Vector.svg" className="arrow-down" />
+                  {Object.values(PerfumeScent).map((v) => (
+                    <option key={v} value={v}>
+                      {v}
+                    </option>
+                  ))}
+                </select>
+                <div className="divider" />
+                <img src="/img/icons/Vector.svg" className="arrow-down" />
+              </div>
             </Stack>
           </Stack>
 
@@ -299,25 +303,27 @@ const AddNewPerfume = ({ initialValues }: any) => {
             </Stack>
             <Stack className="price-year-after-price">
               <Typography className="title">{t("Longevity")}</Typography>
-              <select
-                className="select-description"
-                value={perfumeData.perfumeLongevity || ""}
-                onChange={({ target: { value } }) =>
-                  setPerfumeData({
-                    ...perfumeData,
-                    perfumeLongevity: value as PerfumeLongevity,
-                  })
-                }
-              >
-                <option value="">{t("Select (optional)")}</option>
-                {Object.values(PerfumeLongevity).map((v) => (
-                  <option key={v} value={v}>
-                    {v}
-                  </option>
-                ))}
-              </select>
-              <div className="divider" />
-              <img src="/img/icons/Vector.svg" className="arrow-down" />
+              <div className="select-wrap">
+                <select
+                  className="select-description"
+                  value={perfumeData.perfumeLongevity || ""}
+                  onChange={({ target: { value } }) =>
+                    setPerfumeData({
+                      ...perfumeData,
+                      perfumeLongevity: value as PerfumeLongevity,
+                    })
+                  }
+                >
+                  <option value="">{t("Select (optional)")}</option>
+                  {Object.values(PerfumeLongevity).map((v) => (
+                    <option key={v} value={v}>
+                      {v}
+                    </option>
+                  ))}
+                </select>
+                <div className="divider" />
+                <img src="/img/icons/Vector.svg" className="arrow-down" />
+              </div>
             </Stack>
             <Stack className="price-year-after-price">
               <Typography className="title">{t("Discount (%)")}</Typography>
