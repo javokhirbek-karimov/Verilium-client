@@ -103,7 +103,7 @@ const AddNewPerfume = ({ initialValues }: any) => {
       }
 
       const response = await axios.post(
-        `${process.env.REACT_APP_API_GRAPHQL_URL}`,
+        `${process.env.NEXT_PUBLIC_API_GRAPHQL_URL}`,
         formData,
         {
           headers: {

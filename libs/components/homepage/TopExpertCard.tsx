@@ -15,7 +15,7 @@ const TopExpertCard = (props: TopExpertProps) => {
   const device = useDeviceDetect();
   const router = useRouter();
   const expertImage = expert?.memberImage
-    ? `${process.env.REACT_APP_API_URL}/${expert?.memberImage}`
+    ? `${process.env.NEXT_PUBLIC_API_URL}/${expert?.memberImage}`
     : "/img/profile/defaultUser.jpg";
 
   const goToExpert = () => {

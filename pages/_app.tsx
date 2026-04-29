@@ -21,7 +21,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   useEffect(() => {
     const token = getJwtToken();
-    const WS_URL = process.env.REACT_APP_API_WS ?? "ws://localhost:3007";
+    const WS_URL = process.env.NEXT_PUBLIC_API_WS ?? "ws://localhost:3007";
     const ws = new WebSocket(token ? `${WS_URL}?token=${token}` : WS_URL);
 
     ws.onopen = () => socketVar(ws);

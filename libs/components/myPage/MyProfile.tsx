@@ -55,7 +55,7 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
       formData.append("0", image);
 
       const response = await axios.post(
-        `${process.env.REACT_APP_API_GRAPHQL_URL}`,
+        `${process.env.NEXT_PUBLIC_API_GRAPHQL_URL}`,
         formData,
         {
           headers: {

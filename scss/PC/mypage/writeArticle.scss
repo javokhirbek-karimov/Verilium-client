@@ -1,401 +1,407 @@
+// ════════════════════════════════════════════════════════════════
+//  WRITE ARTICLE PAGE
+// ════════════════════════════════════════════════════════════════
+
 #pc-wrap {
   #write-article-page {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 32px;
 
-    // ── Header ──────────────────────────────────────────────────────
-    .main-title-box {
-      margin-bottom: 28px;
+    // ── Page header ───────────────────────────────────────────
+    .wa-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 36px 40px;
+      border-radius: 20px;
+      background: linear-gradient(
+        135deg,
+        rgba(212, 175, 55, 0.06) 0%,
+        transparent 60%
+      );
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      overflow: hidden;
 
-      .main-title {
-        font-family: "Nunito", sans-serif;
-        font-size: 31px;
-        font-weight: 800;
-        color: var(--text-primary);
-        letter-spacing: 0.4px;
+      &::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        left: -60px;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .wa-header-left {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         position: relative;
-        display: inline-block;
+        z-index: 1;
+      }
 
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: -8px;
-          left: 0;
-          width: 44px;
-          height: 3px;
-          border-radius: 2px;
-          background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+      .wa-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 14px;
+        border-radius: 20px;
+        background: rgba(212, 175, 55, 0.1);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        width: fit-content;
+
+        span {
+          font-family: "Nunito", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          color: var(--gold-primary);
+          letter-spacing: 1.4px;
+          text-transform: uppercase;
+        }
+
+        svg {
+          font-size: 15px !important;
+          color: var(--gold-primary);
         }
       }
 
-      .sub-title {
+      .wa-title {
         font-family: "Nunito", sans-serif;
-        font-size: 16px;
-        color: var(--text-secondary);
-        margin-top: 16px;
-        opacity: 0.7;
+        font-size: 36px;
+        font-weight: 900;
+        color: var(--text-primary);
+        letter-spacing: -0.5px;
+        margin: 0;
+        line-height: 1.1;
       }
-    }
 
-    // ── Editor card ─────────────────────────────────────────────────
-    .editor-wrap {
-      width: 100%;
-      background: var(--black-soft);
-      border: 1px solid rgba(212, 175, 55, 0.1);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-  }
+      .wa-desc {
+        font-family: "Nunito", sans-serif;
+        font-size: 14px;
+        color: var(--text-secondary);
+        margin: 0;
+        max-width: 420px;
+        line-height: 1.6;
+        opacity: 0.75;
+      }
 
-  // ════════════════════════════════════════════════════════════════════
-  //  TUI EDITOR — dark/gold override
-  // ════════════════════════════════════════════════════════════════════
-  .tui-editor-wrap {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+      .wa-header-right {
+        display: flex;
+        gap: 4px;
+        position: relative;
+        z-index: 1;
+      }
 
-    // ── Meta row: Category + Title ──────────────────────────────────
-    .meta-row {
-      flex-direction: row;
-      gap: 20px;
-      padding: 24px 28px 20px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.08);
-
-      .meta-field {
+      .wa-stat {
         display: flex;
         flex-direction: column;
-        gap: 8px;
-        flex: 1;
+        align-items: center;
+        gap: 4px;
+        padding: 16px 28px;
+        border-radius: 14px;
+        border: 1px solid rgba(212, 175, 55, 0.1);
+        background: rgba(0, 0, 0, 0.2);
 
-        &.title-field { flex: 2; }
-
-        .meta-label {
+        .wa-stat-val {
           font-family: "Nunito", sans-serif;
-          font-size: 13px;
+          font-size: 26px;
+          font-weight: 900;
+          color: var(--gold-primary);
+          line-height: 1;
+        }
+
+        .wa-stat-lbl {
+          font-family: "Nunito", sans-serif;
+          font-size: 10px;
           font-weight: 700;
           color: var(--text-secondary);
           text-transform: uppercase;
           letter-spacing: 1px;
-          opacity: 0.55;
-        }
-
-        .meta-select {
-          height: 46px;
-          background: rgba(255, 255, 255, 0.04) !important;
-          border-radius: 10px;
-          color: #eaeaea !important;
-          font-family: "Nunito", sans-serif;
-          font-size: 17px;
-
-          .MuiSelect-select {
-            color: #eaeaea !important;
-            -webkit-text-fill-color: #eaeaea !important;
-          }
-          .MuiOutlinedInput-notchedOutline {
-            border-color: rgba(212, 175, 55, 0.15) !important;
-          }
-          &:hover .MuiOutlinedInput-notchedOutline {
-            border-color: rgba(212, 175, 55, 0.35) !important;
-          }
-          &.Mui-focused .MuiOutlinedInput-notchedOutline {
-            border-color: rgba(212, 175, 55, 0.5) !important;
-            border-width: 1px !important;
-          }
-          .MuiSvgIcon-root { color: rgba(255,255,255,0.4); }
-        }
-
-        .meta-input {
-          height: 46px;
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(212, 175, 55, 0.15);
-          border-radius: 10px;
-          padding: 0 14px;
-          outline: none;
-          color: #eaeaea;
-          -webkit-text-fill-color: #eaeaea;
-          font-family: "Nunito", sans-serif;
-          font-size: 17px;
-          transition: border-color 0.2s ease;
-
-          &::placeholder {
-            color: rgba(255, 255, 255, 0.25);
-            -webkit-text-fill-color: rgba(255, 255, 255, 0.25);
-          }
-          &:focus { border-color: rgba(212, 175, 55, 0.45); }
+          opacity: 0.6;
         }
       }
     }
 
-    // ── Editor area ─────────────────────────────────────────────────
-    .editor-box {
-      width: 100%;
+    // ── Hide markdown tab ─────────────────────────────────────
+    .toastui-editor-mode-switch {
+      display: none !important;
     }
 
-    // ── Publish button ──────────────────────────────────────────────
-    .editor-footer {
-      flex-direction: row;
-      justify-content: flex-end;
-      padding: 20px 28px;
-      border-top: 1px solid rgba(212, 175, 55, 0.08);
+    // ── Editor card wrapper ───────────────────────────────────
+    .wa-card {
+      background: var(--black-secondary);
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 
-      .publish-btn {
-        height: 44px;
-        padding: 0 36px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-        box-shadow: 0 4px 18px rgba(212, 175, 55, 0.2);
-        transition: box-shadow 0.3s ease, transform 0.2s ease;
+      &::before {
+        content: "";
+        display: block;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(212, 175, 55, 0.5) 30%,
+          var(--gold-primary) 50%,
+          rgba(212, 175, 55, 0.5) 70%,
+          transparent 100%
+        );
+      }
 
-        p {
-          font-family: "Nunito", sans-serif;
-          font-size: 17px;
-          font-weight: 800;
-          color: var(--black-primary);
-          text-transform: none;
+      // ── Meta row ─────────────────────────────────────────────
+      .wa-meta-row {
+        padding: 28px 32px !important;
+        gap: 20px !important;
+        align-items: flex-end;
+        background: rgba(255, 255, 255, 0.015);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+        // ── Category ─────────────────────────────────────────
+        .form_row {
+          width: 200px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          h3.MuiTypography-root {
+            font-family: "Nunito", sans-serif !important;
+            font-size: 10px !important;
+            font-weight: 800 !important;
+            color: rgba(212, 175, 55, 0.5) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+          }
+
+          .MuiFormControl-root {
+            background: rgba(255, 255, 255, 0.04) !important;
+            border-radius: 10px !important;
+
+            .MuiOutlinedInput-root {
+              height: 48px;
+              border-radius: 10px !important;
+
+              .MuiSelect-select {
+                color: var(--text-primary) !important;
+                -webkit-text-fill-color: var(--text-primary) !important;
+                font-family: "Nunito", sans-serif !important;
+                font-size: 14px !important;
+                font-weight: 600 !important;
+                padding: 12px 14px !important;
+              }
+
+              .MuiSvgIcon-root {
+                color: rgba(212, 175, 55, 0.45) !important;
+              }
+
+              .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(255, 255, 255, 0.07) !important;
+                border-radius: 10px !important;
+                transition: border-color 0.2s !important;
+              }
+
+              &:hover .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(212, 175, 55, 0.3) !important;
+              }
+
+              &.Mui-focused .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(212, 175, 55, 0.5) !important;
+                border-width: 1px !important;
+              }
+            }
+          }
         }
+
+        // ── Title field ───────────────────────────────────────
+        .wa-title-field {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          h3.MuiTypography-root {
+            font-family: "Nunito", sans-serif !important;
+            font-size: 10px !important;
+            font-weight: 800 !important;
+            color: rgba(212, 175, 55, 0.5) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+          }
+
+          .MuiTextField-root {
+            width: 100% !important;
+
+            .MuiOutlinedInput-root {
+              height: 48px;
+              background: rgba(255, 255, 255, 0.04) !important;
+              border-radius: 10px !important;
+
+              input {
+                color: var(--text-primary) !important;
+                -webkit-text-fill-color: var(--text-primary) !important;
+                font-family: "Nunito", sans-serif !important;
+                font-size: 15px !important;
+                font-weight: 500 !important;
+                padding: 12px 16px !important;
+              }
+
+              .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(255, 255, 255, 0.07) !important;
+                border-radius: 10px !important;
+                transition: border-color 0.2s !important;
+              }
+
+              &:hover .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(212, 175, 55, 0.3) !important;
+              }
+
+              &.Mui-focused .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(212, 175, 55, 0.5) !important;
+                border-width: 1px !important;
+              }
+            }
+
+            .MuiInputLabel-root {
+              color: var(--text-secondary) !important;
+              font-family: "Nunito", sans-serif !important;
+              font-size: 14px !important;
+              opacity: 0.5;
+
+              &.Mui-focused {
+                color: var(--gold-primary) !important;
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // ── TUI Editor overrides ──────────────────────────────────
+    .toastui-editor-defaultUI {
+      border: none !important;
+
+      // backgrounds
+      .toastui-editor-defaultUI-toolbar {
+        background-color: var(--black-soft) !important;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+      }
+      .toastui-editor-ww-container,
+      .toastui-editor-md-container      { background-color: var(--black-secondary) !important; }
+
+      // text
+      .toastui-editor-contents {
+        color: var(--text-primary) !important;
+        font-family: "Nunito", sans-serif !important;
+        font-size: 15px !important;
+        line-height: 1.8 !important;
+        padding: 24px 32px !important;
+
+        p, ul, ol, li { color: var(--text-primary) !important; }
+        h1, h2, h3, h4, h5, h6 { color: var(--text-primary) !important; }
+        a                       { color: var(--gold-primary) !important; }
+        code                    { color: var(--gold-light) !important; background: rgba(255,255,255,0.06) !important; }
+        blockquote              { border-left-color: var(--gold-primary) !important; color: var(--text-secondary) !important; }
+      }
+
+      // toolbar icon borders & hover
+      .toastui-editor-toolbar-icons {
+        border-color: transparent !important;
+      }
+
+      .toastui-editor-toolbar-icons:not(:disabled):hover {
+        background-color: rgba(212, 175, 55, 0.12) !important;
+        border-color: rgba(212, 175, 55, 0.2) !important;
+      }
+
+      .toastui-editor-toolbar-divider {
+        background-color: rgba(212, 175, 55, 0.15) !important;
+      }
+
+      // heading / bold / etc dropdown popups
+      .toastui-editor-popup,
+      .toastui-editor-dropdown-toolbar {
+        background-color: var(--black-soft) !important;
+        border-color: rgba(212, 175, 55, 0.2) !important;
+
+        .toastui-editor-popup-body,
+        button {
+          color: var(--text-primary) !important;
+          border-color: rgba(212, 175, 55, 0.1) !important;
+
+          &:hover {
+            background-color: rgba(212, 175, 55, 0.1) !important;
+            color: var(--gold-primary) !important;
+          }
+        }
+
+        // heading levels (H1, H2...)
+        .toastui-editor-heading1,
+        .toastui-editor-heading2,
+        .toastui-editor-heading3,
+        .toastui-editor-heading4,
+        .toastui-editor-heading5,
+        .toastui-editor-heading6 {
+          color: var(--text-primary) !important;
+          border-bottom: 1px solid rgba(212, 175, 55, 0.12) !important;
+
+          &:hover { color: var(--gold-primary) !important; }
+        }
+
+        input {
+          background: rgba(255, 255, 255, 0.05) !important;
+          border-color: rgba(212, 175, 55, 0.2) !important;
+          color: var(--text-primary) !important;
+
+          &:focus { border-color: var(--gold-primary) !important; outline: none !important; }
+        }
+
+        .toastui-editor-ok-button {
+          background: rgba(212, 175, 55, 0.15) !important;
+          border-color: rgba(212, 175, 55, 0.3) !important;
+          color: var(--gold-primary) !important;
+
+          &:hover { background: rgba(212, 175, 55, 0.25) !important; }
+        }
+      }
+    }
+
+    // ── Register button row ───────────────────────────────────
+    .wa-card > .MuiStack-root:last-child {
+      padding: 24px 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.015);
+
+      .MuiButton-root {
+        background: rgba(212, 175, 55, 0.12) !important;
+        border: 1px solid rgba(212, 175, 55, 0.3) !important;
+        color: var(--gold-primary) !important;
+        font-family: "Nunito", sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 800 !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        border-radius: 10px !important;
+        padding: 12px 40px !important;
+        height: auto !important;
+        transition: all 0.2s !important;
 
         &:hover {
-          box-shadow: 0 6px 26px rgba(212, 175, 55, 0.35);
-          transform: translateY(-1px);
+          background: rgba(212, 175, 55, 0.22) !important;
+          box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15) !important;
         }
-        &:disabled { opacity: 0.35; transform: none; box-shadow: none; }
       }
     }
   }
-}
-
-// ── Category Select dropdown menu ───────────────────────────────────
-.MuiPaper-root .MuiMenu-list {
-  background: #1a1a1a;
-  .MuiMenuItem-root {
-    color: rgba(255, 255, 255, 0.75);
-    font-family: "Nunito", sans-serif;
-    font-size: 17px;
-    &:hover { background: rgba(212, 175, 55, 0.1); color: #d4af37; }
-    &.Mui-selected {
-      background: rgba(212, 175, 55, 0.12);
-      color: #d4af37;
-    }
-  }
-}
-
-// ════════════════════════════════════════════════════════════════════
-//  TOAST UI EDITOR — global dark overrides (outside #pc-wrap)
-// ════════════════════════════════════════════════════════════════════
-
-// Wrapper & border
-.toastui-editor-defaultUI {
-  border: none !important;
-  background: var(--black-soft, #111) !important;
-  color: #eaeaea !important;
-}
-
-// Toolbar
-.toastui-editor-toolbar {
-  background: #161616 !important;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
-}
-
-.toastui-editor-toolbar-group button,
-.toastui-editor-toolbar-icons {
-  background: transparent !important;
-  border: none !important;
-  color: rgba(255, 255, 255, 0.55) !important;
-
-  &:hover,
-  &.active {
-    background: rgba(212, 175, 55, 0.12) !important;
-    color: #d4af37 !important;
-  }
-}
-
-.toastui-editor-toolbar-divider {
-  background: rgba(212, 175, 55, 0.1) !important;
-}
-
-// Toolbar more button
-.toastui-editor-toolbar-more-btn {
-  background: transparent !important;
-  color: rgba(255, 255, 255, 0.4) !important;
-}
-
-// Main editor area
-.toastui-editor-main,
-.toastui-editor-main-container {
-  background: #111 !important;
-}
-
-.toastui-editor-ww-container,
-.toastui-editor-md-container {
-  background: #111 !important;
-}
-
-.toastui-editor,
-.ProseMirror,
-.toastui-editor-contents {
-  background: #111 !important;
-  color: #eaeaea !important;
-  font-family: "Nunito", sans-serif !important;
-  caret-color: #d4af37 !important;
-}
-
-// Placeholder
-.toastui-editor .placeholder {
-  color: rgba(255, 255, 255, 0.2) !important;
-}
-
-// Preview pane (markdown mode)
-.toastui-editor-md-preview {
-  background: #0e0e0e !important;
-  border-left: 1px solid rgba(212, 175, 55, 0.08) !important;
-}
-
-.toastui-editor-md-splitter {
-  background: rgba(212, 175, 55, 0.08) !important;
-}
-
-// Content typography
-.toastui-editor-contents p,
-.toastui-editor-contents li,
-.toastui-editor-contents td,
-.toastui-editor-contents th {
-  color: #eaeaea !important;
-  font-family: "Nunito", sans-serif !important;
-}
-
-.toastui-editor-contents h1,
-.toastui-editor-contents h2,
-.toastui-editor-contents h3,
-.toastui-editor-contents h4,
-.toastui-editor-contents h5,
-.toastui-editor-contents h6 {
-  color: #fff !important;
-  font-family: "Nunito", sans-serif !important;
-  border-color: rgba(212, 175, 55, 0.15) !important;
-}
-
-.toastui-editor-contents a {
-  color: #d4af37 !important;
-}
-
-.toastui-editor-contents blockquote {
-  border-left: 4px solid #d4af37 !important;
-  background: rgba(212, 175, 55, 0.05) !important;
-  color: rgba(255, 255, 255, 0.65) !important;
-}
-
-.toastui-editor-contents code {
-  background: rgba(212, 175, 55, 0.1) !important;
-  color: #f5c842 !important;
-  border-radius: 4px !important;
-}
-
-.toastui-editor-contents pre {
-  background: rgba(0, 0, 0, 0.4) !important;
-  border: 1px solid rgba(212, 175, 55, 0.1) !important;
-  border-radius: 8px !important;
-}
-
-.toastui-editor-contents hr {
-  border-color: rgba(212, 175, 55, 0.12) !important;
-}
-
-.toastui-editor-contents table {
-  border-color: rgba(212, 175, 55, 0.12) !important;
-}
-
-.toastui-editor-contents th {
-  background: rgba(212, 175, 55, 0.08) !important;
-}
-
-// Hide Write/Preview tabs (markdown mode) and Markdown/WYSIWYG mode switch
-.toastui-editor-tabs,
-.toastui-editor-mode-switch {
-  display: none !important;
-}
-
-// Hide markdown editor pane — show only WYSIWYG
-.toastui-editor-md-container {
-  display: none !important;
-}
-
-.toastui-editor-ww-container {
-  display: flex !important;
-  width: 100% !important;
-}
-
-// Popup (link / image insert)
-.toastui-editor-popup {
-  background: #1a1a1a !important;
-  border: 1px solid rgba(212, 175, 55, 0.2) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
-}
-
-.toastui-editor-popup-body {
-  background: #1a1a1a !important;
-}
-
-.toastui-editor-popup-body label {
-  color: rgba(255, 255, 255, 0.6) !important;
-  font-family: "Nunito", sans-serif !important;
-}
-
-.toastui-editor-popup-body input {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(212, 175, 55, 0.2) !important;
-  color: #eaeaea !important;
-  border-radius: 6px !important;
-
-  &:focus { border-color: rgba(212, 175, 55, 0.5) !important; outline: none !important; }
-}
-
-.toastui-editor-popup-body button,
-.toastui-editor-ok-button {
-  background: #d4af37 !important;
-  color: #080704 !important;
-  border: none !important;
-  border-radius: 6px !important;
-  font-weight: 700 !important;
-  font-family: "Nunito", sans-serif !important;
-}
-
-.toastui-editor-close-button {
-  color: rgba(255, 255, 255, 0.4) !important;
-  background: transparent !important;
-
-  &:hover { color: #fff !important; }
-}
-
-// Heading dropdown
-.toastui-editor-popup-add-heading ul {
-  background: #1a1a1a !important;
-  border: 1px solid rgba(212, 175, 55, 0.15) !important;
-}
-
-.toastui-editor-popup-add-heading ul li {
-  color: rgba(255, 255, 255, 0.7) !important;
-
-  &:hover {
-    background: rgba(212, 175, 55, 0.1) !important;
-    color: #d4af37 !important;
-  }
-}
-
-// Scrollbars inside editor
-.toastui-editor-ww-container::-webkit-scrollbar,
-.toastui-editor-md-container::-webkit-scrollbar { width: 5px; height: 5px; }
-
-.toastui-editor-ww-container::-webkit-scrollbar-track,
-.toastui-editor-md-container::-webkit-scrollbar-track {
-  background: #111;
-}
-
-.toastui-editor-ww-container::-webkit-scrollbar-thumb,
-.toastui-editor-md-container::-webkit-scrollbar-thumb {
-  background: rgba(212, 175, 55, 0.25);
-  border-radius: 3px;
 }
