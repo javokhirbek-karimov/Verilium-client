@@ -1,0 +1,378 @@
+#pc-wrap #community-list-page {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--black-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#pc-wrap #community-list-page .hero-section {
+  width: 100%;
+  height: 560px;
+  position: relative;
+  overflow: hidden;
+  background-image: url("/img/fiber/community5.jpg");
+  background-size: cover;
+  background-position: center 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#pc-wrap #community-list-page .hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(8, 7, 4, 0.78) 0%, rgba(8, 7, 4, 0.52) 50%, rgba(8, 7, 4, 0.84) 100%);
+  z-index: 1;
+}
+#pc-wrap #community-list-page .hero-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, var(--black-primary), transparent);
+  z-index: 2;
+}
+#pc-wrap #community-list-page .hero-section .hero-content {
+  position: relative;
+  z-index: 3;
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+#pc-wrap #community-list-page .hero-section .hero-content .hero-label {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity: 0.9;
+}
+#pc-wrap #community-list-page .hero-section .hero-content .hero-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 58px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  max-width: 600px;
+  position: relative;
+  display: inline-block;
+}
+#pc-wrap #community-list-page .hero-section .hero-content .hero-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 52px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+}
+#pc-wrap #community-list-page .hero-section .hero-content .hero-title span {
+  background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+#pc-wrap #community-list-page .hero-section .hero-content .hero-sub {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-top: 6px;
+}
+#pc-wrap #community-list-page .hero-section .hero-content .hero-write-btn {
+  margin-top: 8px;
+  height: 46px;
+  padding: 0 28px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+  color: var(--black-primary);
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  text-transform: none;
+  letter-spacing: 0.3px;
+  gap: 6px;
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.2);
+  transition: box-shadow 0.3s ease, transform 0.2s ease, background 0.3s ease;
+}
+#pc-wrap #community-list-page .hero-section .hero-content .hero-write-btn svg {
+  font-size: 22px;
+}
+#pc-wrap #community-list-page .hero-section .hero-content .hero-write-btn:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.35);
+  transform: translateY(-2px);
+}
+#pc-wrap #community-list-page .tabs-section {
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0 24px;
+}
+#pc-wrap #community-list-page .tabs-section .tabs-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  background: var(--black-soft);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 14px;
+  padding: 6px;
+}
+#pc-wrap #community-list-page .tabs-section .tabs-wrap .tab-pill {
+  height: 36px;
+  padding: 0 20px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: none;
+  min-width: 80px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+#pc-wrap #community-list-page .tabs-section .tabs-wrap .tab-pill:hover {
+  color: var(--text-primary);
+  background: rgba(212, 175, 55, 0.06);
+}
+#pc-wrap #community-list-page .tabs-section .tabs-wrap .tab-pill.active {
+  background: var(--gold-primary);
+  color: var(--black-primary);
+  font-weight: 800;
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+#pc-wrap #community-list-page .tabs-section .result-count {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+#pc-wrap #community-list-page .cards-section {
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
+}
+#pc-wrap #community-list-page .cards-section .list-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+  min-height: 400px;
+  align-content: flex-start;
+}
+#pc-wrap #community-list-page .cards-section .list-box .no-data {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 100px 0;
+}
+#pc-wrap #community-list-page .cards-section .list-box .no-data img {
+  width: 44px;
+  height: 44px;
+  opacity: 0.3;
+}
+#pc-wrap #community-list-page .cards-section .list-box .no-data .MuiTypography-root {
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  color: var(--text-secondary);
+  opacity: 0.45;
+}
+#pc-wrap #community-list-page .cards-section .pagination-config {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 56px;
+}
+#pc-wrap #community-list-page .cards-section .pagination-config .total-label {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+#pc-wrap #community-list-page .cards-section .pagination-config .MuiPaginationItem-root {
+  font-family: "Nunito", sans-serif;
+  color: var(--text-secondary);
+  border-color: rgba(212, 175, 55, 0.15);
+  transition: background 0.2s ease;
+}
+#pc-wrap #community-list-page .cards-section .pagination-config .MuiPaginationItem-root:hover {
+  background: rgba(212, 175, 55, 0.08);
+}
+#pc-wrap #community-list-page .cards-section .pagination-config .MuiPaginationItem-root.Mui-selected {
+  background: var(--gold-primary);
+  color: var(--black-primary);
+  border-color: var(--gold-primary);
+  font-weight: 800;
+}
+#pc-wrap #community-list-page .cards-section .pagination-config .MuiPaginationItem-root.Mui-selected:hover {
+  background: var(--gold-light);
+}
+#pc-wrap .community-general-card-config {
+  width: calc(33.33% - 16px);
+  background: var(--black-soft);
+  border: 1px solid rgba(212, 175, 55, 0.08);
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+#pc-wrap .community-general-card-config:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.1);
+}
+#pc-wrap .community-general-card-config:hover .image-box .card-img {
+  transform: scale(1.06);
+}
+#pc-wrap .community-general-card-config:hover .desc-box .title {
+  color: var(--gold-light);
+}
+#pc-wrap .community-general-card-config .date-box {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(8, 7, 4, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+}
+#pc-wrap .community-general-card-config .date-box .month {
+  font-family: "Nunito", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: 1;
+}
+#pc-wrap .community-general-card-config .date-box .day {
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+}
+#pc-wrap .community-general-card-config .date-box .day .MuiTypography-root {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  line-height: inherit;
+}
+#pc-wrap .community-general-card-config .image-box {
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+#pc-wrap .community-general-card-config .image-box::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: linear-gradient(to top, var(--black-soft), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+#pc-wrap .community-general-card-config .image-box .card-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+#pc-wrap .community-general-card-config .desc-box {
+  padding: 16px 18px 18px !important;
+  margin-top: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+#pc-wrap .community-general-card-config .desc-box .desc {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  cursor: pointer;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: opacity 0.2s ease;
+  line-height: 1;
+}
+#pc-wrap .community-general-card-config .desc-box .desc:hover {
+  opacity: 1;
+}
+#pc-wrap .community-general-card-config .desc-box .title {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.5;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.25s ease;
+}
+#pc-wrap .community-general-card-config .desc-box .buttons {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(212, 175, 55, 0.07);
+}
+#pc-wrap .community-general-card-config .desc-box .buttons .MuiIconButton-root {
+  padding: 4px;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+#pc-wrap .community-general-card-config .desc-box .buttons .MuiIconButton-root:hover {
+  color: var(--gold-primary);
+  background: transparent;
+}
+#pc-wrap .community-general-card-config .desc-box .buttons .MuiIconButton-root svg {
+  font-size: 18px;
+}
+#pc-wrap .community-general-card-config .desc-box .buttons .view-cnt {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 18px;
+  margin-right: 8px;
+  line-height: 1;
+}/*# sourceMappingURL=community.css.map */

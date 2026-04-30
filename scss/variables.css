@@ -1,0 +1,12 @@
+/** VARIABLES **/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --black-primary: #0b0b0b;
+  --black-secondary: #121212;
+  --black-soft: #1a1a1a;
+  --gold-primary: #d4af37;
+  --gold-light: #f5d76e;
+  --gold-dark: #a67c00;
+  --text-primary: #eaeaea;
+  --text-secondary: #a0a0a0;
+}/*# sourceMappingURL=variables.css.map */

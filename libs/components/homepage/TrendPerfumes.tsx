@@ -79,24 +79,42 @@ const TrendPerfumes = (props: TrendPerfumesProps) => {
                 {t("Trends Empty")}
               </Box>
             ) : (
-              <Swiper
-                className={"trend-perfume-swiper"}
-                slidesPerView={"auto"}
-                centeredSlides={true}
-                spaceBetween={15}
-                modules={[Autoplay]}
-              >
-                {trendPerfumes.map((perfume: Perfume) => {
-                  return (
-                    <SwiperSlide
-                      key={perfume._id}
-                      className={"trend-perfume-slide"}
-                    >
-                      <TrendPerfumeCard perfume={perfume} likePerfumeHandler={likePerfumeHandler} />
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
+              <>
+                <div className={"trend-nav-box"}>
+                  <div className={"swiper-trend-mob-prev"}>
+                    <WestIcon />
+                  </div>
+                  <div className={"swiper-trend-mob-pagination"}></div>
+                  <div className={"swiper-trend-mob-next"}>
+                    <EastIcon />
+                  </div>
+                </div>
+                <Swiper
+                  className={"trend-perfume-swiper"}
+                  slidesPerView={1}
+                  spaceBetween={0}
+                  modules={[Navigation, Pagination]}
+                  navigation={{
+                    nextEl: ".swiper-trend-mob-next",
+                    prevEl: ".swiper-trend-mob-prev",
+                  }}
+                  pagination={{
+                    el: ".swiper-trend-mob-pagination",
+                    clickable: true,
+                  }}
+                >
+                  {trendPerfumes.map((perfume: Perfume) => {
+                    return (
+                      <SwiperSlide
+                        key={perfume._id}
+                        className={"trend-perfume-slide"}
+                      >
+                        <TrendPerfumeCard perfume={perfume} likePerfumeHandler={likePerfumeHandler} />
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper>
+              </>
             )}
           </Stack>
         </Stack>

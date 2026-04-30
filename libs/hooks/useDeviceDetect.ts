@@ -9,7 +9,7 @@ const useDeviceDetect = (): string => {
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         userAgent,
       );
-    setDevice(isMobile ? "desktop" : "desktop");
+    setDevice(isMobile ? "mobile" : "desktop");
   }, [device]);
 
   return device;

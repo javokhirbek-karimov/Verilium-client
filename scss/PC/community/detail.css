@@ -1,0 +1,570 @@
+#pc-wrap .tviewer-wrap {
+  width: 100%;
+  background: transparent !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents,
+#pc-wrap .tviewer-wrap .toastui-editor-ww-container,
+#pc-wrap .tviewer-wrap .toastui-editor-defaultUI,
+#pc-wrap .tviewer-wrap .ProseMirror {
+  background: transparent !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents {
+  font-family: "Nunito", sans-serif !important;
+  font-size: 19px !important;
+  line-height: 1.85 !important;
+  color: var(--text-secondary) !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents p {
+  font-family: "Nunito", sans-serif !important;
+  font-size: 19px !important;
+  line-height: 1.85 !important;
+  color: var(--text-secondary) !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents h1, #pc-wrap .tviewer-wrap .toastui-editor-contents h2, #pc-wrap .tviewer-wrap .toastui-editor-contents h3, #pc-wrap .tviewer-wrap .toastui-editor-contents h4, #pc-wrap .tviewer-wrap .toastui-editor-contents h5, #pc-wrap .tviewer-wrap .toastui-editor-contents h6 {
+  font-family: "Nunito", sans-serif !important;
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
+  padding-bottom: 6px !important;
+  margin-top: 32px !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents h1 {
+  font-size: 31px !important;
+  font-weight: 900 !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents h2 {
+  font-size: 26px !important;
+  font-weight: 800 !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents h3 {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents a {
+  color: var(--gold-primary) !important;
+  text-decoration: underline !important;
+  text-decoration-color: rgba(212, 175, 55, 0.4) !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents a:hover {
+  color: var(--gold-light) !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents strong {
+  color: var(--text-primary) !important;
+  font-weight: 800 !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents em {
+  color: var(--text-secondary) !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents blockquote {
+  border-left: 3px solid var(--gold-primary) !important;
+  background: rgba(212, 175, 55, 0.04) !important;
+  padding: 12px 18px !important;
+  border-radius: 0 8px 8px 0 !important;
+  margin: 20px 0 !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents blockquote p {
+  color: var(--text-secondary) !important;
+  opacity: 0.75 !important;
+  font-style: italic !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents code {
+  background: rgba(212, 175, 55, 0.08) !important;
+  color: var(--gold-light) !important;
+  border-radius: 4px !important;
+  padding: 2px 6px !important;
+  font-size: 17px !important;
+  border: none !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents pre {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(212, 175, 55, 0.1) !important;
+  border-radius: 10px !important;
+  padding: 18px !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents pre code {
+  background: transparent !important;
+  padding: 0 !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents ul, #pc-wrap .tviewer-wrap .toastui-editor-contents ol {
+  color: var(--text-secondary) !important;
+  padding-left: 22px !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents ul li, #pc-wrap .tviewer-wrap .toastui-editor-contents ol li {
+  font-family: "Nunito", sans-serif !important;
+  font-size: 19px !important;
+  line-height: 1.85 !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents ul li::marker, #pc-wrap .tviewer-wrap .toastui-editor-contents ol li::marker {
+  color: var(--gold-primary) !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents hr {
+  border-color: rgba(212, 175, 55, 0.1) !important;
+  margin: 32px 0 !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents img {
+  border-radius: 10px !important;
+  max-width: 100% !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents table {
+  border-color: rgba(212, 175, 55, 0.1) !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents table th {
+  background: rgba(212, 175, 55, 0.07) !important;
+  color: var(--text-primary) !important;
+  border-color: rgba(212, 175, 55, 0.1) !important;
+}
+#pc-wrap .tviewer-wrap .toastui-editor-contents table td {
+  color: var(--text-secondary) !important;
+  border-color: rgba(212, 175, 55, 0.08) !important;
+}
+#pc-wrap #community-detail-page {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--black-primary);
+  display: flex;
+  justify-content: center;
+  padding: 120px 0 100px;
+}
+#pc-wrap #community-detail-page .detail-container {
+  width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+#pc-wrap #community-detail-page .back-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.55;
+  padding: 0;
+  margin-bottom: 36px;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+#pc-wrap #community-detail-page .back-nav svg {
+  font-size: 14px;
+}
+#pc-wrap #community-detail-page .back-nav:hover {
+  opacity: 1;
+  color: var(--gold-primary);
+}
+#pc-wrap #community-detail-page .article-header {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  margin-bottom: 40px;
+}
+#pc-wrap #community-detail-page .article-header .article-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#pc-wrap #community-detail-page .article-header .article-meta .category-badge {
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--black-primary);
+  background: var(--gold-primary);
+  border-radius: 6px;
+  padding: 3px 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+#pc-wrap #community-detail-page .article-header .article-meta .dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.3);
+}
+#pc-wrap #community-detail-page .article-header .article-meta .date-text {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+#pc-wrap #community-detail-page .article-header .article-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
+}
+#pc-wrap #community-detail-page .article-header .article-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 44px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+}
+#pc-wrap #community-detail-page .article-header .author-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#pc-wrap #community-detail-page .article-header .author-row .author-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+#pc-wrap #community-detail-page .article-header .author-row .author-avatar:hover {
+  border-color: var(--gold-primary);
+}
+#pc-wrap #community-detail-page .article-header .author-row .author-nick {
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+#pc-wrap #community-detail-page .article-header .author-row .author-nick:hover {
+  color: var(--gold-primary);
+}
+#pc-wrap #community-detail-page .article-header .author-row .sep {
+  flex: 1;
+}
+#pc-wrap #community-detail-page .article-header .author-row .stats {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+#pc-wrap #community-detail-page .article-header .author-row .stats .stat-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+#pc-wrap #community-detail-page .article-header .author-row .stats .stat-item svg {
+  font-size: 18px;
+}
+#pc-wrap #community-detail-page .article-body {
+  width: 100%;
+  min-height: 200px;
+  margin-bottom: 48px;
+}
+#pc-wrap #community-detail-page .like-row {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+  margin-bottom: 48px;
+}
+#pc-wrap #community-detail-page .like-row .like-btn {
+  height: 46px;
+  padding: 0 32px;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: none;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+#pc-wrap #community-detail-page .like-row .like-btn svg {
+  font-size: 22px;
+  transition: color 0.25s ease;
+}
+#pc-wrap #community-detail-page .like-row .like-btn:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.06);
+}
+#pc-wrap #community-detail-page .like-row .like-btn.liked {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+}
+#pc-wrap #community-detail-page .like-row .like-btn.Mui-disabled {
+  opacity: 0.4;
+}
+#pc-wrap #community-detail-page .comments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+#pc-wrap #community-detail-page .comments-section .comments-heading {
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#pc-wrap #community-detail-page .comments-section .comments-heading .count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 20px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold-primary);
+}
+#pc-wrap #community-detail-page .comments-section .comment-input-box {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--black-soft);
+  transition: border-color 0.25s ease;
+}
+#pc-wrap #community-detail-page .comments-section .comment-input-box:focus-within {
+  border-color: rgba(212, 175, 55, 0.35);
+}
+#pc-wrap #community-detail-page .comments-section .comment-input-box input {
+  width: 100%;
+  height: 56px;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0 20px;
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+#pc-wrap #community-detail-page .comments-section .comment-input-box input::-moz-placeholder {
+  color: var(--text-secondary);
+  opacity: 0.4;
+}
+#pc-wrap #community-detail-page .comments-section .comment-input-box input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.4;
+}
+#pc-wrap #community-detail-page .comments-section .comment-input-box .input-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px 12px 20px;
+}
+#pc-wrap #community-detail-page .comments-section .comment-input-box .input-footer .word-count {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  opacity: 0.4;
+}
+#pc-wrap #community-detail-page .comments-section .comment-input-box .input-footer .submit-btn {
+  height: 34px;
+  padding: 0 20px;
+  border-radius: 9px;
+  background: var(--gold-primary);
+  color: var(--black-primary);
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: none;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+#pc-wrap #community-detail-page .comments-section .comment-input-box .input-footer .submit-btn:hover {
+  background: var(--gold-light);
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
+}
+#pc-wrap #community-detail-page .comments-section .comment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.06);
+}
+#pc-wrap #community-detail-page .comments-section .comment-item:last-of-type {
+  border-bottom: none;
+}
+#pc-wrap #community-detail-page .comments-section .comment-item .commenter-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease;
+}
+#pc-wrap #community-detail-page .comments-section .comment-item .commenter-avatar:hover {
+  border-color: var(--gold-primary);
+}
+#pc-wrap #community-detail-page .comments-section .comment-item .comment-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+#pc-wrap #community-detail-page .comments-section .comment-item .comment-body .comment-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#pc-wrap #community-detail-page .comments-section .comment-item .comment-body .comment-top .commenter-name {
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+#pc-wrap #community-detail-page .comments-section .comment-item .comment-body .comment-top .commenter-name:hover {
+  color: var(--gold-primary);
+}
+#pc-wrap #community-detail-page .comments-section .comment-item .comment-body .comment-top .comment-date {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: var(--text-secondary);
+  opacity: 0.4;
+}
+#pc-wrap #community-detail-page .comments-section .comment-item .comment-body .comment-top .comment-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+#pc-wrap #community-detail-page .comments-section .comment-item .comment-body .comment-top .comment-actions .MuiIconButton-root {
+  padding: 4px;
+  color: var(--text-secondary);
+  opacity: 0.35;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+#pc-wrap #community-detail-page .comments-section .comment-item .comment-body .comment-top .comment-actions .MuiIconButton-root:hover {
+  color: var(--gold-primary);
+  opacity: 1;
+  background: transparent;
+}
+#pc-wrap #community-detail-page .comments-section .comment-item .comment-body .comment-text {
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+#pc-wrap #community-detail-page .comments-section .comments-pagination {
+  align-items: center;
+  padding-top: 8px;
+}
+#pc-wrap #community-detail-page .comments-section .comments-pagination .MuiPaginationItem-root {
+  font-family: "Nunito", sans-serif;
+  color: var(--text-secondary);
+  border-color: rgba(212, 175, 55, 0.15);
+  transition: background 0.2s ease;
+}
+#pc-wrap #community-detail-page .comments-section .comments-pagination .MuiPaginationItem-root:hover {
+  background: rgba(212, 175, 55, 0.08);
+}
+#pc-wrap #community-detail-page .comments-section .comments-pagination .MuiPaginationItem-root.Mui-selected {
+  background: var(--gold-primary);
+  color: var(--black-primary);
+  border-color: var(--gold-primary);
+  font-weight: 800;
+}
+#pc-wrap .edit-comment-modal {
+  width: 520px;
+  background: var(--black-soft);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 18px;
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+}
+#pc-wrap .edit-comment-modal .modal-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+#pc-wrap .edit-comment-modal .modal-input {
+  width: 100%;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 10px;
+  outline: none;
+  padding: 0 16px;
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  color: var(--text-primary);
+  transition: border-color 0.2s ease;
+}
+#pc-wrap .edit-comment-modal .modal-input:focus {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+#pc-wrap .edit-comment-modal .modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#pc-wrap .edit-comment-modal .modal-footer .modal-count {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  opacity: 0.4;
+}
+#pc-wrap .edit-comment-modal .modal-footer .modal-btns {
+  display: flex;
+  gap: 10px;
+}
+#pc-wrap .edit-comment-modal .modal-footer .modal-btns .cancel-btn {
+  height: 38px;
+  padding: 0 20px;
+  border-radius: 9px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+#pc-wrap .edit-comment-modal .modal-footer .modal-btns .cancel-btn:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  color: var(--text-primary);
+}
+#pc-wrap .edit-comment-modal .modal-footer .modal-btns .update-btn {
+  height: 38px;
+  padding: 0 22px;
+  border-radius: 9px;
+  background: var(--gold-primary);
+  color: var(--black-primary);
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: none;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+#pc-wrap .edit-comment-modal .modal-footer .modal-btns .update-btn:hover {
+  background: var(--gold-light);
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
+}/*# sourceMappingURL=detail.css.map */

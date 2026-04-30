@@ -1,0 +1,477 @@
+#pc-wrap #perfume-detail-page {
+  min-height: 100vh;
+  background: var(--black-primary);
+  padding-top: 88px;
+  padding-bottom: 100px;
+}
+#pc-wrap #perfume-detail-page .container {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+#pc-wrap #perfume-detail-page .detail-top {
+  display: flex;
+  flex-direction: row;
+  gap: 56px;
+  align-items: flex-start;
+  padding-top: 52px;
+}
+#pc-wrap #perfume-detail-page .gallery {
+  width: 520px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+#pc-wrap #perfume-detail-page .gallery .main-img {
+  width: 100%;
+  height: 460px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--black-soft);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+}
+#pc-wrap #perfume-detail-page .gallery .main-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#pc-wrap #perfume-detail-page .gallery .thumb-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+#pc-wrap #perfume-detail-page .gallery .thumb-row .thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid rgba(212, 175, 55, 0.15);
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+#pc-wrap #perfume-detail-page .gallery .thumb-row .thumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#pc-wrap #perfume-detail-page .gallery .thumb-row .thumb.active {
+  border-color: var(--gold-primary);
+}
+#pc-wrap #perfume-detail-page .gallery .thumb-row .thumb:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+}
+#pc-wrap #perfume-detail-page .info-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#pc-wrap #perfume-detail-page .info-panel .brand-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#pc-wrap #perfume-detail-page .info-panel .brand-row .brand {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+}
+#pc-wrap #perfume-detail-page .info-panel .brand-row .type-chip {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  height: 22px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  color: var(--text-secondary);
+}
+#pc-wrap #perfume-detail-page .info-panel .brand-row .type-chip .MuiChip-label {
+  padding: 0 10px;
+}
+#pc-wrap #perfume-detail-page .info-panel .perfume-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+#pc-wrap #perfume-detail-page .info-panel .price-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#pc-wrap #perfume-detail-page .info-panel .price-row .price {
+  font-family: "Nunito", sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--gold-primary);
+}
+#pc-wrap #perfume-detail-page .info-panel .price-row .price.original {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+#pc-wrap #perfume-detail-page .info-panel .price-row .price.discounted {
+  font-size: 34px;
+}
+#pc-wrap #perfume-detail-page .info-panel .price-row .discount-chip {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  height: 24px;
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+  color: var(--black-primary);
+}
+#pc-wrap #perfume-detail-page .info-panel .price-row .discount-chip .MuiChip-label {
+  padding: 0 10px;
+}
+#pc-wrap #perfume-detail-page .info-panel .stats-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+#pc-wrap #perfume-detail-page .info-panel .stats-row .stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#pc-wrap #perfume-detail-page .info-panel .stats-row .stat svg {
+  font-size: 22px;
+  color: var(--text-secondary);
+}
+#pc-wrap #perfume-detail-page .info-panel .stats-row .stat span {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+#pc-wrap #perfume-detail-page .info-panel .stats-row .stat.like-stat {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+#pc-wrap #perfume-detail-page .info-panel .stats-row .stat.like-stat:hover svg, #pc-wrap #perfume-detail-page .info-panel .stats-row .stat.like-stat.liked svg {
+  color: var(--gold-primary);
+}
+#pc-wrap #perfume-detail-page .info-panel .stats-row .stat.like-stat:hover span, #pc-wrap #perfume-detail-page .info-panel .stats-row .stat.like-stat.liked span {
+  color: var(--gold-primary);
+}
+#pc-wrap #perfume-detail-page .info-panel .detail-divider {
+  border-color: rgba(212, 175, 55, 0.1);
+}
+#pc-wrap #perfume-detail-page .info-panel .attributes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#pc-wrap #perfume-detail-page .info-panel .attributes .attr-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+#pc-wrap #perfume-detail-page .info-panel .attributes .attr-row .attr-label {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 80px;
+  opacity: 0.7;
+}
+#pc-wrap #perfume-detail-page .info-panel .attributes .attr-row .attr-value {
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  color: var(--text-primary);
+}
+#pc-wrap #perfume-detail-page .info-panel .attributes .attr-row .chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+#pc-wrap #perfume-detail-page .info-panel .attributes .attr-row .attr-chip {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  height: 24px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  color: var(--text-secondary);
+}
+#pc-wrap #perfume-detail-page .info-panel .attributes .attr-row .attr-chip .MuiChip-label {
+  padding: 0 10px;
+}
+#pc-wrap #perfume-detail-page .info-panel .seller-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+#pc-wrap #perfume-detail-page .info-panel .seller-row img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 1.5px solid rgba(212, 175, 55, 0.3);
+}
+#pc-wrap #perfume-detail-page .info-panel .seller-row .seller-label {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+#pc-wrap #perfume-detail-page .info-panel .seller-row .seller-nick {
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+#pc-wrap #perfume-detail-page .desc-section {
+  padding: 40px;
+  background: var(--black-soft);
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+#pc-wrap #perfume-detail-page .similar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+#pc-wrap #perfume-detail-page .similar-section .similar-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+#pc-wrap #perfume-detail-page .similar-section .similar-header .nav-btns {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#pc-wrap #perfume-detail-page .similar-section .similar-header .nav-btns .swiper-similar-prev,
+#pc-wrap #perfume-detail-page .similar-section .similar-header .nav-btns .swiper-similar-next {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  background: rgba(212, 175, 55, 0.05);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 22px;
+  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+#pc-wrap #perfume-detail-page .similar-section .similar-header .nav-btns .swiper-similar-prev:hover,
+#pc-wrap #perfume-detail-page .similar-section .similar-header .nav-btns .swiper-similar-next:hover {
+  color: var(--gold-primary);
+  border-color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.1);
+}
+#pc-wrap #perfume-detail-page .similar-section .similar-swiper {
+  width: 100%;
+  padding-top: 12px;
+  overflow: visible !important;
+}
+#pc-wrap #perfume-detail-page .similar-section .similar-slide {
+  height: auto;
+  display: flex;
+}
+#pc-wrap #perfume-detail-page .section-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary);
+  position: relative;
+  display: inline-block;
+}
+#pc-wrap #perfume-detail-page .section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 36px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+}
+#pc-wrap #perfume-detail-page .section-sub {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-top: 10px;
+}
+#pc-wrap #perfume-detail-page .desc-text {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+#pc-wrap #perfume-detail-page .comments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+#pc-wrap #perfume-detail-page .comments-section .section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#pc-wrap #perfume-detail-page .comments-section .section-title .comment-count {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black-primary);
+  background: var(--gold-primary);
+  padding: 2px 10px;
+  border-radius: 20px;
+  line-height: 1.6;
+  position: static;
+}
+#pc-wrap #perfume-detail-page .comments-section .section-title .comment-count::after {
+  display: none;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-item {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--black-soft);
+  border: 1px solid rgba(212, 175, 55, 0.08);
+  border-radius: 14px;
+  transition: border-color 0.3s ease;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-item:hover {
+  border-color: rgba(212, 175, 55, 0.18);
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-avatar {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(212, 175, 55, 0.25);
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-nick {
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-date {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-text {
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+#pc-wrap #perfume-detail-page .comments-section .no-comments {
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  text-align: center;
+  padding: 32px 0 8px;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px;
+  background: var(--black-soft);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 16px;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-input .MuiOutlinedInput-root {
+  height: auto !important;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  color: var(--text-primary);
+  padding: 0;
+  align-items: flex-start;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-input .MuiOutlinedInput-root textarea {
+  padding: 14px 16px;
+  color: var(--text-primary);
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  resize: none;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-input .MuiOutlinedInput-root textarea::-moz-placeholder {
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-input .MuiOutlinedInput-root textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-input .MuiOutlinedInput-root fieldset {
+  border-color: rgba(212, 175, 55, 0.2);
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-input .MuiOutlinedInput-root:hover fieldset {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-input .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: var(--gold-primary);
+  border-width: 1px;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-input .MuiOutlinedInput-root.Mui-disabled {
+  opacity: 0.5;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-input .MuiOutlinedInput-root.Mui-disabled fieldset {
+  border-color: rgba(212, 175, 55, 0.08);
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-submit {
+  align-self: flex-end;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: none;
+  padding: 10px 24px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+  color: var(--black-primary);
+  box-shadow: none;
+  letter-spacing: 0.3px;
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-submit:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.25);
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-submit.Mui-disabled {
+  background: rgba(212, 175, 55, 0.15);
+  color: rgba(234, 234, 234, 0.3);
+}
+#pc-wrap #perfume-detail-page .comments-section .comment-submit svg {
+  font-size: 19px;
+}/*# sourceMappingURL=detail.css.map */
