@@ -210,7 +210,7 @@ const Filter = (props: FilterType) => {
   };
 
   if (device === "mobile") {
-    return <div>PERFUME FILTER MOBILE</div>;
+    return null;
   }
 
   return (

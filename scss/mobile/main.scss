@@ -2123,3 +2123,589 @@
     }
   }
 }
+
+// ══════════════════════════════════════════════════════════════════════
+//  PERFUME LIST PAGE — MOBILE
+// ══════════════════════════════════════════════════════════════════════
+#mobile-wrap {
+  #perfume-list-page {
+    min-height: 100vh;
+    background: var(--black-primary);
+    display: flex;
+    flex-direction: column;
+
+    // ── Hero ────────────────────────────────────────────────────────────────────
+    .hero-section {
+      width: 100%;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      background-image: url("/img/fiber/perfumes5.jpg");
+      background-size: cover;
+      background-position: center 40%;
+      display: flex;
+      align-items: flex-end;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          160deg,
+          rgba(8, 7, 4, 0.75) 0%,
+          rgba(8, 7, 4, 0.45) 50%,
+          rgba(8, 7, 4, 0.85) 100%
+        );
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        padding: 0 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        .hero-label {
+          font-family: "Nunito", sans-serif;
+          font-size: 11px;
+          font-weight: 800;
+          color: var(--gold-primary);
+          text-transform: uppercase;
+          letter-spacing: 2.5px;
+        }
+
+        .hero-title {
+          font-family: "Nunito", sans-serif;
+          font-size: 28px;
+          font-weight: 900;
+          color: #fff;
+          line-height: 1.2;
+          letter-spacing: -0.5px;
+          margin: 0;
+        }
+      }
+    }
+
+    // ── Controls bar ────────────────────────────────────────────────────────────
+    .mob-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      background: var(--black-secondary);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+
+      .mob-result-count {
+        font-family: "Nunito", sans-serif;
+        font-size: 14px;
+        color: var(--text-secondary);
+      }
+
+      .mob-controls-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .mob-sort-select {
+        height: 36px;
+        background: var(--black-soft);
+        border-radius: 8px;
+        font-family: "Nunito", sans-serif;
+        font-size: 13px;
+        color: var(--text-primary);
+        min-width: 110px;
+
+        fieldset {
+          border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        svg {
+          color: var(--text-secondary);
+        }
+      }
+
+      .mob-filter-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        height: 36px;
+        padding: 0 14px;
+        border-radius: 8px;
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        background: rgba(212, 175, 55, 0.05);
+        color: var(--text-secondary);
+        font-family: "Nunito", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        svg {
+          font-size: 18px;
+        }
+
+        &:active {
+          color: var(--gold-primary);
+          border-color: var(--gold-primary);
+          background: rgba(212, 175, 55, 0.1);
+        }
+      }
+    }
+
+    // ── Cards grid ──────────────────────────────────────────────────────────────
+    .mob-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 16px;
+    }
+
+    // ── Perfume card (mobile) ───────────────────────────────────────────────────
+    .perfume-card {
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--black-soft);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+
+      &:active {
+        border-color: rgba(212, 175, 55, 0.25);
+      }
+
+      .card-img {
+        position: relative;
+        width: 100%;
+        height: 160px;
+        background-size: cover;
+        background-position: center;
+        background-color: var(--black-primary);
+
+        .discount-badge {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          padding: 3px 7px;
+          border-radius: 6px;
+          background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+          font-family: "Nunito", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          color: var(--black-primary);
+        }
+
+        .price-badge {
+          position: absolute;
+          bottom: 10px;
+          left: 10px;
+          padding: 4px 10px;
+          border-radius: 14px;
+          background: rgba(11, 11, 11, 0.8);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(212, 175, 55, 0.4);
+          font-family: "Nunito", sans-serif;
+          font-size: 14px;
+          font-weight: 800;
+          color: var(--gold-primary);
+        }
+      }
+
+      .card-info {
+        padding: 12px 12px 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .card-brand {
+          font-family: "Nunito", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          color: var(--gold-primary);
+          opacity: 0.8;
+        }
+
+        .card-title {
+          font-family: "Nunito", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          color: var(--text-primary);
+          line-height: 1.35;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .card-chips {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
+          margin-top: 2px;
+
+          .scent-chip,
+          .size-chip {
+            font-family: "Nunito", sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            height: 18px;
+            background: rgba(212, 175, 55, 0.07);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            color: var(--text-secondary);
+
+            .MuiChip-label {
+              padding: 0 6px;
+            }
+          }
+        }
+      }
+
+      .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 12px 12px;
+        border-top: 1px solid rgba(212, 175, 55, 0.07);
+
+        .card-type {
+          font-family: "Nunito", sans-serif;
+          font-size: 12px;
+          color: var(--text-secondary);
+          opacity: 0.55;
+          text-transform: capitalize;
+        }
+
+        .card-stats {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          .stat {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+
+            svg {
+              font-size: 14px;
+              color: var(--text-secondary);
+              opacity: 0.6;
+            }
+
+            span {
+              font-family: "Nunito", sans-serif;
+              font-size: 12px;
+              color: var(--text-secondary);
+              opacity: 0.65;
+            }
+
+            &.like-btn {
+              cursor: pointer;
+
+              &.liked svg {
+                color: #e53935 !important;
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // ── Empty state ─────────────────────────────────────────────────────────────
+    .mob-empty-state {
+      width: 100%;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        font-family: "Nunito", sans-serif;
+        font-size: 16px;
+        color: var(--text-secondary);
+      }
+    }
+
+    // ── Pagination ──────────────────────────────────────────────────────────────
+    .mob-pagination-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 16px 0 32px;
+
+      .MuiPagination-root {
+        .MuiPaginationItem-root {
+          font-family: "Nunito", sans-serif;
+          font-size: 14px;
+          color: var(--text-secondary);
+          border-color: rgba(212, 175, 55, 0.2);
+          min-width: 32px;
+          height: 32px;
+
+          &.Mui-selected {
+            background: var(--gold-primary);
+            color: var(--black-primary);
+            border-color: var(--gold-primary);
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    // ── Filter overlay ──────────────────────────────────────────────────────────
+    .mob-filter-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1299;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+
+    // ── Filter bottom sheet ─────────────────────────────────────────────────────
+    .mob-filter-sheet {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1300;
+      height: 80dvh;
+      background: var(--black-secondary);
+      border-radius: 20px 20px 0 0;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex;
+      flex-direction: column;
+      transform: translateY(100%);
+      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+
+      &.open {
+        transform: translateY(0);
+      }
+
+      .mob-filter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 18px 14px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        flex-shrink: 0;
+
+        > span {
+          font-family: "Nunito", sans-serif;
+          font-size: 18px;
+          font-weight: 800;
+          color: var(--text-primary);
+        }
+
+        .mob-filter-header-right {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .mob-filter-reset {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          padding: 6px 12px;
+          border-radius: 8px;
+          border: 1px solid rgba(212, 175, 55, 0.2);
+          background: transparent;
+          font-family: "Nunito", sans-serif;
+          font-size: 13px;
+          color: var(--text-secondary);
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+
+          &:active {
+            color: var(--gold-primary);
+          }
+        }
+
+        .mob-filter-close {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 34px;
+          height: 34px;
+          border-radius: 8px;
+          border: 1px solid rgba(212, 175, 55, 0.15);
+          background: transparent;
+          color: var(--text-secondary);
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+
+          svg {
+            font-size: 20px;
+          }
+        }
+      }
+
+      .mob-filter-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      .mob-filter-section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .mob-filter-section-title {
+          font-family: "Nunito", sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          color: var(--gold-primary);
+          opacity: 0.85;
+        }
+      }
+
+      .mob-search-row {
+        width: 100%;
+
+        .mob-search-input {
+          width: 100%;
+          background: rgba(255, 255, 255, 0.03);
+          border-radius: 10px;
+          font-family: "Nunito", sans-serif;
+          font-size: 16px;
+          color: var(--text-primary);
+          height: 42px;
+
+          fieldset {
+            border-color: rgba(212, 175, 55, 0.2);
+          }
+
+          &.Mui-focused fieldset {
+            border-color: var(--gold-primary);
+            border-width: 1px;
+          }
+
+          input {
+            padding: 8px 12px;
+            font-size: 16px;
+
+            &::placeholder {
+              color: var(--text-secondary);
+              opacity: 0.5;
+            }
+          }
+        }
+      }
+
+      .mob-filter-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        .mob-chip {
+          padding: 6px 14px;
+          border-radius: 20px;
+          border: 1px solid rgba(212, 175, 55, 0.2);
+          background: rgba(212, 175, 55, 0.04);
+          font-family: "Nunito", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          color: var(--text-secondary);
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+          text-transform: capitalize;
+
+          &.active {
+            border-color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold-primary);
+          }
+        }
+      }
+
+      .mob-price-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .mob-price-select {
+          flex: 1;
+
+          .MuiOutlinedInput-root {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            font-family: "Nunito", sans-serif;
+            font-size: 14px;
+            color: var(--text-primary);
+
+            fieldset {
+              border-color: rgba(212, 175, 55, 0.2);
+            }
+
+            &.Mui-focused fieldset {
+              border-color: var(--gold-primary);
+              border-width: 1px;
+            }
+
+            svg {
+              color: var(--text-secondary);
+            }
+          }
+
+          .MuiInputLabel-root {
+            font-family: "Nunito", sans-serif;
+            font-size: 14px;
+            color: var(--text-secondary);
+
+            &.Mui-focused {
+              color: var(--gold-primary);
+            }
+          }
+        }
+
+        .mob-price-divider {
+          font-size: 16px;
+          color: rgba(212, 175, 55, 0.4);
+          flex-shrink: 0;
+        }
+      }
+
+      .mob-filter-footer {
+        padding: 14px 18px;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+        flex-shrink: 0;
+        padding-bottom: max(14px, env(safe-area-inset-bottom));
+
+        .mob-filter-apply {
+          width: 100%;
+          height: 48px;
+          border-radius: 12px;
+          background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+          border: none;
+          font-family: "Nunito", sans-serif;
+          font-size: 16px;
+          font-weight: 700;
+          color: var(--black-primary);
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+
+          &:active {
+            transform: scale(0.98);
+          }
+        }
+      }
+    }
+  }
+}
