@@ -32,17 +32,13 @@ const CommunityCard = (props: CommunityCardProps) => {
     e: React.SyntheticEvent,
     boardArticle: BoardArticle,
   ) => {
-    router.push(
-      {
-        pathname: "/community/detail",
-        query: {
-          articleCategory: boardArticle?.articleCategory,
-          id: boardArticle?._id,
-        },
+    router.push({
+      pathname: "/community/detail",
+      query: {
+        articleCategory: boardArticle?.articleCategory,
+        id: boardArticle?._id,
       },
-      undefined,
-      { shallow: true },
-    );
+    });
   };
 
   const goMemberPage = (id: string) => {

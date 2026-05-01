@@ -225,6 +225,7 @@
         // ── Title field ───────────────────────────────────────
         .wa-title-field {
           flex: 1;
+          min-width: 0;
           display: flex;
           flex-direction: column;
           gap: 8px;
@@ -282,6 +283,50 @@
                 color: var(--gold-primary) !important;
                 opacity: 1;
               }
+            }
+          }
+        }
+        // ── Cover image field ─────────────────────────────────
+        .wa-cover-field {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          h3.MuiTypography-root {
+            font-family: "Nunito", sans-serif !important;
+            font-size: 10px !important;
+            font-weight: 800 !important;
+            color: rgba(212, 175, 55, 0.5) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+          }
+
+          .wa-cover-preview {
+            width: 120px;
+            height: 48px;
+            border-radius: 10px;
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease;
+
+            &:hover {
+              border-color: rgba(212, 175, 55, 0.6);
+              background-color: rgba(212, 175, 55, 0.06);
+            }
+
+            .wa-cover-placeholder {
+              font-family: "Nunito", sans-serif;
+              font-size: 12px;
+              font-weight: 700;
+              color: rgba(212, 175, 55, 0.5);
+              white-space: nowrap;
             }
           }
         }

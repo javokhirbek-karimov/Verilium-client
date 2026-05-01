@@ -32,22 +32,28 @@ const CATEGORIES = [
 
 const TuiEditor = () => {
   const editorRef = useRef<Editor>(null),
+    coverImageRef = useRef<HTMLInputElement>(null),
     token = getJwtToken(),
     router = useRouter();
   const [articleCategory, setArticleCategory] = useState<BoardArticleCategory>(
     BoardArticleCategory.FREE,
   );
+  const [articleTitle, setArticleTitle] = useState("");
+  const [coverImagePreview, setCoverImagePreview] = useState<string>("");
   const [publishing, setPublishing] = useState(false);
 
   const [createBoardArticle] = useMutation(CREATE_BOARD_ARTICLE);
 
   const memoizedValues = useMemo(() => {
-    const articleTitle = "",
-      articleContent = "",
+    const articleContent = "",
       articleImage = "";
 
-    return { articleTitle, articleContent, articleImage };
+    return { articleContent, articleImage };
   }, []);
+
+  const getEditorText = () => {
+    return editorRef.current?.getInstance().getMarkdown().trim() ?? "";
+  };
 
   /** HANDLERS **/
   const uploadImage = async (image: any) => {
@@ -57,7 +63,7 @@ const TuiEditor = () => {
         "operations",
         JSON.stringify({
           query: `mutation ImageUploader($file: Upload!, $target: String!) {
-						imageUploader(file: $file, target: $target) 
+						imageUploader(file: $file, target: $target)
 				  }`,
           variables: {
             file: null,
@@ -86,7 +92,6 @@ const TuiEditor = () => {
       );
 
       const responseImage = response.data.data.imageUploader;
-      console.log("=responseImage: ", responseImage);
       memoizedValues.articleImage = responseImage;
 
       return `${REACT_APP_API_URL}/${responseImage}`;
@@ -95,31 +100,47 @@ const TuiEditor = () => {
     }
   };
 
+  const uploadCoverImageHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      const imageUrl = await uploadImage(file);
+      if (imageUrl) {
+        setCoverImagePreview(imageUrl);
+      }
+    } catch (err) {
+      console.log("Error uploading cover image:", err);
+    }
+  };
+
   const changeCategoryHandler = (e: any) => {
     setArticleCategory(e.target.value);
   };
 
   const articleTitleHandler = (e: T) => {
-    console.log(e.target.value);
-    memoizedValues.articleTitle = e.target.value;
+    setArticleTitle(e.target.value);
   };
 
   const handleRegisterButton = async () => {
     try {
-      const editor = editorRef.current;
-      const articleContent = editor?.getInstance().getHTML() as string;
-      memoizedValues.articleContent = articleContent;
-
-      if (
-        memoizedValues.articleContent === "" &&
-        memoizedValues.articleTitle === ""
-      ) {
+      if (articleTitle.trim().length < 3) {
+        throw new Error(Message.INSERT_ALL_INPUTS);
+      }
+      if (getEditorText().length < 3) {
         throw new Error(Message.INSERT_ALL_INPUTS);
       }
 
+      const articleContent = editorRef.current?.getInstance().getMarkdown().trim() ?? "";
+      memoizedValues.articleContent = articleContent;
+
+      setPublishing(true);
       await createBoardArticle({
         variables: {
-          input: { ...memoizedValues, articleCategory },
+          input: {
+            ...memoizedValues,
+            articleTitle: articleTitle.trim(),
+            articleCategory,
+          },
         },
       });
 
@@ -131,18 +152,15 @@ const TuiEditor = () => {
         },
       });
     } catch (err: any) {
-      console.log(err);
-      sweetErrorHandling(new Error(Message.INSERT_ALL_INPUTS)).then();
+      console.log("ERROR handleRegisterButton:", err);
+      sweetErrorHandling(err).then();
+    } finally {
+      setPublishing(false);
     }
   };
 
   const doDisabledCheck = () => {
-    if (
-      memoizedValues.articleContent === "" ||
-      memoizedValues.articleTitle === ""
-    ) {
-      return true;
-    }
+    return articleTitle.trim().length < 3 || publishing;
   };
 
   /** PUBLISH **/
@@ -177,15 +195,39 @@ const TuiEditor = () => {
         <Box component={"div"} className="wa-title-field">
           <Typography variant="h3">Title</Typography>
           <TextField
+            value={articleTitle}
             onChange={articleTitleHandler}
             id="filled-basic"
             label="Type Title"
           />
         </Box>
+        <Box component={"div"} className="wa-cover-field">
+          <Typography variant="h3">Cover Image</Typography>
+          <input
+            ref={coverImageRef}
+            type="file"
+            accept="image/*"
+            hidden
+            onChange={uploadCoverImageHandler}
+          />
+          <Box
+            className="wa-cover-preview"
+            onClick={() => coverImageRef.current?.click()}
+            style={{
+              backgroundImage: coverImagePreview
+                ? `url(${coverImagePreview})`
+                : "none",
+            }}
+          >
+            {!coverImagePreview && (
+              <span className="wa-cover-placeholder">+ Upload Cover</span>
+            )}
+          </Box>
+        </Box>
       </Stack>
 
       <Editor
-        initialValue={"Type here"}
+        initialValue={""}
         placeholder={"Type here"}
         previewStyle={"vertical"}
         height={"640px"}
@@ -215,8 +257,9 @@ const TuiEditor = () => {
           color="primary"
           style={{ margin: "30px", width: "250px", height: "45px" }}
           onClick={handleRegisterButton}
+          disabled={doDisabledCheck()}
         >
-          Register
+          {publishing ? "Publishing..." : "Register"}
         </Button>
       </Stack>
     </Stack>

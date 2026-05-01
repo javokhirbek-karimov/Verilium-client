@@ -96,6 +96,7 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
     useQuery(GET_BOARD_ARTICLE, {
       fetchPolicy: "network-only",
       variables: { input: articleId },
+      skip: !articleId,
       notifyOnNetworkStatusChange: true,
     });
 
