@@ -288,6 +288,22 @@
       }
     }
 
+    // ── Article image ──────────────────────────────────────────────────────
+    .article-image {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 40px;
+
+      img {
+        width: 100%;
+        max-height: 480px;
+        object-fit: cover;
+        display: block;
+        border-radius: 16px;
+      }
+    }
+
     // ── Article body ───────────────────────────────────────────────────────
     .article-body {
       width: 100%;

@@ -292,6 +292,19 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
           </div>
         </div>
 
+        {/* ── ARTICLE IMAGE ── */}
+        {boardArticle?.articleImage && (
+          <div className="article-image">
+            <img
+              src={`${REACT_APP_API_URL}/${boardArticle.articleImage}`}
+              alt={boardArticle.articleTitle}
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
+          </div>
+        )}
+
         {/* ── ARTICLE BODY ── */}
         <div className="article-body">
           <ToastViewerComponent
