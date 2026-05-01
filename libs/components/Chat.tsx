@@ -274,6 +274,10 @@ const Chat = () => {
   };
 
   const sendMemberMessage = () => {
+    if (!socket || socket.readyState !== WebSocket.OPEN) {
+      sweetErrorAlert("Connection lost. Please refresh the page.");
+      return;
+    }
     if (!message.trim()) {
       sweetErrorAlert(Messages.error4);
       return;
@@ -283,6 +287,10 @@ const Chat = () => {
   };
 
   const sendAiMessage = () => {
+    if (!socket || socket.readyState !== WebSocket.OPEN) {
+      sweetErrorAlert("Connection lost. Please refresh the page.");
+      return;
+    }
     if (!message.trim()) {
       sweetErrorAlert(Messages.error4);
       return;

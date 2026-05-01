@@ -2709,3 +2709,307 @@
     }
   }
 }
+
+// ══════════════════════════════════════════════════════════════════════
+//  EXPERT LIST PAGE — MOBILE
+// ══════════════════════════════════════════════════════════════════════
+#mobile-wrap {
+  #expert-list-page-mobile {
+    min-height: 100vh;
+    background: var(--black-primary);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+
+    // ── Hero ──────────────────────────────────────────────────────────────────
+    .mob-expert-hero {
+      width: 100%;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      background-image: url("/img/fiber/experts5.jpg");
+      background-size: cover;
+      background-position: center 30%;
+      display: flex;
+      align-items: flex-end;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          160deg,
+          rgba(8, 7, 4, 0.75) 0%,
+          rgba(8, 7, 4, 0.45) 50%,
+          rgba(8, 7, 4, 0.88) 100%
+        );
+        z-index: 1;
+      }
+
+      .mob-expert-hero-content {
+        position: relative;
+        z-index: 2;
+        padding: 0 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        .mob-expert-hero-label {
+          font-family: "Nunito", sans-serif;
+          font-size: 11px;
+          font-weight: 800;
+          color: var(--gold-primary);
+          text-transform: uppercase;
+          letter-spacing: 2.5px;
+        }
+
+        .mob-expert-hero-title {
+          font-family: "Nunito", sans-serif;
+          font-size: 26px;
+          font-weight: 900;
+          color: #fff;
+          line-height: 1.2;
+          letter-spacing: -0.5px;
+          margin: 0;
+
+          span {
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+        }
+      }
+    }
+
+    // ── Controls bar ──────────────────────────────────────────────────────────
+    .mob-expert-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--black-secondary);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+
+      .mob-expert-search {
+        flex: 1;
+        height: 38px;
+        padding: 0 14px;
+        border-radius: 20px;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-primary);
+        font-family: "Nunito", sans-serif;
+        font-size: 16px;
+        outline: none;
+        box-sizing: border-box;
+
+        &::placeholder {
+          color: var(--text-secondary);
+          opacity: 0.5;
+        }
+
+        &:focus {
+          border-color: var(--gold-primary);
+        }
+      }
+
+      .mob-expert-sort-wrap {
+        flex-shrink: 0;
+
+        .mob-expert-sort-btn {
+          height: 38px;
+          padding: 0 12px;
+          border-radius: 10px;
+          border: 1px solid rgba(212, 175, 55, 0.2);
+          background: rgba(212, 175, 55, 0.04);
+          color: var(--text-primary);
+          font-family: "Nunito", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          text-transform: none;
+          white-space: nowrap;
+
+          svg {
+            color: var(--gold-primary);
+            font-size: 18px;
+          }
+        }
+      }
+    }
+
+    // ── Cards grid ────────────────────────────────────────────────────────────
+    .mob-expert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 16px;
+    }
+
+    // ── Expert card (mobile) ──────────────────────────────────────────────────
+    .mob-expert-card {
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--black-soft);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+
+      &:active {
+        border-color: rgba(212, 175, 55, 0.28);
+      }
+
+      .mob-expert-img {
+        position: relative;
+        width: 100%;
+        height: 160px;
+        background-size: cover;
+        background-position: center;
+        background-color: var(--black-primary);
+
+        .perfumes-badge {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          padding: 3px 8px;
+          border-radius: 10px;
+          background: rgba(8, 7, 4, 0.72);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          border: 1px solid rgba(212, 175, 55, 0.3);
+          font-family: "Nunito", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          color: var(--gold-light);
+        }
+      }
+
+      .mob-expert-body {
+        padding: 10px 12px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        .mob-expert-name-row {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+
+          strong {
+            font-family: "Nunito", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+
+          .mob-expert-badge {
+            font-family: "Nunito", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.85;
+          }
+        }
+
+        .mob-expert-stats {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding-top: 6px;
+          border-top: 1px solid rgba(212, 175, 55, 0.07);
+
+          .stat {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            cursor: pointer;
+
+            svg {
+              font-size: 14px;
+              color: var(--text-secondary);
+              opacity: 0.6;
+            }
+
+            span {
+              font-family: "Nunito", sans-serif;
+              font-size: 12px;
+              color: var(--text-secondary);
+              opacity: 0.65;
+            }
+
+            &.like-btn {
+              .liked-icon {
+                color: #e53935 !important;
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // ── Empty state ───────────────────────────────────────────────────────────
+    .mob-expert-empty {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 60px 0;
+
+      img {
+        width: 36px;
+        height: 36px;
+        opacity: 0.3;
+      }
+
+      p {
+        font-family: "Nunito", sans-serif;
+        font-size: 15px;
+        color: var(--text-secondary);
+        opacity: 0.5;
+      }
+    }
+
+    // ── Pagination ────────────────────────────────────────────────────────────
+    .mob-expert-pagination {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 0 20px;
+
+      span {
+        font-family: "Nunito", sans-serif;
+        font-size: 13px;
+        color: var(--text-secondary);
+        opacity: 0.55;
+      }
+
+      .MuiPaginationItem-root {
+        font-family: "Nunito", sans-serif;
+        font-size: 13px;
+        color: var(--text-secondary);
+        border-color: rgba(212, 175, 55, 0.2);
+        min-width: 30px;
+        height: 30px;
+
+        &.Mui-selected {
+          background: var(--gold-primary);
+          color: var(--black-primary);
+          border-color: var(--gold-primary);
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

@@ -22,11 +22,11 @@ export interface CustomJwtPayload extends JwtPayload {
 }
 
 export type telegramData = {
-  id: string;
+  id: number;        // Telegram sends as number; converted to string before sending to backend
   first_name: string;
   last_name?: string;
   username?: string;
   photo_url?: string;
-  auth_date: string;
+  auth_date: number; // Unix timestamp — converted to string before sending to backend
   hash: string;
 };

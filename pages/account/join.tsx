@@ -91,7 +91,13 @@ const Join: NextPage = () => {
     async (data: telegramData) => {
       try {
         const result = await telegramLoginMutation({
-          variables: { input: data },
+          variables: {
+            input: {
+              ...data,
+              id: String(data.id),
+              auth_date: String(data.auth_date),
+            },
+          },
         });
         const accessToken = result?.data?.telegramLogin?.accessToken;
         if (accessToken) {

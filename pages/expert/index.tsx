@@ -162,7 +162,87 @@ const ExpertList: NextPage = ({ initialInput, ...props }: any) => {
   };
 
   if (device === "mobile") {
-    return <h1>EXPERTS PAGE MOBILE</h1>;
+    return (
+      <Stack id={"expert-list-page-mobile"}>
+        <section className="mob-expert-hero">
+          <div className="mob-expert-hero-content">
+            <span className="mob-expert-hero-label">{t("Our Specialists")}</span>
+            <h1 className="mob-expert-hero-title">
+              {t("Meet the")} <span>{t("Fragrance")}</span> {t("Experts")}
+            </h1>
+          </div>
+        </section>
+
+        <div className="mob-expert-controls">
+          <input
+            className="mob-expert-search"
+            type="text"
+            placeholder={t("Search for an expert")}
+            value={searchText}
+            onChange={(e: any) => setSearchText(e.target.value)}
+            onKeyDown={(event: any) => {
+              if (event.key === "Enter") {
+                setSearchFilter({
+                  ...searchFilter,
+                  search: { ...searchFilter.search, text: searchText },
+                });
+              }
+            }}
+          />
+          <div className="mob-expert-sort-wrap">
+            <Button
+              className="mob-expert-sort-btn"
+              onClick={sortingClickHandler}
+              endIcon={<KeyboardArrowDownRoundedIcon />}
+            >
+              {filterSortName}
+            </Button>
+            <Menu
+              anchorEl={anchorEl}
+              open={sortingOpen}
+              onClose={sortingCloseHandler}
+            >
+              <MenuItem onClick={sortingHandler} id={"recent"} disableRipple>{t("Recent")}</MenuItem>
+              <MenuItem onClick={sortingHandler} id={"old"} disableRipple>{t("Oldest")}</MenuItem>
+              <MenuItem onClick={sortingHandler} id={"likes"} disableRipple>{t("Likes")}</MenuItem>
+              <MenuItem onClick={sortingHandler} id={"views"} disableRipple>{t("Views")}</MenuItem>
+            </Menu>
+          </div>
+        </div>
+
+        <div className="mob-expert-grid">
+          {experts?.length === 0 ? (
+            <div className="mob-expert-empty">
+              <img src="/img/icons/icoAlert.svg" alt="" />
+              <p>{t("No Experts found!")}</p>
+            </div>
+          ) : (
+            experts.map((expert: Member) => (
+              <ExpertCard
+                expert={expert}
+                likeMemberHandler={likeMemberHandler}
+                key={expert._id}
+              />
+            ))
+          )}
+        </div>
+
+        {experts.length !== 0 && Math.ceil(total / searchFilter.limit) > 1 && (
+          <Stack className="mob-expert-pagination">
+            <Pagination
+              page={currentPage}
+              count={Math.ceil(total / searchFilter.limit)}
+              onChange={paginationChangeHandler}
+              shape="circular"
+              color="primary"
+            />
+            <span>
+              {t("Total")} {total} {total > 1 ? t("experts") : t("expert")} {t("available")}
+            </span>
+          </Stack>
+        )}
+      </Stack>
+    );
   } else {
     return (
       <Stack className={"expert-list-page"}>

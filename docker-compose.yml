@@ -1,0 +1,26 @@
+version: "3.3"
+
+services:
+  verilium-client:
+    container_name: verilium-client
+    restart: always
+    image: node:20.10.0
+    ports:
+      - "3010:3015"
+
+    environment:
+      - PORT=3015
+
+    volumes:
+      - ./:/usr/src/verilium-client
+    working_dir: /usr/src/verilium-client
+
+    networks:
+      - client-network
+
+    # FOR PRODUCTION
+    command: bash -c "yarn && yarn nest build && yarn run start"
+
+networks:
+  client-network:
+    driver: bridge

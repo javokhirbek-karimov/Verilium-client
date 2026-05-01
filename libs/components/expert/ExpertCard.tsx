@@ -28,7 +28,53 @@ const ExpertCard = (props: ExpertCardProps) => {
 
   console.log("IMAGE:", imagePath);
   if (device === "mobile") {
-    return <div>EXPERT CARD</div>;
+    return (
+      <Stack className="mob-expert-card">
+        <Link
+          href={{
+            pathname: "/expert/detail",
+            query: { expertId: expert?._id },
+          }}
+        >
+          <Box
+            className="mob-expert-img"
+            style={{ backgroundImage: `url(${imagePath})` }}
+          >
+            <div className="perfumes-badge">{expert?.memberPerfumes} {t("perfumes")}</div>
+          </Box>
+        </Link>
+        <Box className="mob-expert-body">
+          <Box className="mob-expert-name-row">
+            <Link
+              href={{
+                pathname: "/expert/detail",
+                query: { expertId: expert?._id },
+              }}
+            >
+              <strong>{expert?.memberFullName ?? expert?.memberNick}</strong>
+            </Link>
+            <span className="mob-expert-badge">{t("Expert")}</span>
+          </Box>
+          <Box className="mob-expert-stats">
+            <Box className="stat">
+              <RemoveRedEyeIcon />
+              <span>{expert?.memberViews}</span>
+            </Box>
+            <Box
+              className="stat like-btn"
+              onClick={() => likeMemberHandler(user, expert?._id)}
+            >
+              {expert?.meLiked && expert?.meLiked[0]?.myFavorite ? (
+                <FavoriteIcon className="liked-icon" />
+              ) : (
+                <FavoriteBorderIcon />
+              )}
+              <span>{expert?.memberLikes}</span>
+            </Box>
+          </Box>
+        </Box>
+      </Stack>
+    );
   } else {
     return (
       <Stack className="expert-general-card">
