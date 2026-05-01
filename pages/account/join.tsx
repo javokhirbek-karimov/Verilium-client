@@ -13,7 +13,8 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
-import { TELEGRAM_LOGIN } from "../../apollo/user/mutation";
+import { TELEGRAM_LOGIN, GOOGLE_LOGIN } from "../../apollo/user/mutation";
+import { useGoogleLogin } from "@react-oauth/google";
 import { logIn, signUp, updateStorage, updateUserInfo } from "../../libs/auth";
 import { sweetMixinErrorAlert } from "../../libs/sonner";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -38,6 +39,7 @@ const Join: NextPage = () => {
 
   /** APOLLO MUTATIONS **/
   const [telegramLoginMutation] = useMutation(TELEGRAM_LOGIN);
+  const [googleLoginMutation] = useMutation(GOOGLE_LOGIN);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   /** HANDLERS **/
@@ -111,6 +113,30 @@ const Join: NextPage = () => {
     },
     [telegramLoginMutation, router],
   );
+
+  const doGoogleLogin = useCallback(
+    async (accessToken: string) => {
+      try {
+        const result = await googleLoginMutation({
+          variables: { input: { token: accessToken } },
+        });
+        const token = result?.data?.googleLogin?.accessToken;
+        if (token) {
+          updateStorage({ jwtToken: token });
+          updateUserInfo(token);
+          await router.push("/");
+        }
+      } catch {
+        await sweetMixinErrorAlert("Google login failed. Please try again");
+      }
+    },
+    [googleLoginMutation, router],
+  );
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: (res) => doGoogleLogin(res.access_token),
+    onError: () => sweetMixinErrorAlert("Google login failed. Please try again"),
+  });
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key !== "Enter" || isLoading) return;
@@ -253,14 +279,18 @@ const Join: NextPage = () => {
 
           {/* Telegram */}
           <Stack className="telegram-wrap">
-            {/* Custom styled button (visible) */}
             <div className="tg-custom-btn">
               <img src="/img/icons/telegram.svg" alt="Telegram" className="tg-icon" />
               <span>{t("Continue with Telegram")}</span>
             </div>
-            {/* Real widget — invisible, overlaid on top to capture click */}
             <div ref={telegramRef} className="telegram-widget" />
           </Stack>
+
+          {/* Google */}
+          <button className="google-btn" onClick={() => googleLogin()}>
+            <img src="/img/icons/google.svg" alt="Google" className="google-icon" />
+            <span>{t("Continue with Google")}</span>
+          </button>
 
           {/* Toggle */}
           <Stack className="join-toggle">

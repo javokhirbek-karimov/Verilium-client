@@ -66,6 +66,17 @@ export const TELEGRAM_LOGIN = gql`
   }
 `;
 
+export const GOOGLE_LOGIN = gql`
+  mutation googleLogin($input: GoogleLoginInput!) {
+    googleLogin(input: $input) {
+      _id
+      memberNick
+      memberImage
+      accessToken
+    }
+  }
+`;
+
 export const LIKE_TARGET_MEMBER = gql`
   mutation LikeTargetMember($input: String!) {
     likeTargetMember(memberId: $input) {

@@ -10,6 +10,7 @@ import nextI18NextConfig from "../next-i18next.config";
 import { Toaster } from "sonner";
 import { socketVar } from "../apollo/store";
 import { getJwtToken } from "../libs/auth";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import "../scss/app.scss";
 import "../scss/pc/main.scss";
 import "../scss/mobile/main.scss";
@@ -32,29 +33,31 @@ const App = ({ Component, pageProps }: AppProps) => {
   }, []);
 
   return (
-    <ApolloProvider client={client}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-        <Toaster
-          position="top-center"
-          toastOptions={{
-            style: {
-              background: "#1a1a1a",
-              color: "#eaeaea",
-              border: "1px solid #d4af37",
-              fontSize: "16px",
-              padding: "16px 20px",
-              minWidth: "320px",
-            },
-            classNames: {
-              success: "toast-success",
-              error: "toast-error",
-            },
-          }}
-        />
-      </ThemeProvider>
-    </ApolloProvider>
+    <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
+      <ApolloProvider client={client}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              style: {
+                background: "#1a1a1a",
+                color: "#eaeaea",
+                border: "1px solid #d4af37",
+                fontSize: "16px",
+                padding: "16px 20px",
+                minWidth: "320px",
+              },
+              classNames: {
+                success: "toast-success",
+                error: "toast-error",
+              },
+            }}
+          />
+        </ThemeProvider>
+      </ApolloProvider>
+    </GoogleOAuthProvider>
   );
 };
 
