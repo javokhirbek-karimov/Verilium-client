@@ -58,23 +58,44 @@ const TopArticles = (props: TopArticlesProps) => {
             <span>{t("Latest Articles")}</span>
           </Stack>
           <Stack className={"card-box"}>
-            <Swiper
-              className={"top-articles-swiper"}
-              slidesPerView={1.1}
-              centeredSlides={true}
-              spaceBetween={16}
-              modules={[Autoplay]}
-              autoplay={{ delay: 4000, disableOnInteraction: false }}
-            >
-              {articles.map((article: BoardArticle) => (
-                <SwiperSlide key={article._id} className={"top-article-slide"}>
-                  <TopArticlesCard
-                    article={article}
-                    onClick={() => goArticleDetail(article._id)}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            {articles.length === 0 && !getArticlesLoading ? (
+              <Box className={"empty-list"}>{t("No articles yet")}</Box>
+            ) : (
+              <>
+                <div className={"articles-nav-box"}>
+                  <div className={"swiper-articles-mob-prev"}>
+                    <WestIcon />
+                  </div>
+                  <div className={"swiper-articles-mob-pagination"}></div>
+                  <div className={"swiper-articles-mob-next"}>
+                    <EastIcon />
+                  </div>
+                </div>
+                <Swiper
+                  className={"top-articles-swiper"}
+                  slidesPerView={1}
+                  spaceBetween={0}
+                  modules={[Navigation, Pagination]}
+                  navigation={{
+                    nextEl: ".swiper-articles-mob-next",
+                    prevEl: ".swiper-articles-mob-prev",
+                  }}
+                  pagination={{
+                    el: ".swiper-articles-mob-pagination",
+                    clickable: true,
+                  }}
+                >
+                  {articles.map((article: BoardArticle) => (
+                    <SwiperSlide key={article._id} className={"top-article-slide"}>
+                      <TopArticlesCard
+                        article={article}
+                        onClick={() => goArticleDetail(article._id)}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </>
+            )}
           </Stack>
         </Stack>
       </Stack>
