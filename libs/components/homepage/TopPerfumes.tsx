@@ -72,27 +72,51 @@ const TopPerfumes = (props: TopPerfumesProps) => {
             <span>{t("Top perfumes")}</span>
           </Stack>
           <Stack className={"card-box"}>
-            <Swiper
-              className={"top-perfume-swiper"}
-              slidesPerView={"auto"}
-              centeredSlides={true}
-              spaceBetween={15}
-              modules={[Autoplay]}
-            >
-              {topPerfumes.map((perfume: Perfume) => {
-                return (
-                  <SwiperSlide
-                    className={"top-perfume-slide"}
-                    key={perfume?._id}
-                  >
-                    <TopPerfumeCard
-                      perfume={perfume}
-                      likePerfumeHandler={likePerfumeHandler}
-                    />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
+            {topPerfumes.length === 0 ? (
+              <Box component={"div"} className={"empty-list"}>
+                {t("No perfumes")}
+              </Box>
+            ) : (
+              <>
+                <div className={"top-nav-box"}>
+                  <div className={"swiper-top-mob-prev"}>
+                    <WestIcon />
+                  </div>
+                  <div className={"swiper-top-mob-pagination"}></div>
+                  <div className={"swiper-top-mob-next"}>
+                    <EastIcon />
+                  </div>
+                </div>
+                <Swiper
+                  className={"top-perfume-swiper"}
+                  slidesPerView={1}
+                  spaceBetween={0}
+                  modules={[Navigation, Pagination]}
+                  navigation={{
+                    nextEl: ".swiper-top-mob-next",
+                    prevEl: ".swiper-top-mob-prev",
+                  }}
+                  pagination={{
+                    el: ".swiper-top-mob-pagination",
+                    clickable: true,
+                  }}
+                >
+                  {topPerfumes.map((perfume: Perfume) => {
+                    return (
+                      <SwiperSlide
+                        className={"top-perfume-slide"}
+                        key={perfume?._id}
+                      >
+                        <TopPerfumeCard
+                          perfume={perfume}
+                          likePerfumeHandler={likePerfumeHandler}
+                        />
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper>
+              </>
+            )}
           </Stack>
         </Stack>
       </Stack>
