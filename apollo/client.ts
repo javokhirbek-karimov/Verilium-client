@@ -38,7 +38,7 @@ const tokenRefreshLink = new TokenRefreshLink({
 
 // Custom WebSocket client
 class LoggingWebSocket {
-  private socket: WebSocket;
+  private socket!: WebSocket;
   private queue: Parameters<WebSocket["send"]>[0][] = [];
   private url: string;
   private shouldReconnect = true;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Stack, Box } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
-import { Autoplay, Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import WestIcon from "@mui/icons-material/West";
@@ -86,7 +86,10 @@ const TopArticles = (props: TopArticlesProps) => {
                   }}
                 >
                   {articles.map((article: BoardArticle) => (
-                    <SwiperSlide key={article._id} className={"top-article-slide"}>
+                    <SwiperSlide
+                      key={article._id}
+                      className={"top-article-slide"}
+                    >
                       <TopArticlesCard
                         article={article}
                         onClick={() => goArticleDetail(article._id)}

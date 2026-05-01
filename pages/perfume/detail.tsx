@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import { useMutation, useQuery, useReactiveVar } from "@apollo/client";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper";
+import { Autoplay, Navigation } from "swiper/modules";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";

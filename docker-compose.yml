@@ -19,7 +19,7 @@ services:
       - client-network
 
     # FOR PRODUCTION
-    command: bash -c "yarn && yarn nest build && yarn run start"
+    command: bash -c "yarn && yarn run build && yarn run start"
 
 networks:
   client-network:

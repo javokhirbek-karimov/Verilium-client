@@ -7,7 +7,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import WestIcon from "@mui/icons-material/West";
 import EastIcon from "@mui/icons-material/East";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import TopExpertCard from "./TopExpertCard";
 import { Member } from "../../types/member/member";
 import { ExpertsInquiry } from "../../types/member/member.input";

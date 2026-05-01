@@ -5,7 +5,7 @@ import { useScrollReveal } from "../../hooks/useScrollReveal";
 import WestIcon from "@mui/icons-material/West";
 import EastIcon from "@mui/icons-material/East";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Perfume } from "../../types/perfume/perfume";
 import { PerfumesInquiry } from "../../types/perfume/perfume.input";
 import TrendPerfumeCard from "./TrendPerfumeCard";

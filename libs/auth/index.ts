@@ -3,6 +3,7 @@ import { initializeApollo } from "../../apollo/client";
 import { userVar } from "../../apollo/store";
 import { CustomJwtPayload, telegramData } from "../types/customJWTPayload";
 import { LOGIN, SIGN_UP, TELEGRAM_LOGIN } from "../../apollo/user/mutation";
+import { sweetMixinErrorAlert } from "../sonner";
 
 export const telegramLogin = async (telegramData: telegramData) => {
   try {

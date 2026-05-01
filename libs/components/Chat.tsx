@@ -158,7 +158,7 @@ const Chat = () => {
   const aiHistoryLoaded = useRef(false);
 
   const scrollToBottom = () => {
-    bottomRef.current?.scrollIntoView({ behavior: "instant" });
+    bottomRef.current?.scrollIntoView({ behavior: "auto" });
   };
 
   const memberMessages = useReactiveVar(memberMessagesVar);
