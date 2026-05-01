@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Top from "../Top";
 import Footer from "../Footer";
 import { Stack } from "@mui/material";
@@ -22,6 +23,7 @@ const withLayoutMain = (Component: any) => {
   return (props: any) => {
     const device = useDeviceDetect();
     const user = useReactiveVar(userVar);
+    const router = useRouter();
     const [showIntro, setShowIntro] = useState(true);
 
     useEffect(() => {
@@ -40,6 +42,35 @@ const withLayoutMain = (Component: any) => {
             <Stack id={"top"}>
               <Top />
             </Stack>
+
+            {router.pathname === "/" && (
+              <div className={"mobile-hero"}>
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="mobile-hero-video"
+                >
+                  <source src="/img/banner/header1.MOV" type="video/mp4" />
+                </video>
+                <div className={"mobile-hero-overlay"} />
+                <div className={"mobile-hero-content"}>
+                  <h1 className={"mobile-hero-title"}>
+                    Elevate Your Spirit{" "}
+                    <span className={"mobile-hero-accent"}>With Victory</span>{" "}
+                    Scented Fragrances
+                  </h1>
+                  <p className={"mobile-hero-desc"}>
+                    Shop now and embrace the sweet smell of victory with Verilium
+                  </p>
+                  <Link href="/perfume">
+                    <div className={"mobile-hero-btn"}>Shop Now →</div>
+                  </Link>
+                </div>
+              </div>
+            )}
+
             <Stack id={"main"}>
               <Component {...props} />
             </Stack>

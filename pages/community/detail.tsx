@@ -239,7 +239,145 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
   const liked = boardArticle?.meLiked && boardArticle?.meLiked[0]?.myFavorite;
 
   if (device === "mobile") {
-    return <div>COMMUNITY DETAIL PAGE MOBILE</div>;
+    return (
+      <div id="community-detail-page-mobile">
+        {boardArticle?.articleImage && (
+          <div className="mobile-article-image">
+            <img
+              src={`${REACT_APP_API_URL}/${boardArticle.articleImage}`}
+              alt={boardArticle.articleTitle}
+              onError={(e) => { e.currentTarget.style.display = "none"; }}
+            />
+          </div>
+        )}
+
+        <div className="mobile-detail-container">
+          <div className="mobile-article-meta">
+            <span className="category-badge">{articleCategory}</span>
+            <Moment className="date-text" format={"MMM DD, YYYY"}>
+              {boardArticle?.createdAt}
+            </Moment>
+          </div>
+
+          <Typography component="h1" className="mobile-article-title">
+            {boardArticle?.articleTitle}
+          </Typography>
+
+          <div className="mobile-author-row">
+            <img
+              src={memberImage}
+              alt=""
+              className="author-avatar"
+              onClick={() => goMemberPage(boardArticle?.memberData?._id)}
+            />
+            <div className="author-info">
+              <Typography
+                className="author-nick"
+                onClick={() => goMemberPage(boardArticle?.memberData?._id)}
+              >
+                {boardArticle?.memberData?.memberNick}
+              </Typography>
+              <div className="mobile-stats">
+                <span className="stat-item">
+                  <VisibilityIcon /> {boardArticle?.articleViews}
+                </span>
+                <span className="stat-item">
+                  {liked ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
+                  {boardArticle?.articleLikes}
+                </span>
+                <span className="stat-item">
+                  {total > 0 ? <ChatIcon /> : <ChatBubbleOutlineRoundedIcon />}
+                  {total}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mobile-article-body">
+            <ToastViewerComponent
+              markdown={boardArticle?.articleContent}
+              className={"ytb_play"}
+            />
+          </div>
+
+          <div className="mobile-like-row">
+            <Button
+              className={`like-btn ${liked ? "liked" : ""}`}
+              startIcon={liked ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
+              onClick={() => likeBoardArticleHandler(user, boardArticle?._id || "")}
+              disabled={likeLoading}
+            >
+              {boardArticle?.articleLikes} {t("Likes")}
+            </Button>
+          </div>
+
+          <div className="mobile-comments-section">
+            <Typography className="comments-heading">
+              {t("Comments")} <span className="count">{total}</span>
+            </Typography>
+
+            <div className="comment-input-box">
+              <input
+                type="text"
+                placeholder={t("Share your thoughts…")}
+                value={comment}
+                onChange={(e) => {
+                  if (e.target.value.length > 100) return;
+                  setWordsCnt(e.target.value.length);
+                  setComment(e.target.value);
+                }}
+                onKeyDown={(e) => e.key === "Enter" && createCommentHandler()}
+              />
+              <div className="input-footer">
+                <span className="word-count">{wordsCnt}/100</span>
+                <Button className="submit-btn" onClick={createCommentHandler}>
+                  {t("Post")}
+                </Button>
+              </div>
+            </div>
+
+            {comments?.map((commentData) => (
+              <div className="comment-item" key={commentData?._id}>
+                <img
+                  src={getCommentMemberImage(commentData?.memberData?.memberImage)}
+                  alt=""
+                  className="commenter-avatar"
+                  onClick={() => goMemberPage(commentData?.memberData?._id as string)}
+                />
+                <div className="comment-body">
+                  <div className="comment-top">
+                    <Typography
+                      className="commenter-name"
+                      onClick={() => goMemberPage(commentData?.memberData?._id as string)}
+                    >
+                      {commentData?.memberData?.memberNick}
+                    </Typography>
+                    <Moment className="comment-date" format={"DD MMM · HH:mm"}>
+                      {commentData?.createdAt}
+                    </Moment>
+                  </div>
+                  <Typography className="comment-text">
+                    {commentData?.commentContent}
+                  </Typography>
+                </div>
+              </div>
+            ))}
+
+            {total > 0 && (
+              <Stack className="comments-pagination">
+                <Pagination
+                  count={Math.ceil(total / searchFilter.limit) || 1}
+                  page={searchFilter.page}
+                  shape="circular"
+                  color="primary"
+                  onChange={paginationHandler}
+                />
+              </Stack>
+            )}
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (

@@ -11,6 +11,16 @@ interface TopArticlesCardProps {
   onClick: () => void;
 }
 
+const stripMarkdown = (md: string): string =>
+  md
+    .replace(/#{1,6}\s+/g, "")
+    .replace(/\*\*(.+?)\*\*/g, "$1")
+    .replace(/\*(.+?)\*/g, "$1")
+    .replace(/\[(.+?)\]\(.+?\)/g, "$1")
+    .replace(/`{1,3}[^`\n]*`{1,3}/g, "")
+    .replace(/\n+/g, " ")
+    .trim();
+
 const TopArticlesCard = ({ article, onClick }: TopArticlesCardProps) => {
   const image = article?.articleImage
     ? `${REACT_APP_API_URL}/${article.articleImage}`
@@ -42,7 +52,7 @@ const TopArticlesCard = ({ article, onClick }: TopArticlesCardProps) => {
 
         {article?.articleContent && (
           <Typography className={"article-excerpt"}>
-            {article.articleContent}
+            {stripMarkdown(article.articleContent)}
           </Typography>
         )}
 
