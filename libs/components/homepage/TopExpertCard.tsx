@@ -25,15 +25,31 @@ const TopExpertCard = (props: TopExpertProps) => {
   if (device === "mobile") {
     return (
       <Stack className="top-expert-card" onClick={goToExpert}>
-        <img
-          src={expertImage}
-          alt=""
-          onError={(e) => {
-            e.currentTarget.src = "/img/profile/defaultUser.jpg";
-          }}
-        />
-        <strong>{expert?.memberNick}</strong>
-        <span>{expert?.memberType}</span>
+        <Box className="card-cover" />
+        <Box className="avatar-wrap">
+          <img
+            src={expertImage}
+            alt={expert?.memberNick}
+            onError={(e) => {
+              e.currentTarget.src = "/img/profile/defaultUser.jpg";
+            }}
+          />
+        </Box>
+        <Box className="card-info">
+          <strong className="nick">{expert?.memberNick}</strong>
+          <span className="type">{expert?.memberType}</span>
+        </Box>
+        <Box className="card-stats">
+          <Box className="stat">
+            <PeopleAltIcon />
+            <span>{expert?.memberFollowers ?? 0}</span>
+          </Box>
+          <Box className="stat-divider" />
+          <Box className="stat">
+            <ArticleIcon />
+            <span>{expert?.memberArticles ?? 0}</span>
+          </Box>
+        </Box>
       </Stack>
     );
   }
