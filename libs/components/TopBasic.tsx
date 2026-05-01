@@ -9,6 +9,8 @@ import { alpha, styled } from "@mui/material/styles";
 import Menu, { MenuProps } from "@mui/material/Menu";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import { CaretDown } from "phosphor-react";
 import { Logout } from "@mui/icons-material";
 import useDeviceDetect from "../hooks/useDeviceDetect";
@@ -110,17 +112,7 @@ const TopBasic = () => {
     { href: "/cs", label: t("CS") },
   ];
 
-  if (device === "mobile") {
-    return (
-      <Stack className={"top"}>
-        {navLinks.map((link) => (
-          <Link href={link.href} key={link.href}>
-            <div>{link.label}</div>
-          </Link>
-        ))}
-      </Stack>
-    );
-  }
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const avatarSrc =
     user?.memberImage && user.memberImage.trim() !== ""
@@ -128,6 +120,107 @@ const TopBasic = () => {
         ? user.memberImage
         : `${REACT_APP_API_URL}/${user.memberImage}`
       : "/img/profile/defaultUser.svg";
+
+  if (device === "mobile") {
+    return (
+      <>
+        <Stack className={"mobile-navbar"}>
+          <Link href={"/"}>
+            <img
+              src="/img/logo/logoWhite-2.png"
+              alt="Verilium"
+              className={"mobile-nav-logo"}
+            />
+          </Link>
+
+          <Box className={"mobile-nav-right"}>
+            {user?._id && (
+              <img
+                src={avatarSrc}
+                alt="avatar"
+                className={"mobile-nav-avatar"}
+                onClick={() => router.push("/mypage")}
+              />
+            )}
+            <button
+              className={"mobile-nav-burger"}
+              onClick={() => setDrawerOpen(true)}
+              aria-label="Open menu"
+            >
+              <MenuIcon />
+            </button>
+          </Box>
+        </Stack>
+
+        {drawerOpen && (
+          <div
+            className={"mobile-drawer-overlay"}
+            onClick={() => setDrawerOpen(false)}
+          />
+        )}
+
+        <div className={`mobile-drawer ${drawerOpen ? "open" : ""}`}>
+          <div className={"mobile-drawer-header"}>
+            <img
+              src="/img/logo/logoWhite-2.png"
+              alt="Verilium"
+              className={"mobile-drawer-logo"}
+            />
+            <button
+              className={"mobile-drawer-close"}
+              onClick={() => setDrawerOpen(false)}
+              aria-label="Close menu"
+            >
+              <CloseIcon />
+            </button>
+          </div>
+
+          <nav className={"mobile-drawer-nav"}>
+            {navLinks.map((link) => (
+              <Link href={link.href} key={link.href}>
+                <div
+                  className={`mobile-drawer-link ${
+                    router.pathname === link.href ||
+                    (router.pathname.startsWith(link.href) && link.href !== "/")
+                      ? "active"
+                      : ""
+                  }`}
+                  onClick={() => setDrawerOpen(false)}
+                >
+                  {link.label}
+                </div>
+              </Link>
+            ))}
+          </nav>
+
+          <div className={"mobile-drawer-footer"}>
+            {user?._id ? (
+              <button
+                className={"mobile-drawer-logout"}
+                onClick={() => {
+                  logOut();
+                  setDrawerOpen(false);
+                }}
+              >
+                <Logout fontSize="small" />
+                <span>Logout</span>
+              </button>
+            ) : (
+              <Link href={"/account/join"}>
+                <div
+                  className={"mobile-drawer-login"}
+                  onClick={() => setDrawerOpen(false)}
+                >
+                  <AccountCircleOutlinedIcon />
+                  <span>{t("Login")} / {t("Register")}</span>
+                </div>
+              </Link>
+            )}
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <Stack className={"navbar"}>
