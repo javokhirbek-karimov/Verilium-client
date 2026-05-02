@@ -1,12 +1,10 @@
-version: "3.3"
-
 services:
   verilium-client:
     container_name: verilium-client
     restart: always
     image: node:20.10.0
     ports:
-      - "3010:3015"
+      - "4007:3015"
 
     environment:
       - PORT=3015
