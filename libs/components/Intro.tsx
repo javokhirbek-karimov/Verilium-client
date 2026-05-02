@@ -70,7 +70,7 @@ const Intro = ({ onFinish }: IntroProps) => {
                 : phase === "fly"
                 ? {
                     opacity: 1,
-                    x: "calc(-50vw + 210px)",
+                    x: "calc(-50vw + 100px)",
                     y: "calc(-50vh + 44px)",
                   }
                 : { opacity: 1 }

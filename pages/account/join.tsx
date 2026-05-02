@@ -65,7 +65,9 @@ const Join: NextPage = () => {
       } else if (msg === "Definer: user has been blocked!") {
         await sweetMixinErrorAlert("Foydalanuvchi bloklangan!");
       } else {
-        await sweetMixinErrorAlert(err.message ?? "Login failed. Please try again.");
+        await sweetMixinErrorAlert(
+          err.message ?? "Login failed. Please try again.",
+        );
       }
     } finally {
       setIsLoading(false);
@@ -82,7 +84,9 @@ const Join: NextPage = () => {
       if (msg?.includes("already exists")) {
         await sweetMixinErrorAlert("Bu nick allaqachon band!");
       } else {
-        await sweetMixinErrorAlert(err.message ?? "Sign up failed. Please try again.");
+        await sweetMixinErrorAlert(
+          err.message ?? "Sign up failed. Please try again.",
+        );
       }
     } finally {
       setIsLoading(false);
@@ -135,7 +139,8 @@ const Join: NextPage = () => {
 
   const googleLogin = useGoogleLogin({
     onSuccess: (res) => doGoogleLogin(res.access_token),
-    onError: () => sweetMixinErrorAlert("Google login failed. Please try again"),
+    onError: () =>
+      sweetMixinErrorAlert("Google login failed. Please try again"),
   });
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -279,16 +284,16 @@ const Join: NextPage = () => {
 
           {/* Telegram */}
           <Stack className="telegram-wrap">
-            <div className="tg-custom-btn">
-              <img src="/img/icons/telegram.svg" alt="Telegram" className="tg-icon" />
-              <span>{t("Continue with Telegram")}</span>
-            </div>
             <div ref={telegramRef} className="telegram-widget" />
           </Stack>
 
           {/* Google */}
           <button className="google-btn" onClick={() => googleLogin()}>
-            <img src="/img/icons/google.svg" alt="Google" className="google-icon" />
+            <img
+              src="/img/icons/google.svg"
+              alt="Google"
+              className="google-icon"
+            />
             <span>{t("Continue with Google")}</span>
           </button>
 

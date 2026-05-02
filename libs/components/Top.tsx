@@ -10,8 +10,6 @@ import { alpha, styled } from "@mui/material/styles";
 import Menu, { MenuProps } from "@mui/material/Menu";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { CaretDown } from "phosphor-react";
@@ -238,7 +236,9 @@ const Top = () => {
                   onClick={() => setDrawerOpen(false)}
                 >
                   <AccountCircleOutlinedIcon />
-                  <span>{t("Login")} / {t("Register")}</span>
+                  <span>
+                    {t("Login")} / {t("Register")}
+                  </span>
                 </div>
               </Link>
             )}
@@ -269,27 +269,18 @@ const Top = () => {
 
           <Box component={"div"} className={"router-box"}>
             {navLinks.map((link, i) => (
-              <motion.div
-                key={link.href}
-                custom={i}
-                variants={slideDown}
-                initial="hidden"
-                animate="visible"
-              >
-                <Link href={link.href}>
-                  <div
-                    className={
-                      router.pathname === link.href ||
-                      (router.pathname.startsWith(link.href) &&
-                        link.href !== "/")
-                        ? "active"
-                        : ""
-                    }
-                  >
-                    {link.label}
-                  </div>
-                </Link>
-              </motion.div>
+              <Link href={link.href}>
+                <div
+                  className={
+                    router.pathname === link.href ||
+                    (router.pathname.startsWith(link.href) && link.href !== "/")
+                      ? "active"
+                      : ""
+                  }
+                >
+                  {link.label}
+                </div>
+              </Link>
             ))}
           </Box>
 
