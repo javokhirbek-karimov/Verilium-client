@@ -1,0 +1,407 @@
+#pc-wrap #write-article-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+#pc-wrap #write-article-page .wa-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 36px 40px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  overflow: hidden;
+}
+#pc-wrap #write-article-page .wa-header::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+#pc-wrap #write-article-page .wa-header .wa-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+#pc-wrap #write-article-page .wa-header .wa-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  width: -moz-fit-content;
+  width: fit-content;
+}
+#pc-wrap #write-article-page .wa-header .wa-badge span {
+  font-family: "Nunito", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold-primary);
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+#pc-wrap #write-article-page .wa-header .wa-badge svg {
+  font-size: 15px !important;
+  color: var(--gold-primary);
+}
+#pc-wrap #write-article-page .wa-header .wa-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin: 0;
+  line-height: 1.1;
+}
+#pc-wrap #write-article-page .wa-header .wa-desc {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 420px;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+#pc-wrap #write-article-page .wa-header .wa-header-right {
+  display: flex;
+  gap: 4px;
+  position: relative;
+  z-index: 1;
+}
+#pc-wrap #write-article-page .wa-header .wa-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 28px;
+  border-radius: 14px;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+}
+#pc-wrap #write-article-page .wa-header .wa-stat .wa-stat-val {
+  font-family: "Nunito", sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--gold-primary);
+  line-height: 1;
+}
+#pc-wrap #write-article-page .wa-header .wa-stat .wa-stat-lbl {
+  font-family: "Nunito", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
+#pc-wrap #write-article-page .toastui-editor-mode-switch {
+  display: none !important;
+}
+#pc-wrap #write-article-page .wa-card {
+  background: var(--black-secondary);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+#pc-wrap #write-article-page .wa-card::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.5) 30%, var(--gold-primary) 50%, rgba(212, 175, 55, 0.5) 70%, transparent 100%);
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row {
+  padding: 28px 32px !important;
+  gap: 20px !important;
+  align-items: flex-end;
+  background: rgba(255, 255, 255, 0.015);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .form_row {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .form_row h3.MuiTypography-root {
+  font-family: "Nunito", sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  color: rgba(212, 175, 55, 0.5) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  margin: 0 !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .form_row .MuiFormControl-root {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-radius: 10px !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .form_row .MuiFormControl-root .MuiOutlinedInput-root {
+  height: 48px;
+  border-radius: 10px !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .form_row .MuiFormControl-root .MuiOutlinedInput-root .MuiSelect-select {
+  color: var(--text-primary) !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  font-family: "Nunito", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 12px 14px !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .form_row .MuiFormControl-root .MuiOutlinedInput-root .MuiSvgIcon-root {
+  color: rgba(212, 175, 55, 0.45) !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .form_row .MuiFormControl-root .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.07) !important;
+  border-radius: 10px !important;
+  transition: border-color 0.2s !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .form_row .MuiFormControl-root .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(212, 175, 55, 0.3) !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .form_row .MuiFormControl-root .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(212, 175, 55, 0.5) !important;
+  border-width: 1px !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-title-field {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-title-field h3.MuiTypography-root {
+  font-family: "Nunito", sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  color: rgba(212, 175, 55, 0.5) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  margin: 0 !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-title-field .MuiTextField-root {
+  width: 100% !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-title-field .MuiTextField-root .MuiOutlinedInput-root {
+  height: 48px;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-radius: 10px !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-title-field .MuiTextField-root .MuiOutlinedInput-root input {
+  color: var(--text-primary) !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  font-family: "Nunito", sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  padding: 12px 16px !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-title-field .MuiTextField-root .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.07) !important;
+  border-radius: 10px !important;
+  transition: border-color 0.2s !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-title-field .MuiTextField-root .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(212, 175, 55, 0.3) !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-title-field .MuiTextField-root .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(212, 175, 55, 0.5) !important;
+  border-width: 1px !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-title-field .MuiTextField-root .MuiInputLabel-root {
+  color: var(--text-secondary) !important;
+  font-family: "Nunito", sans-serif !important;
+  font-size: 14px !important;
+  opacity: 0.5;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-title-field .MuiTextField-root .MuiInputLabel-root.Mui-focused {
+  color: var(--gold-primary) !important;
+  opacity: 1;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-cover-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-cover-field h3.MuiTypography-root {
+  font-family: "Nunito", sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  color: rgba(212, 175, 55, 0.5) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  margin: 0 !important;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-cover-field .wa-cover-preview {
+  width: 120px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px dashed rgba(212, 175, 55, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-cover-field .wa-cover-preview:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  background-color: rgba(212, 175, 55, 0.06);
+}
+#pc-wrap #write-article-page .wa-card .wa-meta-row .wa-cover-field .wa-cover-preview .wa-cover-placeholder {
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(212, 175, 55, 0.5);
+  white-space: nowrap;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI {
+  border: none !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-defaultUI-toolbar {
+  background-color: var(--black-soft) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-ww-container,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-md-container {
+  background-color: var(--black-secondary) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents {
+  color: var(--text-primary) !important;
+  font-family: "Nunito", sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+  padding: 24px 32px !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents p, #pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents ul, #pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents ol, #pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents li {
+  color: var(--text-primary) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents h1, #pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents h2, #pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents h3, #pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents h4, #pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents h5, #pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents h6 {
+  color: var(--text-primary) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents a {
+  color: var(--gold-primary) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents code {
+  color: var(--gold-light) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-contents blockquote {
+  border-left-color: var(--gold-primary) !important;
+  color: var(--text-secondary) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-toolbar-icons {
+  border-color: transparent !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-toolbar-icons:not(:disabled):hover {
+  background-color: rgba(212, 175, 55, 0.12) !important;
+  border-color: rgba(212, 175, 55, 0.2) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-toolbar-divider {
+  background-color: rgba(212, 175, 55, 0.15) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar {
+  background-color: var(--black-soft) !important;
+  border-color: rgba(212, 175, 55, 0.2) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-popup-body,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup button,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-popup-body,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar button {
+  color: var(--text-primary) !important;
+  border-color: rgba(212, 175, 55, 0.1) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-popup-body:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup button:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-popup-body:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar button:hover {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  color: var(--gold-primary) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-heading1,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-heading2,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-heading3,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-heading4,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-heading5,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-heading6,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-heading1,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-heading2,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-heading3,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-heading4,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-heading5,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-heading6 {
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.12) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-heading1:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-heading2:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-heading3:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-heading4:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-heading5:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-heading6:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-heading1:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-heading2:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-heading3:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-heading4:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-heading5:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-heading6:hover {
+  color: var(--gold-primary) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup input,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar input {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(212, 175, 55, 0.2) !important;
+  color: var(--text-primary) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup input:focus,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar input:focus {
+  border-color: var(--gold-primary) !important;
+  outline: none !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-ok-button,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-ok-button {
+  background: rgba(212, 175, 55, 0.15) !important;
+  border-color: rgba(212, 175, 55, 0.3) !important;
+  color: var(--gold-primary) !important;
+}
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-popup .toastui-editor-ok-button:hover,
+#pc-wrap #write-article-page .toastui-editor-defaultUI .toastui-editor-dropdown-toolbar .toastui-editor-ok-button:hover {
+  background: rgba(212, 175, 55, 0.25) !important;
+}
+#pc-wrap #write-article-page .wa-card > .MuiStack-root:last-child {
+  padding: 24px 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.015);
+}
+#pc-wrap #write-article-page .wa-card > .MuiStack-root:last-child .MuiButton-root {
+  background: rgba(212, 175, 55, 0.12) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  color: var(--gold-primary) !important;
+  font-family: "Nunito", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  border-radius: 10px !important;
+  padding: 12px 40px !important;
+  height: auto !important;
+  transition: all 0.2s !important;
+}
+#pc-wrap #write-article-page .wa-card > .MuiStack-root:last-child .MuiButton-root:hover {
+  background: rgba(212, 175, 55, 0.22) !important;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15) !important;
+}/*# sourceMappingURL=writeArticle.css.map */

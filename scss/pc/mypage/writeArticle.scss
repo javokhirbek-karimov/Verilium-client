@@ -1,0 +1,452 @@
+// ════════════════════════════════════════════════════════════════
+//  WRITE ARTICLE PAGE
+// ════════════════════════════════════════════════════════════════
+
+#pc-wrap {
+  #write-article-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    // ── Page header ───────────────────────────────────────────
+    .wa-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 36px 40px;
+      border-radius: 20px;
+      background: linear-gradient(
+        135deg,
+        rgba(212, 175, 55, 0.06) 0%,
+        transparent 60%
+      );
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        left: -60px;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .wa-header-left {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .wa-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 14px;
+        border-radius: 20px;
+        background: rgba(212, 175, 55, 0.1);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        width: fit-content;
+
+        span {
+          font-family: "Nunito", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          color: var(--gold-primary);
+          letter-spacing: 1.4px;
+          text-transform: uppercase;
+        }
+
+        svg {
+          font-size: 15px !important;
+          color: var(--gold-primary);
+        }
+      }
+
+      .wa-title {
+        font-family: "Nunito", sans-serif;
+        font-size: 36px;
+        font-weight: 900;
+        color: var(--text-primary);
+        letter-spacing: -0.5px;
+        margin: 0;
+        line-height: 1.1;
+      }
+
+      .wa-desc {
+        font-family: "Nunito", sans-serif;
+        font-size: 14px;
+        color: var(--text-secondary);
+        margin: 0;
+        max-width: 420px;
+        line-height: 1.6;
+        opacity: 0.75;
+      }
+
+      .wa-header-right {
+        display: flex;
+        gap: 4px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .wa-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 16px 28px;
+        border-radius: 14px;
+        border: 1px solid rgba(212, 175, 55, 0.1);
+        background: rgba(0, 0, 0, 0.2);
+
+        .wa-stat-val {
+          font-family: "Nunito", sans-serif;
+          font-size: 26px;
+          font-weight: 900;
+          color: var(--gold-primary);
+          line-height: 1;
+        }
+
+        .wa-stat-lbl {
+          font-family: "Nunito", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          color: var(--text-secondary);
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          opacity: 0.6;
+        }
+      }
+    }
+
+    // ── Hide markdown tab ─────────────────────────────────────
+    .toastui-editor-mode-switch {
+      display: none !important;
+    }
+
+    // ── Editor card wrapper ───────────────────────────────────
+    .wa-card {
+      background: var(--black-secondary);
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+
+      &::before {
+        content: "";
+        display: block;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(212, 175, 55, 0.5) 30%,
+          var(--gold-primary) 50%,
+          rgba(212, 175, 55, 0.5) 70%,
+          transparent 100%
+        );
+      }
+
+      // ── Meta row ─────────────────────────────────────────────
+      .wa-meta-row {
+        padding: 28px 32px !important;
+        gap: 20px !important;
+        align-items: flex-end;
+        background: rgba(255, 255, 255, 0.015);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+        // ── Category ─────────────────────────────────────────
+        .form_row {
+          width: 200px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          h3.MuiTypography-root {
+            font-family: "Nunito", sans-serif !important;
+            font-size: 10px !important;
+            font-weight: 800 !important;
+            color: rgba(212, 175, 55, 0.5) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+          }
+
+          .MuiFormControl-root {
+            background: rgba(255, 255, 255, 0.04) !important;
+            border-radius: 10px !important;
+
+            .MuiOutlinedInput-root {
+              height: 48px;
+              border-radius: 10px !important;
+
+              .MuiSelect-select {
+                color: var(--text-primary) !important;
+                -webkit-text-fill-color: var(--text-primary) !important;
+                font-family: "Nunito", sans-serif !important;
+                font-size: 14px !important;
+                font-weight: 600 !important;
+                padding: 12px 14px !important;
+              }
+
+              .MuiSvgIcon-root {
+                color: rgba(212, 175, 55, 0.45) !important;
+              }
+
+              .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(255, 255, 255, 0.07) !important;
+                border-radius: 10px !important;
+                transition: border-color 0.2s !important;
+              }
+
+              &:hover .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(212, 175, 55, 0.3) !important;
+              }
+
+              &.Mui-focused .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(212, 175, 55, 0.5) !important;
+                border-width: 1px !important;
+              }
+            }
+          }
+        }
+
+        // ── Title field ───────────────────────────────────────
+        .wa-title-field {
+          flex: 1;
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          h3.MuiTypography-root {
+            font-family: "Nunito", sans-serif !important;
+            font-size: 10px !important;
+            font-weight: 800 !important;
+            color: rgba(212, 175, 55, 0.5) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+          }
+
+          .MuiTextField-root {
+            width: 100% !important;
+
+            .MuiOutlinedInput-root {
+              height: 48px;
+              background: rgba(255, 255, 255, 0.04) !important;
+              border-radius: 10px !important;
+
+              input {
+                color: var(--text-primary) !important;
+                -webkit-text-fill-color: var(--text-primary) !important;
+                font-family: "Nunito", sans-serif !important;
+                font-size: 15px !important;
+                font-weight: 500 !important;
+                padding: 12px 16px !important;
+              }
+
+              .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(255, 255, 255, 0.07) !important;
+                border-radius: 10px !important;
+                transition: border-color 0.2s !important;
+              }
+
+              &:hover .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(212, 175, 55, 0.3) !important;
+              }
+
+              &.Mui-focused .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(212, 175, 55, 0.5) !important;
+                border-width: 1px !important;
+              }
+            }
+
+            .MuiInputLabel-root {
+              color: var(--text-secondary) !important;
+              font-family: "Nunito", sans-serif !important;
+              font-size: 14px !important;
+              opacity: 0.5;
+
+              &.Mui-focused {
+                color: var(--gold-primary) !important;
+                opacity: 1;
+              }
+            }
+          }
+        }
+        // ── Cover image field ─────────────────────────────────
+        .wa-cover-field {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          h3.MuiTypography-root {
+            font-family: "Nunito", sans-serif !important;
+            font-size: 10px !important;
+            font-weight: 800 !important;
+            color: rgba(212, 175, 55, 0.5) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+          }
+
+          .wa-cover-preview {
+            width: 120px;
+            height: 48px;
+            border-radius: 10px;
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease;
+
+            &:hover {
+              border-color: rgba(212, 175, 55, 0.6);
+              background-color: rgba(212, 175, 55, 0.06);
+            }
+
+            .wa-cover-placeholder {
+              font-family: "Nunito", sans-serif;
+              font-size: 12px;
+              font-weight: 700;
+              color: rgba(212, 175, 55, 0.5);
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+
+    // ── TUI Editor overrides ──────────────────────────────────
+    .toastui-editor-defaultUI {
+      border: none !important;
+
+      // backgrounds
+      .toastui-editor-defaultUI-toolbar {
+        background-color: var(--black-soft) !important;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+      }
+      .toastui-editor-ww-container,
+      .toastui-editor-md-container      { background-color: var(--black-secondary) !important; }
+
+      // text
+      .toastui-editor-contents {
+        color: var(--text-primary) !important;
+        font-family: "Nunito", sans-serif !important;
+        font-size: 15px !important;
+        line-height: 1.8 !important;
+        padding: 24px 32px !important;
+
+        p, ul, ol, li { color: var(--text-primary) !important; }
+        h1, h2, h3, h4, h5, h6 { color: var(--text-primary) !important; }
+        a                       { color: var(--gold-primary) !important; }
+        code                    { color: var(--gold-light) !important; background: rgba(255,255,255,0.06) !important; }
+        blockquote              { border-left-color: var(--gold-primary) !important; color: var(--text-secondary) !important; }
+      }
+
+      // toolbar icon borders & hover
+      .toastui-editor-toolbar-icons {
+        border-color: transparent !important;
+      }
+
+      .toastui-editor-toolbar-icons:not(:disabled):hover {
+        background-color: rgba(212, 175, 55, 0.12) !important;
+        border-color: rgba(212, 175, 55, 0.2) !important;
+      }
+
+      .toastui-editor-toolbar-divider {
+        background-color: rgba(212, 175, 55, 0.15) !important;
+      }
+
+      // heading / bold / etc dropdown popups
+      .toastui-editor-popup,
+      .toastui-editor-dropdown-toolbar {
+        background-color: var(--black-soft) !important;
+        border-color: rgba(212, 175, 55, 0.2) !important;
+
+        .toastui-editor-popup-body,
+        button {
+          color: var(--text-primary) !important;
+          border-color: rgba(212, 175, 55, 0.1) !important;
+
+          &:hover {
+            background-color: rgba(212, 175, 55, 0.1) !important;
+            color: var(--gold-primary) !important;
+          }
+        }
+
+        // heading levels (H1, H2...)
+        .toastui-editor-heading1,
+        .toastui-editor-heading2,
+        .toastui-editor-heading3,
+        .toastui-editor-heading4,
+        .toastui-editor-heading5,
+        .toastui-editor-heading6 {
+          color: var(--text-primary) !important;
+          border-bottom: 1px solid rgba(212, 175, 55, 0.12) !important;
+
+          &:hover { color: var(--gold-primary) !important; }
+        }
+
+        input {
+          background: rgba(255, 255, 255, 0.05) !important;
+          border-color: rgba(212, 175, 55, 0.2) !important;
+          color: var(--text-primary) !important;
+
+          &:focus { border-color: var(--gold-primary) !important; outline: none !important; }
+        }
+
+        .toastui-editor-ok-button {
+          background: rgba(212, 175, 55, 0.15) !important;
+          border-color: rgba(212, 175, 55, 0.3) !important;
+          color: var(--gold-primary) !important;
+
+          &:hover { background: rgba(212, 175, 55, 0.25) !important; }
+        }
+      }
+    }
+
+    // ── Register button row ───────────────────────────────────
+    .wa-card > .MuiStack-root:last-child {
+      padding: 24px 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.015);
+
+      .MuiButton-root {
+        background: rgba(212, 175, 55, 0.12) !important;
+        border: 1px solid rgba(212, 175, 55, 0.3) !important;
+        color: var(--gold-primary) !important;
+        font-family: "Nunito", sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 800 !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        border-radius: 10px !important;
+        padding: 12px 40px !important;
+        height: auto !important;
+        transition: all 0.2s !important;
+
+        &:hover {
+          background: rgba(212, 175, 55, 0.22) !important;
+          box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15) !important;
+        }
+      }
+    }
+  }
+}

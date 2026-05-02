@@ -1,0 +1,936 @@
+// ─── expert.scss ──────────────────────────────────────────────────────────────
+
+#pc-wrap {
+  // ══════════════════════════════════════════════════════════════════════════
+  //  EXPERT LIST PAGE
+  // ══════════════════════════════════════════════════════════════════════════
+
+  .expert-list-page {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--black-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // ── HERO ──────────────────────────────────────────────────────────────────
+    .hero-section {
+      width: 100%;
+      height: 560px;
+      position: relative;
+      overflow: hidden;
+      background-image: url("/img/fiber/experts5.jpg");
+      background-size: cover;
+      background-position: center 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          160deg,
+          rgba(8, 7, 4, 0.78) 0%,
+          rgba(8, 7, 4, 0.55) 50%,
+          rgba(8, 7, 4, 0.82) 100%
+        );
+        z-index: 1;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 120px;
+        background: linear-gradient(to top, var(--black-primary), transparent);
+        z-index: 2;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        width: 1200px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .hero-label {
+          font-family: "Nunito", sans-serif;
+          font-size: 13px;
+          font-weight: 800;
+          color: var(--gold-primary);
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          opacity: 0.9;
+        }
+
+        .hero-title {
+          font-family: "Nunito", sans-serif;
+          font-size: 58px;
+          font-weight: 900;
+          color: #fff;
+          line-height: 1.15;
+          letter-spacing: -1px;
+          max-width: 640px;
+          position: relative;
+          display: inline-block;
+
+          span {
+            background: linear-gradient(
+              90deg,
+              var(--gold-primary),
+              var(--gold-light)
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 52px;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(
+              90deg,
+              var(--gold-primary),
+              var(--gold-light)
+            );
+          }
+        }
+
+        .hero-sub {
+          font-family: "Nunito", sans-serif;
+          font-size: 18px;
+          color: rgba(255, 255, 255, 0.65);
+          line-height: 1.7;
+          max-width: 520px;
+          margin-top: 6px;
+        }
+      }
+    }
+
+    .container {
+      width: 1200px;
+      display: flex;
+      flex-direction: column;
+      padding: 48px 0 80px;
+    }
+
+    // ── Filter bar ────────────────────────────────────────────────────────────
+    .filter {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 28px;
+      background: var(--black-soft);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      border-radius: 16px;
+      margin-bottom: 36px;
+
+      .left {
+        input {
+          width: 360px;
+          height: 48px;
+          padding: 0 20px;
+          border-radius: 40px;
+          border: 1px solid rgba(212, 175, 55, 0.2);
+          background: rgba(255, 255, 255, 0.03);
+          color: var(--text-primary);
+          font-family: "Nunito", sans-serif;
+          font-size: 17px;
+          outline: none;
+          box-sizing: border-box;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+          &::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.5;
+          }
+
+          &:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08);
+          }
+        }
+      }
+
+      .right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        span {
+          font-family: "Nunito", sans-serif;
+          font-size: 16px;
+          color: var(--text-secondary);
+        }
+
+        .MuiButton-root {
+          font-family: "Nunito", sans-serif;
+          font-size: 17px;
+          font-weight: 600;
+          text-transform: none;
+          color: var(--text-primary);
+          padding: 8px 16px;
+          border-radius: 10px;
+          border: 1px solid rgba(212, 175, 55, 0.2);
+          background: rgba(212, 175, 55, 0.04);
+          transition: all 0.3s ease;
+
+          svg {
+            color: var(--gold-primary);
+          }
+
+          &:hover {
+            border-color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.08);
+            color: var(--gold-primary);
+          }
+        }
+      }
+    }
+
+    // MUI Menu override (global scope needed)
+    .MuiMenu-paper {
+      background: var(--black-soft) !important;
+      border: 1px solid rgba(212, 175, 55, 0.15) !important;
+      border-radius: 10px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+      margin-top: 6px;
+
+      .MuiMenuItem-root {
+        font-family: "Nunito", sans-serif;
+        font-size: 17px;
+        color: var(--text-secondary);
+        padding: 10px 18px;
+        transition: color 0.2s ease, background 0.2s ease;
+
+        &:hover {
+          color: var(--gold-primary);
+          background: rgba(212, 175, 55, 0.07);
+        }
+      }
+    }
+
+    // ── Cards grid ────────────────────────────────────────────────────────────
+    .card-wrap {
+      width: 100%;
+      min-height: 480px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 24px;
+
+      .no-data {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        padding: 80px 0;
+
+        img {
+          width: 42px;
+          height: 42px;
+          opacity: 0.35;
+        }
+
+        p {
+          font-family: "Nunito", sans-serif;
+          font-size: 17px;
+          color: var(--text-secondary);
+          opacity: 0.55;
+        }
+      }
+    }
+
+    // ── Pagination ────────────────────────────────────────────────────────────
+    .pagination {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 52px;
+      gap: 14px;
+
+      span {
+        font-family: "Nunito", sans-serif;
+        font-size: 16px;
+        color: var(--text-secondary);
+        opacity: 0.6;
+      }
+
+      .MuiPaginationItem-root {
+        color: var(--text-secondary);
+        border-color: rgba(212, 175, 55, 0.15);
+        transition: background 0.25s ease;
+
+        &:hover {
+          background: rgba(212, 175, 55, 0.08);
+        }
+
+        &.Mui-selected {
+          background: var(--gold-primary);
+          color: var(--black-primary);
+          border-color: var(--gold-primary);
+          font-weight: 700;
+
+          &:hover {
+            background: var(--gold-light);
+          }
+        }
+      }
+    }
+  }
+
+  .expert-general-card {
+    width: calc(25% - 18px);
+    height: 300px;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease,
+      border-color 0.4s ease;
+
+    &:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212, 175, 55, 0.35);
+      box-shadow: 0 24px 52px rgba(0, 0, 0, 0.6),
+        0 0 24px rgba(212, 175, 55, 0.07);
+
+      .expert-img {
+        transform: scale(1.07);
+      }
+
+      .expert-desc {
+        background: linear-gradient(
+          to top,
+          rgba(8, 7, 4, 0.97) 0%,
+          rgba(8, 7, 4, 0.82) 55%,
+          transparent 100%
+        );
+      }
+    }
+
+    // ── Full-bleed image ─────────────────────────────────────────────────────
+    a {
+      display: block;
+      position: absolute;
+      inset: 0;
+      text-decoration: none;
+      overflow: hidden;
+    }
+
+    .expert-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      transition: transform 0.5s ease;
+
+      // properties badge — top-right
+      div {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: rgba(8, 7, 4, 0.65);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        color: var(--gold-light);
+        font-family: "Nunito", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        letter-spacing: 0.4px;
+        z-index: 2;
+      }
+    }
+
+    // ── Overlay info — anchored to bottom ────────────────────────────────────
+    .expert-desc {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 48px 16px 16px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      background: linear-gradient(
+        to top,
+        rgba(8, 7, 4, 0.92) 0%,
+        rgba(8, 7, 4, 0.65) 50%,
+        transparent 100%
+      );
+      transition: background 0.4s ease;
+      z-index: 1;
+
+      .expert-info {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+
+        a {
+          position: static;
+          display: inline;
+          text-decoration: none;
+        }
+
+        strong {
+          display: block;
+          font-family: "Nunito", sans-serif;
+          font-size: 19px;
+          font-weight: 800;
+          color: #fff;
+          line-height: 1.25;
+          text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+          transition: color 0.25s ease;
+
+          &:hover {
+            color: var(--gold-light);
+          }
+        }
+
+        span {
+          font-family: "Nunito", sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+          color: var(--gold-primary);
+          text-transform: uppercase;
+          letter-spacing: 1.4px;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 30px;
+        padding: 3px 8px 3px 4px;
+
+        .MuiIconButton-root {
+          padding: 4px;
+          color: rgba(255, 255, 255, 0.65);
+          transition: color 0.2s ease;
+
+          &:hover {
+            color: var(--gold-primary);
+            background: transparent;
+          }
+
+          svg {
+            font-size: 18px;
+          }
+        }
+
+        .view-cnt {
+          font-family: "Nunito", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          color: rgba(255, 255, 255, 0.55);
+          min-width: 14px;
+          margin-right: 5px;
+          line-height: 1;
+        }
+      }
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════
+  //  EXPERT DETAIL PAGE
+  // ══════════════════════════════════════════════════════════════════════════
+
+  #expert-detail-page {
+    min-height: 100vh;
+    background: var(--black-primary);
+    padding: 100px 0 100px;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    .hero-divider {
+      border-color: rgba(212, 175, 55, 0.1);
+    }
+
+    .section-title {
+      font-family: "Nunito", sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      margin-bottom: 28px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 36px;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(
+          90deg,
+          var(--gold-primary),
+          var(--gold-light)
+        );
+      }
+
+      .review-count {
+        font-size: 14px;
+        font-weight: 700;
+        background: var(--gold-primary);
+        color: var(--black-primary);
+        padding: 2px 10px;
+        border-radius: 20px;
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    // Hero
+    .expert-hero {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 40px;
+      padding-top: 40px;
+
+      .avatar-wrap {
+        flex-shrink: 0;
+
+        .expert-avatar {
+          width: 140px;
+          height: 140px;
+          border: 2.5px solid rgba(212, 175, 55, 0.45);
+          cursor: pointer;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+          &:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 24px rgba(212, 175, 55, 0.2);
+          }
+        }
+      }
+
+      .hero-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+
+        .expert-name {
+          font-family: "Nunito", sans-serif;
+          font-size: 34px;
+          font-weight: 800;
+          color: var(--text-primary);
+          cursor: pointer;
+          letter-spacing: -0.3px;
+          margin: 0;
+          transition: color 0.25s ease;
+
+          &:hover {
+            color: var(--gold-primary);
+          }
+        }
+
+        .expert-desc {
+          font-family: "Nunito", sans-serif;
+          font-size: 17px;
+          color: var(--text-secondary);
+          line-height: 1.7;
+          max-width: 560px;
+          opacity: 0.8;
+          margin: 0;
+        }
+
+        .stats-row {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          flex-wrap: wrap;
+
+          .stat {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            svg {
+              font-size: 20px;
+              color: var(--text-secondary);
+            }
+
+            span {
+              font-family: "Nunito", sans-serif;
+              font-size: 16px;
+              color: var(--text-secondary);
+            }
+
+            &.like-stat {
+              cursor: pointer;
+
+              &:hover,
+              &.liked {
+                svg {
+                  color: var(--gold-primary);
+                }
+                span {
+                  color: var(--gold-primary);
+                }
+              }
+            }
+          }
+        }
+
+        .contact-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          img {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+          }
+
+          span {
+            font-family: "Nunito", sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+          }
+        }
+      }
+    }
+
+    // Listings
+    .listings-section {
+      display: flex;
+      flex-direction: column;
+
+      .card-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        padding: 56px 0;
+
+        img {
+          width: 40px;
+          height: 40px;
+          opacity: 0.35;
+        }
+
+        p,
+        .MuiTypography-root {
+          font-family: "Nunito", sans-serif;
+          font-size: 17px;
+          color: var(--text-secondary);
+          opacity: 0.5;
+        }
+      }
+
+      .pagination-wrap {
+        margin-top: 36px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+
+        .total-label {
+          font-family: "Nunito", sans-serif;
+          font-size: 16px;
+          color: var(--text-secondary);
+          opacity: 0.6;
+        }
+
+        .MuiPaginationItem-root {
+          color: var(--text-secondary);
+          border-color: rgba(212, 175, 55, 0.15);
+
+          &:hover {
+            background: rgba(212, 175, 55, 0.08);
+          }
+
+          &.Mui-selected {
+            background: var(--gold-primary);
+            color: var(--black-primary);
+            border-color: var(--gold-primary);
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    // Reviews
+    .reviews-section {
+      display: flex;
+      flex-direction: column;
+
+      .comment-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .no-reviews {
+        font-family: "Nunito", sans-serif;
+        font-size: 17px;
+        color: var(--text-secondary);
+        opacity: 0.5;
+        text-align: center;
+        padding: 36px 0 16px;
+      }
+
+      .pagination-wrap {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 28px;
+
+        .MuiPaginationItem-root {
+          color: var(--text-secondary);
+          border-color: rgba(212, 175, 55, 0.15);
+
+          &:hover {
+            background: rgba(212, 175, 55, 0.08);
+          }
+
+          &.Mui-selected {
+            background: var(--gold-primary);
+            color: var(--black-primary);
+            border-color: var(--gold-primary);
+            font-weight: 700;
+          }
+        }
+      }
+
+      .comment-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 28px;
+        background: var(--black-soft);
+        border: 1px solid rgba(212, 175, 55, 0.1);
+        border-radius: 16px;
+
+        .form-title {
+          font-family: "Nunito", sans-serif;
+          font-size: 19px;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin: 0;
+        }
+
+        .comment-input {
+          .MuiOutlinedInput-root {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 0;
+            align-items: flex-start;
+
+            textarea {
+              padding: 14px 16px;
+              color: var(--text-primary);
+              font-family: "Nunito", sans-serif;
+              font-size: 17px;
+              line-height: 1.6;
+              resize: none;
+
+              &::placeholder {
+                color: var(--text-secondary);
+                opacity: 0.5;
+              }
+            }
+
+            fieldset {
+              border-color: rgba(212, 175, 55, 0.2);
+            }
+
+            &:hover fieldset {
+              border-color: rgba(212, 175, 55, 0.4);
+            }
+
+            &.Mui-focused fieldset {
+              border-color: var(--gold-primary);
+              border-width: 1.5px;
+            }
+
+            &.Mui-disabled {
+              opacity: 0.45;
+              fieldset {
+                border-color: rgba(212, 175, 55, 0.08);
+              }
+            }
+          }
+        }
+
+        .comment-submit {
+          align-self: flex-end;
+          font-family: "Nunito", sans-serif;
+          font-size: 16px;
+          font-weight: 700;
+          text-transform: none;
+          padding: 10px 26px;
+          border-radius: 10px;
+          background: linear-gradient(
+            135deg,
+            var(--gold-primary),
+            var(--gold-dark)
+          );
+          color: var(--black-primary);
+          box-shadow: none;
+          letter-spacing: 0.3px;
+          transition: background 0.3s ease, box-shadow 0.3s ease;
+
+          &:hover {
+            background: linear-gradient(
+              135deg,
+              var(--gold-light),
+              var(--gold-primary)
+            );
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+          }
+
+          &.Mui-disabled {
+            background: rgba(212, 175, 55, 0.12);
+            color: rgba(234, 234, 234, 0.25);
+          }
+
+          svg {
+            font-size: 19px;
+          }
+        }
+      }
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════
+  //  REVIEW CARD
+  // ══════════════════════════════════════════════════════════════════════════
+
+  .review-card {
+    padding: 20px 24px;
+    background: var(--black-soft);
+    border: 1px solid rgba(212, 175, 55, 0.08);
+    border-radius: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      border-color: rgba(212, 175, 55, 0.2);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+
+      .left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        img {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 1.5px solid rgba(212, 175, 55, 0.25);
+        }
+
+        div {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+
+          strong {
+            font-family: "Nunito", sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-primary);
+          }
+
+          span {
+            font-family: "Nunito", sans-serif;
+            font-size: 14px;
+            color: var(--text-secondary);
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+
+    p {
+      font-family: "Nunito", sans-serif;
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .reply-button-box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(212, 175, 55, 0.08);
+      cursor: pointer;
+      width: fit-content;
+      transition: opacity 0.25s ease;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      svg {
+        path {
+          fill: var(--gold-primary);
+        }
+      }
+
+      .reply-text {
+        font-family: "Nunito", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--gold-primary);
+        margin: 0;
+      }
+    }
+  }
+}

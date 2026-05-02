@@ -1,0 +1,132 @@
+#pc-wrap {
+  #my-page {
+    #my-favorites-page,
+    #recently-visited-page {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      // ── Header ───────────────────────────────────────────────────────
+      .main-title-box {
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 8px;
+
+        .right-box {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+
+          .main-title {
+            font-family: "Nunito", sans-serif;
+            font-size: 31px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: 0.4px;
+            position: relative;
+            display: inline-block;
+
+            &::after {
+              content: "";
+              position: absolute;
+              bottom: -8px;
+              left: 0;
+              width: 44px;
+              height: 3px;
+              border-radius: 2px;
+              background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+            }
+          }
+
+          .sub-title {
+            font-family: "Nunito", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 14px;
+            opacity: 0.7;
+          }
+        }
+      }
+
+      // ── Cards grid ──────────────────────────────────────────────────
+      .favorites-list-box {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 40px;
+        margin-bottom: 48px;
+        min-height: 200px;
+        align-content: flex-start;
+
+        .no-data {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 14px;
+          padding: 80px 0;
+
+          img {
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+          }
+
+          p {
+            font-family: "Nunito", sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            opacity: 0.4;
+          }
+        }
+      }
+
+      // ── Pagination ──────────────────────────────────────────────────
+      .pagination-config {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin-top: 8px;
+
+        .MuiPaginationItem-root {
+          font-family: "Nunito", sans-serif;
+          color: var(--text-secondary);
+          border-color: rgba(212, 175, 55, 0.15);
+          transition: background 0.2s ease;
+
+          &:hover {
+            background: rgba(212, 175, 55, 0.08);
+          }
+
+          &.Mui-selected {
+            background: var(--gold-primary);
+            color: var(--black-primary);
+            border-color: var(--gold-primary);
+            font-weight: 800;
+
+            &:hover {
+              background: var(--gold-light);
+            }
+          }
+        }
+
+        .total-result {
+          p {
+            font-family: "Nunito", sans-serif;
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-align: center;
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+}
