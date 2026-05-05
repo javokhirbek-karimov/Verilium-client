@@ -268,8 +268,8 @@ const Top = () => {
           </Box>
 
           <Box component={"div"} className={"router-box"}>
-            {navLinks.map((link, i) => (
-              <Link href={link.href}>
+            {navLinks.map((link) => (
+              <Link href={link.href} key={link.href}>
                 <div
                   className={
                     router.pathname === link.href ||

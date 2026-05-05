@@ -18,7 +18,7 @@ const Footer = () => {
           <Stack className={"left"}>
             <Box component={"div"} className={"footer-box"}>
               <img
-                src="/img/logo/logoWhite.svg"
+                src="/img/logo/logoWhite-2.png"
                 alt="Verilium"
                 className={"logo"}
               />
