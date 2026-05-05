@@ -117,7 +117,64 @@ const Community: NextPage = ({ initialInput }: T) => {
     searchCommunity.search.articleCategory ?? BoardArticleCategory.FREE;
 
   if (device === "mobile") {
-    return <h1>COMMUNITY PAGE MOBILE</h1>;
+    return (
+      <div id="community-list-page-mobile">
+        {/* Hero */}
+        <div className="mob-community-hero">
+          <div className="mob-community-hero-overlay" />
+          <div className="mob-community-hero-content">
+            <span className="mob-community-hero-label">{t("Community")}</span>
+            <h1 className="mob-community-hero-title">
+              {t("Share Your")} <span>{t("Fragrance")}</span> {t("Story")}
+            </h1>
+          </div>
+        </div>
+
+        {/* Tabs */}
+        <div className="mob-community-tabs">
+          {TABS.map((tab) => (
+            <button
+              key={tab.value}
+              className={`mob-tab-pill${activeCategory === tab.value ? " active" : ""}`}
+              onClick={() => tabChangeHandler(tab.value)}
+            >
+              {t(tab.labelKey)}
+            </button>
+          ))}
+        </div>
+
+        {/* Cards */}
+        <div className="mob-community-cards">
+          {totalCount ? (
+            boardArticles.map((boardArticle: BoardArticle) => (
+              <CommunityCard
+                key={boardArticle._id}
+                boardArticle={boardArticle}
+                likeArticleHandler={likeArticleHandler}
+              />
+            ))
+          ) : (
+            <div className="mob-community-empty">
+              <img src="/img/icons/icoAlert.svg" alt="" />
+              <p>{t("No articles found")}</p>
+            </div>
+          )}
+        </div>
+
+        {/* Pagination */}
+        {totalCount > 0 && (
+          <div className="mob-community-pagination">
+            <Pagination
+              count={Math.ceil(totalCount / searchCommunity.limit)}
+              page={searchCommunity.page}
+              shape="circular"
+              color="primary"
+              onChange={paginationHandler}
+            />
+          </div>
+        )}
+      </div>
+    );
   }
 
   return (

@@ -47,7 +47,54 @@ const CommunityCard = (props: CommunityCardProps) => {
   };
 
   if (device === "mobile") {
-    return <div>COMMUNITY CARD MOBILE</div>;
+    return (
+      <div
+        className="mob-community-card"
+        onClick={(e: any) => chooseArticleHandler(e, boardArticle)}
+      >
+        <div
+          className="mob-card-img"
+          style={{ backgroundImage: `url(${imagePath})` }}
+        >
+          <span className="mob-category-badge">{boardArticle?.articleCategory}</span>
+        </div>
+        <div className="mob-card-body">
+          <p className="mob-card-title">{boardArticle?.articleTitle}</p>
+          <div className="mob-card-footer">
+            <div className="mob-card-author">
+              <img
+                src={
+                  boardArticle?.memberData?.memberImage
+                    ? `${REACT_APP_API_URL}/${boardArticle.memberData.memberImage}`
+                    : "/img/profile/defaultUser.svg"
+                }
+                alt=""
+                onError={(e) => { e.currentTarget.src = "/img/profile/defaultUser.svg"; }}
+              />
+              <span>{boardArticle?.memberData?.memberNick ?? "Anonymous"}</span>
+            </div>
+            <div className="mob-card-stats">
+              <span className="stat-item">
+                <RemoveRedEyeIcon />
+                {boardArticle?.articleViews ?? 0}
+              </span>
+              <span
+                className="stat-item like-stat"
+                onClick={(e: any) => {
+                  e.stopPropagation();
+                  likeArticleHandler(e, user, boardArticle._id);
+                }}
+              >
+                {boardArticle?.meLiked?.[0]?.myFavorite
+                  ? <FavoriteIcon style={{ color: "#e53935" }} />
+                  : <FavoriteBorderIcon />}
+                {boardArticle?.articleLikes ?? 0}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   } else {
     return (
       <Stack
