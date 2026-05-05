@@ -98,8 +98,8 @@ const MyPage: NextPage = () => {
 
   const redirectToMemberPageHandler = async (memberId: string) => {
     try {
-      if (memberId === user?._id) await router.push(`/mypage`);
-      else await router.push(`/member?memberId=${memberId}`);
+      if (memberId === user?._id) await router.push("/mypage");
+      else await router.push(`/expert/detail?expertId=${memberId}`);
     } catch (error) {
       await sweetErrorHandling(error);
     }

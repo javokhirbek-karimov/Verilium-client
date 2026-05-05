@@ -24,5 +24,6 @@ export const useNotificationSubscription = () => {
         position: "top-right",
       });
     },
+    onError: () => {},
   });
 };

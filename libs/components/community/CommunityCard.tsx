@@ -97,11 +97,11 @@ const CommunityCard = (props: CommunityCardProps) => {
             </Typography>
           </Stack>
         </Stack>
-        <Stack className="date-box">
+        <Stack className="date-box" suppressHydrationWarning>
           <Moment className="month" format={"MMMM"}>
             {boardArticle?.createdAt}
           </Moment>
-          <Typography className="day">
+          <Typography className="day" suppressHydrationWarning>
             <Moment format={"DD"}>{boardArticle?.createdAt}</Moment>
           </Typography>
         </Stack>

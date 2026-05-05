@@ -609,7 +609,6 @@ export const SUBSCRIBE = gql`
     subscribe(input: $input) {
       followingId
       followerId
-      myFollowing
     }
   }
 `;
@@ -619,7 +618,6 @@ export const UNSUBSCRIBE = gql`
     unsubscribe(input: $input) {
       followingId
       followerId
-      myFollowing
     }
   }
 `;

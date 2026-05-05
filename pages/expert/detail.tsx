@@ -49,6 +49,7 @@ import { REACT_APP_API_URL } from "../../libs/config";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import {
   CREATE_COMMENT,
+  LIKE_TARGET_MEMBER,
   LIKE_TARGET_PERFUME,
   SUBSCRIBE,
   UNSUBSCRIBE,
@@ -106,7 +107,7 @@ const ExpertDetail: NextPage = ({ initialPerfumes, initialComment }: any) => {
 
   /** APOLLO REQUESTS **/
   const [createComment] = useMutation(CREATE_COMMENT);
-  const [likeTargetMember] = useMutation(LIKE_TARGET_PERFUME);
+  const [likeTargetMember] = useMutation(LIKE_TARGET_MEMBER);
   const [likeTargetPerfume] = useMutation(LIKE_TARGET_PERFUME);
   const [subscribe] = useMutation(SUBSCRIBE);
   const [unsubscribe] = useMutation(UNSUBSCRIBE);
@@ -179,21 +180,21 @@ const ExpertDetail: NextPage = ({ initialPerfumes, initialComment }: any) => {
 
   useEffect(() => {
     if (perfumesInquiry.search.memberId) {
-      getPerfumesRefetch({ variables: { input: perfumesInquiry } });
+      getPerfumesRefetch({ input: perfumesInquiry });
     }
   }, [perfumesInquiry]);
 
   useEffect(() => {
     if (commentInquiry.search.commentRefId) {
-      getCommentsRefetch({ variables: { input: commentInquiry } });
+      getCommentsRefetch({ input: commentInquiry });
     }
   }, [commentInquiry]);
 
   /** HANDLERS **/
   const redirectToMemberPageHandler = async (memberId: string) => {
     try {
-      if (memberId === user?._id) await router.push(`/mypage?memberId=${memberId}`);
-      else await router.push(`/member?memberId=${memberId}`);
+      if (memberId === user?._id) await router.push("/mypage");
+      else await router.push(`/expert/detail?expertId=${memberId}`);
     } catch (error) {
       await sweetErrorHandling(error);
     }

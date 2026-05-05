@@ -105,6 +105,7 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
     {
       fetchPolicy: "network-only",
       variables: { input: searchFilter },
+      skip: !searchFilter.search.commentRefId,
       notifyOnNetworkStatusChange: true,
     },
   );
@@ -254,9 +255,11 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
         <div className="mobile-detail-container">
           <div className="mobile-article-meta">
             <span className="category-badge">{articleCategory}</span>
-            <Moment className="date-text" format={"MMM DD, YYYY"}>
-              {boardArticle?.createdAt}
-            </Moment>
+            <span suppressHydrationWarning>
+              <Moment className="date-text" format={"MMM DD, YYYY"}>
+                {boardArticle?.createdAt}
+              </Moment>
+            </span>
           </div>
 
           <Typography component="h1" className="mobile-article-title">
@@ -352,9 +355,11 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
                     >
                       {commentData?.memberData?.memberNick}
                     </Typography>
-                    <Moment className="comment-date" format={"DD MMM · HH:mm"}>
-                      {commentData?.createdAt}
-                    </Moment>
+                    <span suppressHydrationWarning>
+                      <Moment className="comment-date" format={"DD MMM · HH:mm"}>
+                        {commentData?.createdAt}
+                      </Moment>
+                    </span>
                   </div>
                   <Typography className="comment-text">
                     {commentData?.commentContent}
@@ -388,9 +393,11 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
           <div className="article-meta">
             <span className="category-badge">{articleCategory}</span>
             <span className="dot" />
-            <Moment className="date-text" format={"MMM DD, YYYY"}>
-              {boardArticle?.createdAt}
-            </Moment>
+            <span suppressHydrationWarning>
+              <Moment className="date-text" format={"MMM DD, YYYY"}>
+                {boardArticle?.createdAt}
+              </Moment>
+            </span>
           </div>
 
           <Typography component="h1" className="article-title">
@@ -516,12 +523,14 @@ const CommunityDetail: NextPage = ({ initialInput }: T) => {
                   >
                     {commentData?.memberData?.memberNick}
                   </Typography>
-                  <Moment
-                    className="comment-date"
-                    format={"DD MMM YYYY · HH:mm"}
-                  >
-                    {commentData?.createdAt}
-                  </Moment>
+                  <span suppressHydrationWarning>
+                    <Moment
+                      className="comment-date"
+                      format={"DD MMM YYYY · HH:mm"}
+                    >
+                      {commentData?.createdAt}
+                    </Moment>
+                  </span>
                   {commentData?.memberId === user?._id && (
                     <div className="comment-actions">
                       <IconButton

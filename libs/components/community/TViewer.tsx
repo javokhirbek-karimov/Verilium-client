@@ -1,71 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { Viewer } from "@toast-ui/react-editor";
-import { Box, Stack, CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 
-const TViewer = (props: any) => {
-  const [editorLoaded, setEditorLoaded] = useState(false);
+class ErrorBoundary extends React.Component<
+  { children: React.ReactNode; fallback: React.ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: any) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  render() {
+    if (this.state.hasError) return this.props.fallback;
+    return this.props.children;
+  }
+}
 
-  /** LIFECYCLES **/
-  useEffect(() => {
-    if (props.markdown) {
-      setEditorLoaded(true);
-    } else {
-      setEditorLoaded(false);
-    }
-  }, [props.markdown]);
+const TViewer = ({ markdown, className }: { markdown?: string; className?: string }) => {
+  if (!markdown) {
+    return (
+      <Box display="flex" justifyContent="center" py={4}>
+        <CircularProgress size={28} />
+      </Box>
+    );
+  }
 
   return (
-    <Stack className={"tviewer-wrap"}>
-      <Box component={"div"}>
-        {editorLoaded ? (
-          <Viewer
-            initialValue={props.markdown}
-            customHTMLRenderer={{
-              htmlBlock: {
-                iframe(node: any) {
-                  return [
-                    {
-                      type: "openTag",
-                      tagName: "iframe",
-                      outerNewLine: true,
-                      attributes: node.attrs,
-                    },
-                    { type: "html", content: node.childrenHTML ?? "" },
-                    { type: "closeTag", tagName: "iframe", outerNewLine: true },
-                  ];
-                },
-                div(node: any) {
-                  return [
-                    {
-                      type: "openTag",
-                      tagName: "div",
-                      outerNewLine: true,
-                      attributes: node.attrs,
-                    },
-                    { type: "html", content: node.childrenHTML ?? "" },
-                    { type: "closeTag", tagName: "div", outerNewLine: true },
-                  ];
-                },
-              },
-              htmlInline: {
-                big(node: any, { entering }: any) {
-                  return entering
-                    ? {
-                        type: "openTag",
-                        tagName: "big",
-                        attributes: node.attrs,
-                      }
-                    : { type: "closeTag", tagName: "big" };
-                },
-              },
-            }}
-          />
-        ) : (
-          <CircularProgress />
-        )}
-      </Box>
-    </Stack>
+    <Box className={`tviewer-wrap ${className ?? ""}`}>
+      <ErrorBoundary fallback={<pre style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>{markdown}</pre>}>
+        <Viewer initialValue={markdown} />
+      </ErrorBoundary>
+    </Box>
   );
 };
 

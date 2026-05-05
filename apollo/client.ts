@@ -111,19 +111,24 @@ function createIsomorphicLink(): ApolloLink {
       webSocketImpl: LoggingWebSocket,
     });
 
-    const errorLink = onError(({ graphQLErrors, networkError, response }) => {
+    const SILENT_ERRORS = [
+      "not implemented",
+      "method not implemented",
+      "not authenticated",
+    ];
+
+    const errorLink = onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors) {
-        graphQLErrors.map(({ message, locations, path, extensions }) => {
+        graphQLErrors.forEach(({ message, locations, path }) => {
           console.log(
             `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
           );
-          if (!message.includes("input")) sweetErrorAlert(message);
+          const lower = message.toLowerCase();
+          const isSilent = SILENT_ERRORS.some((s) => lower.includes(s));
+          if (!isSilent && !message.includes("input")) sweetErrorAlert(message);
         });
       }
       if (networkError) console.log(`[Network error]: ${networkError}`);
-      // @ts-ignore
-      if (networkError?.statusCode === 401) {
-      }
     });
 
     const splitLink = split(
