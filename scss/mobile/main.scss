@@ -3885,3 +3885,329 @@
     }
   }
 }
+
+// ══════════════════════════════════════════════════════════════════════
+//  MY PAGE — MOBILE
+// ══════════════════════════════════════════════════════════════════════
+#mobile-wrap {
+  #my-page-mobile {
+    min-height: 100vh;
+    background: var(--black-primary);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+
+    // ── Profile header ─────────────────────────────────────────────────
+    .mob-mypage-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 20px 20px;
+      background: var(--black-secondary);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      gap: 8px;
+
+      .mob-mypage-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(212, 175, 55, 0.35);
+        outline: 3px solid var(--black-secondary);
+      }
+
+      .mob-mypage-nick {
+        font-family: "Nunito", sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin: 0;
+      }
+
+      .mob-mypage-role {
+        font-family: "Nunito", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 3px 10px;
+        border-radius: 20px;
+
+        &--user {
+          color: var(--text-secondary);
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.1);
+        }
+        &--expert {
+          color: var(--gold-primary);
+          background: rgba(212, 175, 55, 0.08);
+          border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+        &--admin {
+          color: #42a5f5;
+          background: rgba(66, 165, 245, 0.08);
+          border: 1px solid rgba(66, 165, 245, 0.25);
+        }
+      }
+
+      .mob-mypage-stats {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        margin-top: 4px;
+
+        .mob-stat {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2px;
+          padding: 0 20px;
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+
+          strong {
+            font-family: "Nunito", sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-primary);
+          }
+
+          span {
+            font-family: "Nunito", sans-serif;
+            font-size: 12px;
+            color: var(--text-secondary);
+            opacity: 0.6;
+          }
+        }
+
+        .mob-stat-divider {
+          width: 1px;
+          height: 28px;
+          background: rgba(212, 175, 55, 0.15);
+        }
+      }
+    }
+
+    // ── Horizontal tab menu ────────────────────────────────────────────
+    .mob-my-menu {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      background: var(--black-secondary);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      &::-webkit-scrollbar { display: none; }
+
+      .mob-menu-tab {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 10px 16px;
+        flex-shrink: 0;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        border-bottom: 2px solid transparent;
+        transition: color 0.2s ease, border-color 0.2s ease;
+
+        svg {
+          font-size: 20px;
+          color: var(--text-secondary);
+          opacity: 0.5;
+          transition: color 0.2s ease, opacity 0.2s ease;
+        }
+
+        span {
+          font-family: "Nunito", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          color: var(--text-secondary);
+          opacity: 0.5;
+          white-space: nowrap;
+          transition: color 0.2s ease, opacity 0.2s ease;
+        }
+
+        &.active {
+          border-bottom-color: var(--gold-primary);
+
+          svg { color: var(--gold-primary); opacity: 1; }
+          span { color: var(--gold-primary); opacity: 1; }
+        }
+
+        &.mob-menu-logout {
+          margin-left: auto;
+          svg { color: #e53935; opacity: 0.6; }
+          span { color: #e53935; opacity: 0.6; }
+        }
+      }
+    }
+
+    // ── Content area ───────────────────────────────────────────────────
+    .mob-mypage-content {
+      flex: 1;
+      padding: 16px;
+    }
+  }
+
+  // ── My Profile Mobile ────────────────────────────────────────────────
+  #my-profile-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .mob-profile-photo {
+      display: flex;
+      justify-content: center;
+      padding: 8px 0;
+
+      .mob-avatar-wrap {
+        position: relative;
+        width: 90px;
+        height: 90px;
+
+        img {
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .mob-camera-btn {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: var(--gold-primary);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+
+          svg {
+            font-size: 16px;
+            color: var(--black-primary);
+          }
+        }
+      }
+    }
+
+    .mob-profile-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .mob-field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        label {
+          font-family: "Nunito", sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+          color: var(--text-secondary);
+          text-transform: uppercase;
+          letter-spacing: 0.6px;
+        }
+
+        input, textarea {
+          width: 100%;
+          padding: 12px 14px;
+          border-radius: 10px;
+          border: 1px solid rgba(212, 175, 55, 0.15);
+          background: var(--black-soft);
+          font-family: "Nunito", sans-serif;
+          font-size: 15px;
+          color: var(--text-primary);
+          outline: none;
+          box-sizing: border-box;
+          -webkit-appearance: none;
+          resize: none;
+          transition: border-color 0.2s ease;
+
+          &::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.4;
+          }
+
+          &:focus {
+            border-color: var(--gold-primary);
+            background: var(--black-secondary);
+          }
+        }
+      }
+    }
+
+    .mob-save-btn {
+      width: 100%;
+      height: 50px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+      font-family: "Nunito", sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--black-primary);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+      transition: opacity 0.2s ease;
+
+      &:disabled {
+        opacity: 0.35;
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+    }
+
+    .mob-expert-card {
+      padding: 18px;
+      border-radius: 14px;
+      background: rgba(212, 175, 55, 0.04);
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      h3 {
+        font-family: "Nunito", sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--gold-primary);
+        margin: 0;
+      }
+
+      p {
+        font-family: "Nunito", sans-serif;
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+        opacity: 0.7;
+      }
+
+      .mob-expert-btn {
+        margin-top: 4px;
+        height: 42px;
+        border-radius: 10px;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        background: rgba(212, 175, 55, 0.08);
+        font-family: "Nunito", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--gold-primary);
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        &:active {
+          background: rgba(212, 175, 55, 0.15);
+        }
+      }
+    }
+  }
+}

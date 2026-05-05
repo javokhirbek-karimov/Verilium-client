@@ -41,7 +41,37 @@ const MyMenu = () => {
   };
 
   if (device === "mobile") {
-    return <div>MY MENU MOBILE</div>;
+    const isExpert = user?.memberType === "EXPERT" || user?.memberType === "ADMIN";
+    const tabs = [
+      { href: "myProfile", icon: <ManageAccountsOutlinedIcon />, label: t("Profile") },
+      { href: "myFavorites", icon: <FavoriteBorderIcon />, label: t("Favorites") },
+      { href: "recentlyVisited", icon: <VisibilityOutlinedIcon />, label: t("Visited") },
+      { href: "followings", icon: <PersonAddAltIcon />, label: t("Following") },
+      ...(isExpert ? [
+        { href: "followers", icon: <PeopleAltOutlinedIcon />, label: t("Followers") },
+        { href: "myPerfumes", icon: <LocalFloristIcon />, label: t("Perfumes") },
+        { href: "addPerfume", icon: <AddCircleOutlineIcon />, label: t("Add") },
+        { href: "myArticles", icon: <ArticleOutlinedIcon />, label: t("Articles") },
+        { href: "writeArticle", icon: <EditNoteIcon />, label: t("Write") },
+      ] : []),
+    ];
+
+    return (
+      <div className="mob-my-menu">
+        {tabs.map((tab) => (
+          <Link key={tab.href} href={{ pathname: "/mypage", query: { category: tab.href } }} scroll={false}>
+            <div className={`mob-menu-tab${isActive(tab.href) ? " active" : ""}`}>
+              {tab.icon}
+              <span>{tab.label}</span>
+            </div>
+          </Link>
+        ))}
+        <div className="mob-menu-tab mob-menu-logout" onClick={logoutHandler}>
+          <LogoutIcon />
+          <span>{t("Logout")}</span>
+        </div>
+      </div>
+    );
   }
 
   return (

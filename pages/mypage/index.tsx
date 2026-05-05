@@ -22,7 +22,7 @@ import {
   SUBSCRIBE,
   UNSUBSCRIBE,
 } from "../../apollo/user/mutation";
-import { Messages } from "../../libs/config";
+import { Messages, REACT_APP_API_URL } from "../../libs/config";
 import {
   sweetErrorHandling,
   sweetTopSmallSuccessAlert,
@@ -105,7 +105,75 @@ const MyPage: NextPage = () => {
     }
   };
 
-  if (device === "mobile") return <div>MY PAGE MOBILE</div>;
+  if (device === "mobile") {
+    return (
+      <div id="my-page-mobile">
+        {/* Profile header */}
+        <div className="mob-mypage-header">
+          <img
+            className="mob-mypage-avatar"
+            src={
+              user?.memberImage && user.memberImage.trim()
+                ? `${REACT_APP_API_URL}/${user.memberImage}`
+                : "/img/profile/defaultUser.svg"
+            }
+            alt="avatar"
+            onError={(e) => { e.currentTarget.src = "/img/profile/defaultUser.svg"; }}
+          />
+          <h2 className="mob-mypage-nick">{user?.memberNick}</h2>
+          <span className={`mob-mypage-role mob-mypage-role--${user?.memberType?.toLowerCase()}`}>
+            {user?.memberType}
+          </span>
+          <div className="mob-mypage-stats">
+            <div className="mob-stat" onClick={() => router.push({ pathname: "/mypage", query: { category: "followers" } })}>
+              <strong>{user?.memberFollowers ?? 0}</strong>
+              <span>{t("Followers")}</span>
+            </div>
+            <div className="mob-stat-divider" />
+            <div className="mob-stat" onClick={() => router.push({ pathname: "/mypage", query: { category: "followings" } })}>
+              <strong>{user?.memberFollowings ?? 0}</strong>
+              <span>{t("Following")}</span>
+            </div>
+            <div className="mob-stat-divider" />
+            <div className="mob-stat">
+              <strong>{user?.memberPerfumes ?? 0}</strong>
+              <span>{t("Perfumes")}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Horizontal tab menu */}
+        <MyMenu />
+
+        {/* Content */}
+        <div className="mob-mypage-content">
+          {category === "myProfile" && <MyProfile />}
+          {category === "addPerfume" && <AddNewPerfume />}
+          {category === "myPerfumes" && <MyPerfumes />}
+          {category === "myFavorites" && <MyFavorites />}
+          {category === "recentlyVisited" && <RecentlyVisited />}
+          {category === "myArticles" && <MyArticles />}
+          {category === "writeArticle" && <WriteArticle />}
+          {category === "followers" && (
+            <MemberFollowers
+              subscribeHandler={subscribeHandler}
+              unsubscribeHandler={unsubscribeHandler}
+              likeMemberHandler={likeMemberHandler}
+              redirectToMemberPageHandler={redirectToMemberPageHandler}
+            />
+          )}
+          {category === "followings" && (
+            <MemberFollowings
+              subscribeHandler={subscribeHandler}
+              unsubscribeHandler={unsubscribeHandler}
+              likeMemberHandler={likeMemberHandler}
+              redirectToMemberPageHandler={redirectToMemberPageHandler}
+            />
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div id="my-page">

@@ -92,7 +92,120 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
 
   const isDisabled = () => !updateData.memberNick;
 
-  if (device === "mobile") return <>MY PROFILE PAGE MOBILE</>;
+  if (device === "mobile") {
+    return (
+      <div id="my-profile-mobile">
+        {/* Avatar upload */}
+        <div className="mob-profile-photo">
+          <div className="mob-avatar-wrap">
+            <img
+              src={
+                updateData?.memberImage
+                  ? `${REACT_APP_API_URL}/${updateData.memberImage}`
+                  : "/img/profile/defaultUser.svg"
+              }
+              alt="avatar"
+              onError={(e) => { e.currentTarget.src = "/img/profile/defaultUser.svg"; }}
+            />
+            <label htmlFor="mob-avatar-input" className="mob-camera-btn">
+              <CameraAltOutlinedIcon fontSize="small" />
+            </label>
+            <input
+              type="file"
+              hidden
+              id="mob-avatar-input"
+              onChange={uploadImage}
+              accept="image/jpg, image/jpeg, image/png"
+            />
+          </div>
+        </div>
+
+        {/* Fields */}
+        <div className="mob-profile-fields">
+          <div className="mob-field">
+            <label>{t("Username")}</label>
+            <input
+              type="text"
+              placeholder={t("Your username")}
+              value={updateData.memberNick ?? ""}
+              onChange={({ target: { value } }) => setUpdateData({ ...updateData, memberNick: value })}
+            />
+          </div>
+          <div className="mob-field">
+            <label>{t("Full Name")}</label>
+            <input
+              type="text"
+              placeholder={t("Your full name")}
+              value={updateData.memberFullName ?? ""}
+              onChange={({ target: { value } }) => setUpdateData({ ...updateData, memberFullName: value })}
+            />
+          </div>
+          <div className="mob-field">
+            <label>{t("Phone")}</label>
+            <input
+              type="tel"
+              placeholder="+1 000 000 0000"
+              value={updateData.memberPhone ?? ""}
+              onChange={({ target: { value } }) => setUpdateData({ ...updateData, memberPhone: value })}
+            />
+          </div>
+          <div className="mob-field">
+            <label>{t("Address")}</label>
+            <input
+              type="text"
+              placeholder={t("City, Country")}
+              value={updateData.memberAddress ?? ""}
+              onChange={({ target: { value } }) => setUpdateData({ ...updateData, memberAddress: value })}
+            />
+          </div>
+          <div className="mob-field">
+            <label>{t("Bio")}</label>
+            <textarea
+              placeholder={t("Tell us about your fragrance journey...")}
+              value={updateData.memberDesc ?? ""}
+              onChange={({ target: { value } }) => setUpdateData({ ...updateData, memberDesc: value })}
+              rows={4}
+            />
+          </div>
+        </div>
+
+        {/* Save */}
+        <button
+          className="mob-save-btn"
+          onClick={updateProfileHandler}
+          disabled={isDisabled()}
+        >
+          {t("Save Changes")}
+        </button>
+
+        {/* Expert request */}
+        {user?.memberType === "USER" && (
+          <div className="mob-expert-card">
+            <h3>{t("Become an Expert")}</h3>
+            <p>{t("Share your fragrance knowledge, write articles, and build a following.")}</p>
+            <button
+              className="mob-expert-btn"
+              onClick={async () => {
+                try {
+                  await updateMember({
+                    variables: {
+                      input: { _id: user._id, memberExpertRequest: MemberRequestExpert.REQUESTED },
+                    },
+                  });
+                  const { sweetMixinSuccessAlert } = await import("../../sonner");
+                  sweetMixinSuccessAlert(t("Expert request sent successfully!"));
+                } catch (err: any) {
+                  sweetMixinErrorAlert(err.message);
+                }
+              }}
+            >
+              {t("Request Expert Status")}
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div id="my-profile-page">
