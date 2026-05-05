@@ -122,7 +122,7 @@ const Join: NextPage = () => {
     async (accessToken: string) => {
       try {
         const result = await googleLoginMutation({
-          variables: { input: { token: accessToken } },
+          variables: { input: { idToken: accessToken } },
         });
         const token = result?.data?.googleLogin?.accessToken;
         if (token) {
@@ -284,7 +284,23 @@ const Join: NextPage = () => {
 
           {/* Telegram */}
           <Stack className="telegram-wrap">
+            <div className="tg-custom-btn" aria-hidden="true">
+              <img
+                src="/img/icons/telegram.svg"
+                alt=""
+                className="tg-icon"
+              />
+              <span>{t("Continue with Telegram")}</span>
+            </div>
             <div ref={telegramRef} className="telegram-widget" />
+            <div
+              className="tg-click-overlay"
+              onMouseDown={(e) => {
+                const el = e.currentTarget;
+                el.style.pointerEvents = "none";
+                setTimeout(() => { el.style.pointerEvents = "auto"; }, 200);
+              }}
+            />
           </Stack>
 
           {/* Google */}

@@ -193,8 +193,14 @@
           cursor: pointer;
 
           &:hover .tg-custom-btn {
-            background: rgba(41, 182, 246, 0.14);
-            border-color: rgba(41, 182, 246, 0.45);
+            background: linear-gradient(135deg, #2bb8f5, #1a96d4);
+            box-shadow: 0 8px 28px rgba(42, 171, 238, 0.45);
+            transform: translateY(-2px);
+          }
+
+          &:active .tg-custom-btn {
+            transform: translateY(0);
+            box-shadow: 0 4px 14px rgba(42, 171, 238, 0.3);
           }
 
           .tg-custom-btn {
@@ -204,29 +210,42 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: rgba(41, 182, 246, 0.07);
-            border: 1px solid rgba(41, 182, 246, 0.22);
+            background: linear-gradient(135deg, #2aabee, #1e8fc7);
             border-radius: 14px;
             pointer-events: none;
-            transition: background 0.2s ease, border-color 0.2s ease;
+            transition: background 0.25s ease, box-shadow 0.25s ease,
+              transform 0.2s ease;
+            box-shadow: 0 4px 18px rgba(42, 171, 238, 0.28);
 
             .tg-icon {
               width: 22px;
               height: 22px;
+              filter: brightness(0) invert(1);
+              flex-shrink: 0;
             }
 
             span {
               font-family: "Nunito", sans-serif;
               font-size: 17px;
               font-weight: 700;
-              color: #29b6f6;
+              color: #fff;
+              letter-spacing: 0.2px;
             }
+          }
+
+          // Transparent overlay — captures cursor:pointer, passes clicks through on mousedown
+          .tg-click-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            cursor: pointer;
           }
 
           // Real Telegram iframe — covers the button, practically invisible
           .telegram-widget {
             position: absolute;
             inset: 0;
+            z-index: 5;
             opacity: 0.01;
             overflow: hidden;
             display: flex;

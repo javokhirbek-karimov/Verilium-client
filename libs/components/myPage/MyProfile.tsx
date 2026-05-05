@@ -108,7 +108,9 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
       <Stack className="profile-card">
         {/* Avatar upload */}
         <Stack className="photo-section">
-          <Typography className="section-label">{t("Profile Photo")}</Typography>
+          <Typography className="section-label">
+            {t("Profile Photo")}
+          </Typography>
           <Stack className="photo-row">
             <Stack className="avatar-wrap">
               <img
@@ -235,7 +237,9 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
                 {t("Become an Expert")}
               </Typography>
               <Typography className="expert-request-desc">
-                {t("Share your fragrance knowledge, write articles, and build a following. Send a request to become a verified Expert.")}
+                {t(
+                  "Share your fragrance knowledge, write articles, and build a following. Send a request to become a verified Expert.",
+                )}
               </Typography>
             </Stack>
             <Button
@@ -244,9 +248,16 @@ const MyProfile: NextPage = ({ initialValues }: any) => {
                 try {
                   if (!user._id) throw new Error(Messages.error2);
                   await updateMember({
-                    variables: { input: { _id: user._id, memberExpertRequest: MemberRequestExpert.REQUESTED } },
+                    variables: {
+                      input: {
+                        _id: user._id,
+                        memberExpertRequest: MemberRequestExpert.REQUESTED,
+                      },
+                    },
                   });
-                  await sweetMixinSuccessAlert(t("Expert request sent successfully!"));
+                  await sweetMixinSuccessAlert(
+                    t("Expert request sent successfully!"),
+                  );
                 } catch (err: any) {
                   sweetMixinErrorAlert(err.message).then();
                 }
