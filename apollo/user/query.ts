@@ -703,6 +703,70 @@ export const NOTICE_RECEIVED = gql`
   }
 `;
 
+/**************************
+ *         FOLLOW         *
+ *************************/
+
+export const GET_MEMBER_FOLLOWERS = gql`
+  query GetMemberFollowers($input: FollowInquiry!) {
+    getMemberFollowers(input: $input) {
+      list {
+        _id
+        followingId
+        followerId
+        createdAt
+        followerData {
+          _id
+          memberNick
+          memberFullName
+          memberImage
+          memberType
+          memberFollowers
+          memberFollowings
+        }
+        meFollowed {
+          followingId
+          followerId
+          myFollowing
+        }
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
+export const GET_MEMBER_FOLLOWINGS = gql`
+  query GetMemberFollowings($input: FollowInquiry!) {
+    getMemberFollowings(input: $input) {
+      list {
+        _id
+        followingId
+        followerId
+        createdAt
+        followingData {
+          _id
+          memberNick
+          memberFullName
+          memberImage
+          memberType
+          memberFollowers
+          memberFollowings
+        }
+        meFollowed {
+          followingId
+          followerId
+          myFollowing
+        }
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;
+
 export const GET_ALL_NOTIFICATIONS_BY_ADMIN = gql`
   query GetAllNotificationsByAdmin($input: AdminNotificationsInquiry!) {
     getAllNotificationsByAdmin(input: $input) {
