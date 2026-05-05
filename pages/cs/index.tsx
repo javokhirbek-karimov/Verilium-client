@@ -25,7 +25,44 @@ const CS: NextPage = () => {
     router.push({ pathname: "/cs", query: { tab: value } }, undefined, { shallow: true });
   };
 
-  if (device === "mobile") return <h1>CS PAGE MOBILE</h1>;
+  if (device === "mobile") {
+    return (
+      <div id="cs-page-mobile">
+        {/* Hero */}
+        <div className="mob-cs-hero">
+          <div className="mob-cs-hero-overlay" />
+          <div className="mob-cs-hero-content">
+            <span className="mob-cs-hero-label">{t("Support")}</span>
+            <h1 className="mob-cs-hero-title">
+              {t("Customer")} <span>{t("Center")}</span>
+            </h1>
+          </div>
+        </div>
+
+        {/* Tab switcher */}
+        <div className="mob-cs-tabs">
+          <button
+            className={`mob-cs-tab${tab === "faq" ? " active" : ""}`}
+            onClick={() => setTab("faq")}
+          >
+            {t("FAQ")}
+          </button>
+          <button
+            className={`mob-cs-tab${tab === "notices" ? " active" : ""}`}
+            onClick={() => setTab("notices")}
+          >
+            {t("Notices")}
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="mob-cs-content">
+          {tab === "faq" && <Faq />}
+          {tab === "notices" && <Notices />}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Stack id="cs-page">
