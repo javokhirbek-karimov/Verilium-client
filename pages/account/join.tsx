@@ -178,7 +178,139 @@ const Join: NextPage = () => {
   const signupDisabled =
     !input.nick || !input.password || !input.phone || isLoading;
 
-  if (device === "mobile") return <div>LOGIN MOBILE</div>;
+  if (device === "mobile") {
+    return (
+      <div id="join-page-mobile">
+        <div className="mob-join-wrap">
+          {/* Logo */}
+          <Link href="/" className="mob-join-logo">
+            <img src="/img/logo/logoWhite-2.png" alt="Verilium" />
+          </Link>
+
+          {/* Heading */}
+          <div className="mob-join-heading">
+            <h1 className="mob-join-title">
+              {loginView ? t("Welcome back") : t("Create account")}
+            </h1>
+            <p className="mob-join-sub">
+              {loginView
+                ? t("Sign in to your Verilium account")
+                : t("Join the fragrance community")}
+            </p>
+          </div>
+
+          {/* Tab switcher */}
+          <div className="mob-join-tabs">
+            <button
+              className={`mob-join-tab${loginView ? " active" : ""}`}
+              onClick={() => switchView(true)}
+            >
+              {t("Sign In")}
+            </button>
+            <button
+              className={`mob-join-tab${!loginView ? " active" : ""}`}
+              onClick={() => switchView(false)}
+            >
+              {t("Sign Up")}
+            </button>
+          </div>
+
+          {/* Inputs */}
+          <div className="mob-join-inputs">
+            <div className="mob-input-field">
+              <label>{t("Nickname")}</label>
+              <input
+                type="text"
+                placeholder={t("Enter your nickname")}
+                value={input.nick}
+                onChange={(e) => handleInput("nick", e.target.value)}
+                onKeyDown={handleKeyDown}
+                autoComplete="username"
+              />
+            </div>
+
+            <div className="mob-input-field">
+              <label>{t("Password")}</label>
+              <div className="mob-password-wrap">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder={t("Enter your password")}
+                  value={input.password}
+                  onChange={(e) => handleInput("password", e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  autoComplete={loginView ? "current-password" : "new-password"}
+                />
+                <button
+                  type="button"
+                  className="mob-toggle-pw"
+                  onClick={() => setShowPassword((v) => !v)}
+                  tabIndex={-1}
+                >
+                  {showPassword ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
+                </button>
+              </div>
+            </div>
+
+            {!loginView && (
+              <div className="mob-input-field">
+                <label>{t("Phone")}</label>
+                <input
+                  type="tel"
+                  placeholder={t("Enter your phone number")}
+                  value={input.phone}
+                  onChange={(e) => handleInput("phone", e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  autoComplete="tel"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Submit */}
+          <button
+            className="mob-join-btn"
+            onClick={loginView ? doLogin : doSignUp}
+            disabled={loginView ? loginDisabled : signupDisabled}
+          >
+            {isLoading ? (
+              <CircularProgress size={18} sx={{ color: "var(--black-primary)" }} />
+            ) : loginView ? t("Sign In") : t("Sign Up")}
+          </button>
+
+          {/* Divider */}
+          <div className="mob-join-divider">
+            <span />
+            <p>{t("or continue with")}</p>
+            <span />
+          </div>
+
+          {/* Telegram */}
+          <div className="mob-social-wrap">
+            <div className="mob-tg-btn-wrap">
+              <div className="mob-tg-custom-btn" aria-hidden="true">
+                <img src="/img/icons/telegram.svg" alt="" className="mob-social-icon" />
+                <span>{t("Continue with Telegram")}</span>
+              </div>
+              <div ref={telegramRef} className="mob-telegram-widget" />
+              <div
+                className="mob-tg-overlay"
+                onMouseDown={(e) => {
+                  const el = e.currentTarget;
+                  el.style.pointerEvents = "none";
+                  setTimeout(() => { el.style.pointerEvents = "auto"; }, 200);
+                }}
+              />
+            </div>
+
+            <button className="mob-google-btn" onClick={() => googleLogin()}>
+              <img src="/img/icons/google.svg" alt="Google" className="mob-social-icon" />
+              <span>{t("Continue with Google")}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Stack className="join-page">

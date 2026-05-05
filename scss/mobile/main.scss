@@ -155,6 +155,25 @@
       object-fit: contain;
     }
 
+    .mobile-nav-login-btn {
+      height: 32px;
+      padding: 0 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      background: rgba(212, 175, 55, 0.08);
+      font-family: "Nunito", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-primary);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      white-space: nowrap;
+
+      &:active {
+        background: rgba(212, 175, 55, 0.18);
+      }
+    }
+
     .mobile-nav-right {
       display: flex;
       align-items: center;
@@ -3575,6 +3594,291 @@
             color: rgba(255, 255, 255, 0.48);
             line-height: 1.6;
             margin-top: 6px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════
+//  JOIN / LOGIN PAGE — MOBILE
+// ══════════════════════════════════════════════════════════════════════
+#mobile-wrap {
+  #join-page-mobile {
+    min-height: 100vh;
+    background: var(--black-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px 48px;
+
+    .mob-join-wrap {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .mob-join-logo {
+        display: flex;
+        justify-content: center;
+        img {
+          height: 32px;
+          object-fit: contain;
+        }
+      }
+
+      .mob-join-heading {
+        text-align: center;
+
+        .mob-join-title {
+          font-family: "Nunito", sans-serif;
+          font-size: 24px;
+          font-weight: 800;
+          color: var(--text-primary);
+          margin: 0 0 6px;
+          letter-spacing: -0.3px;
+        }
+
+        .mob-join-sub {
+          font-family: "Nunito", sans-serif;
+          font-size: 14px;
+          color: var(--text-secondary);
+          margin: 0;
+          opacity: 0.7;
+        }
+      }
+
+      .mob-join-tabs {
+        display: flex;
+        gap: 8px;
+        background: var(--black-soft);
+        border: 1px solid rgba(212, 175, 55, 0.12);
+        border-radius: 12px;
+        padding: 5px;
+
+        .mob-join-tab {
+          flex: 1;
+          height: 38px;
+          border-radius: 8px;
+          border: none;
+          background: transparent;
+          font-family: "Nunito", sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--text-secondary);
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          transition: all 0.2s ease;
+
+          &.active {
+            background: var(--gold-primary);
+            color: var(--black-primary);
+            font-weight: 800;
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35);
+          }
+        }
+      }
+
+      .mob-join-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+
+        .mob-input-field {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+
+          label {
+            font-family: "Nunito", sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            letter-spacing: 0.4px;
+          }
+
+          input {
+            width: 100%;
+            height: 48px;
+            padding: 0 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            background: var(--black-soft);
+            font-family: "Nunito", sans-serif;
+            font-size: 16px;
+            color: var(--text-primary);
+            outline: none;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            transition: border-color 0.25s ease;
+
+            &::placeholder {
+              color: var(--text-secondary);
+              opacity: 0.45;
+            }
+
+            &:focus {
+              border-color: var(--gold-primary);
+              background: var(--black-secondary);
+            }
+          }
+
+          .mob-password-wrap {
+            position: relative;
+
+            input { padding-right: 48px; }
+
+            .mob-toggle-pw {
+              position: absolute;
+              right: 14px;
+              top: 50%;
+              transform: translateY(-50%);
+              background: none;
+              border: none;
+              color: var(--text-secondary);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              padding: 0;
+              opacity: 0.5;
+              -webkit-tap-highlight-color: transparent;
+            }
+          }
+        }
+      }
+
+      .mob-join-btn {
+        width: 100%;
+        height: 52px;
+        border-radius: 12px;
+        border: none;
+        background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+        font-family: "Nunito", sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--black-primary);
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.2s ease;
+
+        &:disabled {
+          opacity: 0.4;
+          box-shadow: none;
+          cursor: not-allowed;
+        }
+
+        &:active:not(:disabled) {
+          transform: scale(0.98);
+        }
+      }
+
+      .mob-join-divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        span {
+          flex: 1;
+          height: 1px;
+          background: rgba(212, 175, 55, 0.12);
+        }
+
+        p {
+          font-family: "Nunito", sans-serif;
+          font-size: 13px;
+          color: var(--text-secondary);
+          opacity: 0.5;
+          margin: 0;
+          white-space: nowrap;
+        }
+      }
+
+      .mob-social-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        .mob-tg-btn-wrap {
+          position: relative;
+          height: 50px;
+
+          .mob-tg-custom-btn {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(212, 175, 55, 0.05);
+            pointer-events: none;
+            z-index: 1;
+
+            .mob-social-icon { width: 22px; height: 22px; }
+
+            span {
+              font-family: "Nunito", sans-serif;
+              font-size: 15px;
+              font-weight: 600;
+              color: var(--text-primary);
+            }
+          }
+
+          .mob-telegram-widget {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            z-index: 2;
+            overflow: hidden;
+
+            iframe {
+              width: 100% !important;
+              height: 100% !important;
+            }
+          }
+
+          .mob-tg-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+          }
+        }
+
+        .mob-google-btn {
+          width: 100%;
+          height: 50px;
+          border-radius: 12px;
+          border: 1px solid rgba(212, 175, 55, 0.2);
+          background: rgba(212, 175, 55, 0.05);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          transition: border-color 0.2s ease, background 0.2s ease;
+
+          .mob-social-icon { width: 22px; height: 22px; }
+
+          span {
+            font-family: "Nunito", sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+          }
+
+          &:active {
+            border-color: rgba(212, 175, 55, 0.35);
+            background: rgba(212, 175, 55, 0.08);
           }
         }
       }

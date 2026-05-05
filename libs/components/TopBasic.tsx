@@ -134,13 +134,19 @@ const TopBasic = () => {
           </Link>
 
           <Box className={"mobile-nav-right"}>
-            {user?._id && (
+            {user?._id ? (
               <img
                 src={avatarSrc}
                 alt="avatar"
                 className={"mobile-nav-avatar"}
                 onClick={() => router.push("/mypage")}
               />
+            ) : (
+              <Link href={"/account/join"}>
+                <button className={"mobile-nav-login-btn"}>
+                  {t("Login")}
+                </button>
+              </Link>
             )}
             <button
               className={"mobile-nav-burger"}
