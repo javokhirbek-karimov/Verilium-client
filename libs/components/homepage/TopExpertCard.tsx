@@ -19,7 +19,7 @@ const TopExpertCard = (props: TopExpertProps) => {
     : "/img/profile/defaultUser.jpg";
 
   const goToExpert = () => {
-    router.push({ pathname: "/member", query: { memberId: expert?._id } });
+    router.push({ pathname: "/expert/detail", query: { expertId: expert?._id } });
   };
 
   if (device === "mobile") {
