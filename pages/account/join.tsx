@@ -292,14 +292,6 @@ const Join: NextPage = () => {
                 <span>{t("Continue with Telegram")}</span>
               </div>
               <div ref={telegramRef} className="mob-telegram-widget" />
-              <div
-                className="mob-tg-overlay"
-                onMouseDown={(e) => {
-                  const el = e.currentTarget;
-                  el.style.pointerEvents = "none";
-                  setTimeout(() => { el.style.pointerEvents = "auto"; }, 200);
-                }}
-              />
             </div>
 
             <button className="mob-google-btn" onClick={() => googleLogin()}>

@@ -261,6 +261,20 @@
 #pc-wrap #community-detail-page .article-header .author-row .stats .stat-item svg {
   font-size: 18px;
 }
+#pc-wrap #community-detail-page .article-image {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+#pc-wrap #community-detail-page .article-image img {
+  width: 100%;
+  max-height: 480px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  border-radius: 16px;
+}
 #pc-wrap #community-detail-page .article-body {
   width: 100%;
   min-height: 200px;

@@ -3834,22 +3834,15 @@
           .mob-telegram-widget {
             position: absolute;
             inset: 0;
-            opacity: 0;
-            z-index: 2;
+            opacity: 0.01;
+            z-index: 3;
             overflow: hidden;
+            cursor: pointer;
 
             iframe {
               width: 100% !important;
               height: 100% !important;
             }
-          }
-
-          .mob-tg-overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 3;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
           }
         }
 

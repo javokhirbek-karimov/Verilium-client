@@ -124,6 +124,39 @@
 #pc-wrap #expert-detail-page .expert-hero .hero-info .stats-row .stat.like-stat:hover span, #pc-wrap #expert-detail-page .expert-hero .hero-info .stats-row .stat.like-stat.liked span {
   color: var(--gold-primary);
 }
+#pc-wrap #expert-detail-page .expert-hero .hero-info .follow-btn {
+  margin-top: 16px;
+  height: 40px;
+  padding: 0 28px;
+  border-radius: 20px;
+  border: 1.5px solid var(--gold-primary);
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold-primary);
+  background: transparent;
+  text-transform: none;
+  transition: background 0.2s ease, color 0.2s ease;
+  align-self: flex-start;
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .follow-btn:hover {
+  background: rgba(212, 175, 55, 0.12);
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .follow-btn.following {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: rgba(212, 175, 55, 0.7);
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .stat.clickable {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .stat.clickable:hover svg {
+  color: var(--gold-primary);
+}
+#pc-wrap #expert-detail-page .expert-hero .hero-info .stat.clickable:hover span {
+  color: var(--gold-primary);
+}
 #pc-wrap #expert-detail-page .expert-hero .hero-info .contact-row {
   display: flex;
   align-items: center;
@@ -320,4 +353,131 @@
 }
 #pc-wrap #expert-detail-page .reviews-section .comment-form .comment-submit svg {
   font-size: 19px;
+}
+
+.follow-modal .MuiDialog-paper {
+  background: var(--black-soft);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 20px;
+  min-height: 300px;
+}
+.follow-modal .modal-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+  padding: 20px 24px 16px;
+}
+.follow-modal .modal-title .modal-count {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.1);
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+.follow-modal .modal-title .modal-close {
+  margin-left: auto;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.follow-modal .modal-title .modal-close:hover {
+  opacity: 1;
+}
+.follow-modal .modal-content {
+  padding: 12px 0 8px;
+}
+.follow-modal .modal-content .modal-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 0;
+}
+.follow-modal .modal-content .modal-empty svg {
+  font-size: 48px;
+  color: var(--text-secondary);
+  opacity: 0.2;
+}
+.follow-modal .modal-content .modal-empty .MuiTypography-root {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  color: var(--text-secondary);
+  opacity: 0.4;
+}
+.follow-modal .modal-content .modal-member-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  transition: background 0.15s ease;
+}
+.follow-modal .modal-content .modal-member-row:hover {
+  background: rgba(212, 175, 55, 0.03);
+}
+.follow-modal .modal-content .modal-member-row .modal-member-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+}
+.follow-modal .modal-content .modal-member-row .modal-member-info .modal-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  flex-shrink: 0;
+}
+.follow-modal .modal-content .modal-member-row .modal-member-info .modal-name {
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.follow-modal .modal-content .modal-member-row .modal-member-info .modal-meta {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  margin-top: 2px;
+}
+.follow-modal .modal-content .modal-member-row .modal-follow-btn {
+  height: 34px;
+  padding: 0 18px;
+  border-radius: 17px;
+  border: 1.5px solid var(--gold-primary);
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold-primary);
+  background: transparent;
+  text-transform: none;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+.follow-modal .modal-content .modal-member-row .modal-follow-btn:hover {
+  background: rgba(212, 175, 55, 0.1);
+}
+.follow-modal .modal-content .modal-member-row .modal-follow-btn.following {
+  border-color: rgba(212, 175, 55, 0.35);
+  color: rgba(212, 175, 55, 0.6);
+  background: rgba(212, 175, 55, 0.06);
+}
+.follow-modal .modal-content .modal-pagination {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0 8px;
 }/*# sourceMappingURL=detail.css.map */
