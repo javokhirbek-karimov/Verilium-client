@@ -26,7 +26,7 @@ const headCells = [
   { id: "price", label: "PRICE", numeric: true },
   { id: "brand", label: "BRAND", numeric: true },
   { id: "type", label: "TYPE", numeric: true },
-  { id: "agent", label: "AGENT", numeric: true },
+  { id: "expert", label: "EXPERT", numeric: true },
   { id: "status", label: "STATUS", numeric: false },
 ];
 
@@ -121,7 +121,7 @@ export const PerfumePanelList = (props: PerfumePanelListType) => {
                   <TableCell align="left">{perfume.perfumeType}</TableCell>
 
                   <TableCell align="left" className={"name"}>
-                    <Link href={`/member?memberId=${perfume.memberData?._id}`}>
+                    <Link href={`/expert/detail?expertId=${perfume.memberData?._id}`}>
                       <Stack direction={"row"} alignItems={"center"}>
                         <Avatar
                           alt={perfume.memberData?.memberNick}

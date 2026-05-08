@@ -187,7 +187,7 @@ const CommunityArticleList = (props: CommunityArticleListProps) => {
                   </TableCell>
                   <TableCell align="left">{article.articleCategory}</TableCell>
                   <TableCell align="left" className={"name"}>
-                    <Link href={`/member?memberId=${article?.memberData?._id}`}>
+                    <Link href={`/expert/detail?expertId=${article?.memberData?._id}`}>
                       <Avatar
                         alt="Remy Sharp"
                         src={
