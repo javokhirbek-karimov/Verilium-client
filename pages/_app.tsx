@@ -3,12 +3,12 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { light } from "../scss/MaterialTheme";
-import { ApolloProvider } from "@apollo/client";
+import { ApolloProvider, useReactiveVar } from "@apollo/client";
 import { useApollo } from "../apollo/client";
 import { appWithTranslation } from "next-i18next";
 import nextI18NextConfig from "../next-i18next.config";
 import { Toaster } from "sonner";
-import { socketVar } from "../apollo/store";
+import { socketVar, userVar } from "../apollo/store";
 import { getJwtToken } from "../libs/auth";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import "../scss/app.scss";
@@ -19,6 +19,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   // @ts-ignore
   const [theme, setTheme] = useState(createTheme(light));
   const client = useApollo(pageProps.initialApolloState);
+  const user = useReactiveVar(userVar);
 
   useEffect(() => {
     const token = getJwtToken();
@@ -30,7 +31,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     ws.onclose = () => console.log("[Chat WS] disconnected");
 
     return () => ws.close();
-  }, []);
+  }, [user?._id]);
 
   return (
     <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
